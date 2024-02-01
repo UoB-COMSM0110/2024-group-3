@@ -11,3 +11,14 @@ IDEA 1 - endless runner
 - Could be live generating map - increase amount of objects over time
 - Lose either if you hit an object, or screen catches up to you - undecided
 Three challenges: collision detection, high score tracker, powerups, generation/storage of map
+
+
+IDEA 2
+- Sandbox/survival game
+- Fighting off enemies
+- Possibility of changing the envionent/moving objects e.g, in day prepare and in night fight the enemies
+- Find useful objects/weapons (possible inventory with limited size)
+- Finite map
+- Different areas of the map to explore
+- Increasing difficulty/waves getting harder and harder
+Three challenges: enemy AI, graphics, inventory management, map interaction, multiplayer(?)
