@@ -1,0 +1,13 @@
+IDEA 1 - endless runner
+- 2d moving across the screen
+- Avoiding obstacles e.g. jumping, ducking etc
+- Avoiding projectiles/weapons/enemies that come towrads you
+- Moving platforms
+- Different levels e.g. moving up/down instead of sideways
+- Powerups e.g. superjump/invincibility/size change
+- Customisation: different characters, maps
+- High score tracker
+- Score over time, but coins increase score
+- Could be live generating map - increase amount of objects over time
+- Lose either if you hit an object, or screen catches up to you - undecided
+Three challenges: collision detection, high score tracker, powerups, generation/storage of map
