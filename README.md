@@ -54,6 +54,6 @@
 
 **Use-Case Diagram**
 
-<img src='/User-Case-Diagram.png'/>
+<img src='/Diagram.png'/>
 
 <br>
