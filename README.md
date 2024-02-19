@@ -57,3 +57,18 @@
 <img src='/Diagram.png'/>
 
 <br>
+
+**Reflection**
+
+* Difficult to write user stories when the features of the game haven’t been fully clarified 
+* Difficult to work on tasks (e.g. create user stories, list stakeholders) independently, because these tasks depend on each other. Better for everyone to get together and do everything as a group
+* Doing things as a group also gives people a sense of ownership and allows everyone to contribute to everything. Also makes sure we don’t miss anything or have blindspots 
+* Writing user stories / use cases can highlight areas of ambiguity that need to be clarified in the group, for example (in the use case specification), does the player use arrow keys or swipes to move the snake? What button does the player press to shoot venom? 
+* This task forces us to come up with the name of the game 
+* Task highlighted the need for an agreed workflow for collaborating on the repo (i.e. do we add everything in the README on main branch, or work on separate branches? Do we each have our own branch or dedicated “feature” branches?) 
+* So far we only have two personas in our user stories (player and marker). Does this mean we’re missing something? Is this because the user stories were written independently of the stakeholders list? 
+* Writing user stories can highlight that we want to measure subjective things like enjoyment and experience of nostalgia. This suggests that we need to find ways to measure subjective experience
+* Use case diagram: 
+  * Do we have any relationships other than “extends”?
+  * Highlights ambiguity: does the snake die when its tail is cut off, or just shrink, or only die if it loses a certain amount of its tail 
+
