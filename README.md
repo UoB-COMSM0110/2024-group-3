@@ -51,7 +51,7 @@
 <br><br>
 
 <br><br>
-## Initial Paper Protyping
+## Initial Paper Prototyping
 
 **Game Idea 1 : Endless Runner**
 <br>
