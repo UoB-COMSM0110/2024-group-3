@@ -45,20 +45,40 @@
 
 <img title="a title" alt="Alt text" src="/group3.jpg" width="522">
 
+<br>
 
+## Game Brief
+<br><br>
+
+<br><br>
+## Initial Paper Protyping
+
+**Game Idea 1 : Endless Runner**
+<br>
 [![](https://res.cloudinary.com/marcomontalbano/image/upload/v1707426687/video_to_markdown/images/youtube--oTml2CcK-2s-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=oTml2CcK-2s "")
 
+**Game Idea 2 : Survival Game**
+<br>
 [![](https://res.cloudinary.com/marcomontalbano/image/upload/v1707426766/video_to_markdown/images/youtube--akkWPsFFah0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=akkWPsFFah0 "")
 
 
+## Design Challenges
 
-**Use-Case Diagram**
+<br><br>
+## Stakeholders
+
+
+<br><br>
+## User Stories
+
+<br><br>
+## Use-Case Diagram
 
 <img src='/Diagram.png'/>
 
-<br>
+<br><br>
 
-**Reflection**
+## Initial Reflections
 
 * Difficult to write user stories when the features of the game haven’t been fully clarified 
 * Difficult to work on tasks (e.g. create user stories, list stakeholders) independently, because these tasks depend on each other. Better for everyone to get together and do everything as a group
