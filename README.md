@@ -149,6 +149,9 @@ If the player selects the "Exit" option from the main menu, the game will termin
 **Extension :**
 
 (Optional) Worm mode: The player can activate this mode to change the visual appearance of the snake, without altering the core game mechanics.
+<br><br>
+
+## Case Diagram
 
 <br><br>
 ## Week 2, Our Reflections
