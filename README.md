@@ -103,25 +103,26 @@
 ### Use-Case Specification
 **Actors** - Player
 
+<br>
 
-**Description**
+**Description :**
 
 Survival Snake is a game where the player controls a snake and aims to survive for as long as possible. The snake gets bigger as it eats food, and the player can shoot venom out of the snake's mouth. The game includes moving walls and enemies that pose a threat to the snake. The player can also encircle an enemy to kill them.
 <br><br>
 
-**Preconditions**
+**Preconditions :**
 
 The game is launched on a compatible device(Linux/Win/Mac).
 The player is familiar with the game controls.
 <br><br>
 
-**Postconditions**
+**Postconditions :**
 
 The game ends when the snake collides with a wall or an enemy.
 The player's score is recorded and can be displayed.
 <br><br>
 
-**Basic Flow**
+**Basic Flow :**
 1. The player launches the game.
 2. The game displays the main menu.
 3. The player selects the "Start" option to begin the game.
@@ -140,12 +141,12 @@ The player's score is recorded and can be displayed.
 16. The player is presented with the option to play again or exit the game.
 
 <br><br>
-**Alternate Flows**
+**Alternate Flow :**
 
 If the player selects the "Exit" option from the main menu, the game will terminate, and the player will be returned to the device's home screen.
 <br><br>
 
-**Extensions**
+**Extension :**
 
 (Optional) Worm mode: The player can activate this mode to change the visual appearance of the snake, without altering the core game mechanics.
 
