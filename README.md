@@ -96,7 +96,7 @@
 
 ### Use-Case Diagram
 
-<img src='/Diagram.png'/>
+<img src='/images/use_case_diagram.png'/>
 
 <br>
 
@@ -121,4 +121,9 @@
 * Use case diagram: 
   * Do we have any relationships other than “extends”?
   * Highlights ambiguity: does the snake die when its tail is cut off, or just shrink, or only die if it loses a certain amount of its tail 
+  
+## Class diagram
+
+<img src='/images/class_diagram.png'/>
+
 
