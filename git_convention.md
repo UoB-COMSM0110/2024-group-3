@@ -1,3 +1,6 @@
+# Git Convention (Template)
+
+```
 # "[<type>]: <title> <body> <footer>"
 
 # Title has to be < 50 chars: ex) [feat]: Add Key Mapping
@@ -39,3 +42,4 @@ Resolves: #1
 #   Ref          : reference to other issues
 #   Related to   : reference to related commits (when not resolved)
 #   ex) Fixes: #47 Related to: #32, #21
+```
