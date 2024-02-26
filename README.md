@@ -68,9 +68,10 @@
 <br><br>
 ## External Development Factors
 ### Stakeholders
+Player, markers, the development team. 
 
+<br>
 
-<br><br>
 ### User Stories
 > "As a player, I want to play a game that gives me nostalgia with a new twist.”
 
@@ -121,8 +122,10 @@
 * Use case diagram: 
   * Do we have any relationships other than “extends”?
   * Highlights ambiguity: does the snake die when its tail is cut off, or just shrink, or only die if it loses a certain amount of its tail 
-  
-## Class diagram
+
+
+  <br>
+## Class Diagram
 
 <img src='/images/class_diagram.png'/>
 
