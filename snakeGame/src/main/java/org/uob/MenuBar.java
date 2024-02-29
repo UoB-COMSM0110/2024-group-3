@@ -1,6 +1,8 @@
 package org.uob;
 
-public class MenuBar {
+import processing.core.PApplet;
+
+public class MenuBar{
     private int timeElapsed;
     private int score;
     private boolean venomActive;

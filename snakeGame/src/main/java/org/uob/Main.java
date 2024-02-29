@@ -20,7 +20,7 @@ public class Main extends PApplet {
     final int DOWN = 2;
     final int LEFT = 3;
 
-    private MenuBar menuBar=new MenuBar(0,0,0);
+    private MenuBar menuBar=new MenuBar(0,0,false);
     public void settings()
     {
         size(COLS * CELL_SIZE, ROWS * CELL_SIZE);
@@ -32,12 +32,25 @@ public class Main extends PApplet {
 
     public void draw() {
         background(60); // Darkish grey background
-        drawMenuBar();
         drawGridLines();
+        drawMenuBar();
     }
 
     private void drawMenuBar() {
+        fill(0);
+        rect(0, 0, width, 40);
 
+        fill(255);
+        textSize(20);
+        textAlign(LEFT, CENTER);
+        text("Time: " + menuBar.getTimeElapsed(), 60, 20);
+
+        textAlign(CENTER, CENTER);
+        text("Score: " + menuBar.getScore(), width/2, 20);
+
+        textAlign(RIGHT, CENTER);
+        String activeText = menuBar.getVenomActive() ? "Active" : "Inactive";
+        text("VenomStatus: " + activeText, width - 300, 20);
         return;
     }
     private void drawGridLines() {
