@@ -1,6 +1,7 @@
 package org.uob;
 
-import processing.core.PApplet;
+//import processing.core.PApplet;
+import processing.core.*;
 
 import java.awt.*;
 
@@ -38,6 +39,8 @@ public class Main extends PApplet {
         if (currentPage==0) {
 //            MainMenu mainMenu=new MainMenu();
 //            mainMenu.game();
+            background(255);
+
             textSize(32);
             fill(0);
             textAlign(CENTER, CENTER);
@@ -45,14 +48,16 @@ public class Main extends PApplet {
             noFill();
             text("Snake Game", width/2, height/10);
 
-            rect(width/2-130,height/2-30,250,80);
-            text("Star game", width/2, height/2);
+            Button sg_but=new Button(width/2-130,height/2-30,width/2+120,height/2+50,1,"Start game");
+            drawButton(sg_but);
 
-            rect(width/2-130,height/2+70,250,80);
-            text("High score", width/2, height/12*7);
+            Button hs_but=new Button(width/2-130,height/2+70,width/2+120,height/2+150,1,"High Score");
+            drawButton(hs_but);
 
-            rect(width/2-130,height/2+170,250,80);
-            text("Help", width/2, height/3*2);
+            Button help_but=new Button(width/2-130,height/2+170,width/2+120,height/2+250,1,"Help");
+            drawButton(help_but);
+//            rect(width/2-130,height/2+170,250,80);
+//            text("Help", width/2, height/3*2);
         }
         //game map
         else if (currentPage==1) {
@@ -62,6 +67,7 @@ public class Main extends PApplet {
         }
         //high scores
         else if (currentPage==2) {
+            background(255);
             fill(0);
             textAlign(CENTER, CENTER);
             textSize(120);
@@ -107,6 +113,15 @@ public class Main extends PApplet {
         }
     }
 
+    public void drawButton(Button but) {
+        rect(but.getX(),but.getY(),but.getW()-but.getX(),but.getV()-but.getY());
+
+        textAlign(CENTER,CENTER);
+        int length=but.getTxt().length();
+        text(but.getTxt(),(but.getW()+but.getX())/2,(but.getV()+but.getY())/2);
+        return;
+    }
+
     public void mousePressed() {
         if (currentPage==0) {
             if (mouseX > 770 && mouseX < 1020 && mouseY > 570 && mouseY < 650) {
@@ -122,6 +137,14 @@ public class Main extends PApplet {
                     currentPage = 3;
                 }
             }
+        }
+        return;
+    }
+
+    public void keyPressed() {
+        if (keyCode==ESC) {
+            currentPage=0;
+            key=0;
         }
         return;
     }
