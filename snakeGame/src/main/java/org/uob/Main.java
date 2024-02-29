@@ -8,9 +8,9 @@ public class Main extends PApplet {
     }
 
     // Grid/Map Constants
-    final int ROWS = 80;
-    final int COLS = 150;
-    final int CELL_SIZE = 12;
+    final int ROWS = 50;
+    final int COLS = 100;
+    final int CELL_SIZE = 18;
 
     // Direction constants
     final int UP = 0;
