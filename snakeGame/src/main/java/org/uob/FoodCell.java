@@ -12,8 +12,17 @@ class FoodCell extends GridCell {
     private String foodType;
 
     public FoodCell(PApplet game, int[] gridLocation, String foodType, int colour) {
-        super(game, gridLocation, colour);
+        super(game, gridLocation);
         this.foodType = foodType;
+        if(Objects.equals(foodType, "apple")){
+            colour = game.color(141, 182, 0);
+        }
+        else if(Objects.equals(foodType, "cherry")){
+            colour = game.color(255, 87, 51);
+        }
+        else if(Objects.equals(foodType, "banana")){
+            colour = game.color(255,225,53);
+        }
         fillFoodCell(game, gridLocation, colour);
     }
     private void fillFoodCell(PApplet game, int[] gridLocation, int colour) {
@@ -23,7 +32,7 @@ class FoodCell extends GridCell {
         game.rect(i, j, GridCell.cellSize, GridCell.cellSize);
     }
 
-    public int getLengthIncrease() {
+    public int getSnakeLengthIncrease() {
         if (Objects.equals(foodType, "apple")){
             return 1;
         }

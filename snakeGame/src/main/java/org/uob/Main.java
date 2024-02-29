@@ -54,4 +54,8 @@ public class Main extends PApplet {
         WallObject wall = new WallObject(this, wallCellLocations);
     }
 
+    private void makeFood() {
+        //to do
+    }
+
 }
