@@ -4,17 +4,19 @@ import processing.core.PApplet;
 
 public class Button {
     private int x,y,w,v;
+    private int curPag;
     private int pagePoi;
     private String txt;
     private int col=255;
 
     private int txtsize=32;
 
-    public Button(int x, int y, int w, int v, int pagePoi, String txt) {
+    public Button(int x, int y, int w, int v,int curPag, int pagePoi, String txt) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.v = v;
+        this.curPag=curPag;
         this.pagePoi = pagePoi;
         this.txt = txt;
 //
@@ -27,6 +29,10 @@ public class Button {
 //
 //        this.drawButton();
         //w-x/2-length*textsize()/2
+    }
+
+    public int getCurPag() {
+        return curPag;
     }
 
     public int getX() {
@@ -59,6 +65,10 @@ public class Button {
 
     public int getTxtsize() {
         return txtsize;
+    }
+
+    public boolean clicked(int mouseX,int mouseY) {
+        return mouseX>this.x && mouseX<this.w && mouseY>this.y && mouseY<this.v;
     }
 //    public void drawButton() {
 //        rect(x,y,w-x,v-y);

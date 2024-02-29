@@ -4,6 +4,7 @@ package org.uob;
 import processing.core.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Main extends PApplet {
     public static void main(String[] args) {
@@ -24,6 +25,8 @@ public class Main extends PApplet {
     int currentPage=0;
     int width=COLS*CELL_SIZE;
     int height=ROWS*CELL_SIZE;
+
+    ArrayList<Button> butList=new ArrayList<>();
     private MenuBar menuBar=new MenuBar(0,0,false);
     public void settings()
     {
@@ -48,16 +51,16 @@ public class Main extends PApplet {
             noFill();
             text("Snake Game", width/2, height/10);
 
-            Button sg_but=new Button(width/2-130,height/2-30,width/2+120,height/2+50,1,"Start game");
+            Button sg_but=new Button(width/2-130,height/2-30,width/2+120,height/2+50,0,1,"Start game");
+            butList.add(sg_but);
             drawButton(sg_but);
-
-            Button hs_but=new Button(width/2-130,height/2+70,width/2+120,height/2+150,1,"High Score");
+            Button hs_but=new Button(width/2-130,height/2+70,width/2+120,height/2+150,0,2,"High Score");
+            butList.add(hs_but);
             drawButton(hs_but);
-
-            Button help_but=new Button(width/2-130,height/2+170,width/2+120,height/2+250,1,"Help");
+            Button help_but=new Button(width/2-130,height/2+170,width/2+120,height/2+250,0,3,"Help");
+            butList.add(help_but);
             drawButton(help_but);
-//            rect(width/2-130,height/2+170,250,80);
-//            text("Help", width/2, height/3*2);
+
         }
         //game map
         else if (currentPage==1) {
@@ -123,18 +126,11 @@ public class Main extends PApplet {
     }
 
     public void mousePressed() {
-        if (currentPage==0) {
-            if (mouseX > 770 && mouseX < 1020 && mouseY > 570 && mouseY < 650) {
-                if (mouseButton == LEFT) {
-                    currentPage = 1;
-                }
-            } else if (mouseX > 770 && mouseX < 1020 && mouseY > 670 && mouseY < 750) {
-                if (mouseButton == LEFT) {
-                    currentPage = 2;
-                }
-            } else if (mouseX > 770 && mouseX < 1020 && mouseY > 770 && mouseY < 850) {
-                if (mouseButton == LEFT) {
-                    currentPage = 3;
+        for (int i=0;i<butList.size();++i) {
+            if (currentPage==butList.get(i).getCurPag()) {
+                if (butList.get(i).clicked(mouseX,mouseY)) {
+                    currentPage=butList.get(i).getPagePoi();
+                    break;
                 }
             }
         }
