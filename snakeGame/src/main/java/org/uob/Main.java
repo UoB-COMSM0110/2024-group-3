@@ -108,19 +108,19 @@ public class Main extends PApplet {
     }
 
     public void mousePressed() {
-        if (mouseX>770 && mouseX<1020 && mouseY>570 && mouseY<650) {
-            if (mouseButton==LEFT) {
-                currentPage=1;
-            }
-        }
-        else if (mouseX>770 && mouseX<1020 && mouseY>670 && mouseY<750) {
-            if (mouseButton==LEFT) {
-                currentPage=2;
-            }
-        }
-        else if (mouseX>770 && mouseX<1020 && mouseY>770 && mouseY<850) {
-            if (mouseButton==LEFT) {
-                currentPage=3;
+        if (currentPage==0) {
+            if (mouseX > 770 && mouseX < 1020 && mouseY > 570 && mouseY < 650) {
+                if (mouseButton == LEFT) {
+                    currentPage = 1;
+                }
+            } else if (mouseX > 770 && mouseX < 1020 && mouseY > 670 && mouseY < 750) {
+                if (mouseButton == LEFT) {
+                    currentPage = 2;
+                }
+            } else if (mouseX > 770 && mouseX < 1020 && mouseY > 770 && mouseY < 850) {
+                if (mouseButton == LEFT) {
+                    currentPage = 3;
+                }
             }
         }
         return;
