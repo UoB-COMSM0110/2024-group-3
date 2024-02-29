@@ -27,6 +27,7 @@ Updating ea1b82a..05e9557
 $ git branch -d myfeature
 Deleted branch myfeature (was 05e9557).
 $ git push origin develop
+```
 
 ### Merging Develop into Main 
 
