@@ -3,11 +3,11 @@
 ## main
 
 - Disable branch deletion
-- Disallow pushes except via PR 
+- Disallow pushes except via pull request (PR)
 - Require one approval from Group 3 team member before merging PR is allowed
 
 ## develop 
 
 - Disable branch deletion
-- Disallow pushes except via PR 
 - Require one approval from Group 3 team member before merging PR is allowed
+- Feature branches to develop are automatically deleted on merge to develop 
