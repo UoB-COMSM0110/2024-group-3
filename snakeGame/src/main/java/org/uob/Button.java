@@ -2,12 +2,15 @@ package org.uob;
 
 import processing.core.PApplet;
 
+import java.awt.*;
+
 public class Button {
     private int x,y,w,v;
     private int curPag;
     private int pagePoi;
     private String txt;
-    private int col=255,colr=0,colg=0,colb=0;
+
+    private int colr=110,colg=110,colb=110;
 
     private int txtsize=32;
 
@@ -59,8 +62,9 @@ public class Button {
         return txt;
     }
 
+
     public int getCol() {
-        return col;
+        return colr;
     }
 
     public int getTxtsize() {

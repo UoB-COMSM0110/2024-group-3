@@ -35,11 +35,11 @@ public class Main extends PApplet {
 
     public void setup() {
         currentPage=0;
-        frameRate(10);
+        frameRate(120);
     }
 
     public void draw() {
-        update(mouseX,mouseY);
+
 
         if (currentPage==0) {
 //            MainMenu mainMenu=new MainMenu();
@@ -54,18 +54,18 @@ public class Main extends PApplet {
             text("Snake Game", width/2, height/10);
 
             Button sg_but=new Button(width/2-130,height/2-30,width/2+120,height/2+50,0,1,"Start game");
-            sg_but.setColour(111,111,111);
             butList.add(sg_but);
-            drawButton(sg_but);
+
 
             Button hs_but=new Button(width/2-130,height/2+70,width/2+120,height/2+150,0,2,"High Score");
-            hs_but.setColour(111,111,111);
             butList.add(hs_but);
-            drawButton(hs_but);
+
 
             Button help_but=new Button(width/2-130,height/2+170,width/2+120,height/2+250,0,3,"Help");
-            help_but.setColour(111,111,111);
             butList.add(help_but);
+            update(mouseX,mouseY);
+            drawButton(hs_but);
+            drawButton(sg_but);
             drawButton(help_but);
 
         }
@@ -92,16 +92,10 @@ public class Main extends PApplet {
 
     void update(int mousex, int mousey) {
         for (int i=0;i<butList.size();++i) {
-            if (butList.get(0).inside(mousex,mousey)) {
-                butHighlight(butList.get(0));
+            if (butList.get(i).inside(mousex,mousey)) {
+                butList.get(i).setColour(250,250,0);
             }
         }
-    }
-
-    void butHighlight(Button but) {
-        //int r=but.getColr(),g=but.getColg(),b=but.getColb();
-        but.setColour(255,255,0);
-        return;
     }
 
     private void drawMenuBar() {
@@ -142,7 +136,7 @@ public class Main extends PApplet {
         rect(but.getX(),but.getY(),but.getW()-but.getX(),but.getV()-but.getY());
 
         textAlign(CENTER,CENTER);
-        fill(255);
+        fill(0);
         text(but.getTxt(),(but.getW()+but.getX())/2,(but.getV()+but.getY())/2);
         return;
     }
