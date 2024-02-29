@@ -2,6 +2,8 @@ package org.uob;
 
 import processing.core.PApplet;
 
+import java.awt.*;
+
 public class Main extends PApplet {
     public static void main(String[] args) {
         PApplet.main("org.uob.Main");
@@ -18,7 +20,9 @@ public class Main extends PApplet {
     final int DOWN = 2;
     final int LEFT = 3;
 
-    public void settings() {
+    private MenuBar menuBar=new MenuBar(0,0,0);
+    public void settings()
+    {
         size(COLS * CELL_SIZE, ROWS * CELL_SIZE);
     }
 
@@ -28,9 +32,14 @@ public class Main extends PApplet {
 
     public void draw() {
         background(60); // Darkish grey background
+        drawMenuBar();
         drawGridLines();
     }
 
+    private void drawMenuBar() {
+
+        return;
+    }
     private void drawGridLines() {
         stroke(100);
 
