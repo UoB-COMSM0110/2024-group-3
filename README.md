@@ -51,7 +51,7 @@
 <br><br>
 
 <br><br>
-## Initial Paper Protyping
+## Initial Paper Prototyping
 
 **Game Idea 1 : Endless Runner**
 <br>
@@ -122,6 +122,7 @@ The player's score is recorded and can be displayed.
 <br><br>
 
 **Basic Flow**
+
 1. The player launches the game.
 2. The game displays the main menu.
 3. The player selects the "Start" option to begin the game.
@@ -140,14 +141,18 @@ The player's score is recorded and can be displayed.
 16. The player is presented with the option to play again or exit the game.
 
 <br><br>
+
 **Alternate Flows**
 
 If the player selects the "Exit" option from the main menu, the game will terminate, and the player will be returned to the device's home screen.
 <br><br>
 
+
 **Extensions**
 
 (Optional) Worm mode: The player can activate this mode to change the visual appearance of the snake, without altering the core game mechanics.
+
+## Case Diagram
 
 <br><br>
 ## Week 2, Our Reflections

@@ -1,3 +1,5 @@
+# Git Convention (Template)
+
 # "[<type>]: <title> <body> <footer>"
 
 # Title has to be < 50 chars: ex) [feat]: Add Key Mapping
@@ -18,11 +20,17 @@ Resolves: #1
 #   fix         : bugs (bug fixes)
 #   refactor    : refactoring
 #   comment     : change in references
+<<<<<<< HEAD
 #   style       : style (code formats, semicolons: no changes in business 
 logic)
 #   docs        : changes in documents (add, patch delete, README)
 #   test        : test (new test codes, changes, deletes: no changes in 
 logic)
+=======
+#   style       : style (code formats, semicolons: no changes in business logic)
+#   docs        : changes in documents (add, patch delete, README)
+#   test        : test (new test codes, changes, deletes: no changes in logic)
+>>>>>>> main
 #   chore       : etc (build scripts, assets, 패키지 매니저 등)
 #   init        : initialisation
 #   rename      : rename files or directories: no changes in code 
@@ -41,5 +49,4 @@ logic)
 #   Ref          : reference to other issues
 #   Related to   : reference to related commits (when not resolved)
 #   ex) Fixes: #47 Related to: #32, #21
-
 

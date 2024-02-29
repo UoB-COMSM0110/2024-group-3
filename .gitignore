@@ -1,4 +1,5 @@
 **/.DS_Store
+
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,linux,processing,java,intellij+all,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,linux,processing,java,intellij+all,visualstudiocode
 
@@ -219,5 +220,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-# End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,processing,java,intellij+all,visualstudiocode
