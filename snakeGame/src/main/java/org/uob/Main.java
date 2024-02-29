@@ -8,7 +8,7 @@ public class Main extends PApplet {
     }
 
     // Grid/Map Constants
-    final int ROWS = 100;
+    final int ROWS = 80;
     final int COLS = 150;
     final int CELL_SIZE = 12;
 
@@ -24,11 +24,13 @@ public class Main extends PApplet {
 
     public void setup() {
         frameRate(10);
+        background(60);
+        drawGridLines();
+        makeWalls();
+        noLoop();
     }
 
     public void draw() {
-        background(60); // Darkish grey background
-        drawGridLines();
     }
 
     private void drawGridLines() {
@@ -44,6 +46,19 @@ public class Main extends PApplet {
         for (int j = 0; j <= ROWS; j++) {
             float y = j * CELL_SIZE;
             line(0, y, width, y);
+        }
+    }
+    private void makeWalls() {
+        for (int i = 0; i < 10; i++) {
+            int col = (int) random(COLS);
+            int row = (int) random(ROWS);
+
+            float x = col * CELL_SIZE;
+            float y = row * CELL_SIZE;
+
+            fill(0);
+
+            rect(x, y, CELL_SIZE, CELL_SIZE);
         }
     }
 }
