@@ -1,6 +1,7 @@
 package org.uob;
 
 import processing.core.PApplet;
+import java.util.ArrayList;
 
 public class Main extends PApplet {
     public static void main(String[] args) {
@@ -10,7 +11,6 @@ public class Main extends PApplet {
     // Grid/Map Constants
     final int ROWS = 50;
     final int COLS = 100;
-    final int CELL_SIZE = 18;
 
     // Direction constants
     final int UP = 0;
@@ -19,7 +19,7 @@ public class Main extends PApplet {
     final int LEFT = 3;
 
     public void settings() {
-        size(COLS * CELL_SIZE, ROWS * CELL_SIZE);
+        size(COLS * GridCell.cellSize, ROWS * GridCell.cellSize);
     }
 
     public void setup() {
@@ -27,9 +27,7 @@ public class Main extends PApplet {
         background(60);
         drawGridLines();
         makeWalls();
-        noLoop();
     }
-
     public void draw() {
     }
 
@@ -38,27 +36,22 @@ public class Main extends PApplet {
 
         // Draw vertical lines
         for (int i = 0; i <= COLS; i++) {
-            float x = i * CELL_SIZE;
+            float x = i * GridCell.cellSize;
             line(x, 0, x, height);
         }
 
         // Draw horizontal lines
         for (int j = 0; j <= ROWS; j++) {
-            float y = j * CELL_SIZE;
+            float y = j * GridCell.cellSize;
             line(0, y, width, y);
         }
     }
+
     private void makeWalls() {
-        for (int i = 0; i < 10; i++) {
-            int col = (int) random(COLS);
-            int row = (int) random(ROWS);
-
-            float x = col * CELL_SIZE;
-            float y = row * CELL_SIZE;
-
-            fill(0);
-
-            rect(x, y, CELL_SIZE, CELL_SIZE);
-        }
+        ArrayList<int[]> wallCellLocations = new ArrayList<>();
+        wallCellLocations.add(new int[]{1, 1});
+        wallCellLocations.add(new int[]{1, 2});
+        WallObject wall = new WallObject(this, wallCellLocations);
     }
+
 }
