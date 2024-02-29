@@ -23,6 +23,14 @@ public abstract class GridCell  {
         this.colour = colour;
     }
 
+    protected void fillGridCell(PApplet game, int[] gridLocation, int colour){
+        float i = gridLocation[0] * GridCell.cellSize;
+        float j = gridLocation[1] * GridCell.cellSize;
+        game.fill(colour);
+        game.rect(i, j, GridCell.cellSize, GridCell.cellSize);
+    }
+
+
     public int[] getGridLocation() {
         return gridLocation;
     }

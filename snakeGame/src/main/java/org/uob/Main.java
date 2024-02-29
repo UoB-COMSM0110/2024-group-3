@@ -27,6 +27,7 @@ public class Main extends PApplet {
         background(60);
         drawGridLines();
         makeWalls();
+        makeFood();
     }
     public void draw() {
     }
@@ -55,7 +56,10 @@ public class Main extends PApplet {
     }
 
     private void makeFood() {
-        //to do
+        ArrayList<FoodCell> food = new ArrayList<>();
+        food.add(new FoodCell(this, new int[]{5,7}, "apple"));
+        food.add(new FoodCell(this, new int[]{8,3}, "banana"));
+        food.add(new FoodCell(this, new int[]{1,35}, "cherry"));
     }
 
 }
