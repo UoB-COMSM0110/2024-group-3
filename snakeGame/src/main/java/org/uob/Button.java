@@ -7,7 +7,7 @@ public class Button {
     private int curPag;
     private int pagePoi;
     private String txt;
-    private int col=255;
+    private int col=255,colr=0,colg=0,colb=0;
 
     private int txtsize=32;
 
@@ -67,8 +67,27 @@ public class Button {
         return txtsize;
     }
 
-    public boolean clicked(int mouseX,int mouseY) {
-        return mouseX>this.x && mouseX<this.w && mouseY>this.y && mouseY<this.v;
+    public void setColour(int colr,int colg,int colb) {
+        this.colr=colr;
+        this.colg=colg;
+        this.colb=colb;
+        return;
+    }
+
+    public int getColr() {
+        return colr;
+    }
+
+    public int getColg() {
+        return colg;
+    }
+
+    public int getColb() {
+        return colb;
+    }
+
+    public boolean inside(int mouseX, int mouseY) {
+        return (mouseX>this.x) && (mouseX<this.w) && (mouseY>this.y) && (mouseY<this.v);
     }
 //    public void drawButton() {
 //        rect(x,y,w-x,v-y);
