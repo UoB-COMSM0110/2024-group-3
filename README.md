@@ -43,7 +43,7 @@
   </tbody>
 </table>
 
-<img title="a title" src="/group3.jpg" width="522">
+<img src="/group3.jpg" width="522">
 
 <br>
 
