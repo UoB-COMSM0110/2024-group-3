@@ -1,5 +1,6 @@
-package org.uob;
+package org.uob.boards;
 
+import org.uob.boards.GridCell;
 import processing.core.PApplet;
 
 class WallCell extends GridCell {

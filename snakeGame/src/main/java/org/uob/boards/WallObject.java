@@ -1,5 +1,6 @@
-package org.uob;
+package org.uob.boards;
 
+import org.uob.boards.WallCell;
 import processing.core.PApplet;
 
 import java.util.ArrayList;

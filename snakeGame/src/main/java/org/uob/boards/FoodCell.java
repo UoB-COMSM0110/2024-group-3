@@ -1,12 +1,11 @@
-package org.uob;
+package org.uob.boards;
 
-import java.awt.*;
 import java.util.Objects;
 
 import processing.core.*;
 
 
-class FoodCell extends GridCell {
+public class FoodCell extends GridCell {
 
     int colour = getColour();
     private String foodType;

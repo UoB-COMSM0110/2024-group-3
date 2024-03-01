@@ -1,12 +1,11 @@
-package org.uob;
+package org.uob.boards;
 
-import java.awt.*;
 import processing.core.*;
 
 public abstract class GridCell  {
 
     private final int[] gridLocation;
-    protected static final int cellSize = 15;
+    public static final int cellSize = 15;
 
     private int colour;
 
