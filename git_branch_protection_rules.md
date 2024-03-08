@@ -4,10 +4,9 @@
 
 - Disable branch deletion
 - Disallow pushes except via pull request (PR)
-- Require one approval from Group 3 team member before merging PR is allowed
+- Require one approval before merging PR is allowed
+- Branches are automatically deleted after PR merge (can be reinstated) 
 
 ## develop 
 
 - Disable branch deletion
-- Require one approval from Group 3 team member before merging PR is allowed
-- Feature branches to develop are automatically deleted on merge to develop 
