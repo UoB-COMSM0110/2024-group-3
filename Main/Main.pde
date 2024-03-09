@@ -23,7 +23,6 @@ public void settings() {
 }
 public void setup() {
   gameScreen = new GameScreen(this);
-
 }
 public void draw() {
   if (currentPage == 0) {

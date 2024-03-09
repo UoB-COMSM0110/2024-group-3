@@ -1,11 +1,13 @@
 class GameScreenBoard extends ScreenPanel {
   Enemy enemy;
+  GenerateFood foodGenerator;
     // Constructor to initialize position and size
     public GameScreenBoard(PApplet game, float x, float y, float width, float height) {
         super(game, x, y, width, height);
         
         int[] enemyStartLocation = new int[]{Main.COLS - 1, 0};
         enemy = new Enemy(game, enemyStartLocation);
+        foodGenerator = new GenerateFood(game);
     }
 
 @Override
@@ -22,10 +24,8 @@ class GameScreenBoard extends ScreenPanel {
         game.fill(60);
         drawGridLines();
         makeWalls();
-        makeFood();
-        
+        foodGenerator.displayFood(); 
         enemy.fillGridCell(game, enemy.getGridLocation(), game.color(255, 0, 0));
-        
         game.popMatrix();
     }
 
@@ -52,12 +52,5 @@ class GameScreenBoard extends ScreenPanel {
         wallCellLocations.add(new int[]{1, 1});
         wallCellLocations.add(new int[]{1, 2});
         WallObject wall = new WallObject(game, wallCellLocations);
-    }
-
-    private void makeFood() {
-        ArrayList<FoodCell> food = new ArrayList<>();
-        food.add(new FoodCell(game, new int[]{0,5}, "apple"));
-        food.add(new FoodCell(game, new int[]{0,44}, "banana"));
-        food.add(new FoodCell(game, new int[]{0,50}, "cherry"));
     }
 }
