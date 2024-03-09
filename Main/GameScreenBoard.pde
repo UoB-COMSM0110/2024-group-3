@@ -1,13 +1,19 @@
 class GameScreenBoard extends ScreenPanel {
+  Enemy enemy;
     // Constructor to initialize position and size
     public GameScreenBoard(PApplet game, float x, float y, float width, float height) {
         super(game, x, y, width, height);
+        
+        int[] enemyStartLocation = new int[]{Main.COLS - 1, 0};
+        enemy = new Enemy(game, enemyStartLocation);
     }
 
+@Override
     public void update() {
-        // Implement update logic for Panel 1
+      enemy.update();
     }
 
+@Override
     public void draw() {
         game.pushMatrix();
         game.translate(x, y);
@@ -17,6 +23,9 @@ class GameScreenBoard extends ScreenPanel {
         drawGridLines();
         makeWalls();
         makeFood();
+        
+        enemy.fillGridCell(game, enemy.getGridLocation(), game.color(255, 0, 0));
+        
         game.popMatrix();
     }
 
