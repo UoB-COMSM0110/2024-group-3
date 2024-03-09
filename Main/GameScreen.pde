@@ -1,11 +1,4 @@
-package org.uob.screens;
-
-import org.uob.boards.GridCell;
-import processing.core.PApplet;
-
-import java.util.ArrayList;
-
-public class GameScreen {
+class GameScreen {
     // Composition: Screen contains multiple ScreenPanel objects
     ArrayList<ScreenPanel> panels;
     PApplet game;

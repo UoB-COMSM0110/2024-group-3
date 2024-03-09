@@ -1,10 +1,4 @@
-package org.uob.boards;
-
-import org.uob.boards.WallCell;
-import processing.core.PApplet;
-
-import java.util.ArrayList;
-public class WallObject {
+class WallObject {
     private final ArrayList<WallCell> wallCells;
 
     public WallObject(PApplet game, ArrayList<int[]> wallCellLocations) {
@@ -14,5 +8,4 @@ public class WallObject {
             this.wallCells.add(new WallCell(game, cellLocation, game.color(128, 128, 128)));
         }
     }
-
 }

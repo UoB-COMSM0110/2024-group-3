@@ -1,9 +1,4 @@
-package org.uob.boards;
-
-import processing.core.*;
-
-public abstract class GridCell  {
-
+abstract class GridCell {
     private final int[] gridLocation;
     public static final int cellSize = 15;
 
@@ -14,7 +9,6 @@ public abstract class GridCell  {
     public GridCell(PApplet game, int[] gridLocation) {
         this.game = game;
         this.gridLocation = gridLocation;
-
     }
 
     public GridCell(PApplet game, int[] gridLocation, int colour) {
@@ -22,13 +16,12 @@ public abstract class GridCell  {
         this.colour = colour;
     }
 
-    protected void fillGridCell(PApplet game, int[] gridLocation, int colour){
+    protected void fillGridCell(PApplet game, int[] gridLocation, int colour) {
         float i = gridLocation[0] * GridCell.cellSize;
         float j = gridLocation[1] * GridCell.cellSize;
         game.fill(colour);
         game.rect(i, j, GridCell.cellSize, GridCell.cellSize);
     }
-
 
     public int[] getGridLocation() {
         return gridLocation;
@@ -41,9 +34,8 @@ public abstract class GridCell  {
     public void setColour(int colour) {
         this.colour = colour;
     }
-
+    
     public PApplet getGame() {
         return this.game;
     }
-
 }

@@ -1,8 +1,4 @@
-package org.uob;
-
-import processing.core.PApplet;
-
-public class MenuBar{
+class MenuBar {
     private int timeElapsed;
     private int score;
     private boolean venomActive;
@@ -12,29 +8,28 @@ public class MenuBar{
     }
 
     public void setTimeElapsed(int timEla) {
-        this.timeElapsed=timEla;
-        return;
+        this.timeElapsed = timEla;
     }
 
     public int getScore() {
         return this.score;
     }
+
     public void setScore(int sco) {
-        this.score=sco;
-        return;
+        this.score = sco;
     }
 
     public boolean getVenomActive() {
         return this.venomActive;
     }
+
     public void setVenomActive(boolean venAct) {
-        this.venomActive=venAct;
-        return;
+        this.venomActive = venAct;
     }
+
     public MenuBar(int time, int sco, boolean venAct) {
-        this.timeElapsed=time;
-        this.score=sco;
-        this.venomActive=venAct;
-        return;
+        this.timeElapsed = time;
+        this.score = sco;
+        this.venomActive = venAct;
     }
 }

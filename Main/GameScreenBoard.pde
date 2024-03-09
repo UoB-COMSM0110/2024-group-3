@@ -1,17 +1,4 @@
-package org.uob.screens;
-
-
-// add some function to track maximum grid positions can use when in grid section
-
-import org.uob.Main;
-import org.uob.boards.FoodCell;
-import org.uob.boards.GridCell;
-import org.uob.boards.WallObject;
-import processing.core.PApplet;
-
-import java.util.ArrayList;
-
-public class GameScreenBoard extends ScreenPanel {
+class GameScreenBoard extends ScreenPanel {
     // Constructor to initialize position and size
     public GameScreenBoard(PApplet game, float x, float y, float width, float height) {
         super(game, x, y, width, height);
