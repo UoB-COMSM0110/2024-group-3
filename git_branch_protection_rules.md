@@ -6,9 +6,7 @@
 - Disallow pushes except via pull request (PR)
 - Require one approval before merging PR is allowed
 - Branches are automatically deleted after PR merge (auto-deleted branches can be reinstated)
-- Only Group 3 members can push
 
 ## develop 
 
 - Disable branch deletion
-- Only Group 3 members can push
