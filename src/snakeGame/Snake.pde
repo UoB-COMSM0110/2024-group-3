@@ -18,6 +18,11 @@ public class Snake {
       snakeCells.add(new SnakeCell(position.copy(), colour));
       position.add(velocity); // Move to the next position based on velocity
     }
+    
+    // update map gripobjectData
+    for (SnakeCell cell : snakeCells) {
+     game.setMapGridObjectData((int) cell.gridLocation.x, (int) cell.gridLocation.y, this); 
+    }
   }
 
 
@@ -106,8 +111,16 @@ public class Snake {
       snakeCells.removeFirst();
       snakeCells.addLast(newHead);
     }
-      // add updates to gridObject Data
-      
+   /*   
+    // Create a new cell at the new head position and update snake
+    SnakeCell newHead = new SnakeCell(headPosition, colour);
+    game.setMapGridObjectData(headX, headY, this);  
+    
+    SnakeCell removedCell = snakeCells.removeFirst();
+    game.setMapGridObjectData(removedCell.gridLocation, null);
+    
+    snakeCells.addLast(newHead);
+*/
   }
 
   // Method to change the direction of the snake

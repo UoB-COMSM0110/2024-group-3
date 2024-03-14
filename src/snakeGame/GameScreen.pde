@@ -59,6 +59,7 @@ public class GameScreen {
     food.renderConsumable();
     renderWalls();
     snake.renderSnake();
+    
   }
 
   public void handleArrowKeyPress() {
@@ -78,9 +79,17 @@ public class GameScreen {
   public void setMapGridObjectData(int x, int y, Object obj) {
     this.mapGridObjectData[x][y] = obj;
   }
+  
+  public void setMapGridObjectData(PVector location, Object obj) {
+    this.mapGridObjectData[(int)location.x][(int)location.y] = obj;
+  }
 
   public Object getMapGridObjectData(int x, int y) {
     return this.mapGridObjectData[x][y];
+  }
+  
+  public Object getMapGridObjectData(PVector location) {
+    return this.mapGridObjectData[(int)location.x][(int)location.y];
   }
 
   private void drawGameBoard() {
@@ -167,4 +176,29 @@ public class GameScreen {
       wall.renderWall();
     }
   }
+  
+  
+  public void printMapGrid() {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            Object obj = mapGridObjectData[j][i];
+            if (obj == null) {
+                System.out.print(" "); // Empty space
+            } else if (obj instanceof Snake) {
+                System.out.print("s"); // Snake
+            } else if (obj instanceof Wall) {
+                System.out.print("w"); // Wall
+            }
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
+}
+
+  
+  
+  
+  
+  
+  
 }
