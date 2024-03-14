@@ -48,6 +48,7 @@
 <br>
 
 ## Game Brief
+Our game is going to be a version of the classic 'Snake' game, combined with the principles of a shooter game. We want to have the classic hallmarks of 'Snake' (wall avoidance, growing your snake through consuming food) and combine these with some elelements of a shooter - AI enemies that follow you around the map and a venom 'shooter' mechanic to fight these enemies with.
 <br><br>
 
 <br><br>
@@ -63,7 +64,11 @@
 
 
 ## Design Challenges
-
+* AI enemies that track the player snake around the map.
+* Collision detection.
+* Consuming food and growing the snake in length.
+* Venom mechanic.
+* Map generation and difficulty modes.
 
 <br><br>
 ## External Development Factors
