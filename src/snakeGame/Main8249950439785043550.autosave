@@ -20,7 +20,7 @@ public WhatPage curPage;
 public void settings() {
   size(width, height);
 }
- //<>// //<>//
+
 public void setup() {
   state = GameState.PLAY;
   frameRate(15);
@@ -47,17 +47,7 @@ public void draw() {
 }
 
 void keyPressed() {
-  if (curPage==WhatPage.PLAYING) {
-    if (state==GameState.PLAY) {
-      gameScreen.handleArrowKeyPress();
-    } else if (state==GameState.OVER) {
-      page.handleEsc();
-    }
-  }
-}
-
-void mousePressed() {
-  page.handlePageJump();
+  gameScreen.handleArrowKeyPress();
 }
 
 

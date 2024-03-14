@@ -56,7 +56,7 @@ public class Page
     }
   }
   
-  public void mousePressed() {
+  public void handlePageJump() {
     for (int i = 0; i < butList.size(); ++i) {
       if (curPage == butList.get(i).getCurPag()) {
         if (butList.get(i).inside(mouseX, mouseY)) {
@@ -64,6 +64,13 @@ public class Page
           break;
         }
       }
+    }
+  }
+  
+  public void handleEsc() {
+    if (keyCode==ESC) {
+      curPage=WhatPage.MAINPAGE;
+      key=0;
     }
   }
 }
