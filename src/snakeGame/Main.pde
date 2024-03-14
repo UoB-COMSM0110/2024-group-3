@@ -1,4 +1,4 @@
-public static final int ROWS = 45;
+public static final int ROWS = 45; //<>// //<>//
 public static final int COLS = 100;
 public static final int CELL_SIZE = 12;
 
@@ -20,13 +20,13 @@ public WhatPage curPage;
 public void settings() {
   size(width, height);
 }
- //<>// //<>//
+//<>//
 public void setup() {
   state = GameState.PLAY;
   frameRate(15);
-  gameScreen = new GameScreen(); //<>//
+  gameScreen = new GameScreen();
   gameScreen.setup("mapsCSV/2.csv");
-  
+
   page=new Page();
   curPage=WhatPage.MAINPAGE;
 }
@@ -37,7 +37,10 @@ public void draw() {
   } else if (curPage==WhatPage.PLAYING) {
     if (state == GameState.OVER) {
       gameOver();
-      noLoop();
+      curPage=WhatPage.MAINPAGE;
+      gameScreen.setup("mapsCSV/2.csv");
+      state = GameState.PLAY;
+      
     } else {
       gameScreen.update();
     }

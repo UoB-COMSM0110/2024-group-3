@@ -67,6 +67,9 @@ public class GameScreen {
     } else if (keyCode == RIGHT) {
       snake.setVelocity(1, 0);  // Move right
     }
+    if (keyCode == ESC) {
+      curPage=WhatPage.MAINPAGE;
+    }
   }
 
 
