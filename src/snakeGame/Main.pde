@@ -5,6 +5,8 @@ public static final int CELL_SIZE = 12;
 public static final int width = COLS * CELL_SIZE;
 public static final int height = ROWS * CELL_SIZE;
 
+public static final int curPage=0;
+
 public GameScreen gameScreen;
 public GameState state;
 public enum GameState {
@@ -23,11 +25,16 @@ public void setup() {
 }
 
 public void draw() {
-  if (state == GameState.OVER) {
-    gameOver();
-    noLoop();
-  } else {
-    gameScreen.update();
+  if (curPage==0) {
+    page.mainPage();
+  }
+  else if (curPage==1) {
+    if (state == GameState.OVER) {
+      gameOver();
+      noLoop();
+    } else {
+      gameScreen.update();
+    }
   }
 }
 
