@@ -20,6 +20,8 @@ public void setup() {
   frameRate(15);
   gameScreen = new GameScreen(); //<>//
   gameScreen.setup("mapsCSV/2.csv");
+  
+
 }
 
 public void draw() {
@@ -28,6 +30,7 @@ public void draw() {
     noLoop();
   } else {
     gameScreen.update();
+    gameScreen.printMapGrid();
   }
 }
 
