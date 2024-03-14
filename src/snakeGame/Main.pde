@@ -5,36 +5,44 @@ public static final int CELL_SIZE = 12;
 public static final int width = COLS * CELL_SIZE;
 public static final int height = ROWS * CELL_SIZE;
 
-public static final int curPage=0;
-
 public GameScreen gameScreen;
 public GameState state;
 public enum GameState {
   OVER, PLAY, PAUSE, MENU, SCORE_SCREEN
 }
 
+public Page page;
+public enum WhatPage {
+  MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING,
+}
+public WhatPage curPage;
+
 public void settings() {
   size(width, height);
 }
-
+ //<>//
 public void setup() {
   state = GameState.PLAY;
   frameRate(15);
   gameScreen = new GameScreen(); //<>//
   gameScreen.setup("mapsCSV/2.csv");
+  
+  page=new Page();
+  curPage=WhatPage.MAINPAGE;
 }
 
 public void draw() {
-  if (curPage==0) {
+  if (curPage==WhatPage.MAINPAGE) {
     page.mainPage();
-  }
-  else if (curPage==1) {
+  } else if (curPage==WhatPage.PLAYING) {
     if (state == GameState.OVER) {
       gameOver();
       noLoop();
     } else {
       gameScreen.update();
     }
+  } else if (curPage==WhatPage.HIGHSCORE) {
+    page.highScore();
   }
 }
 

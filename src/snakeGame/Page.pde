@@ -11,19 +11,32 @@ public class Page
     noFill();
     text("Snake Game", width / 2, height / 10);
 
-    Button sg_but = new Button(width / 2 - 130, height / 2 - 30, width / 2 + 120, height / 2 + 50, 0, 1, "Start game");
+    Button sg_but = new Button(width / 2 - 130, height / 2 - 30, width / 2 + 120, height / 2 + 50, WhatPage.MAINPAGE, WhatPage.PLAYING, "Start game");
     butList.add(sg_but);
 
-    Button hs_but = new Button(width / 2 - 130, height / 2 + 70, width / 2 + 120, height / 2 + 150, 0, 2, "High Score");
+    Button hs_but = new Button(width / 2 - 130, height / 2 + 70, width / 2 + 120, height / 2 + 150, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score");
     butList.add(hs_but);
 
-    Button help_but = new Button(width / 2 - 130, height / 2 + 170, width / 2 + 120, height / 2 + 250, 0, 3, "Help");
+    Button help_but = new Button(width / 2 - 130, height / 2 + 170, width / 2 + 120, height / 2 + 250, WhatPage.MAINPAGE, WhatPage.HELP, "Help");
     butList.add(help_but);
 
     update(mouseX, mouseY);
     drawButton(hs_but);
     drawButton(sg_but);
     drawButton(help_but);
+  }
+  
+  public void highScore() {
+    background(255);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    textSize(120);
+    text("High Score", (width / 2), 130);
+    textSize(70);
+    text("Name1", width / 3, 500);
+    text("Score1", 1100, 500);
+    text("Name2", 700, 650);
+    text("Score2", 1100, 650);
   }
   
   public void drawButton(Button but) {
@@ -40,5 +53,17 @@ public class Page
       if (butList.get(i).inside(mousex, mousey)) {
         butList.get(i).setColour(250, 250, 0);
       }
+    }
+  }
+  
+  public void mousePressed() {
+    for (int i = 0; i < butList.size(); ++i) {
+      if (curPage == butList.get(i).getCurPag()) {
+        if (butList.get(i).inside(mouseX, mouseY)) {
+          curPage = butList.get(i).getPagePoi();
+          break;
+        }
+      }
+    }
   }
 }

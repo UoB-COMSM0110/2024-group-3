@@ -1,14 +1,13 @@
 class Button {
     private int x, y, w, v;
-    private int curPag;
-    private int pagePoi;
+    private WhatPage curPag,pagePoi;
     private String txt;
 
     private int colr = 110, colg = 110, colb = 110;
 
     private int txtsize = 32;
 
-    public Button(int x, int y, int w, int v, int curPag, int pagePoi, String txt) {
+    public Button(int x, int y, int w, int v, WhatPage curPag, WhatPage pagePoi, String txt) {
         this.x = x;
         this.y = y;
         this.w = w;
@@ -18,7 +17,7 @@ class Button {
         this.txt = txt;
     }
 
-    public int getCurPag() {
+    public WhatPage getCurPag() {
         return curPag;
     }
 
@@ -38,7 +37,7 @@ class Button {
         return v;
     }
 
-    public int getPagePoi() {
+    public WhatPage getPagePoi() {
         return pagePoi;
     }
 
