@@ -26,10 +26,12 @@ public class GameScreen {
 
   //inanimate objects
   private ArrayList<Wall> walls;
-
+  private Food food;
+  private PVector foodStartPosition = new PVector(0, 0);
 
   //dynamic objects:
   private Snake snake;
+ 
 
 
   public GameScreen() {
@@ -43,6 +45,7 @@ public class GameScreen {
     renderWalls();
     snake = new Snake(this, 5, color(190, 0, 0));
     snake.renderSnake();
+    this.food = new Food(this, foodStartPosition, color(141, 182, 0));
   }
 
   public void update() {
@@ -53,6 +56,7 @@ public class GameScreen {
     drawGameBoard();
 
     // draw all objects:
+    food.renderConsumable();
     renderWalls();
     snake.renderSnake();
   }

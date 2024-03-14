@@ -94,15 +94,20 @@ public class Snake {
     int headY = (int) headPosition.y;
 
     Object gridObject = game.getMapGridObjectData(headX, headY);
-    if (gridObject != null && gridObject instanceof Wall) {
+    if (gridObject instanceof Wall) {
       state = GameState.OVER;
       return;
+    } else if (gridObject instanceof Food) {
+       // fill in logic here essentially dont remove First 
+       SnakeCell newHead = new SnakeCell(headPosition, colour);
+       snakeCells.addLast(newHead);
+    } else {
+      SnakeCell newHead = new SnakeCell(headPosition, colour);
+      snakeCells.removeFirst();
+      snakeCells.addLast(newHead);
     }
-
-    // Create a new cell at the new head position and update snake
-    SnakeCell newHead = new SnakeCell(headPosition, colour);
-    snakeCells.removeFirst();
-    snakeCells.addLast(newHead);
+      // add updates to gridObject Data
+      
   }
 
   // Method to change the direction of the snake
