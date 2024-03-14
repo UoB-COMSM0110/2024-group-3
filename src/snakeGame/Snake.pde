@@ -105,22 +105,18 @@ public class Snake {
     } else if (gridObject instanceof Food) {
        // fill in logic here essentially dont remove First 
        SnakeCell newHead = new SnakeCell(headPosition, colour);
+       //uncommenting the following line stops the snake growing
+       //game.setMapGridObjectData(headX, headY, this); 
        snakeCells.addLast(newHead);
     } else {
       SnakeCell newHead = new SnakeCell(headPosition, colour);
+      game.setMapGridObjectData(headX, headY, this); 
       snakeCells.removeFirst();
+      //uncommenting the next two lines and commenting out the above line stops the snake growing
+      //SnakeCell removedCell = snakeCells.removeFirst();
+      //game.setMapGridObjectData(removedCell.gridLocation, null);
       snakeCells.addLast(newHead);
     }
-   /*   
-    // Create a new cell at the new head position and update snake
-    SnakeCell newHead = new SnakeCell(headPosition, colour);
-    game.setMapGridObjectData(headX, headY, this);  
-    
-    SnakeCell removedCell = snakeCells.removeFirst();
-    game.setMapGridObjectData(removedCell.gridLocation, null);
-    
-    snakeCells.addLast(newHead);
-*/
   }
 
   // Method to change the direction of the snake
