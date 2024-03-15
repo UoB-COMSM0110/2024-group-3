@@ -39,16 +39,18 @@ void draw() {
   text("Current Wall: " + wallCounter, 10, 20);
 }
 
+boolean eraseMode = false;
+
 void mouseDragged() {
   int col = mouseX / cellSize;
   int row = mouseY / cellSize;
   if (col >= 0 && col < cols && row >= 0 && row < rows) {
-    if (mouseButton == LEFT) {
+    if (eraseMode) {
+      canvas.set(col, row, color(255)); // White to erase walls
+      wallGrid[col][row] = null; // Remove wall identifier
+    } else {
       canvas.set(col, row, color(0)); // Black for walls
       wallGrid[col][row] = "w" + wallCounter; // Update wall identifier at this grid location
-    } else if (mouseButton == RIGHT) {
-      canvas.set(col, row, color(255)); // White to delete walls
-      wallGrid[col][row] = null; // Remove wall identifier at this grid location
     }
   }
 }
@@ -61,6 +63,8 @@ void keyPressed() {
     } else {
       println("Error: Filename cannot be empty.");
     }
+  } else if (key == 'w' || key == 'W'){
+    eraseMode = !eraseMode;
   } else if (key == CODED) {
     if (keyCode == LEFT) {
       wallCounter--; // Decrease wall count
