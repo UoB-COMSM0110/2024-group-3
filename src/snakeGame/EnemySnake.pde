@@ -2,6 +2,12 @@
    
      public EnemySnake(GameScreen game, int len, int colour) {
      super(game, len, colour); 
+     
+     PVector position = generateStartingPosition(game, len);
+        for (int i = 0; i < len; i++) {
+      snakeCells.add(new SnakeCell(position.copy(), colour));
+      position.add(velocity); // Move to the next position based on velocity
+    }
   }
   
 protected PVector generateStartingPosition(GameScreen game, int len) {

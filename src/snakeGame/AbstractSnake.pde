@@ -12,15 +12,8 @@ abstract class AbstractSnake {
     this.velocity = new PVector(0, -1); // Initial velocity (upwards)
     this.colour = colour;
     this.game = game;
-
-    PVector position = generateStartingPosition(game, len);
-    for (int i = 0; i < len; i++) {
-      snakeCells.add(new SnakeCell(position.copy(), colour));
-      position.add(velocity); // Move to the next position based on velocity
-    }
   }
- 
-  protected abstract PVector generateStartingPosition(GameScreen game, int len);
+
 
   public void renderSnake() {
     for (SnakeCell cell : snakeCells) {

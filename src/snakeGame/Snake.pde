@@ -1,38 +1,66 @@
 public class Snake extends AbstractSnake { 
+
+  private Food food;
+
   public Snake(GameScreen game, int len, int colour) {
      super(game, len, colour); 
-  }
   
+
+    PVector position = findEmptyRectangle(game, 15, 1, 5);
+    System.out.println(position);
+    for (int i = 0; i < len; i++) {
+      snakeCells.add(new SnakeCell(position.copy(), colour));
+      position.add(velocity); // Move to the next position based on velocity
+    }
   
-  protected PVector generateStartingPosition(GameScreen game, int len) {
-    PVector startingPosition = new PVector();
-    int bufferAbove = 10;
-    int bufferSides = 10;
 
-    int startX = Main.COLS / 2; // Starting X position close to the middle
-    int startY = Main.ROWS / 2; // Starting Y position close to the middle
+    // update map gripobjectData
+    for (SnakeCell cell : snakeCells) {
+      game.setMapGridObjectData((int) cell.gridLocation.x, (int) cell.gridLocation.y, this);
+    }
+}
 
-    // Find the starting position that satisfies the conditions
-  outerloop:
-    for (int y = startY + bufferAbove; y < Main.ROWS; y++) {
-      for (int x = startX - bufferSides; x <= startX + bufferSides - len + 1; x++) {
-        boolean empty = true;
-        // Check if the cells are empty
-        for (int i = 0; i < len; i++) {
-          if (game.getMapGridObjectData(x + i, y) != null) {
-            empty = false;
-            break;
-          }
+private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len) {
+    PVector middlePoint = new PVector();
+    
+    rows = 2*rows + len;
+    cols = 2*cols;
+    
+    
+    // Iterate over the grid to find a rectangle of empty cells
+    for (int y = 0; y <= Main.ROWS - rows; y++) {
+        for (int x = 0; x <= Main.COLS - cols; x++) {
+            boolean isEmptyRectangle = true;
+            // Check if the cells in the rectangle are empty
+            for (int rowOffset = 0; rowOffset < rows; rowOffset++) {
+                for (int colOffset = 0; colOffset < cols; colOffset++) {
+                    int checkX = x + colOffset;
+                    int checkY = y + rowOffset;
+                    // Ensure the check indices stay within the valid range
+                    if (checkX >= 0 && checkX < Main.COLS && checkY >= 0 && checkY < Main.ROWS &&
+                            game.getMapGridObjectData(checkX, checkY) != null) {
+                        isEmptyRectangle = false;
+                        break; // Break out of the inner loop if not empty
+                    }
+                }
+                if (!isEmptyRectangle) {
+                    break; // Break out of the outer loop if not empty
+                }
+            }
+            // If an empty rectangle is found, calculate the middle point and return
+            if (isEmptyRectangle) {
+                // Calculate the middle point based on the dimensions of the empty rectangle
+                int middleX = x + cols / 2;
+                int middleY = y + rows / 2;
+                middlePoint.set(middleX, middleY);
+                System.out.println(middlePoint);
+                return middlePoint;
+            }
         }
-        if (empty) {
-          startingPosition = new PVector(x, y);
-          break outerloop;
-        }
-      }
     }
 
-    return startingPosition;
-  }
+    return middlePoint; // Return (0, 0) if no empty rectangle is found
+}
 
   // add colision detecion here:
   // Method to move the snake
@@ -54,20 +82,24 @@ public class Snake extends AbstractSnake {
       headPosition.y = 0;          // Move to the top edge
     }
 
-    // Collision detection with the grid
-    int headX = (int) headPosition.x;
-    int headY = (int) headPosition.y;
-
-    Object gridObject = game.getMapGridObjectData(headX, headY);
-    if (gridObject != null && gridObject instanceof Wall) {
+    Object gridObject = game.getMapGridObjectData(headPosition);
+    if (gridObject instanceof Wall || gridObject instanceof Snake) {
       state = GameState.OVER;
       return;
     }
-
-    // Create a new cell at the new head position and update snake
     SnakeCell newHead = new SnakeCell(headPosition, colour);
-    snakeCells.removeFirst();
-    snakeCells.addLast(newHead);
+    snakeCells.add(newHead);
+    game.setMapGridObjectData(headPosition, this);
+
+    if (gridObject instanceof Food) {
+      ((Food) gridObject).setRandomFoodLocation();
+      // add new head but dont remove tail:
+      return;
+    }
+
+    // remove tail cell:
+    SnakeCell removedCell = snakeCells.removeFirst();
+    game.setMapGridObjectData(removedCell.gridLocation, null);
   }
   
     protected void setVelocity(float x, float y) {
@@ -76,4 +108,11 @@ public class Snake extends AbstractSnake {
       velocity.set(x, y);
     }
   }
+
+/* Josh made into a seperate Class!
+  private class SnakeCellAlex extends GridCell {
+    private SnakeCellAlex(PVector gridLocation, int colour) {
+      super(gridLocation, colour);
+    }
+  }*/
 }
