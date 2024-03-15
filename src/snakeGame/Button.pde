@@ -3,11 +3,11 @@ class Button {
     private WhatPage curPag,pagePoi;
     private String txt;
 
-    private int colr = 110, colg = 110, colb = 110;
+    private int colr = 255, colg = 255, colb = 255;
 
     private int txtsize = 32;
 
-    public Button(int x, int y, int w, int v, WhatPage curPag, WhatPage pagePoi, String txt) {
+    public Button(int x, int y, int w, int v, WhatPage curPag, WhatPage pagePoi, String txt, int txtsize) {
         this.x = x;
         this.y = y;
         this.w = w;
@@ -15,6 +15,7 @@ class Button {
         this.curPag = curPag;
         this.pagePoi = pagePoi;
         this.txt = txt;
+        this.txtsize=txtsize;
     }
 
     public WhatPage getCurPag() {

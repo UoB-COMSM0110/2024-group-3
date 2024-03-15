@@ -1,22 +1,36 @@
 public class Page
 {
-  ArrayList<Button> butList = new ArrayList<>();
+  ArrayList<Button> butList = new ArrayList<>(); //<>//
+  PImage mainPageE,mainPageH;
+  boolean diffTog=false;
 
   public void mainPage() {
+    mainPageE=loadImage("../images/mainPageEasy.png"); 
+    mainPageH=loadImage("../images/mainPageHard.png");
+    
     background(255);
-    textSize(32);
-    fill(0);
+    if (diffTog==false) {
+      image(mainPageE,0,0);
+    } else {
+      image(mainPageH,0,0);
+    }
+    
+    //textSize(32);
     textAlign(CENTER, CENTER);
-    noFill();
-    text("Snake Game", width / 2, height / 10);
+    fill(255);
+    textSize(120);
+    text("SNAKE", 720, 144);
 
-    Button sg_but = new Button(width / 2 - 130, height / 2 - 30, width / 2 + 120, height / 2 + 50, WhatPage.MAINPAGE, WhatPage.PLAYING, "Start game");
+    Button sg_but = new Button(660, 288, 800,330, WhatPage.MAINPAGE, WhatPage.PLAYING, "PLAY",72);
     butList.add(sg_but);
 
-    Button hs_but = new Button(width / 2 - 130, height / 2 + 70, width / 2 + 120, height / 2 + 150, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score");
+    Button hs_but = new Button(192, 200, 350,224, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score",36);
     butList.add(hs_but);
 
-    Button help_but = new Button(width / 2 - 130, height / 2 + 170, width / 2 + 120, height / 2 + 250, WhatPage.MAINPAGE, WhatPage.HELP, "Help");
+    Button set_but = new Button(210,280,330,306, WhatPage.MAINPAGE, WhatPage.HELP, "Settings",36);
+    butList.add(set_but);
+
+    Button help_but = new Button(210,280,330,306, WhatPage.MAINPAGE, WhatPage.HELP, "Help",36);
     butList.add(help_but);
 
     update(mouseX, mouseY);
@@ -39,11 +53,13 @@ public class Page
   }
 
   public void drawButton(Button but) {
-    fill(but.getColr(), but.getColg(), but.getColb());
-    rect(but.getX(), but.getY(), but.getW() - but.getX(), but.getV() - but.getY());
+    //nofill();
+    //fill(but.getColr(), but.getColg(), but.getColb());
+    //rect(but.getX(), but.getY(), but.getW() - but.getX(), but.getV() - but.getY());
 
     textAlign(CENTER, CENTER);
-    fill(0);
+    textSize(but.txtsize);
+    fill(but.colr,but.colg,but.colb);
     text(but.getTxt(), (but.getW() + but.getX()) / 2, (but.getV() + but.getY()) / 2);
   }
 

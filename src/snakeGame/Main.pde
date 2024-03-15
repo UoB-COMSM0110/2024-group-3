@@ -4,7 +4,7 @@ public static final int CELL_SIZE = 12;
 
 public static final int width = COLS * CELL_SIZE;
 public static final int height = ROWS * CELL_SIZE;
-
+public static int difficulty=0;
 public GameScreen gameScreen;
 public GameState state;
 public enum GameState {
