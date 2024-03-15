@@ -1,8 +1,7 @@
-public class Page 
+public class Page
 {
-  
   ArrayList<Button> butList = new ArrayList<>();
-  
+
   public void mainPage() {
     background(255);
     textSize(32);
@@ -25,7 +24,7 @@ public class Page
     drawButton(sg_but);
     drawButton(help_but);
   }
-  
+
   public void highScore() {
     background(255);
     fill(0);
@@ -38,16 +37,16 @@ public class Page
     text("Name2", 700, 650);
     text("Score2", 1100, 650);
   }
-  
+
   public void drawButton(Button but) {
     fill(but.getColr(), but.getColg(), but.getColb());
     rect(but.getX(), but.getY(), but.getW() - but.getX(), but.getV() - but.getY());
-  
+
     textAlign(CENTER, CENTER);
     fill(0);
     text(but.getTxt(), (but.getW() + but.getX()) / 2, (but.getV() + but.getY()) / 2);
   }
-  
+
   void update(int mousex, int mousey) {
     for (int i = 0; i < butList.size(); ++i) {
       if (butList.get(i).inside(mousex, mousey)) {
@@ -55,7 +54,7 @@ public class Page
       }
     }
   }
-  
+
   public void handlePageJump() {
     for (int i = 0; i < butList.size(); ++i) {
       if (curPage == butList.get(i).getCurPag()) {
@@ -66,11 +65,11 @@ public class Page
       }
     }
   }
-  
-  public void handleEsc() {
-    if (keyCode==ESC) {
-      curPage=WhatPage.MAINPAGE;
-      key=0;
-    }
-  }
+
+  //public void handleEsc() {
+  //  if (keyCode==ESC) {
+  //    curPage=WhatPage.MAINPAGE;
+  //    key=0;
+  //  }
+  //}
 }

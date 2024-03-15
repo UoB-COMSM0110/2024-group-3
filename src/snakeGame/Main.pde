@@ -37,10 +37,9 @@ public void draw() {
   } else if (curPage==WhatPage.PLAYING) {
     if (state == GameState.OVER) {
       gameOver();
-      curPage=WhatPage.MAINPAGE;
-      gameScreen.setup("mapsCSV/2.csv");
-      state = GameState.PLAY;
-      
+      //curPage=WhatPage.MAINPAGE;
+      //gameScreen.setup("mapsCSV/2.csv");
+      //state = GameState.PLAY;
     } else {
       gameScreen.update();
     }
@@ -54,7 +53,13 @@ void keyPressed() {
     if (state==GameState.PLAY) {
       gameScreen.handleArrowKeyPress();
     } else if (state==GameState.OVER) {
-      page.handleEsc();
+      //page.handleEsc();
+      if (keyCode==ESC) {
+        curPage=WhatPage.MAINPAGE;
+        gameScreen.setup("mapsCSV/2.csv");
+        state = GameState.PLAY;
+        key=0;
+      }
     }
   }
 }
