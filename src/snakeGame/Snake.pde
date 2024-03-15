@@ -3,9 +3,8 @@ public class Snake extends AbstractSnake {
   private Food food;
 
   public Snake(GameScreen game, int len, int colour) {
-     super(game, len, colour); 
+    super(game, len, colour); 
   
-
     PVector position = findEmptyRectangle(game, 15, 1, 5);
     System.out.println(position);
     for (int i = 0; i < len; i++) {

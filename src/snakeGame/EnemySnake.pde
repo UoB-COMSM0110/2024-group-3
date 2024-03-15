@@ -48,6 +48,8 @@ public class EnemySnake extends AbstractSnake {
   }
   
   protected void move() {
+    
+    // Can change vary depending on difficulty level!
     if (frameCount % 2 == 0) {
       return;
     }

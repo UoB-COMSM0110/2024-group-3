@@ -60,6 +60,7 @@ public class GameScreen {
     // move all dynamic objects first before rendering:
     snake.move();
     
+    // frameCount value can vary depending on difficulty level!
     if (frameCount % 100 == 0) {
     enemySnakes.add(new EnemySnake(this, 5, color(0, (int) random(100, 255), 0)));
     }
