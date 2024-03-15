@@ -1,27 +1,10 @@
-import java.util.LinkedList;
-import processing.core.PVector;
-
-public class Snake {
-  private LinkedList<SnakeCell> snakeCells;
-  private PVector velocity;
-  private int colour;
-  private GameScreen game;
-
+public class Snake extends AbstractSnake { 
   public Snake(GameScreen game, int len, int colour) {
-    this.snakeCells = new LinkedList<>();
-    this.velocity = new PVector(0, -1); // Initial velocity (upwards)
-    this.colour = colour;
-    this.game = game;
-
-    PVector position = generateStartingPosition(game, len);
-    for (int i = 0; i < len; i++) {
-      snakeCells.add(new SnakeCell(position.copy(), colour));
-      position.add(velocity); // Move to the next position based on velocity
-    }
+     super(game, len, colour); 
   }
-
-
-  private PVector generateStartingPosition(GameScreen game, int len) {
+  
+  
+  protected PVector generateStartingPosition(GameScreen game, int len) {
     PVector startingPosition = new PVector();
     int bufferAbove = 10;
     int bufferSides = 10;
@@ -51,28 +34,10 @@ public class Snake {
     return startingPosition;
   }
 
-
-  public void renderSnake() {
-    for (SnakeCell cell : snakeCells) {
-      cell.fillGridCell();
-    }
-  }
-
-  // Method to add a cell to the end of the snake
-  public void addCell(SnakeCell cell) {
-    snakeCells.addLast(cell);
-  }
-
-  // Method to remove and return the first cell of the snake
-  public SnakeCell removeFirst() {
-    return snakeCells.removeFirst();
-  }
-
-
   // add colision detecion here:
   // Method to move the snake
 
-  public void move() {
+  protected void move() {
     // Move the head of the snake based on velocity
     PVector headPosition = snakeCells.getLast().gridLocation.copy();
     headPosition.add(velocity);
@@ -104,28 +69,11 @@ public class Snake {
     snakeCells.removeFirst();
     snakeCells.addLast(newHead);
   }
-
-  // Method to change the direction of the snake
-  public void setVelocity(float x, float y) {
+  
+    protected void setVelocity(float x, float y) {
     // Ensure the velocity is not reversed (snake can't turn 180 degrees instantly)
     if (x != -velocity.x || y != -velocity.y) {
       velocity.set(x, y);
-    }
-  }
-
-  // Method to grow the snake by adding a cell at its tail
-  public void grow() {
-    // Duplicate the last cell (tail) of the snake and add it to the end
-    SnakeCell tail = snakeCells.getLast();
-    snakeCells.addLast(new SnakeCell(tail.gridLocation.copy(), colour));
-  }
-
-  // Other methods to manipulate the snake, such as checking for collisions, etc.
-
-  // Inner class SnakeCell
-  private class SnakeCell extends GridCell {
-    private SnakeCell(PVector gridLocation, int colour) {
-      super(gridLocation, colour);
     }
   }
 }

@@ -2,6 +2,7 @@ import java.io.BufferedReader; //<>// //<>// //<>//
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 /*
  Game Screen which maps objects to a 2d grid for look up/collision detection:
@@ -30,11 +31,13 @@ public class GameScreen {
 
   //dynamic objects:
   private Snake snake;
+  private ArrayList<EnemySnake> enemySnakes;
 
 
   public GameScreen() {
     this.walls = new ArrayList();
     this.mapGridObjectData = new Object[height][width];
+    this.enemySnakes = new ArrayList<>();
   }
 
   public void setup(String mapPath) {
@@ -43,11 +46,23 @@ public class GameScreen {
     renderWalls();
     snake = new Snake(this, 5, color(190, 0, 0));
     snake.renderSnake();
-  }
+    enemySnakes.add(new EnemySnake(this, 5, color(0, 190, 0)));
+    for (EnemySnake enemy : enemySnakes) {
+       enemy.renderSnake();
+    }
+ }
 
   public void update() {
     // move all dynamic objects first before rendering:
     snake.move();
+    
+    if (frameCount % 100 == 0) {
+    enemySnakes.add(new EnemySnake(this, 5, color(0, (int) random(100, 255), 0)));
+    }
+      
+    for (EnemySnake enemy : enemySnakes) {
+        enemy.move();
+    }
 
     // draw background:
     drawGameBoard();
@@ -55,6 +70,9 @@ public class GameScreen {
     // draw all objects:
     renderWalls();
     snake.renderSnake();
+    for (EnemySnake enemy : enemySnakes) {
+        enemy.renderSnake();
+    }
   }
 
   public void handleArrowKeyPress() {
@@ -162,5 +180,19 @@ public class GameScreen {
     for (Wall wall : walls) {
       wall.renderWall();
     }
-  }
+  }  
+  
+  public ArrayList<PVector> getOccupiedPositionsByEnemies(EnemySnake currentEnemy) {
+    ArrayList<PVector> occupiedPositions = new ArrayList<>();
+    for (EnemySnake enemy : enemySnakes) {
+        // Skip the current enemy snake to avoid checking against itself
+        if (enemy != currentEnemy) {
+            for (SnakeCell cell : enemy.getSnakeCells()) {
+                occupiedPositions.add(cell.getGridLocation());
+            }
+        }
+    }
+    return occupiedPositions;
+}
+  
 }
