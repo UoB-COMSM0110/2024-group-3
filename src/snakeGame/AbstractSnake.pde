@@ -14,19 +14,18 @@ abstract class AbstractSnake {
     this.game = game;
   }
 
-
   public void renderSnake() {
     for (SnakeCell cell : snakeCells) {
       cell.fillGridCell();
     }
   }
 
-  // Method to add a cell to the end of the snake
+  // Add cell to end of snake
   public void addCell(SnakeCell cell) {
     snakeCells.addLast(cell);
   }
 
-  // Method to remove and return the first cell of the snake
+  // Remove and return the first cell of the snake
   public SnakeCell removeFirst() {
     return snakeCells.removeFirst();
   }
@@ -46,5 +45,5 @@ abstract class AbstractSnake {
         }
     }
     return false;
-}
+  }
 }
