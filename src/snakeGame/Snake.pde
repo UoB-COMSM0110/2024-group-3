@@ -6,6 +6,7 @@ public class Snake {
   private PVector velocity;
   private int colour;
   private GameScreen game;
+  private Food food;
 
   public Snake(GameScreen game, int len, int colour) {
     this.snakeCells = new LinkedList<>();
@@ -106,15 +107,16 @@ public class Snake {
        // fill in logic here essentially dont remove First 
        SnakeCell newHead = new SnakeCell(headPosition, colour);
        //uncommenting the following line stops the snake growing
-       //game.setMapGridObjectData(headX, headY, this); 
+       game.setMapGridObjectData(headX, headY, this); 
        snakeCells.addLast(newHead);
+       ((Food) gridObject).setRandomFoodLocation();
     } else {
       SnakeCell newHead = new SnakeCell(headPosition, colour);
       game.setMapGridObjectData(headX, headY, this); 
-      snakeCells.removeFirst();
+      //snakeCells.removeFirst();
       //uncommenting the next two lines and commenting out the above line stops the snake growing
-      //SnakeCell removedCell = snakeCells.removeFirst();
-      //game.setMapGridObjectData(removedCell.gridLocation, null);
+      SnakeCell removedCell = snakeCells.removeFirst();
+      game.setMapGridObjectData(removedCell.gridLocation, null);
       snakeCells.addLast(newHead);
     }
   }

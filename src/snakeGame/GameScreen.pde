@@ -27,7 +27,7 @@ public class GameScreen {
   //inanimate objects
   private ArrayList<Wall> walls;
   private Food food;
-  private PVector foodStartPosition = new PVector(0, 0);
+  private PVector foodStartPosition = new PVector(0,0);
 
   //dynamic objects:
   private Snake snake;
@@ -37,6 +37,7 @@ public class GameScreen {
   public GameScreen() {
     this.walls = new ArrayList();
     this.mapGridObjectData = new Object[height][width];
+    this.food = new Food(this, foodStartPosition, color(141, 182, 0));
   }
 
   public void setup(String mapPath) {
@@ -46,6 +47,7 @@ public class GameScreen {
     snake = new Snake(this, 5, color(190, 0, 0));
     snake.renderSnake();
     this.food = new Food(this, foodStartPosition, color(141, 182, 0));
+    this.food.setRandomFoodLocation();
   }
 
   public void update() {
@@ -177,7 +179,6 @@ public class GameScreen {
     }
   }
   
-  
   public void printMapGrid() {
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++) {
@@ -188,17 +189,15 @@ public class GameScreen {
                 System.out.print("s"); // Snake
             } else if (obj instanceof Wall) {
                 System.out.print("w"); // Wall
+            } else if (obj instanceof Food) {
+                System.out.print("f"); // Wall
             }
             System.out.print(" ");
         }
         System.out.println();
     }
-}
+   
+  }
 
-  
-  
-  
-  
-  
   
 }
