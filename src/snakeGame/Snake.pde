@@ -117,6 +117,7 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
     game.setMapGridObjectData(headPosition, this);
 
     if (gridObject instanceof Food) {
+      ((Food) gridObject).setRandomFoodLocation();
       // add new head but dont remove tail:
       return;
     }
