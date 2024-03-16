@@ -1,3 +1,8 @@
+/*
+- Ensure snakes don't spawn on top of eachother
+- If enemy snakes can't move, just make them stay still until they can move
+*/
+
 public class EnemySnake extends AbstractSnake {
    
   public EnemySnake(GameScreen game, int len, int colour) {
@@ -10,7 +15,7 @@ public class EnemySnake extends AbstractSnake {
     }
   }
 
-  protected PVector generateStartingPosition(GameScreen game, int len) {
+protected PVector generateStartingPosition(GameScreen game, int len) {
     Random rand = new Random(System.currentTimeMillis());
     PVector playerHead = game.snake.getSnakeCells().getLast().gridLocation;
     boolean validPositionFound = false;
@@ -19,33 +24,30 @@ public class EnemySnake extends AbstractSnake {
     int buffer = 5;
 
     while (!validPositionFound) {
-      startX = rand.nextInt(Main.COLS - 2 * buffer) + buffer;
-      startY = rand.nextInt(Main.ROWS - 2 * buffer) + buffer;
-      boolean empty = true;
-      
-      // Checks for empty cells, far enough from player's snake  
-      for (int i = 0; i < len; i++) {
-        int x = (startX + i) % Main.COLS;
-        if (game.getMapGridObjectData(x, startY) != null) {
-          empty = false;
-          break;
+        startX = rand.nextInt(Main.COLS - 2 * buffer) + buffer;
+        startY = rand.nextInt(Main.ROWS - 2 * buffer) + buffer;
+        ArrayList<PVector> occupiedPositionsByEnemies = game.getOccupiedPositionsByEnemies(this);
+        boolean empty = true;
+
+        for (int i = 0; i < len; i++) {
+            int x = (startX + i) % Main.COLS;
+            PVector testPosition = new PVector(x, startY);
+
+            if (game.getMapGridObjectData(x, startY) != null || 
+                PVector.dist(testPosition, playerHead) < 18 || 
+                occupiedPositionsByEnemies.contains(testPosition)) {
+                empty = false;
+                break;
+            }
         }
-        // Check distance from player snake's head
-        PVector testPosition = new PVector(x, startY);
-        
-        if (PVector.dist(testPosition, playerHead) < 18) {
-          empty = false;
-          break;
+
+        if (empty) {
+            validPositionFound = true;
         }
-      }
-      
-      if (empty) {
-        validPositionFound = true;
-      }
     }
 
-    return new PVector(startX, startY);  
-  }
+    return new PVector(startX, startY);
+}
   
   protected void move() {
     
@@ -53,18 +55,17 @@ public class EnemySnake extends AbstractSnake {
     if (frameCount % 2 == 0) {
       return;
     }
-  
-    ArrayList<PVector> occupiedPositionsByEnemies = game.getOccupiedPositionsByEnemies(this);
-  
+      
     if (snakeCells.isEmpty()) {
       return;
     }
   
+    ArrayList<PVector> occupiedPositionsByEnemies = game.getOccupiedPositionsByEnemies(this);  
     PVector headPosition = snakeCells.getFirst().gridLocation;
     float minDistance = Float.MAX_VALUE;
     PVector bestMove = headPosition.copy(); //Think this could be anything!
 
-    int[][] directions = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}}; // U, D, L, R
+    int[][] directions = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}, {0, 0}}; // U, D, L, R
   
     for (int[] dir : directions) {
       PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
@@ -84,8 +85,12 @@ public class EnemySnake extends AbstractSnake {
             }
       }
     }
-
     velocity.set(bestMove.x - headPosition.x, bestMove.y - headPosition.y);
+    
+    if (velocity.x == 0 && velocity.y == 0) {
+      return;
+    }
+    
     PVector newHeadPosition = headPosition.copy().add(velocity);
     snakeCells.addFirst(new SnakeCell(newHeadPosition, this.colour));
     snakeCells.removeLast();
