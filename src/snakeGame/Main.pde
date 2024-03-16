@@ -33,6 +33,7 @@ public void setup() {
 
 public void draw() {
   if (curPage==WhatPage.MAINPAGE) {
+    difficulty=0;
     page.mainPage();
   } else if (curPage==WhatPage.PLAYING) {
     if (state == GameState.OVER) {
@@ -48,6 +49,7 @@ public void draw() {
   } else if (curPage==WhatPage.HELP) {
     page.help();
   }else if (curPage==WhatPage.MAINPAGE_hard) {
+    difficulty=1;
     page.MAINPAGE_hard();
   }
 }
