@@ -58,7 +58,7 @@ public class Page
   }
 
   public void help() {
-    helpPage=loadImage("../images/helpPage.png");
+    helpPage=loadImage("../images/helpPageLow.png");
     helpPage.resize(width,height);
     image(helpPage,0,0);
   }
