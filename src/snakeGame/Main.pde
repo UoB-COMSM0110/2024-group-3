@@ -13,7 +13,7 @@ public enum GameState {
 
 public Page page;
 public enum WhatPage {
-  MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING,
+  MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING, MAINPAGE_hard
 }
 public WhatPage curPage;
 
@@ -47,6 +47,8 @@ public void draw() {
     page.highScore();
   } else if (curPage==WhatPage.HELP) {
     page.help();
+  }else if (curPage==WhatPage.MAINPAGE_hard) {
+    page.MAINPAGE_hard();
   }
 }
 
@@ -69,7 +71,7 @@ void keyPressed() {
       key=0;
     }
   }
-  if (keyCode==ESC&&curPage==WhatPage.HIGHSCORE) {
+  if (keyCode==ESC&&curPage!=WhatPage.PLAYING) {
     curPage=WhatPage.MAINPAGE;
     key=0;
   }

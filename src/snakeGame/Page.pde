@@ -32,12 +32,63 @@ public class Page
 
     Button help_but = new Button(210,280,330,306, WhatPage.MAINPAGE, WhatPage.HELP, "Help",36);
     butList.add(help_but);
+    
+    Button hard_but = new Button(880,70,1030,94, WhatPage.MAINPAGE, WhatPage.MAINPAGE_hard, "Hard",36);
+    butList.add(hard_but);
+    
+    Button easy_but = new Button(880,290,1030,314, WhatPage.MAINPAGE, WhatPage.MAINPAGE, "Easy",36);
+    butList.add(easy_but);
 
     update(mouseX, mouseY);
     drawButton(hs_but);
     drawButton(sg_but);
     drawButton(help_but);
     drawButton(set_but);
+    drawButton(hard_but);
+    drawButton(easy_but);
+  }
+  public void MAINPAGE_hard() {
+    mainPageE=loadImage("../images/mainPageEasy.png"); 
+    mainPageH=loadImage("../images/mainPageHard.png");
+    
+    background(255);
+    if (diffTog==true) {
+      image(mainPageE,0,0);
+    } else {
+      image(mainPageH,0,0);
+    }
+    
+    //textSize(32);
+    textAlign(CENTER, CENTER);
+    fill(255);
+    textSize(120);
+    text("SNAKE", 720, 144);
+
+    Button sg_but = new Button(660, 288, 800,330, WhatPage.MAINPAGE_hard, WhatPage.PLAYING, "PLAY",72);
+    butList.add(sg_but);
+
+    Button hs_but = new Button(192, 200, 350,224, WhatPage.MAINPAGE_hard, WhatPage.HIGHSCORE, "High Score",36);
+    butList.add(hs_but);
+
+    Button set_but = new Button(228,360,310,388, WhatPage.MAINPAGE_hard, WhatPage.HELP, "Settings",36);
+    butList.add(set_but);
+
+    Button help_but = new Button(210,280,330,306, WhatPage.MAINPAGE_hard, WhatPage.HELP, "Help",36);
+    butList.add(help_but);
+    
+    Button hard_but = new Button(880,70,1030,94, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE_hard, "Hard",36);
+    butList.add(hard_but);
+    
+    Button easy_but = new Button(880,290,1030,314, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE, "Easy",36);
+    butList.add(easy_but);
+
+    update(mouseX, mouseY);
+    drawButton(hs_but);
+    drawButton(sg_but);
+    drawButton(help_but);
+    drawButton(set_but);
+    drawButton(hard_but);
+    drawButton(easy_but);
   }
 
   public void highScore() {
@@ -93,11 +144,7 @@ public class Page
       }
     }
   }
+  
+  
 
-  //public void handleEsc() {
-  //  if (keyCode==ESC) {
-  //    curPage=WhatPage.MAINPAGE;
-  //    key=0;
-  //  }
-  //}
 }
