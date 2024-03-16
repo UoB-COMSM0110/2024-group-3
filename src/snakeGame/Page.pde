@@ -27,7 +27,7 @@ public class Page
     Button hs_but = new Button(192, 200, 350,224, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score",36);
     butList.add(hs_but);
 
-    Button set_but = new Button(210,280,330,306, WhatPage.MAINPAGE, WhatPage.HELP, "Settings",36);
+    Button set_but = new Button(228,360,310,388, WhatPage.MAINPAGE, WhatPage.HELP, "Settings",36);
     butList.add(set_but);
 
     Button help_but = new Button(210,280,330,306, WhatPage.MAINPAGE, WhatPage.HELP, "Help",36);
@@ -37,19 +37,24 @@ public class Page
     drawButton(hs_but);
     drawButton(sg_but);
     drawButton(help_but);
+    drawButton(set_but);
   }
 
   public void highScore() {
     background(255);
     fill(0);
     textAlign(CENTER, CENTER);
-    textSize(120);
-    text("High Score", (width / 2), 130);
-    textSize(70);
-    text("Name1", width / 3, 500);
-    text("Score1", 1100, 500);
-    text("Name2", 700, 650);
-    text("Score2", 1100, 650);
+    textSize(80);
+    text("High Score", width / 2, height / 10);
+    textSize(48);
+    text("Name1",  width / 2-160, (height / 10)+100);
+    text("Score1",  width / 2+160, (height / 10)+100);
+    text("Name2",  width / 2-160, (height / 10)+200);
+    text("Score2",  width / 2+160, (height / 10)+200);
+    text("Name3",  width / 2-160, (height / 10)+300);
+    text("Score3",  width / 2+160, (height / 10)+300);
+    text("Name4",  width / 2-160, (height / 10)+400);
+    text("Score4",  width / 2+160, (height / 10)+400);
   }
 
   public void drawButton(Button but) {
