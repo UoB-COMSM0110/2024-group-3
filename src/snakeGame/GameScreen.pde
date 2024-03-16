@@ -2,6 +2,7 @@ import java.io.BufferedReader; //<>// //<>// //<>//
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 /*
  Game Screen which maps objects to a 2d grid for look up/collision detection:
@@ -26,15 +27,19 @@ public class GameScreen {
 
   //inanimate objects
   private ArrayList<Wall> walls;
-
+  private Food food;
+  private PVector foodStartPosition = new PVector(0,0);
 
   //dynamic objects:
   private Snake snake;
+  private ArrayList<EnemySnake> enemySnakes;
 
 
   public GameScreen() {
     this.walls = new ArrayList();
     this.mapGridObjectData = new Object[height][width];
+    this.enemySnakes = new ArrayList<>();
+    this.food = new Food(this, foodStartPosition, color(141, 182, 0));
   }
 
   public void setup(String mapPath) {
@@ -43,18 +48,37 @@ public class GameScreen {
     renderWalls();
     snake = new Snake(this, 5, color(190, 0, 0));
     snake.renderSnake();
+    enemySnakes.add(new EnemySnake(this, 5, color(0, 190, 0)));
+    for (EnemySnake enemy : enemySnakes) {
+       enemy.renderSnake();
+    }
+    this.food = new Food(this, foodStartPosition, color(141, 182, 0));
+    this.food.setRandomFoodLocation();
   }
 
   public void update() {
     // move all dynamic objects first before rendering:
     snake.move();
+    
+    // frameCount value can vary depending on difficulty level!
+    if (frameCount % 100 == 0) {
+    enemySnakes.add(new EnemySnake(this, 5, color(0, (int) random(100, 255), 0)));
+    }
+      
+    for (EnemySnake enemy : enemySnakes) {
+        enemy.move();
+    }
 
     // draw background:
     drawGameBoard();
 
     // draw all objects:
+    food.renderConsumable();
     renderWalls();
     snake.renderSnake();
+    for (EnemySnake enemy : enemySnakes) {
+        enemy.renderSnake();
+    }
   }
 
   public void handleArrowKeyPress() {
@@ -67,9 +91,6 @@ public class GameScreen {
     } else if (keyCode == RIGHT) {
       snake.setVelocity(1, 0);  // Move right
     }
-    if (keyCode == ESC) {
-      curPage=WhatPage.MAINPAGE;
-    }
   }
 
 
@@ -77,9 +98,17 @@ public class GameScreen {
   public void setMapGridObjectData(int x, int y, Object obj) {
     this.mapGridObjectData[x][y] = obj;
   }
+  
+  public void setMapGridObjectData(PVector location, Object obj) {
+    this.mapGridObjectData[(int)location.x][(int)location.y] = obj;
+  }
 
   public Object getMapGridObjectData(int x, int y) {
     return this.mapGridObjectData[x][y];
+  }
+  
+  public Object getMapGridObjectData(PVector location) {
+    return this.mapGridObjectData[(int)location.x][(int)location.y];
   }
 
   private void drawGameBoard() {
@@ -165,5 +194,38 @@ public class GameScreen {
     for (Wall wall : walls) {
       wall.renderWall();
     }
-  }
+  }  
+  
+  public ArrayList<PVector> getOccupiedPositionsByEnemies(EnemySnake currentEnemy) {
+    ArrayList<PVector> occupiedPositions = new ArrayList<>();
+    for (EnemySnake enemy : enemySnakes) {
+        // Skip the current enemy snake to avoid checking against itself
+        if (enemy != currentEnemy) {
+            for (SnakeCell cell : enemy.getSnakeCells()) {
+                occupiedPositions.add(cell.getGridLocation());
+            }
+        }
+    }
+    return occupiedPositions;
+}
+  
+  public void printMapGrid() {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            Object obj = mapGridObjectData[j][i];
+            if (obj == null) {
+                System.out.print(" "); // Empty space
+            } else if (obj instanceof Snake) {
+                System.out.print("s"); // Snake
+            } else if (obj instanceof Wall) {
+                System.out.print("w"); // Wall
+            } else if (obj instanceof Food) {
+                System.out.print("f"); // Wall
+            }
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
+   
+  } 
 }
