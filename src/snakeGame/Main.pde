@@ -63,6 +63,11 @@ void keyPressed() {
         key=0;
       }
     }
+  } else if (curPage==WhatPage.HELP) {
+    if (keyCode==ESC) {
+      curPage=WhatPage.MAINPAGE;
+      key=0;
+    }
   }
   if (keyCode==ESC&&curPage==WhatPage.HIGHSCORE) {
     curPage=WhatPage.MAINPAGE;
