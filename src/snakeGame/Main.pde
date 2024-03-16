@@ -62,6 +62,10 @@ void keyPressed() {
       }
     }
   }
+  if (keyCode==ESC&&curPage==WhatPage.HIGHSCORE) {
+    curPage=WhatPage.MAINPAGE;
+    key=0;
+  }
 }
 
 void mousePressed() {
