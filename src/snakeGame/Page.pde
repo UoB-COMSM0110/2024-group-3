@@ -1,7 +1,7 @@
 public class Page
 {
   ArrayList<Button> butList = new ArrayList<>(); //<>//
-  PImage mainPageE,mainPageH,helpPage;
+  PImage mainPageE,mainPageH,helpPage,highScorePage;
   boolean diffTog=false;
 
   public void mainPage() {
@@ -41,8 +41,10 @@ public class Page
   }
 
   public void highScore() {
+    highScorePage=loadImage("../images/highScore.png");
     background(255);
-    fill(0);
+    image(highScorePage,0,0);
+    fill(255);
     textAlign(CENTER, CENTER);
     textSize(80);
     text("High Score", width / 2, height / 10);
@@ -59,7 +61,6 @@ public class Page
 
   public void help() {
     helpPage=loadImage("../images/helpPageLow.png");
-    helpPage.resize(width,height);
     image(helpPage,0,0);
   }
 
