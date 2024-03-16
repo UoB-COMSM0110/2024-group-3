@@ -1,7 +1,7 @@
 public class Page
 {
   ArrayList<Button> butList = new ArrayList<>(); //<>//
-  PImage mainPageE,mainPageH;
+  PImage mainPageE,mainPageH,helpPage;
   boolean diffTog=false;
 
   public void mainPage() {
@@ -55,6 +55,12 @@ public class Page
     text("Score3",  width / 2+160, (height / 10)+300);
     text("Name4",  width / 2-160, (height / 10)+400);
     text("Score4",  width / 2+160, (height / 10)+400);
+  }
+
+  public void help() {
+    helpPage=loadImage("../images/helpPage.png");
+    helpPage.resize(width,height);
+    image(helpPage,0,0);
   }
 
   public void drawButton(Button but) {

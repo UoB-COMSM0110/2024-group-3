@@ -45,6 +45,8 @@ public void draw() {
     }
   } else if (curPage==WhatPage.HIGHSCORE) {
     page.highScore();
+  } else if (curPage==WhatPage.HELP) {
+    page.help();
   }
 }
 
