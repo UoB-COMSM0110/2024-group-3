@@ -5,6 +5,7 @@ public static final int CELL_SIZE = 12;
 public static final int width = COLS * CELL_SIZE;
 public static final int height = ROWS * CELL_SIZE;
 public static int difficulty=0;
+public static int flag=0;
 public GameScreen gameScreen;
 public GameState state;
 public enum GameState {
@@ -24,16 +25,29 @@ public void settings() {
 public void setup() {
   state = GameState.PLAY;
   frameRate(15);
-  gameScreen = new GameScreen();
-  gameScreen.setup("mapsCSV/2.csv");
-
+  //gameScreen = new GameScreen();
+  //gameScreen.setup("mapsCSV/1.csv");
   page=new Page();
   curPage=WhatPage.MAINPAGE;
+  flag=0;
 }
 
 public void draw() {
+  if (flag==0) {
+    if (difficulty==0) {
+      gameScreen = new GameScreen();
+      gameScreen.setup("mapsCSV/1.csv");
+    } else {
+      gameScreen = new GameScreen();
+      gameScreen.setup("mapsCSV/2.csv");
+    }
+
+    flag=1;
+  }
+
   if (curPage==WhatPage.MAINPAGE) {
     difficulty=0;
+    flag=0;
     page.mainPage();
   } else if (curPage==WhatPage.PLAYING) {
     if (state == GameState.OVER) {
@@ -48,8 +62,9 @@ public void draw() {
     page.highScore();
   } else if (curPage==WhatPage.HELP) {
     page.help();
-  }else if (curPage==WhatPage.MAINPAGE_hard) {
+  } else if (curPage==WhatPage.MAINPAGE_hard) {
     difficulty=1;
+    flag=0;
     page.MAINPAGE_hard();
   }
 }
@@ -59,10 +74,18 @@ void keyPressed() {
     if (state==GameState.PLAY) {
       gameScreen.handleArrowKeyPress();
     } else if (state==GameState.OVER) {
-      //page.handleEsc();
+      flag=0;
       if (keyCode==ESC) {
-        curPage=WhatPage.MAINPAGE;
-        gameScreen.setup("mapsCSV/2.csv");
+        
+        if (difficulty==0) {
+          curPage=WhatPage.MAINPAGE;
+          gameScreen = new GameScreen();
+          gameScreen.setup("mapsCSV/1.csv");
+        } else {
+          curPage=WhatPage.MAINPAGE_hard;
+          gameScreen = new GameScreen();
+          gameScreen.setup("mapsCSV/2.csv");
+        }
         state = GameState.PLAY;
         key=0;
       }
