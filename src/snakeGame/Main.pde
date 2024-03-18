@@ -24,7 +24,7 @@ public void settings() {
 //<>//
 public void setup() {
   state = GameState.PLAY;
-  frameRate(15);
+  frameRate(10);
   //gameScreen = new GameScreen();
   //gameScreen.setup("mapsCSV/1.csv");
   page=new Page();
@@ -38,6 +38,7 @@ public void draw() {
       gameScreen = new GameScreen();
       gameScreen.setup("mapsCSV/1.csv");
     } else {
+      frameRate(15);
       gameScreen = new GameScreen();
       gameScreen.setup("mapsCSV/2.csv");
     }

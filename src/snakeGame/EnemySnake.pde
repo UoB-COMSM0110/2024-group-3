@@ -50,7 +50,7 @@ protected PVector generateStartingPosition(GameScreen game, int len) {
 }
   
   protected void move() {
-    
+    // DON'T CHECK FOR -1! ARRAY OUT OF BOUNDS INDEX
     // Can change vary depending on difficulty level!
     if (frameCount % 2 == 0) {
       return;
