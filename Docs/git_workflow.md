@@ -27,4 +27,8 @@ Updating ea1b82a..05e9557
 $ git branch -d myfeature
 Deleted branch myfeature (was 05e9557).
 $ git push origin develop
+```
 
+### Merging Develop into Main 
+
+Merge develop into main when the team has a new, working "version" of the game on develop. 

@@ -1,53 +1,22 @@
 # Overview of Software Engineering - Group 3
 
 ## Our Team
-<table align="left">
-  <thead>
-    <tr>
-      <th style="text-align:center">Name</th>
-      <th style="text-align:center">Email</th>
-      <th style="text-align:center">GitHub Account</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:center">Chris Kerr</td>
-      <td style="text-align:center"><a href="mailto:th23780@bristol.ac.uk">th23780@bristol.ac.uk</a></td>
-      <td style="text-align:center"><a href="https://github.com/chriskerrc">@chriskerrc</a></td>
-    </tr>
-    <tr>
-      <td style="text-align:center">Florence Rose</td>
-      <td style="text-align:center"><a href="mailto:xd23758@bristol.ac.uk">xd23758@bristol.ac.uk</a></td>
-      <td style="text-align:center"><a href="https://github.com/frose2024">@frose2024</a></td>
-    </tr>
-    <tr>
-      <td style="text-align:center">Josh Wierszycki</td>
-      <td style="text-align:center"><a href="mailto:el20063@bristol.ac.uk">el20063@bristol.ac.uk</a></td>
-      <td style="text-align:center"><a href="https://github.com/JWierszycki">@JWierszycki</a></td>
-    </tr>
-    <tr>
-      <td style="text-align:center">Ziyuan Lu</td>
-      <td style="text-align:center"><a href="mailto:py23518@bristol.ac.uk">py23518@bristol.ac.uk</a></td>
-      <td style="text-align:center"><a href="https://github.com/LzYzL">@LzYzL</a></td>
-    </tr>
-    <tr>
-      <td style="text-align:center">Alexander Fisher</td>
-      <td style="text-align:center"><a href="mailto:af17918@bristol.ac.uk">af17918@bristol.ac.uk</a></td>
-      <td style="text-align:center"><a href="https://github.com/alexandermfisher">@alexandermfisher</a></td>
-    </tr>
-    <tr>
-      <td style="text-align:center">Jie Fang</td>
-      <td style="text-align:center"><a href="mailto:yh23030@bristol.ac.uk">yh23030@bristol.ac.uk</a></td>
-      <td style="text-align:center"><a href="https://github.com/Jiebristol">@Jiebristol</a></td>
-    </tr>
-  </tbody>
-</table>
 
-<img src="/group3.jpg" width="522">
+| Name             | Email                     | GitHub Account       |
+|------------------|---------------------------|----------------------|
+| Chris Kerr       | [th23780@bristol.ac.uk](mailto:th23780@bristol.ac.uk) | [@chriskerrc](https://github.com/chriskerrc) |
+| Florence Rose    | [xd23758@bristol.ac.uk](mailto:xd23758@bristol.ac.uk) | [@frose2024](https://github.com/frose2024) |
+| Josh Wierszycki  | [el20063@bristol.ac.uk](mailto:el20063@bristol.ac.uk) | [@JWierszycki](https://github.com/JWierszycki) |
+| Ziyuan Lu        | [py23518@bristol.ac.uk](mailto:py23518@bristol.ac.uk) | [@LzYzL](https://github.com/LzYzL) |
+| Alexander Fisher | [af17918@bristol.ac.uk](mailto:af17918@bristol.ac.uk) | [@alexandermfisher](https://github.com/alexandermfisher) |
+| Jie Fang         | [yh23030@bristol.ac.uk](mailto:yh23030@bristol.ac.uk) | [@Jiebristol](https://github.com/Jiebristol) |
+
+<img title="a title" alt="Alt text" src="/images/group3.jpg" width="522">
 
 <br>
 
 ## Game Brief
+Our game is going to be a version of the classic 'Snake' game, combined with the principles of a shooter game. We want to have the classic hallmarks of 'Snake' (wall avoidance, growing your snake through consuming food) and combine these with some elelements of a shooter - AI enemies that follow you around the map and a venom 'shooter' mechanic to fight these enemies with.
 <br><br>
 
 <br><br>
@@ -63,14 +32,19 @@
 
 
 ## Design Challenges
-
+* AI enemies that track the player snake around the map.
+* Collision detection.
+* Consuming food and growing the snake in length.
+* Venom mechanic.
+* Map generation and difficulty modes.
 
 <br><br>
 ## External Development Factors
 ### Stakeholders
+Player, markers, the development team. 
 
+<br>
 
-<br><br>
 ### User Stories
 > "As a player, I want to play a game that gives me nostalgia with a new twist.”
 
@@ -96,33 +70,33 @@
 
 ### Use-Case Diagram
 
-<img src='/Diagram.png'/>
+<img src='/images/use_case_diagram.png'/>
 
 <br>
 
 ### Use-Case Specification
 **Actors** - Player
 
-<br>
 
-**Description :**
+**Description**
 
 Survival Snake is a game where the player controls a snake and aims to survive for as long as possible. The snake gets bigger as it eats food, and the player can shoot venom out of the snake's mouth. The game includes moving walls and enemies that pose a threat to the snake. The player can also encircle an enemy to kill them.
 <br><br>
 
-**Preconditions :**
+**Preconditions**
 
 The game is launched on a compatible device(Linux/Win/Mac).
 The player is familiar with the game controls.
 <br><br>
 
-**Postconditions :**
+**Postconditions**
 
 The game ends when the snake collides with a wall or an enemy.
 The player's score is recorded and can be displayed.
 <br><br>
 
-**Basic Flow :**
+**Basic Flow**
+
 1. The player launches the game.
 2. The game displays the main menu.
 3. The player selects the "Start" option to begin the game.
@@ -141,15 +115,16 @@ The player's score is recorded and can be displayed.
 16. The player is presented with the option to play again or exit the game.
 
 <br><br>
-**Alternate Flow :**
+
+**Alternate Flows**
 
 If the player selects the "Exit" option from the main menu, the game will terminate, and the player will be returned to the device's home screen.
 <br><br>
 
-**Extension :**
+
+**Extensions**
 
 (Optional) Worm mode: The player can activate this mode to change the visual appearance of the snake, without altering the core game mechanics.
-<br><br>
 
 ## Case Diagram
 
@@ -175,4 +150,11 @@ If the player selects the "Exit" option from the main menu, the game will termin
 * Use case diagram: 
   * Do we have any relationships other than “extends”?
   * Highlights ambiguity: does the snake die when its tail is cut off, or just shrink, or only die if it loses a certain amount of its tail 
+
+
+  <br>
+## Class Diagram
+
+<img src='/images/class_diagram.png'/>
+
 
