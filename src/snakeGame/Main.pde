@@ -2,8 +2,8 @@ public static final int ROWS = 45; //<>// //<>//
 public static final int COLS = 100;
 public static final int CELL_SIZE = 12;
 
-public static final int width = COLS * CELL_SIZE;
-public static final int height = ROWS * CELL_SIZE;
+public static final int width = COLS * CELL_SIZE;//1200
+public static final int height = ROWS * CELL_SIZE;//540
 public static int difficulty=0;
 public static int flag=0;
 public GameScreen gameScreen;
@@ -42,7 +42,6 @@ public void draw() {
       gameScreen = new GameScreen();
       gameScreen.setup("mapsCSV/2.csv");
     }
-
     flag=1;
   }
 
@@ -105,6 +104,9 @@ void keyPressed() {
 
 void mousePressed() {
   page.handlePageJump();
+  //if (curPage==WhatPage.PLAYING){
+  //  windowResize(width, height+100);
+  //}
 }
 
 
@@ -119,4 +121,5 @@ public void gameOver() {
   textAlign(CENTER, CENTER); // Align text to the center
   textSize(32); // Set text size
   text("Game Over", width/2, height/2); // Draw text at the center of the screen
+  windowResize(width, height);
 }

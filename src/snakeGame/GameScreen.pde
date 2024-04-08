@@ -33,6 +33,9 @@ public class GameScreen {
   //dynamic objects:
   private Snake snake;
   private ArrayList<EnemySnake> enemySnakes;
+  
+  private int startTime;
+  private float energy = 0;
 
 
   public GameScreen() {
@@ -40,8 +43,8 @@ public class GameScreen {
     this.mapGridObjectData = new Object[height][width];
     this.enemySnakes = new ArrayList<>();
     this.food = new Food(this, foodStartPosition, color(141, 182, 0));
+    startTime=millis();
   }
-
   public void setup(String mapPath) {
     drawGameBoard();
     makeWalls(mapPath);
@@ -54,6 +57,7 @@ public class GameScreen {
     }
     this.food = new Food(this, foodStartPosition, color(141, 182, 0));
     this.food.setRandomFoodLocation();
+    
   }
 
   public void update() {
@@ -79,6 +83,26 @@ public class GameScreen {
     for (EnemySnake enemy : enemySnakes) {
         enemy.renderSnake();
     }
+    int elapsedTime = millis() - startTime;
+    int seconds = elapsedTime / 1000;
+    int minutes = seconds / 60;
+    seconds = seconds % 60;
+    String timeString = nf(minutes, 2) + ":" + nf(seconds, 2);
+    
+    energy += 2;
+    energy = min(energy, 300);
+    fill(255, 0, 0);
+    
+    windowResize(width, height+100);
+    fill(255);
+    
+    text("Time:"+timeString, 200,height+50);
+    
+    text("Energy", 600,height+20);
+    fill(200, 0, 200);
+    rect(450, height+50, energy, 20);
+    fill(255);
+    text("Score:"+food.foodEaten, 1000,height+50);
   }
 
   public void handleArrowKeyPress() {
