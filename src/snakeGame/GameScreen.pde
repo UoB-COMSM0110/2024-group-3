@@ -1,4 +1,4 @@
-import java.io.BufferedReader; //<>// //<>// //<>//
+import java.io.BufferedReader; //<>// //<>// //<>// //<>//
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,8 +27,9 @@ public class GameScreen {
 
   //inanimate objects
   private ArrayList<Wall> walls;
-  private Food food;
-  private PVector foodStartPosition = new PVector(0,0);
+  private Apple apple;
+  private Banana banana; 
+  private Melon melon;
 
   //dynamic objects:
   private Snake snake;
@@ -42,8 +43,10 @@ public class GameScreen {
     this.walls = new ArrayList();
     this.mapGridObjectData = new Object[height][width];
     this.enemySnakes = new ArrayList<>();
-    this.food = new Food(this, foodStartPosition, color(141, 182, 0));
     startTime=millis();
+    this.apple = new Apple(this);
+    this.banana = new Banana(this);
+    this.melon = new Melon(this);
   }
   public void setup(String mapPath) {
     drawGameBoard();
@@ -55,9 +58,12 @@ public class GameScreen {
     for (EnemySnake enemy : enemySnakes) {
        enemy.renderSnake();
     }
-    this.food = new Food(this, foodStartPosition, color(141, 182, 0));
-    this.food.setRandomFoodLocation();
-    
+    this.apple = new Apple(this);
+    this.apple.setRandomFoodLocation();
+    this.banana = new Banana(this);
+    this.banana.setRandomFoodLocation();
+    this.melon = new Melon(this);
+    this.melon.setRandomFoodLocation();
   }
 
   public void update() {
@@ -77,12 +83,15 @@ public class GameScreen {
     drawGameBoard();
 
     // draw all objects:
-    food.renderConsumable();
     renderWalls();
+    banana.renderConsumable();
+    melon.renderConsumable();
+    apple.renderConsumable();
     snake.renderSnake();
     for (EnemySnake enemy : enemySnakes) {
         enemy.renderSnake();
     }
+    
     int elapsedTime = millis() - startTime;
     int seconds = elapsedTime / 1000;
     int minutes = seconds / 60;
@@ -102,9 +111,11 @@ public class GameScreen {
     fill(200, 0, 200);
     rect(450, height+50, energy, 20);
     fill(255);
-    text("Score:"+food.foodEaten, 1000,height+50);
+    int totalFoodEaten = apple.foodEaten + banana.foodEaten + melon.foodEaten;
+    text("Score:"+totalFoodEaten, 1000,height+50);
+    
   }
-
+  
   public void handleArrowKeyPress() {
     if (keyCode == UP) {
       snake.setVelocity(0, -1); // Move up
