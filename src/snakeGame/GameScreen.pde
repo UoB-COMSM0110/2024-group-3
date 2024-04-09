@@ -80,10 +80,10 @@ public class GameScreen {
     drawGameBoard();
 
     // draw all objects:
+    renderWalls();
     banana.renderConsumable();
     melon.renderConsumable();
     apple.renderConsumable();
-    renderWalls();
     snake.renderSnake();
     for (EnemySnake enemy : enemySnakes) {
         enemy.renderSnake();
