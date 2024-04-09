@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Food extends Consumable {
+public abstract class Food extends Consumable {
   int potentialRow;
   int potentialColumn;
   int foodEaten = -1; //when food instantiated for the first time, will be incremented to 0
