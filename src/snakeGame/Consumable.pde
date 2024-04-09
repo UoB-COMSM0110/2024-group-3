@@ -9,6 +9,7 @@ abstract class Consumable extends GridCell {
   public Consumable(GameScreen game, PVector gridLocation, int colour) {
     super(gridLocation, colour);
     this.game = game;
+    System.out.println("Consumable location:" + gridLocation);
   }
 
   abstract void renderConsumable(); 

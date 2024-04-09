@@ -28,7 +28,11 @@ public class GameScreen {
   //inanimate objects
   private ArrayList<Wall> walls;
   private Apple apple;
-  private PVector foodStartPosition = new PVector(0,0);
+  private Banana banana; 
+  private Melon melon;
+  private PVector appleStartPosition = new PVector(0,0);
+  private PVector bananaStartPosition = new PVector(0,0);
+  private PVector melonStartPosition = new PVector(0,0);
 
   //dynamic objects:
   private Snake snake;
@@ -39,7 +43,9 @@ public class GameScreen {
     this.walls = new ArrayList();
     this.mapGridObjectData = new Object[height][width];
     this.enemySnakes = new ArrayList<>();
-    this.apple = new Apple(this, foodStartPosition);
+    this.apple = new Apple(this, appleStartPosition);
+    this.banana = new Banana(this, melonStartPosition);
+    this.melon = new Melon(this, bananaStartPosition);
   }
 
   public void setup(String mapPath) {
@@ -52,8 +58,12 @@ public class GameScreen {
     for (EnemySnake enemy : enemySnakes) {
        enemy.renderSnake();
     }
-    this.apple = new Apple(this, foodStartPosition);
+    this.apple = new Apple(this, appleStartPosition);
     this.apple.setRandomFoodLocation();
+    this.banana = new Banana(this, bananaStartPosition);
+    this.banana.setRandomFoodLocation();
+    this.melon = new Melon(this, melonStartPosition);
+    this.melon.setRandomFoodLocation();
   }
 
   public void update() {
@@ -73,12 +83,15 @@ public class GameScreen {
     drawGameBoard();
 
     // draw all objects:
+    banana.renderConsumable();
+    melon.renderConsumable();
     apple.renderConsumable();
     renderWalls();
     snake.renderSnake();
     for (EnemySnake enemy : enemySnakes) {
         enemy.renderSnake();
     }
+    
   }
 
   public void handleArrowKeyPress() {

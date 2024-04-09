@@ -12,16 +12,12 @@ public abstract class Food extends Consumable {
   
   public void renderConsumable() {
       this.fillGridCell();
-    }
-    
-  private void getPotentialRandomFoodLocation() {
-      potentialColumn = (int)random(0,COLS-1); 
-      potentialRow = (int)random(0,ROWS-1); 
   }
   
   public void setRandomFoodLocation() {
     while(this.game.getMapGridObjectData(this.potentialColumn, this.potentialRow) != null){
-       getPotentialRandomFoodLocation();
+       this.potentialColumn = (int)(Math.random() * COLS); 
+       this.potentialRow = (int)(Math.random() * ROWS); 
     }
     this.gridLocation.x = this.potentialColumn;
     this.gridLocation.y = this.potentialRow;
