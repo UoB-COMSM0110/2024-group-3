@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public abstract class Food extends Consumable {
   int potentialRow;
   int potentialColumn;
-  int foodEaten = -1; //when food instantiated for the first time, will be incremented to 0
+  int foodEaten = 0;
   
   public Food(GameScreen game, PVector gridLocation, int colour) {
         super(game, gridLocation, colour); 
@@ -28,7 +28,7 @@ public abstract class Food extends Consumable {
      findGridLocation();
      setFoodMapGridObjectData();
      clearFoodMapGridObjectData(oldColumn, oldRow); 
-     this.foodEaten++;
+     incrementFoodCount();
   }
     
   private void findGridLocation() {
@@ -55,9 +55,11 @@ public abstract class Food extends Consumable {
   }
   
   //getter method for menu bar score
-  public int getFoodScore() {
-     return this.foodEaten; 
+  public int getFoodScore(){
+     return foodEaten;
   }
+  
+  abstract public void incrementFoodCount();
   
   //return shape list, not just a single coordinate 
   public PVector getFoodLocation() {

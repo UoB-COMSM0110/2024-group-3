@@ -6,5 +6,11 @@ public class Banana extends Food {
         //two cell shape
         this.shape.add(new PVector(0, 0));
         this.shape.add(new PVector(1, 0));
+        this.foodEaten = -2; //to zero score at game start
   }
+  
+  public void incrementFoodCount(){
+     this.foodEaten+=2; 
+  }
+ 
 }
