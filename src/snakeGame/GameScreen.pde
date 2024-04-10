@@ -30,6 +30,7 @@ public class GameScreen {
   private Apple apple;
   private Banana banana; 
   private Melon melon;
+  private EnergyBooster energyBooster;
 
   //dynamic objects:
   private Snake snake;
@@ -59,11 +60,13 @@ public class GameScreen {
        enemy.renderSnake();
     }
     this.apple = new Apple(this);
-    this.apple.setRandomFoodLocation();
+    this.apple.setRandomConsumableLocation();
     this.banana = new Banana(this);
-    this.banana.setRandomFoodLocation();
+    this.banana.setRandomConsumableLocation();
     this.melon = new Melon(this);
-    this.melon.setRandomFoodLocation();
+    this.melon.setRandomConsumableLocation();
+    this.energyBooster = new EnergyBooster(this);
+    this.energyBooster.setRandomConsumableLocation();
   }
 
   public void update() {
@@ -87,6 +90,7 @@ public class GameScreen {
     banana.renderConsumable();
     melon.renderConsumable();
     apple.renderConsumable();
+    energyBooster.renderConsumable();
     snake.renderSnake();
     for (EnemySnake enemy : enemySnakes) {
         enemy.renderSnake();
@@ -255,7 +259,9 @@ public class GameScreen {
             } else if (obj instanceof Wall) {
                 System.out.print("w"); // Wall
             } else if (obj instanceof Food) {
-                System.out.print("f"); // Wall
+                System.out.print("f"); // Food
+            } else if (obj instanceof Powerup) {
+                System.out.print("p"); // Powerup
             }
             System.out.print(" ");
         }
