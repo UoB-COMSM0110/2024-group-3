@@ -98,6 +98,7 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
     
     if (gridObject instanceof Powerup) {
       ((Powerup) gridObject).setRandomConsumableLocation();
+      game.incrementEnergy();
       // add new head and remove tail
     }
 

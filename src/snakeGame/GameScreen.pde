@@ -37,7 +37,7 @@ public class GameScreen {
   private ArrayList<EnemySnake> enemySnakes;
   
   private int startTime;
-  private float energy = 0;
+  private float energy = 300;
 
 
   public GameScreen() {
@@ -102,8 +102,12 @@ public class GameScreen {
     seconds = seconds % 60;
     String timeString = nf(minutes, 2) + ":" + nf(seconds, 2);
     
-    energy += 2;
+    energy -= 1;
+    energy = max(energy, 0);
     energy = min(energy, 300);
+    if(energy == 0){
+      state = GameState.OVER;
+    }
     fill(255, 0, 0);
     
     windowResize(width, height+100);
@@ -247,6 +251,12 @@ public class GameScreen {
     }
     return occupiedPositions;
 }
+
+  //energy setter
+  
+  public void incrementEnergy() {
+    energy+=50;
+  }
   
   public void printMapGrid() {
     for (int i = 0; i < ROWS; i++) {
