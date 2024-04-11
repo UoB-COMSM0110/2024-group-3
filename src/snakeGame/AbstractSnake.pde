@@ -34,6 +34,10 @@ abstract class AbstractSnake {
     return this.snakeCells;
   }
 
+  public PVector getVelocity() {
+    return velocity;
+  }
+
   protected abstract void move();
 
   protected abstract void setVelocity(float x, float y);

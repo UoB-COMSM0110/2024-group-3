@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.awt.event.KeyEvent;
 
 /*
  Game Screen which maps objects to a 2d grid for look up/collision detection:
@@ -35,7 +36,7 @@ public class GameScreen {
   //dynamic objects:
   private Snake snake;
   private ArrayList<EnemySnake> enemySnakes;
-
+  private ArrayList<Venom> venom;
   private int startTime;
   private float energy = 300;
 
@@ -44,6 +45,7 @@ public class GameScreen {
     this.walls = new ArrayList();
     this.mapGridObjectData = new Object[height][width];
     this.enemySnakes = new ArrayList<>();
+    this.venom = new ArrayList<>();
     startTime=millis();
     this.apple = new Apple(this);
     this.banana = new Banana(this);
@@ -81,6 +83,14 @@ public class GameScreen {
     for (EnemySnake enemy : enemySnakes) {
       enemy.move();
     }
+    
+    for (Venom currVenom : venom.stream().toList()) {
+      currVenom.move();
+      if (!currVenom.isActive()) {
+        venom.remove(currVenom);
+      }
+    }
+    System.out.println(venom.size());
 
     // draw background:
     drawGameBoard();
@@ -94,6 +104,9 @@ public class GameScreen {
     snake.renderSnake();
     for (EnemySnake enemy : enemySnakes) {
       enemy.renderSnake();
+    }
+    for (Venom currVenom : venom) {
+      currVenom.renderVenom();
     }
 
     int elapsedTime = millis() - startTime;
@@ -123,7 +136,7 @@ public class GameScreen {
     text("Score:"+totalFoodEaten, 1000, height+50);
   }
 
-  public void handleArrowKeyPress() {
+  public void handleKeyPress() {
     if (keyCode == UP) {
       snake.setVelocity(0, -1); // Move up
     } else if (keyCode == DOWN) {
@@ -132,9 +145,14 @@ public class GameScreen {
       snake.setVelocity(-1, 0); // Move left
     } else if (keyCode == RIGHT) {
       snake.setVelocity(1, 0);  // Move right
+    } else if (keyCode == KeyEvent.VK_SPACE) {
+      // Instantiate a Venom using the snake's current velocity and position
+      PVector snakePosition = snake.getSnakeCells().getLast().gridLocation.copy();
+      PVector snakeVelocity = snake.getVelocity().copy();
+      int venomColour = color(255, 0, 0); // Set venom color (e.g., red)
+      venom.add(new Venom(this, venomColour, snakePosition.add(snakeVelocity), snakeVelocity));
     }
   }
-
 
 
   public void setMapGridObjectData(int x, int y, Object obj) {

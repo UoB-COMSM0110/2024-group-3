@@ -1,7 +1,4 @@
 public class Snake extends AbstractSnake { 
-
-  private Food food;
-
   public Snake(GameScreen game, int len, int colour) {
     super(game, colour); 
   
