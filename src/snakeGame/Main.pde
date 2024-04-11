@@ -89,7 +89,11 @@ void keyPressed() {
     }
   }
   if (keyCode==ESC&&curPage!=WhatPage.PLAYING) {
-    curPage=WhatPage.MAINPAGE;
+    if (difficulty == 0) {
+      curPage=WhatPage.MAINPAGE;
+    } else if (difficulty == 1) {
+      curPage=WhatPage.MAINPAGE_hard;
+    }
     key=0;
   }
 }
