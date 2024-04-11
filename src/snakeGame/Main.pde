@@ -46,6 +46,7 @@ public void draw() {
     difficulty=0;
     flag=0;
     page.mainPage();
+    state = GameState.PLAY;
   } else if (curPage==WhatPage.PLAYING) {
     if (state == GameState.OVER) {
       gameOver();
@@ -60,6 +61,7 @@ public void draw() {
     difficulty=1;
     flag=0;
     page.MAINPAGE_hard();
+    state = GameState.PLAY;
   }
 }
 void keyPressed() {
@@ -67,18 +69,14 @@ void keyPressed() {
     if (state==GameState.PLAY) {
       gameScreen.handleKeyPress();
     } else if (state==GameState.OVER) {
-      flag=0;
+      
       if (keyCode==ESC) {
+        flag=0;
         if (difficulty==0) {
           curPage=WhatPage.MAINPAGE;
-          gameScreen = new GameScreen();
-          gameScreen.setup("mapsCSV/1.csv");
         } else {
           curPage=WhatPage.MAINPAGE_hard;
-          gameScreen = new GameScreen();
-          gameScreen.setup("mapsCSV/2.csv");
         }
-        state = GameState.PLAY;
         key=0;
       }
     }
