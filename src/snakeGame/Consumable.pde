@@ -21,8 +21,8 @@ abstract class Consumable extends GridCell {
   protected void findGridLocation() {
     for (PVector cell : this.shape) {
       while (this.game.getMapGridObjectData(potentialColumn + (int)cell.x, potentialRow + (int)cell.y) != null) {
-        this.potentialColumn = (int)(Math.random() * COLS);
-        this.potentialRow = (int)(Math.random() * ROWS);
+        this.potentialColumn = (int)(Math.random() * (COLS - 1));
+        this.potentialRow = (int)(Math.random() * (ROWS - 1));
       }
     }
     this.gridLocation.x = this.potentialColumn;
