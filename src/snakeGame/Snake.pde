@@ -3,10 +3,9 @@ public class Snake extends AbstractSnake {
   private Food food;
 
   public Snake(GameScreen game, int len, int colour) {
-    super(game, len, colour); 
+    super(game, colour); 
   
     PVector position = findEmptyRectangle(game, 15, 1, 5);
-    System.out.println(position);
     for (int i = 0; i < len; i++) {
       snakeCells.add(new SnakeCell(position.copy(), colour));
       position.add(velocity); // Move to the next position based on velocity
@@ -52,7 +51,6 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
                 int middleX = x + cols / 2;
                 int middleY = y + rows / 2;
                 middlePoint.set(middleX, middleY);
-                System.out.println(middlePoint);
                 return middlePoint;
             }
         }

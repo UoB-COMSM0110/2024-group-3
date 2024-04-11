@@ -28,14 +28,14 @@ public class GameScreen {
   //inanimate objects
   private ArrayList<Wall> walls;
   private Apple apple;
-  private Banana banana; 
+  private Banana banana;
   private Melon melon;
   private EnergyBooster energyBooster;
 
   //dynamic objects:
   private Snake snake;
   private ArrayList<EnemySnake> enemySnakes;
-  
+
   private int startTime;
   private float energy = 300;
 
@@ -57,7 +57,7 @@ public class GameScreen {
     snake.renderSnake();
     enemySnakes.add(new EnemySnake(this, 5, color(0, 190, 0)));
     for (EnemySnake enemy : enemySnakes) {
-       enemy.renderSnake();
+      enemy.renderSnake();
     }
     this.apple = new Apple(this);
     this.apple.setRandomConsumableLocation();
@@ -72,14 +72,14 @@ public class GameScreen {
   public void update() {
     // move all dynamic objects first before rendering:
     snake.move();
-    
+
     // frameCount value can vary depending on difficulty level!
     if (frameCount % 100 == 0) {
-    enemySnakes.add(new EnemySnake(this, 5, color(0, (int) random(100, 255), 0)));
+      enemySnakes.add(new EnemySnake(this, 5, color(0, (int) random(100, 255), 0)));
     }
-      
+
     for (EnemySnake enemy : enemySnakes) {
-        enemy.move();
+      enemy.move();
     }
 
     // draw background:
@@ -93,37 +93,36 @@ public class GameScreen {
     energyBooster.renderConsumable();
     snake.renderSnake();
     for (EnemySnake enemy : enemySnakes) {
-        enemy.renderSnake();
+      enemy.renderSnake();
     }
-    
+
     int elapsedTime = millis() - startTime;
     int seconds = elapsedTime / 1000;
     int minutes = seconds / 60;
     seconds = seconds % 60;
     String timeString = nf(minutes, 2) + ":" + nf(seconds, 2);
-    
+
     energy -= 1;
     energy = max(energy, 0);
     energy = min(energy, 300);
-    if(energy == 0){
+    if (energy == 0) {
       state = GameState.OVER;
     }
     fill(255, 0, 0);
-    
+
     windowResize(width, height+100);
     fill(255);
-    
-    text("Time:"+timeString, 200,height+50);
-    
-    text("Energy", 600,height+20);
+
+    text("Time:"+timeString, 200, height+50);
+
+    text("Energy", 600, height+20);
     fill(200, 0, 200);
     rect(450, height+50, energy, 20);
     fill(255);
     int totalFoodEaten = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore();
-    text("Score:"+totalFoodEaten, 1000,height+50);
-    
+    text("Score:"+totalFoodEaten, 1000, height+50);
   }
-  
+
   public void handleArrowKeyPress() {
     if (keyCode == UP) {
       snake.setVelocity(0, -1); // Move up
@@ -141,7 +140,7 @@ public class GameScreen {
   public void setMapGridObjectData(int x, int y, Object obj) {
     this.mapGridObjectData[x][y] = obj;
   }
-  
+
   public void setMapGridObjectData(PVector location, Object obj) {
     this.mapGridObjectData[(int)location.x][(int)location.y] = obj;
   }
@@ -149,7 +148,7 @@ public class GameScreen {
   public Object getMapGridObjectData(int x, int y) {
     return this.mapGridObjectData[x][y];
   }
-  
+
   public Object getMapGridObjectData(PVector location) {
     return this.mapGridObjectData[(int)location.x][(int)location.y];
   }
@@ -237,46 +236,85 @@ public class GameScreen {
     for (Wall wall : walls) {
       wall.renderWall();
     }
-  }  
-  
+  }
+
   public ArrayList<PVector> getOccupiedPositionsByEnemies(EnemySnake currentEnemy) {
     ArrayList<PVector> occupiedPositions = new ArrayList<>();
     for (EnemySnake enemy : enemySnakes) {
-        // Skip the current enemy snake to avoid checking against itself
-        if (enemy != currentEnemy) {
-            for (SnakeCell cell : enemy.getSnakeCells()) {
-                occupiedPositions.add(cell.getGridLocation());
-            }
+      // Skip the current enemy snake to avoid checking against itself
+      if (enemy != currentEnemy) {
+        for (SnakeCell cell : enemy.getSnakeCells()) {
+          occupiedPositions.add(cell.getGridLocation());
         }
+      }
     }
     return occupiedPositions;
-}
+  }
 
   //energy setter
-  
+
   public void incrementEnergy() {
     energy+=50;
   }
-  
+
+  public void cleanUp() {
+    // Clear walls
+    walls.clear();
+
+    // Clear consumables
+    if (apple != null) {
+      apple.cleanUp();
+      apple = null;
+    }
+    if (banana != null) {
+      banana.cleanUp();
+      banana = null;
+    }
+    if (melon != null) {
+      melon.cleanUp();
+      melon = null;
+    }
+    if (energyBooster != null) {
+      energyBooster.cleanUp();
+      energyBooster = null;
+    }
+
+    // Clear main snake
+    if (snake != null) {
+      snake.cleanUp();
+      snake = null;
+    }
+
+    // Clear enemy snakes
+    for (EnemySnake enemy : enemySnakes) {
+      enemy.cleanUp();
+    }
+    enemySnakes.clear();
+
+    // Reset map grid data
+    mapGridObjectData = new Object[Main.ROWS][Main.COLS];
+  }
+
+
+
   public void printMapGrid() {
     for (int i = 0; i < ROWS; i++) {
-        for (int j = 0; j < COLS; j++) {
-            Object obj = mapGridObjectData[j][i];
-            if (obj == null) {
-                System.out.print(" "); // Empty space
-            } else if (obj instanceof Snake) {
-                System.out.print("s"); // Snake
-            } else if (obj instanceof Wall) {
-                System.out.print("w"); // Wall
-            } else if (obj instanceof Food) {
-                System.out.print("f"); // Food
-            } else if (obj instanceof Powerup) {
-                System.out.print("p"); // Powerup
-            }
-            System.out.print(" ");
+      for (int j = 0; j < COLS; j++) {
+        Object obj = mapGridObjectData[j][i];
+        if (obj == null) {
+          System.out.print(" "); // Empty space
+        } else if (obj instanceof Snake) {
+          System.out.print("s"); // Snake
+        } else if (obj instanceof Wall) {
+          System.out.print("w"); // Wall
+        } else if (obj instanceof Food) {
+          System.out.print("f"); // Food
+        } else if (obj instanceof Powerup) {
+          System.out.print("p"); // Powerup
         }
-        System.out.println();
+        System.out.print(" ");
+      }
+      System.out.println();
     }
-   
-  } 
+  }
 }

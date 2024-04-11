@@ -1,9 +1,11 @@
-public static final int ROWS = 45; //<>// //<>//
+// Grid/Screen Size Global Configuration: //<>//
+public static final int ROWS = 45;
 public static final int COLS = 100;
 public static final int CELL_SIZE = 12;
+public static final int width = COLS * CELL_SIZE;   //1200
+public static final int height = ROWS * CELL_SIZE;  //540
 
-public static final int width = COLS * CELL_SIZE;//1200
-public static final int height = ROWS * CELL_SIZE;//540
+// Game State Global Variables:
 public static int difficulty=0;
 public static int flag=0;
 public GameScreen gameScreen;
@@ -11,7 +13,6 @@ public GameState state;
 public enum GameState {
   OVER, PLAY, PAUSE, MENU, SCORE_SCREEN
 }
-
 public Page page;
 public enum WhatPage {
   MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING, MAINPAGE_hard
@@ -21,20 +22,16 @@ public WhatPage curPage;
 public void settings() {
   size(width, height);
 }
-//<>//
 public void setup() {
   state = GameState.PLAY;
-  frameRate(10);
-  //gameScreen = new GameScreen();
-  //gameScreen.setup("mapsCSV/1.csv");
   page=new Page();
   curPage=WhatPage.MAINPAGE;
   flag=0;
 }
-
 public void draw() {
   if (flag==0) {
     if (difficulty==0) {
+      frameRate(10);
       gameScreen = new GameScreen();
       gameScreen.setup("mapsCSV/1.csv");
     } else {
@@ -52,9 +49,6 @@ public void draw() {
   } else if (curPage==WhatPage.PLAYING) {
     if (state == GameState.OVER) {
       gameOver();
-      //curPage=WhatPage.MAINPAGE;
-      //gameScreen.setup("mapsCSV/2.csv");
-      //state = GameState.PLAY;
     } else {
       gameScreen.update();
     }
@@ -68,7 +62,6 @@ public void draw() {
     page.MAINPAGE_hard();
   }
 }
-
 void keyPressed() {
   if (curPage==WhatPage.PLAYING) {
     if (state==GameState.PLAY) {
@@ -76,7 +69,6 @@ void keyPressed() {
     } else if (state==GameState.OVER) {
       flag=0;
       if (keyCode==ESC) {
-        
         if (difficulty==0) {
           curPage=WhatPage.MAINPAGE;
           gameScreen = new GameScreen();
@@ -101,17 +93,14 @@ void keyPressed() {
     key=0;
   }
 }
-
 void mousePressed() {
   page.handlePageJump();
-  //if (curPage==WhatPage.PLAYING){
-  //  windowResize(width, height+100);
-  //}
 }
-
-
-// Global function for game over
+// Process Ending of Game:
 public void gameOver() {
+  // clean up resources used in ended game:
+  gameScreen.cleanUp();
+
   // Draw a transparent screen over the current board state
   fill(0, 0, 0, 150); // Set fill color to black with 150 alpha (transparency)
   rect(0, 0, width, height); // Draw a rectangle covering the entire screen

@@ -6,7 +6,7 @@
 public class EnemySnake extends AbstractSnake {
    
   public EnemySnake(GameScreen game, int len, int colour) {
-    super(game, len, colour); 
+    super(game, colour); 
     PVector position = generateStartingPosition(game, len);
   
     for (int i = 0; i < len; i++) {
