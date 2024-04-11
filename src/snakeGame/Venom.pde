@@ -35,6 +35,14 @@ public class Venom {
 
 
   public void move() {
+    // if collision or out of bounds near, reduce velocity to 1 cell per frame to improve visuals:
+    if (!isPositionWithinGrid(PVector.add(venomCells.get(0).gridLocation.copy(), velocity)) ||
+      !isPositionWithinGrid(PVector.add(venomCells.get(1).gridLocation.copy(), velocity)) ||
+      hasCollisionAt(PVector.add(venomCells.get(0).gridLocation.copy(), velocity)) ||
+      hasCollisionAt(PVector.add(venomCells.get(1).gridLocation.copy(), velocity))) {
+      this.velocity = this.velocity.normalize();
+    }
+
     // Calculate the movement step based on the normalized velocity
     PVector step = velocity.copy();
 
@@ -45,23 +53,24 @@ public class Venom {
     VenomCell currentHead = venomCells.get(0);
     PVector newHeadPosition = PVector.add(currentHead.gridLocation, step);
     if (!isPositionWithinGrid(newHeadPosition)) {
-      newHeadPosition = PVector.add(venomCells.get(1).gridLocation, step.mult(0.5));
+      newHeadPosition = null;
     }
 
     // Check collision at the new head position
-    if (hasCollisionAt(newHeadPosition)) {
+    if (newHeadPosition != null && hasCollisionAt(newHeadPosition)) {
       active = false;
       handleCollision(newHeadPosition); // Handle collision at the new head position
     }
 
     // Check collision at the position behind the head (if available)
-    if (venomCells.size() > 1) {
+    if (active && venomCells.size() > 1) {
       VenomCell cellBehindHead = venomCells.get(1);
       PVector positionBehindHead = PVector.add(cellBehindHead.gridLocation, step);
       if (!isPositionWithinGrid(positionBehindHead)) {
         active = false;
-    }
-      if (hasCollisionAt(positionBehindHead)) {
+      }
+      if (active && hasCollisionAt(positionBehindHead)) {
+        active = false;
         handleCollision(positionBehindHead); // Handle collision behind the head
       }
     }

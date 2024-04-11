@@ -150,7 +150,7 @@ public class GameScreen {
       PVector snakePosition = snake.getSnakeCells().getLast().gridLocation.copy();
       PVector snakeVelocity = snake.getVelocity().copy();
       int venomColour = color(255, 0, 0); // Set venom color (e.g., red)
-      venom.add(new Venom(this, venomColour, snakePosition.add(snakeVelocity), snakeVelocity));
+      venom.add(new Venom(this, venomColour, snakePosition.add(snakeVelocity).add(snakeVelocity), snakeVelocity));
     }
   }
 
