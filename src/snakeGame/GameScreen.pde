@@ -90,7 +90,6 @@ public class GameScreen {
         venom.remove(currVenom);
       }
     }
-    System.out.println(venom.size());
 
     // draw background:
     drawGameBoard();

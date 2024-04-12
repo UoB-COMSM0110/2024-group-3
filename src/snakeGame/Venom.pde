@@ -30,7 +30,8 @@ public class Venom {
       cell.fillGridCell();
     }
   }
-
+  
+  
 
 
 
@@ -107,6 +108,8 @@ public class Venom {
 
     if (gridObject instanceof Wall) {
       // todo maybe make hole in wall:
+      ((Wall) gridObject).removeWallCell(position);
+      game.setMapGridObjectData(position, null);
     }
 
     if (gridObject instanceof Food) {
