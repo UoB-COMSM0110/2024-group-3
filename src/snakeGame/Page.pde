@@ -100,14 +100,12 @@ public class Page
     textSize(80);
     text("High Score", width / 2, height / 10);
     textSize(48);
-    text("Name1",  width / 2-160, (height / 10)+100);
-    text("Score1",  width / 2+160, (height / 10)+100);
-    text("Name2",  width / 2-160, (height / 10)+200);
-    text("Score2",  width / 2+160, (height / 10)+200);
-    text("Name3",  width / 2-160, (height / 10)+300);
-    text("Score3",  width / 2+160, (height / 10)+300);
-    text("Name4",  width / 2-160, (height / 10)+400);
-    text("Score4",  width / 2+160, (height / 10)+400);
+    float w=width / 2-160;
+    float h=(height / 10)+100;
+    for (int i = 0; i < num_highsocre; i++) {
+      text(highsocre.infor[i].name,  w, h+100*i);
+      text(highsocre.infor[i].score,  w+320, h+100*i);
+    }
   }
 
   public void help() {

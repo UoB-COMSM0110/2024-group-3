@@ -8,6 +8,7 @@ public static final int height = ROWS * CELL_SIZE;  //540
 // Game State Global Variables:
 public static int difficulty=0;
 public static int flag=0;
+public static int num_highsocre=4;
 public GameScreen gameScreen;
 public GameState state;
 public enum GameState {
@@ -18,6 +19,7 @@ public enum WhatPage {
   MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING, MAINPAGE_hard
 }
 public WhatPage curPage;
+public Highsocre highsocre;
 
 public void settings() {
   size(width, height);
@@ -25,6 +27,7 @@ public void settings() {
 public void setup() {
   state = GameState.PLAY;
   page=new Page();
+  highsocre=new Highsocre();
   curPage=WhatPage.MAINPAGE;
   flag=0;
 }
@@ -41,7 +44,6 @@ public void draw() {
     }
     flag=1;
   }
-
   if (curPage==WhatPage.MAINPAGE) {
     difficulty=0;
     flag=0;
