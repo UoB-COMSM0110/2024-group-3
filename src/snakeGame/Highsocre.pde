@@ -1,11 +1,8 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 public class Highsocre {
   Scoredata[] infor=new Scoredata[num_highsocre];
-
+  String datafile = sketchPath("../mapsCSV/highsocre.csv");
   public Highsocre() {
-    String datafile = sketchPath("../mapsCSV/highsocre.csv");
     String line = "";
     try (BufferedReader br = new BufferedReader(new FileReader(datafile))) {
       for (int i = 0; i < num_highsocre; i++) {
@@ -33,5 +30,14 @@ public class Highsocre {
       infor[i]=infor[i-1];
     }
     infor[pos]=s;
+
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(datafile))) {
+      for (int i = 0; i <num_highsocre; i++) {
+        bw.write(infor[i].name+","+infor[i].score+"\n");
+      }
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
