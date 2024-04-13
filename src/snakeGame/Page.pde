@@ -32,7 +32,7 @@ public class Page
     Button set_but = new Button(180,350,360,398, WhatPage.MAINPAGE, WhatPage.HELP, "Help",36);
     butList.add(set_but);
 
-    Button help_but = new Button(180,270,360,316, WhatPage.MAINPAGE, WhatPage.HELP, "Settings",36);
+    Button help_but = new Button(180,270,360,316, WhatPage.MAINPAGE, WhatPage.SETTING, "Settings",36);
     butList.add(help_but);
     
     Button hard_but = new Button(910,70,990,94, WhatPage.MAINPAGE, WhatPage.MAINPAGE_hard, "Hard",24);
@@ -80,7 +80,7 @@ public class Page
     Button set_but = new Button(180,350,360,398, WhatPage.MAINPAGE_hard, WhatPage.HELP, "Help",36);
     butList.add(set_but);
 
-    Button help_but = new Button(180,270,360,316, WhatPage.MAINPAGE_hard, WhatPage.HELP, "Settings",36);
+    Button help_but = new Button(180,270,360,316, WhatPage.MAINPAGE_hard, WhatPage.SETTING, "Settings",36);
     butList.add(help_but);
     
     Button hard_but = new Button(910,70,990,94, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE_hard, "Hard",24);
@@ -105,6 +105,14 @@ public class Page
     highScorePage=loadImage("../images/highScore.png");
     background(255);
     image(highScorePage,0,0);
+    
+    butList.clear();
+    Button esc_but=new Button(50, 50, 150,100, WhatPage.HIGHSCORE, difficulty==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back",36);
+    butList.add(esc_but);
+  
+    update(mouseX,mouseY);
+    drawButton(esc_but);
+    
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(80);
@@ -121,6 +129,25 @@ public class Page
   public void help() {
     helpPage=loadImage("../images/helpPageLow.png");
     image(helpPage,0,0);
+    
+    butList.clear();
+    Button esc_but=new Button(50, 50, 150,100, WhatPage.HELP, difficulty==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back",36);
+    butList.add(esc_but);
+  
+    update(mouseX,mouseY);
+    drawButton(esc_but);
+  }
+  
+  public void setting() {
+    helpPage=loadImage("../images/highScore.png");
+    image(helpPage,0,0);
+    
+    butList.clear();
+    Button esc_but=new Button(50, 50, 150,100, WhatPage.SETTING, difficulty==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back",36);
+    butList.add(esc_but);
+  
+    update(mouseX,mouseY);
+    drawButton(esc_but);
   }
 
   public void drawButton(Button but) {

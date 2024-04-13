@@ -61,7 +61,10 @@ public void draw() {
     page.highScore();
   } else if (curPage==WhatPage.HELP) {
     page.help();
-  } else if (curPage==WhatPage.MAINPAGE_hard) {
+  } else if (curPage==WhatPage.SETTING) {
+    page.setting();
+  }
+  else if (curPage==WhatPage.MAINPAGE_hard) {
     difficulty=1;
     flag=0;
     page.MAINPAGE_hard();
