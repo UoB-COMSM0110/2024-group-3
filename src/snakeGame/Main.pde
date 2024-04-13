@@ -33,7 +33,7 @@ public void setup() {
 }
 public void draw() {
   //background(255);
-  
+
   if (flag==0) {
     if (difficulty==0) {
       frameRate(10);
@@ -63,8 +63,7 @@ public void draw() {
     page.help();
   } else if (curPage==WhatPage.SETTING) {
     page.setting();
-  }
-  else if (curPage==WhatPage.MAINPAGE_hard) {
+  } else if (curPage==WhatPage.MAINPAGE_hard) {
     difficulty=1;
     flag=0;
     page.MAINPAGE_hard();
@@ -76,7 +75,7 @@ void keyPressed() {
     if (state==GameState.PLAY) {
       gameScreen.handleKeyPress();
     } else if (state==GameState.OVER) {
-      
+
       if (keyCode==ESC) {
         flag=0;
         if (difficulty==0) {
@@ -119,22 +118,22 @@ public void gameOver() {
   textAlign(CENTER, CENTER); // Align text to the center
   textSize(32); // Set text size
   text("Game Over", width/2, height/2); // Draw text at the center of the screen
-  
-  Button rt_but = new Button(480, 440, 720,480, WhatPage.PLAYING,difficulty==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Return to main menu",24);
+
+  Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficulty==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Return to main menu", 24);
   page.butList.add(rt_but);
-  page.update(mouseX,mouseY);
+  page.update(mouseX, mouseY);
   page.drawButton(rt_but);
-  
+
   windowResize(width, height);
 }
 
-//void handleReturn(Button but) 
+//void handleReturn(Button but)
 //{
 //  if (but.inside(mouseX,mouseY)) {
 //    but.hover=1;
 //  } else {
 //    but.hover=0;
 //  }
-  
+
 //  return;
 //}
