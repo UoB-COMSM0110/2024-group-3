@@ -116,5 +116,22 @@ public void gameOver() {
   textAlign(CENTER, CENTER); // Align text to the center
   textSize(32); // Set text size
   text("Game Over", width/2, height/2); // Draw text at the center of the screen
+  
+  Button rt_but = new Button(480, 440, 720,480, WhatPage.PLAYING,difficulty==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Return to main menu",24);
+  page.butList.add(rt_but);
+  page.update(mouseX,mouseY);
+  page.drawButton(rt_but);
+  
   windowResize(width, height);
 }
+
+//void handleReturn(Button but) 
+//{
+//  if (but.inside(mouseX,mouseY)) {
+//    but.hover=1;
+//  } else {
+//    but.hover=0;
+//  }
+  
+//  return;
+//}
