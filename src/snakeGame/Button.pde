@@ -4,8 +4,10 @@ class Button {
     private String txt;
 
     private int colr = 255, colg = 255, colb = 255;
+    private int bgColr =255, bgColg = 255, bgColb = 255;
 
     private int txtsize = 32;
+    public int hover=0;
 
     public Button(int x, int y, int w, int v, WhatPage curPag, WhatPage pagePoi, String txt, int txtsize) {
         this.x = x;
@@ -56,6 +58,12 @@ class Button {
 
     public int getColb() {
         return colb;
+    }
+
+    public void setBgColour(int colr,int colg,int colb) {
+        this.bgColr = colr;
+        this.bgColg = colg;
+        this.bgColb = colb;
     }
 
     public void setColour(int colr, int colg, int colb) {

@@ -32,6 +32,8 @@ public void setup() {
   flag=0;
 }
 public void draw() {
+  //background(255);
+  
   if (flag==0) {
     if (difficulty==0) {
       frameRate(10);

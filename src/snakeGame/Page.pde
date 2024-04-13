@@ -21,31 +21,36 @@ public class Page
     textSize(120);
     text("SNAKE", 720, 144);
 
-    Button sg_but = new Button(660, 288, 800,330, WhatPage.MAINPAGE, WhatPage.PLAYING, "PLAY",72);
+    butList.clear();
+
+    Button sg_but = new Button(630, 268, 830,350, WhatPage.MAINPAGE, WhatPage.PLAYING, "PLAY",72);
     butList.add(sg_but);
 
-    Button hs_but = new Button(192, 200, 350,224, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score",36);
+    Button hs_but = new Button(180, 190, 360,234, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score",36);
     butList.add(hs_but);
 
-    Button set_but = new Button(228,360,310,388, WhatPage.MAINPAGE, WhatPage.HELP, "Settings",36);
+    Button set_but = new Button(180,350,360,398, WhatPage.MAINPAGE, WhatPage.HELP, "Help",36);
     butList.add(set_but);
 
-    Button help_but = new Button(210,280,330,306, WhatPage.MAINPAGE, WhatPage.HELP, "Help",36);
+    Button help_but = new Button(180,270,360,316, WhatPage.MAINPAGE, WhatPage.HELP, "Settings",36);
     butList.add(help_but);
     
-    Button hard_but = new Button(880,70,1030,94, WhatPage.MAINPAGE, WhatPage.MAINPAGE_hard, "Hard",36);
+    Button hard_but = new Button(910,70,990,94, WhatPage.MAINPAGE, WhatPage.MAINPAGE_hard, "Hard",24);
     butList.add(hard_but);
     
-    Button easy_but = new Button(880,290,1030,314, WhatPage.MAINPAGE, WhatPage.MAINPAGE, "Easy",36);
+    Button easy_but = new Button(910,290,990,314, WhatPage.MAINPAGE, WhatPage.MAINPAGE, "Easy",24);
     butList.add(easy_but);
 
     update(mouseX, mouseY);
-    drawButton(hs_but);
-    drawButton(sg_but);
-    drawButton(help_but);
-    drawButton(set_but);
-    drawButton(hard_but);
-    drawButton(easy_but);
+    //drawButton(hs_but);
+    //drawButton(sg_but);
+    //drawButton(help_but);
+    //drawButton(set_but);
+    //drawButton(hard_but);
+    //drawButton(easy_but);
+    for (Button but:butList) {
+      drawButton(but);
+    }
   }
   public void MAINPAGE_hard() {
     mainPageE=loadImage("../images/mainPageEasy.png"); 
@@ -63,32 +68,37 @@ public class Page
     fill(255);
     textSize(120);
     text("SNAKE", 720, 144);
+    
+    butList.clear();
 
-    Button sg_but = new Button(660, 288, 800,330, WhatPage.MAINPAGE_hard, WhatPage.PLAYING, "PLAY",72);
+    Button sg_but = new Button(630, 268, 830,350, WhatPage.MAINPAGE_hard, WhatPage.PLAYING, "PLAY",72);
     butList.add(sg_but);
 
-    Button hs_but = new Button(192, 200, 350,224, WhatPage.MAINPAGE_hard, WhatPage.HIGHSCORE, "High Score",36);
+    Button hs_but = new Button(180, 190, 360,234, WhatPage.MAINPAGE_hard, WhatPage.HIGHSCORE, "High Score",36);
     butList.add(hs_but);
 
-    Button set_but = new Button(228,360,310,388, WhatPage.MAINPAGE_hard, WhatPage.HELP, "Settings",36);
+    Button set_but = new Button(180,350,360,398, WhatPage.MAINPAGE_hard, WhatPage.HELP, "Help",36);
     butList.add(set_but);
 
-    Button help_but = new Button(210,280,330,306, WhatPage.MAINPAGE_hard, WhatPage.HELP, "Help",36);
+    Button help_but = new Button(180,270,360,316, WhatPage.MAINPAGE_hard, WhatPage.HELP, "Settings",36);
     butList.add(help_but);
     
-    Button hard_but = new Button(880,70,1030,94, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE_hard, "Hard",36);
+    Button hard_but = new Button(910,70,990,94, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE_hard, "Hard",24);
     butList.add(hard_but);
     
-    Button easy_but = new Button(880,290,1030,314, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE, "Easy",36);
+    Button easy_but = new Button(910,290,990,314, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE, "Easy",24);
     butList.add(easy_but);
 
     update(mouseX, mouseY);
-    drawButton(hs_but);
-    drawButton(sg_but);
-    drawButton(help_but);
-    drawButton(set_but);
-    drawButton(hard_but);
-    drawButton(easy_but);
+    //drawButton(hs_but);
+    //drawButton(sg_but);
+    //drawButton(help_but);
+    //drawButton(set_but);
+    //drawButton(hard_but);
+    //drawButton(easy_but);
+    for (Button but:butList) {
+      drawButton(but);
+    }
   }
 
   public void highScore() {
@@ -118,17 +128,31 @@ public class Page
     //fill(but.getColr(), but.getColg(), but.getColb());
     //rect(but.getX(), but.getY(), but.getW() - but.getX(), but.getV() - but.getY());
 
+    //draw rounded rectangle
+    rectMode(CORNER);
+    int rad=20;
+    if (but.hover==1) fill(but.bgColr,but.bgColg,but.bgColb);
+    else 
+    {
+      noFill();
+      stroke(78,68,61);
+    }
+    rect(but.x,but.y,but.w-but.x,but.v-but.y,rad);
+
     textAlign(CENTER, CENTER);
     textSize(but.txtsize);
     fill(but.colr,but.colg,but.colb);
     text(but.getTxt(), (but.getW() + but.getX()) / 2, (but.getV() + but.getY()) / 2);
+    
   }
 
   void update(int mousex, int mousey) {
     for (int i = 0; i < butList.size(); ++i) {
       if (butList.get(i).inside(mousex, mousey)) {
-        butList.get(i).setColour(250, 250, 0);
-      }
+        butList.get(i).setColour(99, 87, 80);
+        //butList.get(i).setBgColour(255,255,255);
+        butList.get(i).hover=1;
+      } else butList.get(i).hover=0;
     }
   }
 
