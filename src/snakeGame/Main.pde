@@ -20,6 +20,8 @@ public enum WhatPage {
 }
 public WhatPage currentPage;
 public HighScore highScore;
+public String inputName;
+public int totalFoodEaten;
 
 public void settings() {
   size(width, height);
@@ -30,6 +32,7 @@ public void setup() {
   highScore = new HighScore();
   currentPage = WhatPage.MAINPAGE;
   isMapLoaded = false;
+  inputName="";
 }
 public void draw() {
   //background(255);
@@ -72,18 +75,22 @@ public void draw() {
 }
 void keyPressed() {
   if (currentPage==WhatPage.PLAYING) {
-
     if (gameState==GameState.PLAY) {
       gameScreen.handleKeyPress();
     } else if (gameState==GameState.OVER) {
-      
-      if (keyCode==ESC) {
-        isMapLoaded=false;
-        if (difficultyMode==0) {
-          currentPage=WhatPage.MAINPAGE;
-        } else {
-          currentPage=WhatPage.MAINPAGE_hard;
+      if (keyCode == BACKSPACE) {
+        if (inputName.length() > 0) {
+          inputName = inputName.substring(0, inputName.length() - 1);
         }
+      } else if (keyCode != ENTER && keyCode != RETURN) {
+        inputName += key;
+      } else if (keyCode==ESC) {
+        //isMapLoaded=false;
+        //if (difficultyMode==0) {
+        //  currentPage=WhatPage.MAINPAGE;
+        //} else {
+        //  currentPage=WhatPage.MAINPAGE_hard;
+        //}
         key=0;
       }
     }
@@ -119,8 +126,12 @@ public void gameOver() {
   textAlign(CENTER, CENTER); // Align text to the center
   textSize(32); // Set text size
   text("Game Over", width/2, height/2); // Draw text at the center of the screen
-
-  Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Return to main menu", 24);
+  textSize(64);
+  fill(255, 0, 0);
+  text("Final score:"+totalFoodEaten, width/2, 200);
+  fill(255);
+  drawNameBox();
+  Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save and Return", 24);
   page.butList.add(rt_but);
   page.update(mouseX, mouseY);
   page.drawButton(rt_but);
@@ -138,3 +149,11 @@ public void gameOver() {
 
 //  return;
 //}
+void drawNameBox() {
+  fill(200);
+  rect(450, 300, 300, 50);
+  textAlign(LEFT, CENTER);
+  textSize(32);
+  fill(0);
+  text(inputName, 460, 325);
+}

@@ -131,7 +131,7 @@ public class GameScreen {
     fill(200, 0, 200);
     rect(450, height+50, snakeEnergy, 20);
     fill(255);
-    int totalFoodEaten = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore();
+    totalFoodEaten = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore();
     text("Score: "+totalFoodEaten, 1000, height+50);
   }
 
