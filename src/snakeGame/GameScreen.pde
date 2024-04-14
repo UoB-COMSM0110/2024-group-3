@@ -125,14 +125,14 @@ public class GameScreen {
     windowResize(width, height+100);
     fill(255);
 
-    text("Time:"+timeString, 200, height+50);
+    text("Time: "+timeString, 200, height+50);
 
     text("Energy", 600, height+20);
     fill(200, 0, 200);
     rect(450, height+50, snakeEnergy, 20);
     fill(255);
     int totalFoodEaten = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore();
-    text("Score:"+totalFoodEaten, 1000, height+50);
+    text("Score: "+totalFoodEaten, 1000, height+50);
   }
 
   public void handleKeyPress() {
@@ -272,7 +272,7 @@ public class GameScreen {
 
   //energy setter
 
-  public void incrementEnergy() {
+  public void refillEnergy() {
     snakeEnergy+=300;
   }
 
