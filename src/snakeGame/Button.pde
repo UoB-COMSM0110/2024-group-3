@@ -19,6 +19,15 @@ class Button {
         this.txt = txt;
         this.txtsize=txtsize;
     }
+    
+    public Button(int x,int y,int w,int v,String txt,int txtsize) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.v = v;
+        this.txt = txt;
+        this.txtsize=txtsize;
+    }
 
     public WhatPage getCurPag() {
         return curPag;

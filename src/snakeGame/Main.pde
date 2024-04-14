@@ -19,6 +19,8 @@ public enum WhatPage {
   MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING, MAINPAGE_hard
 }
 public WhatPage currentPage;
+public int isShowTips;
+public int volume=0;
 public HighScore highScore;
 
 public void settings() {
@@ -104,6 +106,9 @@ void keyPressed() {
 }
 void mousePressed() {
   page.handlePageJump();
+  if (currentPage==WhatPage.SETTING) {
+    page.handleSetting();
+  }
 }
 // Process Ending of Game:
 public void gameOver() {
