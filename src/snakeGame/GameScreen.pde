@@ -133,6 +133,13 @@ public class GameScreen {
     fill(255);
     int totalFoodEaten = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore();
     text("Score: "+totalFoodEaten, 1000, height+50);
+    
+    if (isShowTips==1) {
+      textAlign(CENTER,CENTER);
+      textSize(24);
+      fill(255,180);
+      text("press ↑ ↓ ← → to move                press the space bar to fire venom",width/2,10);
+    }
   }
 
   public void handleKeyPress() {

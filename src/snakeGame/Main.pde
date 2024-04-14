@@ -19,7 +19,7 @@ public enum WhatPage {
   MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING, MAINPAGE_hard
 }
 public WhatPage currentPage;
-public int isShowTips;
+public int isShowTips=1;
 public int volume=0;
 public HighScore highScore;
 
