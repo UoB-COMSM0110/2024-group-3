@@ -38,7 +38,7 @@ public class GameScreen {
   private ArrayList<EnemySnake> enemySnakes;
   private ArrayList<Venom> venom;
   private int startTime;
-  private float energy = 300;
+  private float snakeEnergy = 300;
 
 
   public GameScreen() {
@@ -114,10 +114,10 @@ public class GameScreen {
     seconds = seconds % 60;
     String timeString = nf(minutes, 2) + ":" + nf(seconds, 2);
 
-    energy -= 1;
-    energy = max(energy, 0);
-    energy = min(energy, 300);
-    if (energy == 0) {
+    snakeEnergy -= 1;
+    snakeEnergy = max(snakeEnergy, 0);
+    snakeEnergy = min(snakeEnergy, 300);
+    if (snakeEnergy == 0) {
       gameState = GameState.OVER;
     }
     fill(255, 0, 0);
@@ -129,7 +129,7 @@ public class GameScreen {
 
     text("Energy", 600, height+20);
     fill(200, 0, 200);
-    rect(450, height+50, energy, 20);
+    rect(450, height+50, snakeEnergy, 20);
     fill(255);
     int totalFoodEaten = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore();
     text("Score:"+totalFoodEaten, 1000, height+50);
@@ -273,7 +273,7 @@ public class GameScreen {
   //energy setter
 
   public void incrementEnergy() {
-    energy+=50;
+    snakeEnergy+=300;
   }
 
   public void cleanUp() {

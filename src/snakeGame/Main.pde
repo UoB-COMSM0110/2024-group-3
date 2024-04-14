@@ -8,7 +8,7 @@ public static final int height = ROWS * CELL_SIZE;  //540
 // Game State Global Variables:
 public static int difficultyMode = 0;
 public static boolean isMapLoaded = false;
-public static int numHighscore = 4;
+public static int highScoreNumber = 4;
 public GameScreen gameScreen;
 public GameState gameState;
 public enum GameState {
