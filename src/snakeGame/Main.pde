@@ -86,7 +86,8 @@ void keyPressed() {
         }
       } else if (keyCode != ENTER && keyCode != RETURN) {
         inputName += key;
-      } else if (keyCode==ESC) {
+      }
+      if (keyCode==ESC) {
         //isMapLoaded=false;
         //if (difficultyMode==0) {
         //  currentPage=WhatPage.MAINPAGE;
@@ -130,7 +131,7 @@ public void gameOver() {
   fill(255); // Set fill color to white
   textAlign(CENTER, CENTER); // Align text to the center
   textSize(32); // Set text size
-  text("Game Over", width/2, height/2); // Draw text at the center of the screen
+  text("Game Over,Please enter name", width/2, height/2); // Draw text at the center of the screen
   textSize(64);
   fill(255, 0, 0);
   text("Final score:"+totalFoodEaten, width/2, 200);
