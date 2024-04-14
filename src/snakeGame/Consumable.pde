@@ -6,6 +6,7 @@ abstract class Consumable extends GridCell {
   protected ArrayList<PVector> shape = new ArrayList<>();
   int potentialRow;
   int potentialColumn;
+  static final int boundsOffset = 2;
 
   public Consumable(GameScreen game, PVector gridLocation, int colour) {
     super(gridLocation, colour);
@@ -19,15 +20,31 @@ abstract class Consumable extends GridCell {
   abstract public void setRandomConsumableLocation();
 
   protected void findGridLocation() {
-    for (PVector cell : this.shape) {
-      while (this.game.getMapGridObjectData(potentialColumn + (int)cell.x, potentialRow + (int)cell.y) != null) {
-        this.potentialColumn = (int)(Math.random() * (COLS - 1));
-        this.potentialRow = (int)(Math.random() * (ROWS - 1));
-      }
-    }
+    boolean validLocationFound;
+    do {
+        validLocationFound = true;
+        //subtract double the bounds offset to offset the offset
+        this.potentialColumn = boundsOffset + (int)(Math.random() * (COLS - boundsOffset * 2));
+        this.potentialRow = boundsOffset + (int)(Math.random() * (ROWS - boundsOffset * 2));
+        validLocationFound = isWholeShapeValid();
+        
+    } while (!validLocationFound);
     this.gridLocation.x = this.potentialColumn;
     this.gridLocation.y = this.potentialRow;
-  }
+}
+
+  protected boolean isWholeShapeValid() {
+    for (PVector cell : this.shape) {
+        int checkColumn = potentialColumn + (int)cell.x;
+        int checkRow = potentialRow + (int)cell.y;
+        boolean outOfBounds = checkColumn >= COLS || checkRow >= ROWS || checkColumn < boundsOffset || checkRow < boundsOffset; 
+        boolean isOccupied = this.game.getMapGridObjectData(checkColumn, checkRow) != null;
+        if (outOfBounds || isOccupied) {
+            return false; 
+        }        
+    }
+    return true;
+}
 
   protected void setConsumableMapGridObjectData() {
     for (PVector cell : this.shape) {
