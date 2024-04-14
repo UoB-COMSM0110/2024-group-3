@@ -107,7 +107,7 @@ public class Page
     image(highScorePage,0,0);
     
     butList.clear();
-    Button esc_but=new Button(50, 50, 150,100, WhatPage.HIGHSCORE, difficulty==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back",36);
+    Button esc_but=new Button(50, 50, 150,100, WhatPage.HIGHSCORE, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back",36);
     butList.add(esc_but);
   
     update(mouseX,mouseY);
@@ -131,7 +131,7 @@ public class Page
     image(helpPage,0,0);
     
     butList.clear();
-    Button esc_but=new Button(50, 50, 150,100, WhatPage.HELP, difficulty==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back",36);
+    Button esc_but=new Button(50, 50, 150,100, WhatPage.HELP, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back",36);
     butList.add(esc_but);
   
     update(mouseX,mouseY);
@@ -143,7 +143,7 @@ public class Page
     image(helpPage,0,0);
     
     butList.clear();
-    Button esc_but=new Button(50, 50, 150,100, WhatPage.SETTING, difficulty==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back",36);
+    Button esc_but=new Button(50, 50, 150,100, WhatPage.SETTING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back",36);
     butList.add(esc_but);
   
     update(mouseX,mouseY);
@@ -185,9 +185,9 @@ public class Page
 
   public void handlePageJump() {
     for (int i = 0; i < butList.size(); ++i) {
-      if (curPage == butList.get(i).getCurPag()) {
+      if (currentPage == butList.get(i).getCurPag()) {
         if (butList.get(i).inside(mouseX, mouseY)) {
-          curPage = butList.get(i).getPagePoi();
+          currentPage = butList.get(i).getPagePoi();
           break;
         }
       }

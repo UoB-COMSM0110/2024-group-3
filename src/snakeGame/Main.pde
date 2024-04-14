@@ -6,7 +6,7 @@ public static final int width = COLS * CELL_SIZE;   //1200
 public static final int height = ROWS * CELL_SIZE;  //540
 
 // Game State Global Variables:
-public static int difficulty=0;
+public static int difficultyMode=0;
 public static int flag=0;
 public static int numHighscore=4;
 public GameScreen gameScreen;
@@ -18,7 +18,7 @@ public Page page;
 public enum WhatPage {
   MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING, MAINPAGE_hard
 }
-public WhatPage curPage;
+public WhatPage currentPage;
 public HighScore highScore;
 
 public void settings() {
@@ -28,14 +28,14 @@ public void setup() {
   state = GameState.PLAY;
   page = new Page();
   highScore = new HighScore();
-  curPage = WhatPage.MAINPAGE;
+  currentPage = WhatPage.MAINPAGE;
   flag=0;
 }
 public void draw() {
   //background(255);
 
   if (flag==0) {
-    if (difficulty==0) {
+    if (difficultyMode==0) {
       frameRate(10);
       gameScreen = new GameScreen();
       gameScreen.setup("mapsCSV/1.csv");
@@ -46,32 +46,32 @@ public void draw() {
     }
     flag=1;
   }
-  if (curPage==WhatPage.MAINPAGE) {
-    difficulty=0;
+  if (currentPage==WhatPage.MAINPAGE) {
+    difficultyMode=0;
     flag=0;
     page.mainPage();
     state = GameState.PLAY;
-  } else if (curPage==WhatPage.PLAYING) {
+  } else if (currentPage==WhatPage.PLAYING) {
     if (state == GameState.OVER) {
       gameOver();
     } else {
       gameScreen.update();
     }
-  } else if (curPage==WhatPage.HIGHSCORE) {
+  } else if (currentPage==WhatPage.HIGHSCORE) {
     page.highScore();
-  } else if (curPage==WhatPage.HELP) {
+  } else if (currentPage==WhatPage.HELP) {
     page.help();
-  } else if (curPage==WhatPage.SETTING) {
+  } else if (currentPage==WhatPage.SETTING) {
     page.setting();
-  } else if (curPage==WhatPage.MAINPAGE_hard) {
-    difficulty=1;
+  } else if (currentPage==WhatPage.MAINPAGE_hard) {
+    difficultyMode=1;
     flag=0;
     page.MAINPAGE_hard();
     state = GameState.PLAY;
   }
 }
 void keyPressed() {
-  if (curPage==WhatPage.PLAYING) {
+  if (currentPage==WhatPage.PLAYING) {
 
     if (state==GameState.PLAY) {
       gameScreen.handleKeyPress();
@@ -79,25 +79,25 @@ void keyPressed() {
       
       if (keyCode==ESC) {
         flag=0;
-        if (difficulty==0) {
-          curPage=WhatPage.MAINPAGE;
+        if (difficultyMode==0) {
+          currentPage=WhatPage.MAINPAGE;
         } else {
-          curPage=WhatPage.MAINPAGE_hard;
+          currentPage=WhatPage.MAINPAGE_hard;
         }
         key=0;
       }
     }
-  } else if (curPage==WhatPage.HELP) {
+  } else if (currentPage==WhatPage.HELP) {
     if (keyCode==ESC) {
-      curPage=WhatPage.MAINPAGE;
+      currentPage=WhatPage.MAINPAGE;
       key=0;
     }
   }
-  if (keyCode==ESC&&curPage!=WhatPage.PLAYING) {
-    if (difficulty == 0) {
-      curPage=WhatPage.MAINPAGE;
-    } else if (difficulty == 1) {
-      curPage=WhatPage.MAINPAGE_hard;
+  if (keyCode==ESC&&currentPage!=WhatPage.PLAYING) {
+    if (difficultyMode == 0) {
+      currentPage=WhatPage.MAINPAGE;
+    } else if (difficultyMode == 1) {
+      currentPage=WhatPage.MAINPAGE_hard;
     }
     key=0;
   }
@@ -120,7 +120,7 @@ public void gameOver() {
   textSize(32); // Set text size
   text("Game Over", width/2, height/2); // Draw text at the center of the screen
 
-  Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficulty==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Return to main menu", 24);
+  Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Return to main menu", 24);
   page.butList.add(rt_but);
   page.update(mouseX, mouseY);
   page.drawButton(rt_but);
