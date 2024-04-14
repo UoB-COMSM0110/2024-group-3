@@ -120,9 +120,9 @@ public class Page
     textSize(48);
     float w=width / 2-160;
     float h=(height / 10)+100;
-    for (int i = 0; i < num_highsocre; i++) {
-      text(highsocre.infor[i].name,  w, h+100*i);
-      text(highsocre.infor[i].score,  w+320, h+100*i);
+    for (int i = 0; i < numHighscore; i++) {
+      text(highScore.infor[i].name,  w, h+100*i);
+      text(highScore.infor[i].score,  w+320, h+100*i);
     }
   }
 

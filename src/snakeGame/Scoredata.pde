@@ -1,7 +1,7 @@
-public class Scoredata {
+public class ScoreData {
   private String name;
   private int score;
-  public Scoredata(String name, int score) {
+  public ScoreData(String name, int score) {
     this.name = name;
     this.score = score;
   }
