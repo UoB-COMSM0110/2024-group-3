@@ -150,6 +150,8 @@ public class GameScreen {
       PVector snakeVelocity = snake.getVelocity().copy();
       int venomColour = color(255, 0, 0); // Set venom color (e.g., red)
       venom.add(new Venom(this, venomColour, snakePosition.add(snakeVelocity).add(snakeVelocity), snakeVelocity));
+    }else if(keyCode==ESC){
+      key=0;
     }
   }
 

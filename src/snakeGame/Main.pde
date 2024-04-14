@@ -72,10 +72,11 @@ public void draw() {
 }
 void keyPressed() {
   if (curPage==WhatPage.PLAYING) {
+
     if (state==GameState.PLAY) {
       gameScreen.handleKeyPress();
     } else if (state==GameState.OVER) {
-
+      
       if (keyCode==ESC) {
         flag=0;
         if (difficulty==0) {
