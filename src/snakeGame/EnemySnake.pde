@@ -71,7 +71,7 @@ protected PVector generateStartingPosition(GameScreen game, int len) {
       PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
       
       if (game.snake.isPositionInSnake(testPosition)) {
-        state = GameState.OVER;
+        gameState = GameState.OVER;
       }
 
       if (!(game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y) instanceof Wall) 

@@ -118,7 +118,7 @@ public class GameScreen {
     energy = max(energy, 0);
     energy = min(energy, 300);
     if (energy == 0) {
-      state = GameState.OVER;
+      gameState = GameState.OVER;
     }
     fill(255, 0, 0);
 

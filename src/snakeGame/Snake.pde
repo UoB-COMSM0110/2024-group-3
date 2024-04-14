@@ -78,7 +78,7 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
 
     Object gridObject = game.getMapGridObjectData(headPosition);
     if (gridObject instanceof Wall || gridObject instanceof Snake) {
-      state = GameState.OVER;
+      gameState = GameState.OVER;
       return;
     }
     SnakeCell newHead = new SnakeCell(headPosition, colour);

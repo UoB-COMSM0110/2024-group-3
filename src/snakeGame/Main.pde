@@ -6,11 +6,11 @@ public static final int width = COLS * CELL_SIZE;   //1200
 public static final int height = ROWS * CELL_SIZE;  //540
 
 // Game State Global Variables:
-public static int difficultyMode=0;
-public static int flag=0;
-public static int numHighscore=4;
+public static int difficultyMode = 0;
+public static boolean isMapLoaded = false;
+public static int numHighscore = 4;
 public GameScreen gameScreen;
-public GameState state;
+public GameState gameState;
 public enum GameState {
   OVER, PLAY, PAUSE, MENU, SCORE_SCREEN
 }
@@ -25,16 +25,16 @@ public void settings() {
   size(width, height);
 }
 public void setup() {
-  state = GameState.PLAY;
+  gameState = GameState.PLAY;
   page = new Page();
   highScore = new HighScore();
   currentPage = WhatPage.MAINPAGE;
-  flag=0;
+  isMapLoaded = false;
 }
 public void draw() {
   //background(255);
 
-  if (flag==0) {
+  if (!isMapLoaded) {
     if (difficultyMode==0) {
       frameRate(10);
       gameScreen = new GameScreen();
@@ -44,15 +44,15 @@ public void draw() {
       gameScreen = new GameScreen();
       gameScreen.setup("mapsCSV/2.csv");
     }
-    flag=1;
+    isMapLoaded=true;
   }
   if (currentPage==WhatPage.MAINPAGE) {
     difficultyMode=0;
-    flag=0;
+    isMapLoaded=false;
     page.mainPage();
-    state = GameState.PLAY;
+    gameState = GameState.PLAY;
   } else if (currentPage==WhatPage.PLAYING) {
-    if (state == GameState.OVER) {
+    if (gameState == GameState.OVER) {
       gameOver();
     } else {
       gameScreen.update();
@@ -65,20 +65,20 @@ public void draw() {
     page.setting();
   } else if (currentPage==WhatPage.MAINPAGE_hard) {
     difficultyMode=1;
-    flag=0;
+    isMapLoaded=false;
     page.MAINPAGE_hard();
-    state = GameState.PLAY;
+    gameState = GameState.PLAY;
   }
 }
 void keyPressed() {
   if (currentPage==WhatPage.PLAYING) {
 
-    if (state==GameState.PLAY) {
+    if (gameState==GameState.PLAY) {
       gameScreen.handleKeyPress();
-    } else if (state==GameState.OVER) {
+    } else if (gameState==GameState.OVER) {
       
       if (keyCode==ESC) {
-        flag=0;
+        isMapLoaded=false;
         if (difficultyMode==0) {
           currentPage=WhatPage.MAINPAGE;
         } else {
