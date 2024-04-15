@@ -162,6 +162,10 @@ public class GameScreen {
     } else if (keyCode == KeyEvent.VK_SPACE  && snakeVenom > 0) {
       // Instantiate a Venom using the snake's current velocity and position
       PVector snakePosition = snake.getSnakeCells().getLast().gridLocation.copy();
+      //if snake's position is too close to top or left border, don't create venom (otherwise whole game freezes)
+      if(snakePosition.x <= 3 || snakePosition.y <= 3){
+        return;
+      }
       PVector snakeVelocity = snake.getVelocity().copy();
       int venomColour = color(200, 0, 200); // Set venom color (e.g., red)
       venom.add(new Venom(this, venomColour, snakePosition.add(snakeVelocity).add(snakeVelocity), snakeVelocity, snake));
