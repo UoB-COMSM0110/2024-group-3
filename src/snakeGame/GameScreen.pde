@@ -55,9 +55,9 @@ public class GameScreen {
     drawGameBoard();
     makeWalls(mapPath);
     renderWalls();
-    snake = new Snake(this, 5, color(190, 0, 0));
+    snake = new Snake(this, 5, color(0, 190, 0));
     snake.renderSnake();
-    enemySnakes.add(new EnemySnake(this, 5, color(0, 190, 0)));
+    enemySnakes.add(new EnemySnake(this, 5, color(190, 0, 0)));
     for (EnemySnake enemy : enemySnakes) {
       enemy.renderSnake();
     }
@@ -77,7 +77,7 @@ public class GameScreen {
 
     // frameCount value can vary depending on difficulty level!
     if (frameCount % 100 == 0) {
-      enemySnakes.add(new EnemySnake(this, 5, color(0, (int) random(100, 255), 0)));
+      enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
     }
 
     for (EnemySnake enemy : enemySnakes) {
