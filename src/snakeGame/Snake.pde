@@ -58,6 +58,12 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
 
   // add colision detecion here:
   // Method to move the snake
+  
+  private boolean hasVenomHitFood = false; //to tell snake about interaction between venom and food
+  
+  public void venomHitFood(){
+    hasVenomHitFood = true;
+  }
 
   protected void move() {
     // Move the head of the snake based on velocity
@@ -85,10 +91,14 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
     snakeCells.add(newHead);
     game.setMapGridObjectData(headPosition, this);
 
-    if (gridObject instanceof Food) {
+    if (gridObject instanceof Food ) {
       ((Food) gridObject).setRandomConsumableLocation();
       // add new head but dont remove tail:
       return;
+    }
+    if (hasVenomHitFood == true) {
+      hasVenomHitFood = false;
+      return; // return early to add new head but not remove tail:
     }
     
     if (gridObject instanceof Powerup) {
@@ -108,11 +118,5 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
       velocity.set(x, y);
     }
   }
-
-/* Josh made into a seperate Class!
-  private class SnakeCellAlex extends GridCell {
-    private SnakeCellAlex(PVector gridLocation, int colour) {
-      super(gridLocation, colour);
-    }
-  }*/
+  
 }

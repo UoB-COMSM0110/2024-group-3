@@ -7,14 +7,16 @@ public class Venom {
   private int colour;
   private boolean active;
   private GameScreen game;
+  private Snake snake;
 
-  public Venom(GameScreen game, int colour, PVector startPosition, PVector velocity) {
+  public Venom(GameScreen game, int colour, PVector startPosition, PVector velocity, Snake snake) {
     PVector originalVelocity = velocity.copy();
     this.game = game;
     this.colour = colour;
     this.velocity = velocity.copy().mult(2);
     this.venomCells = new ArrayList<>();
     this.active = true;
+    this.snake = snake;
 
     // Initialize the venom cells with two cells at the specified start position
     venomCells.add(new VenomCell(startPosition.copy(), colour));
@@ -108,6 +110,7 @@ public class Venom {
     
     if (gridObject instanceof Food) {
       consumeFood((Food) gridObject);
+      snake.venomHitFood();
     }
     if (gridObject instanceof Powerup) {
       consumePowerup((Powerup) gridObject);

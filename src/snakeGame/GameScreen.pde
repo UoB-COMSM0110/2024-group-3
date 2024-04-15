@@ -39,6 +39,8 @@ public class GameScreen {
   private ArrayList<Venom> venom;
   private int startTime;
   private float snakeVenom = 300;
+  private final int maxVenom = 300;
+  private final int venomIncrement = 50;
 
 
   public GameScreen() {
@@ -116,7 +118,7 @@ public class GameScreen {
     
 
     snakeVenom = max(snakeVenom , 0);
-    snakeVenom  = min(snakeVenom , 300);
+    snakeVenom  = min(snakeVenom , maxVenom);
     fill(255, 0, 0);
 
     windowResize(width, height+100);
@@ -125,8 +127,8 @@ public class GameScreen {
     text("Time: "+timeString, 200, height+50);
     //track bullets in UI
     String venomString = "Venom (empty: eat powerup!)";  // fallback message
-    if (snakeVenom >= 50 && snakeVenom <= 300 && snakeVenom % 50 == 0) {
-       float venomBullets = snakeVenom / 50;
+    if (snakeVenom >= venomIncrement && snakeVenom <= maxVenom && snakeVenom % venomIncrement == 0) {
+       float venomBullets = snakeVenom / venomIncrement;
        venomString = "Venom (" + (int)venomBullets + " bullets)";
     }
     text(venomString, 600, height + 20); 
@@ -158,7 +160,7 @@ public class GameScreen {
       PVector snakePosition = snake.getSnakeCells().getLast().gridLocation.copy();
       PVector snakeVelocity = snake.getVelocity().copy();
       int venomColour = color(200, 0, 200); // Set venom color (e.g., red)
-      venom.add(new Venom(this, venomColour, snakePosition.add(snakeVelocity).add(snakeVelocity), snakeVelocity));
+      venom.add(new Venom(this, venomColour, snakePosition.add(snakeVelocity).add(snakeVelocity), snakeVelocity, snake));
       depleteVenomBar();
     }else if(keyCode==ESC){
       key=0;
@@ -283,11 +285,11 @@ public class GameScreen {
   //venom setters
 
   public void refillVenomBar() {
-    snakeVenom +=300;
+    snakeVenom +=maxVenom;
   }
   
   public void depleteVenomBar() {
-    snakeVenom -=50;
+    snakeVenom -=venomIncrement;
   }
 
   public void cleanUp() {
