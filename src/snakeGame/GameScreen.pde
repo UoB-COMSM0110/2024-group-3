@@ -116,9 +116,6 @@ public class GameScreen {
 
     snakeVenom = max(snakeVenom , 0);
     snakeVenom  = min(snakeVenom , 300);
-    if (snakeVenom  == 0) {
-      gameState = GameState.OVER;
-    }
     fill(255, 0, 0);
 
     windowResize(width, height+100);
@@ -156,6 +153,7 @@ public class GameScreen {
       PVector snakeVelocity = snake.getVelocity().copy();
       int venomColour = color(200, 0, 200); // Set venom color (e.g., red)
       venom.add(new Venom(this, venomColour, snakePosition.add(snakeVelocity).add(snakeVelocity), snakeVelocity));
+      depleteVenomBar();
     }else if(keyCode==ESC){
       key=0;
     }
@@ -276,10 +274,14 @@ public class GameScreen {
     return occupiedPositions;
   }
 
-  //energy setter
+  //venom setters
 
-  public void refillVenom() {
+  public void refillVenomBar() {
     snakeVenom +=300;
+  }
+  
+  public void depleteVenomBar() {
+    snakeVenom -=50;
   }
 
   public void cleanUp() {

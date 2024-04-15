@@ -120,7 +120,7 @@ public class Venom {
   // Method to consume powerup at a specific position
   private void consumePowerup(Powerup powerup) {
     powerup.setRandomConsumableLocation();
-    game.refillVenom();
+    game.refillVenomBar();
   }
   // Helper method to check if a position has collision with wall, enemy snake, or consumable
   private boolean hasCollisionAt(PVector position) {
