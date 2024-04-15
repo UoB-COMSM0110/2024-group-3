@@ -75,6 +75,7 @@ protected PVector generateStartingPosition(GameScreen game, int len) {
       }
 
       if (!(game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y) instanceof Wall) 
+          && !(game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y) instanceof Consumable)
           && !isPositionInSnake(testPosition)
           && !occupiedPositionsByEnemies.contains(testPosition)) {
             float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);
