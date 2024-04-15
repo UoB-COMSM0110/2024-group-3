@@ -31,14 +31,14 @@ public class GameScreen {
   private Apple apple;
   private Banana banana;
   private Melon melon;
-  private EnergyBooster energyBooster;
+  private VenomRefiller venomRefiller;
 
   //dynamic objects:
   private Snake snake;
   private ArrayList<EnemySnake> enemySnakes;
   private ArrayList<Venom> venom;
   private int startTime;
-  private float snakeEnergy = 300;
+  private float snakeVenom = 300;
 
 
   public GameScreen() {
@@ -67,8 +67,8 @@ public class GameScreen {
     this.banana.setRandomConsumableLocation();
     this.melon = new Melon(this);
     this.melon.setRandomConsumableLocation();
-    this.energyBooster = new EnergyBooster(this);
-    this.energyBooster.setRandomConsumableLocation();
+    this.venomRefiller = new VenomRefiller(this);
+    this.venomRefiller.setRandomConsumableLocation();
   }
 
   public void update() {
@@ -99,7 +99,7 @@ public class GameScreen {
     banana.renderConsumable();
     melon.renderConsumable();
     apple.renderConsumable();
-    energyBooster.renderConsumable();
+    venomRefiller.renderConsumable();
     snake.renderSnake();
     for (EnemySnake enemy : enemySnakes) {
       enemy.renderSnake();
@@ -114,10 +114,9 @@ public class GameScreen {
     seconds = seconds % 60;
     String timeString = nf(minutes, 2) + ":" + nf(seconds, 2);
 
-    snakeEnergy -= 1;
-    snakeEnergy = max(snakeEnergy, 0);
-    snakeEnergy = min(snakeEnergy, 300);
-    if (snakeEnergy == 0) {
+    snakeVenom = max(snakeVenom , 0);
+    snakeVenom  = min(snakeVenom , 300);
+    if (snakeVenom  == 0) {
       gameState = GameState.OVER;
     }
     fill(255, 0, 0);
@@ -127,9 +126,9 @@ public class GameScreen {
 
     text("Time: "+timeString, 200, height+50);
 
-    text("Energy", 600, height+20);
+    text("Venom ", 600, height+20);
     fill(200, 0, 200);
-    rect(450, height+50, snakeEnergy, 20);
+    rect(450, height+50, snakeVenom , 20);
     fill(255);
     totalFoodEaten = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore();
     text("Score: "+totalFoodEaten, 1000, height+50);
@@ -155,7 +154,7 @@ public class GameScreen {
       // Instantiate a Venom using the snake's current velocity and position
       PVector snakePosition = snake.getSnakeCells().getLast().gridLocation.copy();
       PVector snakeVelocity = snake.getVelocity().copy();
-      int venomColour = color(255, 0, 0); // Set venom color (e.g., red)
+      int venomColour = color(200, 0, 200); // Set venom color (e.g., red)
       venom.add(new Venom(this, venomColour, snakePosition.add(snakeVelocity).add(snakeVelocity), snakeVelocity));
     }else if(keyCode==ESC){
       key=0;
@@ -279,8 +278,8 @@ public class GameScreen {
 
   //energy setter
 
-  public void refillEnergy() {
-    snakeEnergy+=300;
+  public void refillVenom() {
+    snakeVenom +=300;
   }
 
   public void cleanUp() {
@@ -300,9 +299,9 @@ public class GameScreen {
       melon.cleanUp();
       melon = null;
     }
-    if (energyBooster != null) {
-      energyBooster.cleanUp();
-      energyBooster = null;
+    if (venomRefiller != null) {
+      venomRefiller.cleanUp();
+      venomRefiller = null;
     }
 
     // Clear main snake
