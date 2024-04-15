@@ -1,4 +1,4 @@
-// Grid/Screen Size Global Configuration: //<>// //<>//
+// Grid/Screen Size Global Configuration: //<>//
 public static final int ROWS = 45;
 public static final int COLS = 100;
 public static final int CELL_SIZE = 12;

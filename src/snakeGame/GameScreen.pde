@@ -113,6 +113,7 @@ public class GameScreen {
     int minutes = seconds / 60;
     seconds = seconds % 60;
     String timeString = nf(minutes, 2) + ":" + nf(seconds, 2);
+    
 
     snakeVenom = max(snakeVenom , 0);
     snakeVenom  = min(snakeVenom , 300);
@@ -122,27 +123,13 @@ public class GameScreen {
     fill(255);
 
     text("Time: "+timeString, 200, height+50);
-    if(snakeVenom == 300){
-       text("Venom (6 bullets)", 600, height+20);
+    //track bullets in UI
+    String venomString = "Venom (empty: eat powerup!)";  // fallback message
+    if (snakeVenom >= 50 && snakeVenom <= 300 && snakeVenom % 50 == 0) {
+       float venomBullets = snakeVenom / 50;
+       venomString = "Venom (" + (int)venomBullets + " bullets)";
     }
-    else if(snakeVenom == 250){
-       text("Venom (5 bullets)", 600, height+20);
-    }
-    else if(snakeVenom == 200){
-       text("Venom (4 bullets)", 600, height+20);
-    }
-    else if(snakeVenom == 150){
-       text("Venom (3 bullets)", 600, height+20);
-    }
-    else if(snakeVenom == 100){
-       text("Venom (2 bullets)", 600, height+20);
-    }
-    else if(snakeVenom == 50){
-       text("Venom (1 bullet)", 600, height+20);
-    }
-    else if(snakeVenom == 0){
-      text("Venom (0 bullets: eat powerup!)", 600, height+20);
-    }
+    text(venomString, 600, height + 20); 
     fill(200, 0, 200);
     rect(450, height+50, snakeVenom , 20);
     fill(255);
