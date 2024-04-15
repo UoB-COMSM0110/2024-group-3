@@ -52,6 +52,7 @@ public void draw() {
     isMapLoaded=true;
   }
   if (currentPage==WhatPage.MAINPAGE) {
+    frameRate(30);
     difficultyMode=0;
     isMapLoaded=false;
     page.mainPage();
@@ -69,6 +70,7 @@ public void draw() {
   } else if (currentPage==WhatPage.SETTING) {
     page.setting();
   } else if (currentPage==WhatPage.MAINPAGE_hard) {
+    frameRate(30);
     difficultyMode=1;
     isMapLoaded=false;
     page.MAINPAGE_hard();
@@ -116,6 +118,9 @@ void mousePressed() {
   page.handlePageJump();
   if (currentPage==WhatPage.SETTING) {
     page.handleSetting();
+  }
+  else if (currentPage==WhatPage.HELP) {
+    page.handleHelp();
   }
 }
 // Process Ending of Game:

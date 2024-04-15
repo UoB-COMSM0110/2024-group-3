@@ -1,11 +1,19 @@
 public class Page //<>//
 {
   ArrayList<Button> butList = new ArrayList<>();
+  
   Button volMinus=new Button(500, 180, 550, 230, "-", 36);
   Button volPlus=new Button(850, 180, 900, 230, "+", 36);
   Button tips=new Button(850, 280, 900, 330, " ", 36);
+  
+  Button helpPrePag=new Button(400,450,450,500,"<",36);
+  Button helpNexPag=new Button(750,450,800,500,">",36);
+  
   PImage mainPageE, mainPageH, helpPage, highScorePage,checkIcon;
   boolean diffTog=false;
+  
+  int helpPagInd=1;
+  int maxVolume=12,maxHelpInd=2;
 
   public void mainPage() {
     mainPageE=loadImage("../images/mainPageEasy.png");
@@ -130,14 +138,20 @@ public class Page //<>//
   }
 
   public void help() {
-    helpPage=loadImage("../images/helpPageLow.png");
+    helpPage=loadImage("../images/helpPageLow"+helpPagInd+".png");
     image(helpPage, 0, 0);
 
     butList.clear();
     Button esc_but=new Button(50, 50, 150, 100, WhatPage.HELP, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
     butList.add(esc_but);
 
+    textSize(24);
+    textAlign(CENTER,CENTER);
+    text(helpPagInd+" / "+maxHelpInd,width/2,475);
+
     update(mouseX, mouseY);
+    drawButton(helpPrePag);
+    drawButton(helpNexPag);
     drawButton(esc_but);
   }
 
@@ -239,12 +253,29 @@ public class Page //<>//
         tips.hover=1;
       } else tips.hover=0;
     }
+    if (currentPage==WhatPage.HELP) {
+      if (helpPrePag.inside(mouseX,mouseY)) {
+        helpPrePag.hover=1;
+      } else helpPrePag.hover=0;
+      if (helpNexPag.inside(mouseX,mouseY)) {
+        helpNexPag.hover=1;
+      } else helpNexPag.hover=0;
+    }
+  }
+
+  public void handleHelp() {
+    if (helpPrePag.inside(mouseX,mouseY)) {
+      if (helpPagInd>1) --helpPagInd;
+    }
+    else if (helpNexPag.inside(mouseX,mouseY)) {
+      if (helpPagInd<maxHelpInd) ++helpPagInd;
+    }
   }
 
   public void handleSetting() {
     if (volPlus.inside(mouseX,mouseY)) {
       //volume=min(11,volume+1);
-      if (volume<12) ++volume;
+      if (volume<maxVolume) ++volume;
     } 
     else if (volMinus.inside(mouseX,mouseY)) {
       //volume=max(0,volume-1);
