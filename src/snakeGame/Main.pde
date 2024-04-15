@@ -86,8 +86,14 @@ void keyPressed() {
         if (inputName.length() > 0) {
           inputName = inputName.substring(0, inputName.length() - 1);
         }
-      } else if (keyCode != ENTER && keyCode != RETURN) {
+      } else if (Character.isLetterOrDigit(key)) {
         inputName += key;
+      }else if (keyCode == ENTER || keyCode == RETURN) {
+        if (inputName!="") {
+          highScore.compare(new ScoreData(inputName, totalFoodEaten));
+          inputName="";
+        }
+        currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
       }
       if (keyCode==ESC) {
         //isMapLoaded=false;
@@ -118,8 +124,7 @@ void mousePressed() {
   page.handlePageJump();
   if (currentPage==WhatPage.SETTING) {
     page.handleSetting();
-  }
-  else if (currentPage==WhatPage.HELP) {
+  } else if (currentPage==WhatPage.HELP) {
     page.handleHelp();
   }
 }
