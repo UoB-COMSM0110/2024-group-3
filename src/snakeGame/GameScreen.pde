@@ -122,8 +122,27 @@ public class GameScreen {
     fill(255);
 
     text("Time: "+timeString, 200, height+50);
-
-    text("Venom ", 600, height+20);
+    if(snakeVenom == 300){
+       text("Venom (6 bullets)", 600, height+20);
+    }
+    else if(snakeVenom == 250){
+       text("Venom (5 bullets)", 600, height+20);
+    }
+    else if(snakeVenom == 200){
+       text("Venom (4 bullets)", 600, height+20);
+    }
+    else if(snakeVenom == 150){
+       text("Venom (3 bullets)", 600, height+20);
+    }
+    else if(snakeVenom == 100){
+       text("Venom (2 bullets)", 600, height+20);
+    }
+    else if(snakeVenom == 50){
+       text("Venom (1 bullet)", 600, height+20);
+    }
+    else if(snakeVenom == 0){
+      text("Venom (0 bullets: eat powerup!)", 600, height+20);
+    }
     fill(200, 0, 200);
     rect(450, height+50, snakeVenom , 20);
     fill(255);
