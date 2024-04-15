@@ -147,7 +147,7 @@ public class GameScreen {
       snake.setVelocity(-1, 0); // Move left
     } else if (keyCode == RIGHT) {
       snake.setVelocity(1, 0);  // Move right
-    } else if (keyCode == KeyEvent.VK_SPACE) {
+    } else if (keyCode == KeyEvent.VK_SPACE  && snakeVenom > 0) {
       // Instantiate a Venom using the snake's current velocity and position
       PVector snakePosition = snake.getSnakeCells().getLast().gridLocation.copy();
       PVector snakeVelocity = snake.getVelocity().copy();
