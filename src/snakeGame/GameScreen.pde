@@ -344,8 +344,10 @@ public class GameScreen {
     }
   }
   
-// Method to remove an enemy snake from the game
-public void removeEnemySnake(EnemySnake enemySnake) {
-    enemySnakes.remove(enemySnake); // Remove from the list of enemy snakes
+public void removeEnemySnake(EnemySnake snake) {
+    for (SnakeCell cell : snake.getSnakeCells()) {
+        setMapGridObjectData(cell.getGridLocation(), null); // Clear each cell from grid
+    }
+    enemySnakes.remove(snake); // Remove snake from list
 }
 }
