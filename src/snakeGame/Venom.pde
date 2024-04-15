@@ -99,6 +99,13 @@ public class Venom {
       ((Wall) gridObject).removeWallCell(position);
       game.setMapGridObjectData(position, null);
     }
+    
+    if (gridObject instanceof EnemySnake) {
+        // Remove the enemy snake that was hit
+        game.removeEnemySnake((EnemySnake) gridObject);
+        this.active = false; // Deactivate the venom after hitting an enemy snake
+    }
+    
     if (gridObject instanceof Food) {
       consumeFood((Food) gridObject);
     }

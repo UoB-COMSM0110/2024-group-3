@@ -343,4 +343,9 @@ public class GameScreen {
       System.out.println();
     }
   }
+  
+// Method to remove an enemy snake from the game
+public void removeEnemySnake(EnemySnake enemySnake) {
+    enemySnakes.remove(enemySnake); // Remove from the list of enemy snakes
+}
 }
