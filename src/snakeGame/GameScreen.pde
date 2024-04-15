@@ -31,7 +31,8 @@ public class GameScreen {
   private Apple apple;
   private Banana banana;
   private Melon melon;
-  private VenomRefiller venomRefiller;
+  private VenomRefiller venomRefillerOne;
+  private VenomRefiller venomRefillerTwo;
 
   //dynamic objects:
   private Snake snake;
@@ -69,8 +70,10 @@ public class GameScreen {
     this.banana.setRandomConsumableLocation();
     this.melon = new Melon(this);
     this.melon.setRandomConsumableLocation();
-    this.venomRefiller = new VenomRefiller(this);
-    this.venomRefiller.setRandomConsumableLocation();
+    this.venomRefillerOne = new VenomRefiller(this);
+    this.venomRefillerOne.setRandomConsumableLocation();
+    this.venomRefillerTwo = new VenomRefiller(this);
+    this.venomRefillerTwo.setRandomConsumableLocation();
   }
 
   public void update() {
@@ -101,7 +104,8 @@ public class GameScreen {
     banana.renderConsumable();
     melon.renderConsumable();
     apple.renderConsumable();
-    venomRefiller.renderConsumable();
+    venomRefillerOne.renderConsumable();
+    venomRefillerTwo.renderConsumable();
     snake.renderSnake();
     for (EnemySnake enemy : enemySnakes) {
       enemy.renderSnake();
@@ -309,9 +313,13 @@ public class GameScreen {
       melon.cleanUp();
       melon = null;
     }
-    if (venomRefiller != null) {
-      venomRefiller.cleanUp();
-      venomRefiller = null;
+    if (venomRefillerOne != null) {
+      venomRefillerOne.cleanUp();
+      venomRefillerOne = null;
+    }
+    if (venomRefillerTwo != null) {
+      venomRefillerTwo.cleanUp();
+      venomRefillerTwo = null;
     }
 
     // Clear main snake
