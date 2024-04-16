@@ -123,8 +123,9 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
     int count = 0;
     for (SnakeCell cell : snakeCells) {
         // Check if the position matches any of the first three cells of the snake
-        System.out.println(cell.gridLocation + position);
-        if (position.equals(cell.gridLocation) && count < 3) {
+        //System.out.println("Head: " + cell.gridLocation);
+        //System.out.println("Wall: " + position + "\n");
+        if (position.equals(cell.gridLocation) && count < 4) {
             return true;
         }
         count++;
