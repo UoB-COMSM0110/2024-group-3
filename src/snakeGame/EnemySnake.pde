@@ -31,14 +31,13 @@ public class EnemySnake extends AbstractSnake {
                 PVector testPosition = new PVector(x, startY);
                 Object gridObject = game.getMapGridObjectData(x, startY);
                 
-                                
-                if (gridObject != null ||
-                    PVector.dist(testPosition, playerHead) < 18) {
-                      empty = false;
-                      break;
-                    }
+             if (gridObject != null ||
+                PVector.dist(testPosition, playerHead) < 18) {
+                empty = false;
+                break;
+            }
                 
-/*                           
+  /*                                          
                 if (game.getMapGridObjectData(x, startY) != null ||
                     PVector.dist(testPosition, playerHead) < 18 ||
                     gridObject instanceof Wall ||
@@ -48,7 +47,7 @@ public class EnemySnake extends AbstractSnake {
                     empty = false;
                     break;
                 }
-*/
+                */
             }            
 
             if (empty) {

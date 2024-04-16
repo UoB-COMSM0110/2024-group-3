@@ -82,7 +82,7 @@ public class GameScreen {
 
     // frameCount value can vary depending on difficulty level!
       if (frameCount <= 450) {
-        if (frameCount % 150 == 0) {
+        if (frameCount % 15 == 0) {
           enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
         }
       }
