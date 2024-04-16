@@ -46,10 +46,10 @@ public class Page //<>//
     Button help_but = new Button(180, 270, 360, 316, WhatPage.MAINPAGE, WhatPage.SETTING, "Settings", 36);
     butList.add(help_but);
 
-    Button hard_but = new Button(910, 70, 990, 94, WhatPage.MAINPAGE, WhatPage.MAINPAGE_hard, "Hard", 24);
+    Button hard_but = new Button(910, 70, 990, 105, WhatPage.MAINPAGE, WhatPage.MAINPAGE_hard, "Hard", 24);
     butList.add(hard_but);
 
-    Button easy_but = new Button(910, 290, 990, 314, WhatPage.MAINPAGE, WhatPage.MAINPAGE, "Easy", 24);
+    Button easy_but = new Button(910, 290, 990, 325, WhatPage.MAINPAGE, WhatPage.MAINPAGE, "Easy", 24);
     butList.add(easy_but);
 
     update(mouseX, mouseY);
@@ -94,10 +94,10 @@ public class Page //<>//
     Button help_but = new Button(180, 270, 360, 316, WhatPage.MAINPAGE_hard, WhatPage.SETTING, "Settings", 36);
     butList.add(help_but);
 
-    Button hard_but = new Button(910, 70, 990, 94, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE_hard, "Hard", 24);
+    Button hard_but = new Button(910, 70, 990, 105, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE_hard, "Hard", 24);
     butList.add(hard_but);
 
-    Button easy_but = new Button(910, 290, 990, 314, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE, "Easy", 24);
+    Button easy_but = new Button(910, 290, 990, 325, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE, "Easy", 24);
     butList.add(easy_but);
 
     update(mouseX, mouseY);
