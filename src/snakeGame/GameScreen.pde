@@ -1,4 +1,4 @@
-import java.io.BufferedReader; //<>// //<>// //<>// //<>// //<>//
+import java.io.BufferedReader; //<>// //<>// //<>// //<>// //<>// //<>//
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -81,9 +81,26 @@ public class GameScreen {
     snake.move();
 
     // frameCount value can vary depending on difficulty level!
-    if (frameCount % 100 == 0) {
-      enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
-    }
+      if (frameCount <= 450) {
+        if (frameCount % 150 == 0) {
+          enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
+        }
+      }
+      if (frameCount > 450 && frameCount <= 825) {
+        if (frameCount % 125 == 0) {
+          enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
+        }
+      } 
+      if (frameCount > 825 && frameCount <= 1125) {
+        if (frameCount % 100 == 0) {
+          enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
+        }
+      } 
+      if (frameCount > 1125) {
+        if (frameCount % 75 == 0) {
+          enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
+        }
+      }       
 
     for (EnemySnake enemy : enemySnakes) {
       enemy.move();
