@@ -77,8 +77,12 @@ public class EnemySnake extends AbstractSnake {
                 gameState = GameState.OVER;
                 return;
             }
+            
+            Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
 
-            if (!(game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y) instanceof Wall) &&
+            if (!(gridObject instanceof Wall) &&
+                !(gridObject instanceof Food) &&
+                !(gridObject instanceof Consumable) &&
                 !isPositionInSnake(testPosition) &&
                 !occupiedPositionsByEnemies.contains(testPosition)) {
                 float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);

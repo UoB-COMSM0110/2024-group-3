@@ -41,11 +41,11 @@ public void draw() {
 
   if (!isMapLoaded) {
     if (difficultyMode==0) {
-      frameRate(10);
+      frameRate(8);
       gameScreen = new GameScreen();
       gameScreen.setup("mapsCSV/1.csv");
     } else {
-      frameRate(15);
+      frameRate(13);
       gameScreen = new GameScreen();
       gameScreen.setup("mapsCSV/2.csv");
     }
