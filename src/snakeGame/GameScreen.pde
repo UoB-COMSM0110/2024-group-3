@@ -55,15 +55,16 @@ public class GameScreen {
     this.melon = new Melon(this);
   }
   public void setup(String mapPath) {
-    drawGameBoard();
+    //drawGameBoard();
+    background(0, 0, 0);
     makeWalls(mapPath);
-    renderWalls();
+    //renderWalls();
     snake = new Snake(this, 5, color(0, 190, 0));
-    snake.renderSnake();
+    //snake.renderSnake();
     enemySnakes.add(new EnemySnake(this, 5, color(190, 0, 0)));
-    for (EnemySnake enemy : enemySnakes) {
-      enemy.renderSnake();
-    }
+    //for (EnemySnake enemy : enemySnakes) {
+    //  enemy.renderSnake();
+    //}
     this.apple = new Apple(this);
     this.apple.setRandomConsumableLocation();
     this.banana = new Banana(this);
@@ -182,13 +183,18 @@ public class GameScreen {
     } else if (keyCode == KeyEvent.VK_SPACE  && snakeVenom > 0) {
       // Instantiate a Venom using the snake's current velocity and position
       PVector snakePosition = snake.getSnakeCells().getLast().gridLocation.copy();
+      PVector snakeVelocity = snake.getVelocity().copy();
       //if snake's position is too close to top or left border, don't create venom (otherwise whole game freezes)
-      if(snakePosition.x <= 3 || snakePosition.y <= 3){
+      if(snakePosition.x <= 0 && snakeVelocity.x != 0 || snakePosition.y <= 0 && snakeVelocity.y != 0
+        || snakePosition.y >= 44 && snakeVelocity.y != 0 || snakePosition.x >= 99 && snakeVelocity.x != 0){
         return;
       }
-      PVector snakeVelocity = snake.getVelocity().copy();
+      if (getMapGridObjectData(PVector.add(snakePosition, snakeVelocity)) instanceof Wall) {
+       return; 
+      }
+      
       int venomColour = color(200, 0, 200); // Set venom color (e.g., red)
-      venom.add(new Venom(this, venomColour, snakePosition.add(snakeVelocity).add(snakeVelocity), snakeVelocity, snake));
+      venom.add(new Venom(this, venomColour, snakePosition, snakeVelocity, snake));
       depleteVenomBar();
     }else if(keyCode==ESC){
       key=0;

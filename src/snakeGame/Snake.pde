@@ -83,7 +83,7 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
     }
 
     Object gridObject = game.getMapGridObjectData(headPosition);
-    if (gridObject instanceof Wall || gridObject instanceof Snake) {
+    if (gridObject instanceof Wall || gridObject instanceof Snake && !isSnakeCellWithinFirstThree(headPosition)) {
       gameState = GameState.OVER;
       return;
     }
@@ -118,5 +118,19 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
       velocity.set(x, y);
     }
   }
+  
+  private boolean isSnakeCellWithinFirstThree(PVector position) {
+    int count = 0;
+    for (SnakeCell cell : snakeCells) {
+        // Check if the position matches any of the first three cells of the snake
+        //System.out.println("Head: " + cell.gridLocation);
+        //System.out.println("Wall: " + position + "\n");
+        if (position.equals(cell.gridLocation) && count < 4) {
+            return true;
+        }
+        count++;
+    }
+    return false;
+}
   
 }

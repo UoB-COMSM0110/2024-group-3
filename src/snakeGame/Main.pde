@@ -29,6 +29,7 @@ public void settings() {
   size(width, height);
 }
 public void setup() {
+  //background(255);
   gameState = GameState.PLAY;
   page = new Page();
   highScore = new HighScore();
@@ -37,7 +38,7 @@ public void setup() {
   inputName="";
 }
 public void draw() {
-  //background(255);
+  background(255);
 
   if (!isMapLoaded) {
     if (difficultyMode==0) {
@@ -131,6 +132,7 @@ void mousePressed() {
 // Process Ending of Game:
 public void gameOver() {
   // clean up resources used in ended game:
+  background(0,0,0);
   gameScreen.cleanUp();
 
   // Draw a transparent screen over the current board state
