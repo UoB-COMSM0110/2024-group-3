@@ -29,14 +29,26 @@ public class EnemySnake extends AbstractSnake {
             for (int i = 0; i < len; i++) {
                 int x = (startX + i) % Main.COLS;
                 PVector testPosition = new PVector(x, startY);
-
+                Object gridObject = game.getMapGridObjectData(x, startY);
+                
+             if (gridObject != null ||
+                PVector.dist(testPosition, playerHead) < 18) {
+                empty = false;
+                break;
+            }
+                
+  /*                                          
                 if (game.getMapGridObjectData(x, startY) != null ||
                     PVector.dist(testPosition, playerHead) < 18 ||
-                    game.getOccupiedPositionsByEnemies(this).contains(testPosition)) {
+                    gridObject instanceof Wall ||
+                    gridObject instanceof EnemySnake ||
+                    gridObject instanceof Food ||
+                    gridObject instanceof Consumable) {
                     empty = false;
                     break;
                 }
-            }
+                */
+            }            
 
             if (empty) {
                 validPositionFound = true;
