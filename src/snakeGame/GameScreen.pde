@@ -130,10 +130,13 @@ public class GameScreen {
 
     text("Time: "+timeString, 200, height+50);
     //track bullets in UI
-    String venomString = "Venom (empty: eat powerup!)";  // fallback message
-    if (snakeVenom >= venomIncrement && snakeVenom <= maxVenom && snakeVenom % venomIncrement == 0) {
+    String venomString = "Venom (empty: eat + powerup!)";  // fallback message
+    if (snakeVenom > venomIncrement && snakeVenom <= maxVenom && snakeVenom % venomIncrement == 0) {
        float venomBullets = snakeVenom / venomIncrement;
        venomString = "Venom (" + (int)venomBullets + " bullets)";
+    }
+    if (snakeVenom == venomIncrement) {
+       venomString = "Venom (1 bullet)";
     }
     text(venomString, 600, height + 20); 
     fill(200, 0, 200);
