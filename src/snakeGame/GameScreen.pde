@@ -1,4 +1,4 @@
-import java.io.BufferedReader; //<>// //<>// //<>// //<>// //<>// //<>//
+import java.io.BufferedReader; //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -150,10 +150,10 @@ public class GameScreen {
     String venomString = "Venom (empty: eat + powerup!)";  // fallback message
     if (snakeVenom > venomIncrement && snakeVenom <= maxVenom && snakeVenom % venomIncrement == 0) {
        float venomBullets = snakeVenom / venomIncrement;
-       venomString = "Venom (" + (int)venomBullets + " bullets)";
+       venomString = "Venom (" + (int)venomBullets + " shots)";
     }
     if (snakeVenom == venomIncrement) {
-       venomString = "Venom (1 bullet)";
+       venomString = "Venom (1 shot)";
     }
     text(venomString, 600, height + 20); 
     fill(200, 0, 200);
