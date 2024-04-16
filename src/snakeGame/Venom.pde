@@ -105,7 +105,6 @@ public class Venom {
     if (gridObject instanceof EnemySnake) {
         // Remove the enemy snake that was hit
         game.removeEnemySnake((EnemySnake) gridObject);
-        this.active = false; // Deactivate the venom after hitting an enemy snake
     }
     
     if (gridObject instanceof Food) {
