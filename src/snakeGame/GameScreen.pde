@@ -162,6 +162,13 @@ public class GameScreen {
     fill(255);
     totalFoodEaten = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore();
     text("Score: "+totalFoodEaten, 1000, height+50);
+    text("Highest score before: "+highScore.infor[0].score, 1000, height+20);
+    fill(255,0,0);
+    if(totalFoodEaten>highScore.infor[0].score){
+       text("New", 1100, height+50);
+    }
+    
+    
     
     if (isShowTips==1) {
       textAlign(CENTER,CENTER);
