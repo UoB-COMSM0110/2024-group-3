@@ -227,7 +227,9 @@ public class GameScreen {
 
   private void drawGameBoard() {
     background(60);
+    if (isShowTips2==1) {
     drawGridLines();
+    }
   }
 
   private void drawGridLines() {

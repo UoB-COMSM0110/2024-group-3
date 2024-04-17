@@ -5,6 +5,8 @@ public class Page //<>//
   Button volMinus=new Button(500, 180, 550, 230, "-", 36);
   Button volPlus=new Button(850, 180, 900, 230, "+", 36);
   Button tips=new Button(850, 280, 900, 330, " ", 36);
+  Button tips2=new Button(850, 380, 900, 430, " ", 36);
+  
   
   Button helpPrePag=new Button(400,450,450,500,"<",36);
   Button helpNexPag=new Button(750,450,800,500,">",36);
@@ -173,6 +175,7 @@ public class Page //<>//
     textSize(36);
     text("Volume",300,190);
     text("Display prompts during the game",300,290);
+    text("Display grid during the game",300,390);
     
     //textAlign(LEFT,BOTTOM);
     //text(". . . . . . . . . . ",560,190);
@@ -189,6 +192,17 @@ public class Page //<>//
     drawButton(volPlus);
     drawButton(volMinus);
     drawTipsButton(tips);
+    drawTipsButton(tips2);
+    if (isShowTips==1) {
+      checkIcon=loadImage("../images/check.png");
+      checkIcon.resize(tips.w-tips.x,tips.v-tips.y);
+      image(checkIcon,tips.x,tips.y);
+    }
+    if (isShowTips2==1) {
+      checkIcon=loadImage("../images/check.png");
+      checkIcon.resize(tips2.w-tips2.x,tips2.v-tips2.y);
+      image(checkIcon,tips2.x,tips2.y);
+    }
     drawButton(esc_but);
     
   }
@@ -226,11 +240,6 @@ public class Page //<>//
     noFill();
     stroke(78, 68, 61);
     rect(but.x, but.y, but.w-but.x, but.v-but.y, rad);
-    if (isShowTips==1) {
-      checkIcon=loadImage("../images/check.png");
-      checkIcon.resize(but.w-but.x,but.v-but.y);
-      image(checkIcon,but.x,but.y);
-    }
     return;
   }
 
@@ -283,6 +292,11 @@ public class Page //<>//
     }
     else if (tips.inside(mouseX,mouseY)) {
       isShowTips^=1;
+      System.out.println("isShowTips"+isShowTips);
+    }
+    else if (tips2.inside(mouseX,mouseY)) {
+      isShowTips2^=1;
+      System.out.println("isShowTips2"+isShowTips2);
     }
   }
 

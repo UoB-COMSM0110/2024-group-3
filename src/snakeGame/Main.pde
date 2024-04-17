@@ -20,6 +20,7 @@ public enum WhatPage {
 }
 public WhatPage currentPage;
 public int isShowTips=1;
+public int isShowTips2=1;
 public int volume=0;
 public HighScore highScore;
 public String inputName;
