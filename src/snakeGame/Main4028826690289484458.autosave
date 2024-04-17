@@ -1,4 +1,4 @@
-// Grid/Screen Size Global Configuration: //<>// //<>// //<>//
+// Grid/Screen Size Global Configuration:
 public static final int ROWS = 45;
 public static final int COLS = 100;
 public static final int CELL_SIZE = 12;
@@ -153,10 +153,6 @@ void mousePressed() {
     page.handleSetting();
   } else if (currentPage==WhatPage.HELP) {
     page.handleHelp();
-  } else if (currentPage==WhatPage.HIGHSCORE) {
-    page.handleHighSco();
-  } else if (currentPage==WhatPage.MAINPAGE || currentPage==WhatPage.MAINPAGE_hard) {
-    page.handleDifMod();
   }
 
   if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
@@ -174,9 +170,9 @@ public void gameOver() {
   gameScreen.cleanUp();
 
   // Draw a transparent screen over the current board state
-  stroke(0);
   fill(0, 0, 0, 150); // Set fill color to black with 150 alpha (transparency)
-  rect(-1, -1, width+1, height+101); // Draw a rectangle covering the entire screen
+  rect(0, 0, width, height); // Draw a rectangle covering the entire screen
+
   // Draw "Game Over" text
   fill(255); // Set fill color to white
   textAlign(CENTER, CENTER); // Align text to the center
@@ -187,7 +183,7 @@ public void gameOver() {
   text("Final score:"+totalScore, width/2, 200);
   fill(255);
   drawNameBox();
-  Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save", 24);
+  Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save and Return", 24);
   page.butList.add(rt_but);
   page.update(mouseX, mouseY);
   page.drawButton(rt_but);

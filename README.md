@@ -175,6 +175,35 @@ Focus Group - Need to transcribe this.
 Quantative Evluation - NASA TLX Scores 
 Had a meeting with 5 other groups on 16.04 to collect data. 
 
+### Easy Mode
+
+| Participant # | Mental Demand | Physical Demand | Temporal Demand | Performance | Effort | Frustration |
+|-------------  |---------------|---------------|-------------------|-------------|--------|-------------|
+|        1      |       25      |       5       |      70           |    45       |   55   |      55     |
+|        2      |       70      |      10       |      30           |    60       |   70   |      70     |
+|        3      |       60      |      45       |      55           |    45       |   65   |      65     |
+|        4      |       25      |      45       |      50           |    55       |   45   |      45     |
+|        5      |       30      |      35       |      20           |    55       |   15   |      15     |
+|        6      |       65      |      75       |      70           |    60       |   35   |      35     |
+|        7      |       65      |      85       |      30           |    75       |   80   |      80     |
+|        8      |       35      |      35       |      70           |    35       |   5    |      5      |
+|        9      |       70      |      80       |      65           |    60       |   55   |      55     |
+----------------------------------------------------------------------------------------------------------
+
+### Hard Mode
+
+| Participant # | Mental Demand | Physical Demand | Temporal Demand | Performance | Effort | Frustration |
+|-------------  |---------------|---------------|-------------------|-------------|--------|-------------|
+|        1      |       45      |       5       |      80           |    75       |   60   |      65     |
+|        2      |       10      |      10       |      70           |    35       |   60   |      70     |
+|        3      |       10      |      10       |      70           |    85       |   15   |      75     |
+|        4      |       45      |      45       |      70           |    70       |   70   |      70     |
+|        5      |       25      |      25       |      65           |    45       |   85   |      45     |
+|        6      |       45      |      45       |      95           |    90       |   70   |      40     |
+|        7      |      100      |     100       |     100           |    85       |   100  |      95     |
+|        8      |       5       |      5        |      65           |    55       |   55   |      0      |
+|        9      |       45      |      45       |      90           |    75       |   80   |      65     |
+----------------------------------------------------------------------------------------------------------
 Menu Pages Feedback - lots of issues with slider, everyone wants to click a strawberry. Tutorial page moved to being a pop up when the game starts. More clarity as to what food does. Menu bar in game feedback - giving venom a out of sign so you know how much you have, why it's limited to six. More clarity as to what your venom does. Adding points for killing enemies. Making pushable buttons more obvious. 
 Game feedback - slower enemy snakes, less enemy snakes. Making easier mode easier and harder mode ramp up in difficulty. Cap on number of enemies. Adding points when killing enemies. 
 Accessibility Feedback - transition to red-green colour blindness feature.
