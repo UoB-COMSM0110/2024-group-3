@@ -1,4 +1,4 @@
-public class Page //<>// //<>//
+public class Page //<>// //<>// //<>//
 {
   ArrayList<Button> butList = new ArrayList<>();
   
@@ -41,8 +41,8 @@ public class Page //<>// //<>//
     text("SNAKE", 690, 240);
 
     textSize(30);
-    text("hard",955,120);
-    text("easy",955,335);
+    text("Hard",955,120);
+    text("Easy",955,335);
 
     butList.clear();
 
@@ -106,8 +106,8 @@ public class Page //<>// //<>//
     text("SNAKE", 690, 240);
     
     textSize(30);
-    text("hard",955,120);
-    text("easy",955,335);
+    text("Hard",955,120);
+    text("Easy",955,335);
 
     butList.clear();
 
