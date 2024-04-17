@@ -6,6 +6,8 @@ public class Page //<>// //<>//
   Button volPlus=new Button(850, 180, 900, 230, "+", 36);
   Button tips=new Button(850, 280, 900, 330, " ", 36);
   Button tips2=new Button(850, 380, 900, 430, " ", 36);
+  Button hard=new Button(940, 140, 970, 170, " ", 36);
+  Button easy=new Button(940, 355, 970, 385, " ", 36);
   
   
   Button helpPrePag=new Button(400,550,450,600,"<",36);
@@ -38,6 +40,10 @@ public class Page //<>// //<>//
     text("SURVIVAL", 690, 150);
     text("SNAKE", 690, 240);
 
+    textSize(30);
+    text("hard",955,120);
+    text("easy",955,335);
+
     butList.clear();
 
     Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, WhatPage.PLAYING, "PLAY", 72);
@@ -52,26 +58,31 @@ public class Page //<>// //<>//
     Button help_but = new Button(180, 270, 360, 316, WhatPage.MAINPAGE, WhatPage.SETTING, "Settings", 36);
     butList.add(help_but);
 
-    Button hard_but = new Button(910, 70, 990, 105, WhatPage.MAINPAGE, WhatPage.MAINPAGE_hard, "Hard", 24);
-    butList.add(hard_but);
+    //Button hard_but = new Button(900, 70, 990, 105, WhatPage.MAINPAGE, WhatPage.MAINPAGE_hard, "Hard"+(difficultyMode==1?" √":""), 24);
+    //butList.add(hard_but);
 
-    Button easy_but = new Button(910, 290, 990, 325, WhatPage.MAINPAGE, WhatPage.MAINPAGE, "Easy", 24);
-    butList.add(easy_but);
+    //Button easy_but = new Button(900, 290, 990, 325, WhatPage.MAINPAGE, WhatPage.MAINPAGE, "Easy"+(difficultyMode==0?" √":""), 24);
+    //butList.add(easy_but);
 
     update(mouseX, mouseY);
     
-    if (difficultyMode==0) {
-      easy_but.hover=1;
-    }
-    else {
-      hard_but.hover=1;
-    }
+    //if (difficultyMode==0) {
+    //  easy_but.hover=1;
+    //}
+    //else {
+    //  hard_but.hover=1;
+    //}
     //drawButton(hs_but);
     //drawButton(sg_but);
     //drawButton(help_but);
     //drawButton(set_but);
     //drawButton(hard_but);
     //drawButton(easy_but);
+    drawTipsButton(easy);
+    drawTipsButton(hard);
+    checkIcon=loadImage("../images/check.png");
+    checkIcon.resize(easy.w-easy.x,easy.v-easy.y);
+    image(checkIcon,easy.x,easy.y);
     for (Button but : butList) {
       drawButton(but);
     }
@@ -93,6 +104,10 @@ public class Page //<>// //<>//
     textSize(100);
     text("SURVIVAL", 690, 150);
     text("SNAKE", 690, 240);
+    
+    textSize(30);
+    text("hard",955,120);
+    text("easy",955,335);
 
     butList.clear();
 
@@ -108,26 +123,31 @@ public class Page //<>// //<>//
     Button help_but = new Button(180, 270, 360, 316, WhatPage.MAINPAGE_hard, WhatPage.SETTING, "Settings", 36);
     butList.add(help_but);
 
-    Button hard_but = new Button(910, 70, 990, 105, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE_hard, "Hard", 24);
-    butList.add(hard_but);
+    //Button hard_but = new Button(900, 70, 990, 105, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE_hard, "Hard"+(difficultyMode==1?" √":""), 24);
+    //butList.add(hard_but);
 
-    Button easy_but = new Button(910, 290, 990, 325, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE, "Easy", 24);
-    butList.add(easy_but);
+    //Button easy_but = new Button(900, 290, 990, 325, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE, "Easy"+(difficultyMode==0?" √":""), 24);
+    //butList.add(easy_but);
 
     update(mouseX, mouseY);
     
-    if (difficultyMode==0) {
-      easy_but.hover=1;
-    }
-    else {
-      hard_but.hover=1;
-    }
+    //if (difficultyMode==0) {
+    //  easy_but.hover=1;
+    //}
+    //else {
+    //  hard_but.hover=1;
+    //}
     //drawButton(hs_but);
     //drawButton(sg_but);
     //drawButton(help_but);
     //drawButton(set_but);
     //drawButton(hard_but);
     //drawButton(easy_but);
+    drawTipsButton(easy);
+    drawTipsButton(hard);
+    checkIcon=loadImage("../images/check.png");
+    checkIcon.resize(hard.w-hard.x,hard.v-hard.y);
+    image(checkIcon,hard.x,hard.y);
     for (Button but : butList) {
       drawButton(but);
     }
@@ -268,9 +288,9 @@ public class Page //<>// //<>//
   
   public void drawTipsButton(Button but) {
     rectMode(CORNER);
-    int rad=20;
+    int rad=10;
     noFill();
-    stroke(78, 68, 61);
+    stroke(255);
     rect(but.x, but.y, but.w-but.x, but.v-but.y, rad);
     return;
   }
@@ -327,6 +347,18 @@ public class Page //<>// //<>//
     }
     else if (highScoNexPag.inside(mouseX,mouseY)) {
       if (highScoPagInd<maxHighScoInd) ++highScoPagInd;
+    }
+  }
+
+  public void handleDifMod() {
+    if (easy.inside(mouseX,mouseY)) {
+      println("easy");
+      difficultyMode=0;
+      currentPage=WhatPage.MAINPAGE;
+    } else {
+      println("hard");
+      difficultyMode=1;
+      currentPage=WhatPage.MAINPAGE_hard;
     }
   }
 

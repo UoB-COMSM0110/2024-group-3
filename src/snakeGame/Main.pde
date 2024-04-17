@@ -155,6 +155,8 @@ void mousePressed() {
     page.handleHelp();
   } else if (currentPage==WhatPage.HIGHSCORE) {
     page.handleHighSco();
+  } else if (currentPage==WhatPage.MAINPAGE || currentPage==WhatPage.MAINPAGE_hard) {
+    page.handleDifMod();
   }
 
   if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
