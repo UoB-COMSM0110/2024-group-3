@@ -87,12 +87,13 @@ public class Page //<>//
     //textSize(32);
     textAlign(CENTER, CENTER);
     fill(255);
-    textSize(120);
-    text("SNAKE", 720, 144);
+    textSize(100);
+    text("SURVIVAL", 690, 150);
+    text("SNAKE", 690, 240);
 
     butList.clear();
 
-    Button sg_but = new Button(630, 268, 830, 350, WhatPage.MAINPAGE_hard, WhatPage.PLAYING, "PLAY", 72);
+    Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE_hard, WhatPage.PLAYING, "PLAY", 72);
     butList.add(sg_but);
 
     Button hs_but = new Button(180, 190, 360, 234, WhatPage.MAINPAGE_hard, WhatPage.HIGHSCORE, "High Score", 36);
