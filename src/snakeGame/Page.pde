@@ -55,6 +55,13 @@ public class Page //<>//
     butList.add(easy_but);
 
     update(mouseX, mouseY);
+    
+    if (difficultyMode==0) {
+      easy_but.hover=1;
+    }
+    else {
+      hard_but.hover=1;
+    }
     //drawButton(hs_but);
     //drawButton(sg_but);
     //drawButton(help_but);
@@ -103,6 +110,13 @@ public class Page //<>//
     butList.add(easy_but);
 
     update(mouseX, mouseY);
+    
+    if (difficultyMode==0) {
+      easy_but.hover=1;
+    }
+    else {
+      hard_but.hover=1;
+    }
     //drawButton(hs_but);
     //drawButton(sg_but);
     //drawButton(help_but);
@@ -219,7 +233,7 @@ public class Page //<>//
     else
     {
       noFill();
-      stroke(78, 68, 61);
+      stroke(255);
     }
     rect(but.x, but.y, but.w-but.x, but.v-but.y, rad);
 
@@ -227,9 +241,9 @@ public class Page //<>//
     textSize(but.txtsize);
     if (but.hover==1) {
       //fill(but.colr, but.colg, but.colb);
-      fill(255);
+      fill(but.bgColr,but.bgColg,but.bgColb);
     } else {
-      fill(78, 68, 61);
+      fill(but.colr,but.colg,but.colb);
     }
 
     text(but.getTxt(), (but.getW() + but.getX()) / 2, (but.getV() + but.getY()) / 2);
