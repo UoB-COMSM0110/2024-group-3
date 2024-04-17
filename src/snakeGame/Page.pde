@@ -355,7 +355,7 @@ public class Page //<>// //<>//
       println("easy");
       difficultyMode=0;
       currentPage=WhatPage.MAINPAGE;
-    } else {
+    } else if (hard.inside(mouseX,mouseY)) {
       println("hard");
       difficultyMode=1;
       currentPage=WhatPage.MAINPAGE_hard;
