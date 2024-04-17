@@ -120,6 +120,15 @@ void keyPressed() {
     }
     key=0;
   }
+  
+  
+  
+  
+  
+  if ((keyCode == ENTER || keyCode == RETURN)&&(currentPage==WhatPage.MAINPAGE||currentPage==WhatPage.MAINPAGE_hard)) {
+    currentPage=WhatPage.PLAYING;
+  }
+  
 }
 void mousePressed() {
   page.handlePageJump();
