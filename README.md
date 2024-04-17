@@ -1,6 +1,6 @@
 # Overview of Software Engineering - Group 3
 
-## Our Team
+## 1. Team
 
 | Name             | Email                     | GitHub Account       |
 |------------------|---------------------------|----------------------|
@@ -15,12 +15,15 @@
 
 <br>
 
-## Game Brief
+## 2. Introduction 
+
+### Game Brief
 Our game is going to be a version of the classic 'Snake' game, combined with the principles of a shooter game. We want to have the classic hallmarks of 'Snake' (wall avoidance, growing your snake through consuming food) and combine these with some elelements of a shooter - AI enemies that follow you around the map and a venom 'shooter' mechanic to fight these enemies with.
 <br><br>
 
-<br><br>
-## Initial Paper Prototyping
+## 3. Requirements 
+
+### Initial Paper Prototyping
 
 **Game Idea 1 : Endless Runner**
 <br>
@@ -30,16 +33,6 @@ Our game is going to be a version of the classic 'Snake' game, combined with the
 <br>
 [![](https://res.cloudinary.com/marcomontalbano/image/upload/v1707426766/video_to_markdown/images/youtube--akkWPsFFah0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=akkWPsFFah0 "")
 
-
-## Design Challenges
-* AI enemies that track the player snake around the map.
-* Collision detection.
-* Consuming food and growing the snake in length.
-* Venom mechanic.
-* Map generation and difficulty modes.
-
-<br><br>
-## External Development Factors
 ### Stakeholders
 Player, markers, the development team. 
 
@@ -76,7 +69,6 @@ Player, markers, the development team.
 
 ### Use-Case Specification
 **Actors** - Player
-
 
 **Description**
 
@@ -121,15 +113,11 @@ The player's score is recorded and can be displayed.
 If the player selects the "Exit" option from the main menu, the game will terminate, and the player will be returned to the device's home screen.
 <br><br>
 
-
 **Extensions**
 
 (Optional) Worm mode: The player can activate this mode to change the visual appearance of the snake, without altering the core game mechanics.
 
-## Case Diagram
-
-<br><br>
-## Week 2, Our Reflections
+### Our Reflections
 
 * Difficult to write user stories when the features of the game haven’t been fully clarified
   
@@ -152,9 +140,45 @@ If the player selects the "Exit" option from the main menu, the game will termin
   * Highlights ambiguity: does the snake die when its tail is cut off, or just shrink, or only die if it loses a certain amount of its tail 
 
 
-  <br>
-## Class Diagram
+## 4. Design 
+
+### Design Challenges
+* AI enemies that track the player snake around the map.
+* Collision detection.
+* Consuming food and growing the snake in length.
+* Venom mechanic.
+* Map generation and difficulty modes.
+
+### Class Diagram
 
 <img src='/images/class_diagram.png'/>
 
 
+## 5. Implementation
+
+To do
+
+
+## 6. Evaluation 
+
+To do
+
+## 7. Process
+
+To do
+
+
+## 8. Conclusion 
+
+To do
+
+## Individual contribution 
+
+| Name             | Contribution | 
+|------------------|--------------|
+| Chris Kerr       | 1            | 
+| Florence Rose    | 1            | 
+| Josh Wierszycki  | 1            | 
+| Ziyuan Lu        | 1            | 
+| Alexander Fisher | 1            | 
+| Jie Fang         | 1            | 
