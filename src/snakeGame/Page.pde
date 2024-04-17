@@ -323,7 +323,7 @@ public class Page //<>//
         if (butList.get(i).inside(mouseX, mouseY)) {
           if (gameState == GameState.OVER&&currentPage==WhatPage.PLAYING) {
             if (inputName!="") {
-              highScore.compare(new ScoreData(inputName, totalFoodEaten));
+              highScore.compare(new ScoreData(inputName, totalScore));
               inputName="";
             }
           }

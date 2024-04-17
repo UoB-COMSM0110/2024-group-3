@@ -42,6 +42,7 @@ public class GameScreen {
   private float snakeVenom = 300;
   private final int maxVenom = 300;
   private final int venomIncrement = 50;
+  private int enemyScore = 0;
 
 
   public GameScreen() {
@@ -157,15 +158,13 @@ public class GameScreen {
     fill(200, 0, 200);
     rect(450, height+50, snakeVenom , 20);
     fill(255);
-    totalFoodEaten = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore();
-    text("Your score: "+totalFoodEaten, 1000, height+50);
+    totalScore = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore() + enemyScore;
+    text("Your score: "+totalScore, 1000, height+50);
     text("High score: "+highScore.infor[0].score, 1000, height+20);
     fill(255,0,0);
-    if(totalFoodEaten>highScore.infor[0].score){
+    if(totalScore>highScore.infor[0].score){
        text("New", 1100, height+50);
     }
-    
-    
     
     if (isShowTips==1) {
       textAlign(CENTER,CENTER);
@@ -173,6 +172,10 @@ public class GameScreen {
       fill(255,180);
       text("press ↑ ↓ ← → to move                press the space bar to fire venom",width/2,10);
     }
+  }
+  
+  public void incrementEnemyScore(){
+     enemyScore+=5; 
   }
 
   public void handleKeyPress() {

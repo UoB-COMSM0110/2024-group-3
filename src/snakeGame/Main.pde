@@ -24,7 +24,7 @@ public int isShowTips2=1;
 public int volume=0;
 public HighScore highScore;
 public String inputName;
-public int totalFoodEaten;
+public int totalScore;
 
 boolean isNameBoxSelected = false;
 int cursorTimer = 0;
@@ -99,7 +99,7 @@ void keyPressed() {
 
       //}else if (keyCode == ENTER || keyCode == RETURN) {
       //  if (inputName!="") {
-      //    highScore.compare(new ScoreData(inputName, totalFoodEaten));
+      //    highScore.compare(new ScoreData(inputName, totalScore));
       //    inputName="";
       //  }
       //  currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
@@ -139,7 +139,7 @@ void keyPressed() {
       System.out.println("asdasd");
     } else if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
       if (inputName!="") {
-        highScore.compare(new ScoreData(inputName, totalFoodEaten));
+        highScore.compare(new ScoreData(inputName, totalScore));
         inputName="";
       }
       currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
@@ -180,7 +180,7 @@ public void gameOver() {
   text("Game Over,Please enter name", width/2, height/2); // Draw text at the center of the screen
   textSize(64);
   fill(255, 0, 0);
-  text("Final score:"+totalFoodEaten, width/2, 200);
+  text("Final score:"+totalScore, width/2, 200);
   fill(255);
   drawNameBox();
   Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save and Return", 24);
