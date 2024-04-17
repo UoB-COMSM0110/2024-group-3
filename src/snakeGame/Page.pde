@@ -215,7 +215,7 @@ public class Page //<>//
     //draw rounded rectangle
     rectMode(CORNER);
     int rad=20;
-    if (but.hover==1) fill(but.bgColr, but.bgColg, but.bgColb);
+    if (but.hover==0) fill(but.bgColr, but.bgColg, but.bgColb);
     else
     {
       noFill();
@@ -225,8 +225,9 @@ public class Page //<>//
 
     textAlign(CENTER, CENTER);
     textSize(but.txtsize);
-    if (but.hover==0) {
-      fill(but.colr, but.colg, but.colb);
+    if (but.hover==1) {
+      //fill(but.colr, but.colg, but.colb);
+      fill(255);
     } else {
       fill(78, 68, 61);
     }
