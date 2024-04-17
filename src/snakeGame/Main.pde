@@ -89,13 +89,14 @@ void keyPressed() {
         }
       } else if (Character.isLetterOrDigit(key)) {
         inputName += key;
-      }else if (keyCode == ENTER || keyCode == RETURN) {
-        if (inputName!="") {
-          highScore.compare(new ScoreData(inputName, totalFoodEaten));
-          inputName="";
-        }
-        currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
       }
+      //}else if (keyCode == ENTER || keyCode == RETURN) {
+      //  if (inputName!="") {
+      //    highScore.compare(new ScoreData(inputName, totalFoodEaten));
+      //    inputName="";
+      //  }
+      //  currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
+      //}
       if (keyCode==ESC) {
         //isMapLoaded=false;
         //if (difficultyMode==0) {
@@ -120,14 +121,28 @@ void keyPressed() {
     }
     key=0;
   }
-  
-  
-  
-  
-  
-  if ((keyCode == ENTER || keyCode == RETURN)&&(currentPage==WhatPage.MAINPAGE||currentPage==WhatPage.MAINPAGE_hard)) {
-    currentPage=WhatPage.PLAYING;
+  //if(currentPage==WhatPage.MAINPAGE||currentPage==WhatPage.MAINPAGE_hard){
+  //  if(keyCode == ENTER || keyCode == RETURN){
+  //    currentPage=WhatPage.PLAYING;
+  //  }
+  //}
+  if(keyCode == ENTER || keyCode == RETURN){
+    if(currentPage==WhatPage.MAINPAGE||currentPage==WhatPage.MAINPAGE_hard){
+      currentPage=WhatPage.PLAYING;
+      System.out.println("asdasd");
+    }else if(currentPage==WhatPage.PLAYING&&gameState==GameState.OVER){
+      if (inputName!="") {
+          highScore.compare(new ScoreData(inputName, totalFoodEaten));
+          inputName="";
+        }
+        currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
+        System.out.println("c");
+    }
+    
   }
+  
+  
+  
   
 }
 void mousePressed() {
