@@ -149,20 +149,17 @@ public class GameScreen {
     text("Time: "+timeString, 200, height+50);
     //track bullets in UI
     String venomString = "Venom (empty: eat + powerup!)";  // fallback message
-    if (snakeVenom > venomIncrement && snakeVenom <= maxVenom && snakeVenom % venomIncrement == 0) {
+    if (snakeVenom >= venomIncrement && snakeVenom <= maxVenom && snakeVenom % venomIncrement == 0) {
        float venomBullets = snakeVenom / venomIncrement;
-       venomString = "Venom (" + (int)venomBullets + " shots)";
-    }
-    if (snakeVenom == venomIncrement) {
-       venomString = "Venom (1 shot)";
+       venomString = "Venom (" + (int)venomBullets + "/6 shots)";
     }
     text(venomString, 600, height + 20); 
     fill(200, 0, 200);
     rect(450, height+50, snakeVenom , 20);
     fill(255);
     totalFoodEaten = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore();
-    text("Score: "+totalFoodEaten, 1000, height+50);
-    text("Highest score before: "+highScore.infor[0].score, 1000, height+20);
+    text("Your score: "+totalFoodEaten, 1000, height+50);
+    text("High score: "+highScore.infor[0].score, 1000, height+20);
     fill(255,0,0);
     if(totalFoodEaten>highScore.infor[0].score){
        text("New", 1100, height+50);
