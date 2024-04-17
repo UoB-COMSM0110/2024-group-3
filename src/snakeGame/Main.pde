@@ -1,4 +1,4 @@
-// Grid/Screen Size Global Configuration: //<>// //<>// //<>//
+// Grid/Screen Size Global Configuration: //<>// //<>// //<>// //<>//
 public static final int ROWS = 45;
 public static final int COLS = 100;
 public static final int CELL_SIZE = 12;
@@ -181,10 +181,10 @@ public void gameOver() {
   fill(255); // Set fill color to white
   textAlign(CENTER, CENTER); // Align text to the center
   textSize(32); // Set text size
-  text("Game over! Please enter your name ", width/2, height/2); // Draw text at the center of the screen
+  text("Game over! Please enter your name: ", width/2, height/2); // Draw text at the center of the screen
   textSize(64);
   fill(255, 0, 0);
-  text("Final score:"+totalScore, width/2, 200);
+  text("Final score: "+totalScore, width/2, 200);
   fill(255);
   drawNameBox();
   Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save", 24);
