@@ -30,7 +30,7 @@ boolean isNameBoxSelected = false;
 int cursorTimer = 0;
 
 public void settings() {
-  size(width, height);
+  size(width, height+100);
 }
 public void setup() {
   //background(255);
@@ -188,7 +188,7 @@ public void gameOver() {
   page.update(mouseX, mouseY);
   page.drawButton(rt_but);
 
-  windowResize(width, height);
+  windowResize(width, height+100);
 }
 
 //void handleReturn(Button but)

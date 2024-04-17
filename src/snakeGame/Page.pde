@@ -31,12 +31,13 @@ public class Page //<>//
     //textSize(32);
     textAlign(CENTER, CENTER);
     fill(255);
-    textSize(120);
-    text("SNAKE", 720, 144);
+    textSize(100);
+    text("SURVIVAL", 690, 150);
+    text("SNAKE", 690, 240);
 
     butList.clear();
 
-    Button sg_but = new Button(630, 268, 830, 350, WhatPage.MAINPAGE, WhatPage.PLAYING, "PLAY", 72);
+    Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, WhatPage.PLAYING, "PLAY", 72);
     butList.add(sg_but);
 
     Button hs_but = new Button(180, 190, 360, 234, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score", 36);
@@ -55,6 +56,13 @@ public class Page //<>//
     butList.add(easy_but);
 
     update(mouseX, mouseY);
+    
+    if (difficultyMode==0) {
+      easy_but.hover=1;
+    }
+    else {
+      hard_but.hover=1;
+    }
     //drawButton(hs_but);
     //drawButton(sg_but);
     //drawButton(help_but);
@@ -103,6 +111,13 @@ public class Page //<>//
     butList.add(easy_but);
 
     update(mouseX, mouseY);
+    
+    if (difficultyMode==0) {
+      easy_but.hover=1;
+    }
+    else {
+      hard_but.hover=1;
+    }
     //drawButton(hs_but);
     //drawButton(sg_but);
     //drawButton(help_but);
@@ -219,7 +234,7 @@ public class Page //<>//
     else
     {
       noFill();
-      stroke(78, 68, 61);
+      stroke(255);
     }
     rect(but.x, but.y, but.w-but.x, but.v-but.y, rad);
 
@@ -227,9 +242,9 @@ public class Page //<>//
     textSize(but.txtsize);
     if (but.hover==1) {
       //fill(but.colr, but.colg, but.colb);
-      fill(255);
+      fill(but.bgColr,but.bgColg,but.bgColb);
     } else {
-      fill(78, 68, 61);
+      fill(but.colr,but.colg,but.colb);
     }
 
     text(but.getTxt(), (but.getW() + but.getX()) / 2, (but.getV() + but.getY()) / 2);

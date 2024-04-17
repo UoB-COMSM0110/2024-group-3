@@ -3,7 +3,7 @@ class Button {
     private WhatPage curPag,pagePoi;
     private String txt;
 
-    private int colr = 255, colg = 255, colb = 255;
+    private int colr = 78, colg = 68, colb = 61;
     private int bgColr =255, bgColg = 255, bgColb = 255;
 
     private int txtsize = 32;

@@ -15,15 +15,17 @@
 <br>
 
 ## 2. Introduction 
-
-### Game Brief
-Our game is going to be a version of the classic 'Snake' game, combined with the principles of a shooter game. We want to have the classic hallmarks of 'Snake' (wall avoidance, growing your snake through consuming food) and combine these with some elelements of a shooter - AI enemies that follow you around the map and a venom 'shooter' mechanic to fight these enemies with.
-<br>
+Our game is a take on the classic 'Snake' game called 'Survival Snake'. The overarching principle remains the same - the player's goal is to grow their snake in length by consuming food that appears on the map, whilst also avoiding collisions with the snake itself or the map's borders. But, our game expands upon these principles by incorporating elements of the first person shooter genre into our game. 
+The player snake has a finite 'Venom' ability that allows you to destroy walls, collect food to grow your snake, and kill the enemy snakes that spawn into the game. The enemy snakes track the player snake around the map, and will kill the player snake and thus end the game if they manage to catch it. 
+Another element we've added to Survival Snake is the creation of custom maps. We have designed 4 possible maps, 2 for each difficulty mode, with each map having its own unique wall placements. In all the maps the player has the ability to 'wrap around', exiting one side of the map to re-appear on the other side, thereby adding another layer to the player snake's movement possibilities. 
+<br><br>
 
 
 ## 3. Requirements 
 
+
 ### Initial Paper Prototyping
+When we first got together we brainstormed two possible initial ideas - an 'Endless Runner' game or a 'Survival Game'. In our first session we managed to successfully create paper prototypes for both of these ideas : 
 
 **Game Idea 1 : Endless Runner**
 <br>
@@ -32,6 +34,14 @@ Our game is going to be a version of the classic 'Snake' game, combined with the
 **Game Idea 2 : Survival Game**
 <br>
 [![](https://res.cloudinary.com/marcomontalbano/image/upload/v1707426766/video_to_markdown/images/youtube--akkWPsFFah0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=akkWPsFFah0 "")
+
+However, as discussions continued we decided against pursuing either of these ideas further. The 'Endless Runner' idea seemed somewhat done to death, and we weren't sure how to implement a genuinely exciting and fun to play twist. As for the 'Survival Game' concept, whilst as a group we agreed that it would be a really fun game to create with a substantial amount of potential, we were concerned about the amount of time available to us. Instead, we decided to take some elements from both our initial thoughts - fighting an enemy 'mob' whilst managing resources + suriving for as long as possible whilst traversing a map - and applied them to a game we all knew and loved : Snake. 
+
+**Game Idea 3 : Snake Game**
+[![game](https://res.cloudinary.com/marcomontalbano/image/upload/v1713364450/video_to_markdown/images/youtube--BAkjjOerpcU-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=BAkjjOerpcU&ab_channel=jiefang "game")
+
+<br>
+As a pre-cursor to feature implementation we sat down as a team and ran through the requirements stage of our game creation. This required us to consider the following factors : 
 
 ### Stakeholders
 Player, markers, the development team. 
@@ -67,7 +77,7 @@ Player, markers, the development team.
 
 **Description**
 
-Survival Snake is a game where the player controls a snake and aims to survive for as long as possible. The snake gets bigger as it eats food, and the player can shoot venom out of the snake's mouth. The game includes moving walls and enemies that pose a threat to the snake. The player can also encircle an enemy to kill them.
+In Survival Snake the player controls a snake's movements, directing it to eat food so that it may grow whilst trying to survive for as long as possible. The player must avoid obstacles in the map in the form of walls and enemy snakes that track the player snake around the map. The player snake has a Venom ability that allows it to shoot venom at enemy snakes to kill them, whilst the enemy snakes will use  AI tracking to hunt the player snake across the map and attempt to kill it by colliding with it. 
 
 **Preconditions**
 
@@ -85,18 +95,17 @@ The player's score is recorded and can be displayed.
 2. The game displays the main menu.
 3. The player selects the "Start" option to begin the game.
 4. The game generates a snake and places it on the game grid.
-5. The player controls the snake's movement using the arrow keys or swipe gestures.
-6. As the game starts, food items appear randomly on the grid.
+5. The player controls the snake's movement using the arrow keys.
+6. As the game starts, food items and Venom powerups will appear on the map. 
 7. The player navigates the snake towards the food items to make it grow.
 8. Each time the snake eats a piece of food, its size increases.
-9. The player can press a certain key or button to shoot venom from the snake's mouth, eliminating enemies in its path.
-10. Moving walls appear periodically, creating obstacles for the snake. The player must navigate carefully to avoid collision.
-11. Enemies are introduced, and they start moving towards the snake's head, aiming to eliminate it. Some enemies may prioritize attacking the head, while others may attempt to cut off the snake's tail.
-12. The player can encircle an enemy by moving the snake around it. This results in the enemy being killed and removed from the game grid.
-13. The game continues as long as the snake avoids collision with walls and enemies.
-14. When the snake collides with a wall or an enemy, the game ends.
-15. The player's score is recorded and saved for future reference.
-16. The player is presented with the option to play again or exit the game.
+9. The player can press the spacebar to shoot venom from from the snake's mouth, eliminating enemies in its path.
+10. The player must navigate carefully to avoid collision with the map's walls. 
+11. Enemies are introduced, and they start moving towards the snake's head, aiming to eliminate it.
+12. The game continues as long as the snake avoids collision with walls and enemies.
+13. When the snake collides with a wall, an enemy or itself, the game ends.
+14. The player's score is recorded and saved for future reference.
+15. The player is presented with the option to play again or exit the game.
 
 **Alternate Flows**
 
@@ -106,7 +115,7 @@ If the player selects the "Exit" option from the main menu, the game will termin
 
 (Optional) Worm mode: The player can activate this mode to change the visual appearance of the snake, without altering the core game mechanics.
 
-### Our Reflections
+### Our Inital Reflections
 
 * Difficult to write user stories when the features of the game haven’t been fully clarified
   
@@ -128,6 +137,11 @@ If the player selects the "Exit" option from the main menu, the game will termin
   * Do we have any relationships other than “extends”?
   * Highlights ambiguity: does the snake die when its tail is cut off, or just shrink, or only die if it loses a certain amount of its tail 
 
+
+As we narrowed down our 
+
+<br>
+
 ## 4. Design 
 
 ### Design Challenges
@@ -135,29 +149,52 @@ If the player selects the "Exit" option from the main menu, the game will termin
 * Collision detection.
 * Consuming food and growing the snake in length.
 * Venom mechanic.
-* Map generation and difficulty modes.
+* Map design and difficulty modes.
 
 ### Class Diagram
 
 <img src='/images/class_diagram.png'/>
 
-## 5. Implementation
 
+
+
+## 5. Implementation
 To do
+Three areas of challenge :
+1. AI Implementation for Enemy Snakes - why did we feel we needed this. What two bugs came up the most often when writing this bit of code? How did you solve them? How did we finally implement them? What kind of player feedback did we get for this feature, how did it change the direction in which our code went?
+2. High Score Tracker - what were the challenges associated with incorporating this feature? What kind of player feedback did we get from it? 
+3. Venom Mechanic - how integral this is for our game flow. 
+<br>
 
 ## 6. Evaluation 
+Qualitive Evaluation - need Chris to decipher his handwriting.
+16.04
 
-To do
+Focus Group - Need to transcribe this. 
+
+Quantative Evluation - NASA TLX Scores 
+Had a meeting with 5 other groups on 16.04 to collect data. 
+
+Menu Pages Feedback - lots of issues with slider, everyone wants to click a strawberry. Tutorial page moved to being a pop up when the game starts. More clarity as to what food does. Menu bar in game feedback - giving venom a out of sign so you know how much you have, why it's limited to six. More clarity as to what your venom does. Adding points for killing enemies. Making pushable buttons more obvious. 
+Game feedback - slower enemy snakes, less enemy snakes. Making easier mode easier and harder mode ramp up in difficulty. Cap on number of enemies. Adding points when killing enemies. 
+Accessibility Feedback - transition to red-green colour blindness feature.
+<br>
 
 ## 7. Process
-
-To do
+* Kanban Board
+* Weekly scrum meetings 
+* Devlop branch and main branch
+* Transfer from Java to Processing
+* Everyone given little chunks to work on individually
+* Software labs useful for testing other games and getting people to test our game
+<br>
 
 ## 8. Conclusion 
-
 To do
 
-## Individual contribution 
+<br>
+
+## Individual Contributions 
 
 | Name             | Contribution | 
 |------------------|--------------|
