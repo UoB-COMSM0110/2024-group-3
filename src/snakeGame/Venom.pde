@@ -8,6 +8,7 @@ public class Venom {
   private boolean active;
   private GameScreen game;
   private Snake snake;
+  int enemyScore = 0;
 
   public Venom(GameScreen game, int colour, PVector startPosition, PVector velocity, Snake snake) {
     PVector originalVelocity = velocity.copy();
@@ -105,6 +106,7 @@ public class Venom {
     if (gridObject instanceof EnemySnake) {
         // Remove the enemy snake that was hit
         game.removeEnemySnake((EnemySnake) gridObject);
+        game.incrementEnemyScore();
     }
     
     if (gridObject instanceof Food) {
@@ -144,6 +146,7 @@ public class Venom {
       game.setMapGridObjectData(cell.gridLocation, this);
     }
   }
+  
   // Inner class representing a cell of the venom
   private class VenomCell extends GridCell {
     public VenomCell(PVector gridLocation, int colour) {
