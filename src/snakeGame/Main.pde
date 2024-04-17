@@ -185,7 +185,7 @@ public void gameOver() {
   text("Final score:"+totalScore, width/2, 200);
   fill(255);
   drawNameBox();
-  Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save and Return", 24);
+  Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save", 24);
   page.butList.add(rt_but);
   page.update(mouseX, mouseY);
   page.drawButton(rt_but);
