@@ -25,6 +25,9 @@ public HighScore highScore;
 public String inputName;
 public int totalFoodEaten;
 
+boolean isNameBoxSelected = false;
+int cursorTimer = 0;
+
 public void settings() {
   size(width, height);
 }
@@ -83,13 +86,16 @@ void keyPressed() {
     if (gameState==GameState.PLAY) {
       gameScreen.handleKeyPress();
     } else if (gameState==GameState.OVER) {
-      if (keyCode == BACKSPACE) {
-        if (inputName.length() > 0) {
-          inputName = inputName.substring(0, inputName.length() - 1);
+      if (isNameBoxSelected) {
+        if (keyCode == BACKSPACE) {
+          if (inputName.length() > 0) {
+            inputName = inputName.substring(0, inputName.length() - 1);
+          }
+        } else if (Character.isLetterOrDigit(key)) {
+          inputName += key;
         }
-      } else if (Character.isLetterOrDigit(key)) {
-        inputName += key;
       }
+
       //}else if (keyCode == ENTER || keyCode == RETURN) {
       //  if (inputName!="") {
       //    highScore.compare(new ScoreData(inputName, totalFoodEaten));
@@ -126,24 +132,19 @@ void keyPressed() {
   //    currentPage=WhatPage.PLAYING;
   //  }
   //}
-  if(keyCode == ENTER || keyCode == RETURN){
-    if(currentPage==WhatPage.MAINPAGE||currentPage==WhatPage.MAINPAGE_hard){
+  if (keyCode == ENTER || keyCode == RETURN) {
+    if (currentPage==WhatPage.MAINPAGE||currentPage==WhatPage.MAINPAGE_hard) {
       currentPage=WhatPage.PLAYING;
       System.out.println("asdasd");
-    }else if(currentPage==WhatPage.PLAYING&&gameState==GameState.OVER){
+    } else if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
       if (inputName!="") {
-          highScore.compare(new ScoreData(inputName, totalFoodEaten));
-          inputName="";
-        }
-        currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
-        System.out.println("c");
+        highScore.compare(new ScoreData(inputName, totalFoodEaten));
+        inputName="";
+      }
+      currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
+      System.out.println("c");
     }
-    
   }
-  
-  
-  
-  
 }
 void mousePressed() {
   page.handlePageJump();
@@ -152,11 +153,19 @@ void mousePressed() {
   } else if (currentPage==WhatPage.HELP) {
     page.handleHelp();
   }
+
+  if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
+    if (mouseX >= 450 && mouseX <= 750 && mouseY >= 300 && mouseY <= 350) {
+      isNameBoxSelected = true;
+    } else {
+      isNameBoxSelected = false;
+    }
+  }
 }
 // Process Ending of Game:
 public void gameOver() {
   // clean up resources used in ended game:
-  background(0,0,0);
+  background(0, 0, 0);
   gameScreen.cleanUp();
 
   // Draw a transparent screen over the current board state
@@ -198,4 +207,12 @@ void drawNameBox() {
   textSize(32);
   fill(0);
   text(inputName, 460, 325);
+  if (isNameBoxSelected) {
+    cursorTimer++;
+    if (cursorTimer % 12 < 6) {
+      float cursorX = textWidth(inputName) + 465;
+      stroke(0);
+      line(cursorX, 310, cursorX, 340);
+    }
+  }
 }
