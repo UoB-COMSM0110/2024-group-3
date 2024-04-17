@@ -13,13 +13,11 @@
 
 <img title="a title" alt="Alt text" src="/images/group3.jpg" width="522">
 
-<br>
-
 ## 2. Introduction 
 
 ### Game Brief
+
 Our game is going to be a version of the classic 'Snake' game, combined with the principles of a shooter game. We want to have the classic hallmarks of 'Snake' (wall avoidance, growing your snake through consuming food) and combine these with some elelements of a shooter - AI enemies that follow you around the map and a venom 'shooter' mechanic to fight these enemies with.
-<br><br>
 
 ## 3. Requirements 
 
@@ -35,8 +33,6 @@ Our game is going to be a version of the classic 'Snake' game, combined with the
 
 ### Stakeholders
 Player, markers, the development team. 
-
-<br>
 
 ### User Stories
 > "As a player, I want to play a game that gives me nostalgia with a new twist.”
@@ -59,13 +55,10 @@ Player, markers, the development team.
  
 > “As a marker, I want to play this game for a brief period and understand all aspects of the game quickly so that I can judge it fairly.” 
 
-<br>
-
 ### Use-Case Diagram
 
 <img src='/images/use_case_diagram.png'/>
 
-<br>
 
 ### Use-Case Specification
 **Actors** - Player
@@ -73,19 +66,16 @@ Player, markers, the development team.
 **Description**
 
 Survival Snake is a game where the player controls a snake and aims to survive for as long as possible. The snake gets bigger as it eats food, and the player can shoot venom out of the snake's mouth. The game includes moving walls and enemies that pose a threat to the snake. The player can also encircle an enemy to kill them.
-<br><br>
 
 **Preconditions**
 
 The game is launched on a compatible device(Linux/Win/Mac).
 The player is familiar with the game controls.
-<br><br>
 
 **Postconditions**
 
 The game ends when the snake collides with a wall or an enemy.
 The player's score is recorded and can be displayed.
-<br><br>
 
 **Basic Flow**
 
@@ -106,12 +96,9 @@ The player's score is recorded and can be displayed.
 15. The player's score is recorded and saved for future reference.
 16. The player is presented with the option to play again or exit the game.
 
-<br><br>
-
 **Alternate Flows**
 
 If the player selects the "Exit" option from the main menu, the game will terminate, and the player will be returned to the device's home screen.
-<br><br>
 
 **Extensions**
 
@@ -139,8 +126,7 @@ If the player selects the "Exit" option from the main menu, the game will termin
   * Do we have any relationships other than “extends”?
   * Highlights ambiguity: does the snake die when its tail is cut off, or just shrink, or only die if it loses a certain amount of its tail 
 
-
-## 4. Design 
+## 4. Design 
 
 ### Design Challenges
 * AI enemies that track the player snake around the map.
@@ -153,11 +139,9 @@ If the player selects the "Exit" option from the main menu, the game will termin
 
 <img src='/images/class_diagram.png'/>
 
-
 ## 5. Implementation
 
 To do
-
 
 ## 6. Evaluation 
 
@@ -166,7 +150,6 @@ To do
 ## 7. Process
 
 To do
-
 
 ## 8. Conclusion 
 
