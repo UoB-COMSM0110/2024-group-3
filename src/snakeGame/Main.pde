@@ -1,4 +1,4 @@
-// Grid/Screen Size Global Configuration: //<>//
+// Grid/Screen Size Global Configuration: //<>// //<>//
 public static final int ROWS = 45;
 public static final int COLS = 100;
 public static final int CELL_SIZE = 12;
@@ -153,6 +153,8 @@ void mousePressed() {
     page.handleSetting();
   } else if (currentPage==WhatPage.HELP) {
     page.handleHelp();
+  } else if (currentPage==WhatPage.HIGHSCORE) {
+    page.handleHighSco();
   }
 
   if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {

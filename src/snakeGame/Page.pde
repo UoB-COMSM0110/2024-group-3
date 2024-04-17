@@ -1,4 +1,4 @@
-public class Page //<>//
+public class Page //<>// //<>//
 {
   ArrayList<Button> butList = new ArrayList<>();
   
@@ -8,14 +8,17 @@ public class Page //<>//
   Button tips2=new Button(850, 380, 900, 430, " ", 36);
   
   
-  Button helpPrePag=new Button(400,450,450,500,"<",36);
-  Button helpNexPag=new Button(750,450,800,500,">",36);
+  Button helpPrePag=new Button(400,550,450,600,"<",36);
+  Button helpNexPag=new Button(750,550,800,600,">",36);
+  
+  Button highScoPrePag=new Button(400,550,450,600,"<",36);
+  Button highScoNexPag=new Button(750,550,800,600,">",36);
   
   PImage mainPageE, mainPageH, helpPage, highScorePage,checkIcon;
   boolean diffTog=false;
   
-  int helpPagInd=1;
-  int maxVolume=12,maxHelpInd=2;
+  int helpPagInd=1,highScoPagInd=1;
+  int maxVolume=12,maxHelpInd=2,maxHighScoInd=2;
 
   public void mainPage() {
     mainPageE=loadImage("../images/mainPageEasy.png");
@@ -139,19 +142,30 @@ public class Page //<>//
     Button esc_but=new Button(50, 50, 150, 100, WhatPage.HIGHSCORE, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
     butList.add(esc_but);
 
+    fill(255);
+    textSize(24);
+    textAlign(CENTER,CENTER);
+    text(highScoPagInd+" / "+maxHighScoInd,width/2,575);
+
     update(mouseX, mouseY);
+    drawButton(highScoPrePag);
+    drawButton(highScoNexPag);
     drawButton(esc_but);
 
-    fill(255);
-    textAlign(CENTER, CENTER);
-    textSize(80);
-    text("High Score", width / 2, height / 10);
-    textSize(48);
-    float w=width / 2-160;
-    float h=(height / 10)+100;
-    for (int i = 0; i < highScoreNumber; i++) {
-      text(highScore.infor[i].name, w, h+100*i);
-      text(highScore.infor[i].score, w+320, h+100*i);
+    if (highScoPagInd==1) {
+      fill(255);
+      textAlign(CENTER, CENTER);
+      textSize(80);
+      text("High Score", width / 2, height / 10);
+      textSize(48);
+      float w=width / 2-160;
+      float h=(height / 10)+100;
+      for (int i = 0; i < highScoreNumber; i++) {
+        text(highScore.infor[i].name, w, h+100*i);
+        text(highScore.infor[i].score, w+320, h+100*i);
+      }
+    } else {
+      
     }
   }
 
@@ -163,9 +177,10 @@ public class Page //<>//
     Button esc_but=new Button(50, 50, 150, 100, WhatPage.HELP, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
     butList.add(esc_but);
 
+    fill(255);
     textSize(24);
     textAlign(CENTER,CENTER);
-    text(helpPagInd+" / "+maxHelpInd,width/2,475);
+    text(helpPagInd+" / "+maxHelpInd,width/2,575);
 
     update(mouseX, mouseY);
     drawButton(helpPrePag);
@@ -287,6 +302,14 @@ public class Page //<>//
         helpNexPag.hover=1;
       } else helpNexPag.hover=0;
     }
+    if (currentPage==WhatPage.HIGHSCORE) {
+      if (highScoPrePag.inside(mouseX,mouseY)) {
+        highScoPrePag.hover=1;
+      } else highScoPrePag.hover=0;
+      if (highScoNexPag.inside(mouseX,mouseY)) {
+        highScoNexPag.hover=1;
+      } else highScoNexPag.hover=0;
+    }
   }
 
   public void handleHelp() {
@@ -295,6 +318,15 @@ public class Page //<>//
     }
     else if (helpNexPag.inside(mouseX,mouseY)) {
       if (helpPagInd<maxHelpInd) ++helpPagInd;
+    }
+  }
+  
+  public void handleHighSco() {
+    if (highScoPrePag.inside(mouseX,mouseY)) {
+      if (highScoPagInd>1) --highScoPagInd;
+    }
+    else if (highScoNexPag.inside(mouseX,mouseY)) {
+      if (highScoPagInd<maxHighScoInd) ++highScoPagInd;
     }
   }
 
