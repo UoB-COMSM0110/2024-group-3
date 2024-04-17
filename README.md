@@ -22,7 +22,6 @@ Our game is going to be a version of the classic 'Snake' game, combined with the
 
 
 ## 3. Requirements 
-<br>
 
 ### Initial Paper Prototyping
 
