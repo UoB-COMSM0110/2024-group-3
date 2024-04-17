@@ -12,13 +12,14 @@
 | Jie Fang         | [yh23030@bristol.ac.uk](mailto:yh23030@bristol.ac.uk) | [@Jiebristol](https://github.com/Jiebristol) |
 
 <img title="a title" alt="Alt text" src="/images/group3.jpg" width="522">
-<br>
+<br><br>
+
 ## 2. Introduction 
 
 ### Game Brief
-
 Our game is going to be a version of the classic 'Snake' game, combined with the principles of a shooter game. We want to have the classic hallmarks of 'Snake' (wall avoidance, growing your snake through consuming food) and combine these with some elelements of a shooter - AI enemies that follow you around the map and a venom 'shooter' mechanic to fight these enemies with.
-<br>
+<br><br>
+
 
 ## 3. Requirements 
 <br>
