@@ -173,7 +173,7 @@ Qualitive Evaluation - need Chris to decipher his handwriting.
 Focus Group - Need to transcribe this. 
 
 Quantative Evluation - NASA TLX Scores 
-Had a meeting with 5 other groups on 16.04 to collect data. 
+On the 14.04 we got together a little meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantative and qualitive testing components of our code. For the quantitative testing we used the NASA TLX questionairre to record feedback in 6 dimensions for both the easy and hard modes of the game : 
 
 ### Easy Mode
 
@@ -188,6 +188,7 @@ Had a meeting with 5 other groups on 16.04 to collect data.
 |        7      |       65      |      85       |      30           |    75       |   80   |      80     |
 |        8      |       35      |      35       |      70           |    35       |   5    |      5      |
 |        9      |       70      |      80       |      65           |    60       |   55   |      55     |
+|       10      |       15      |      15       |      30           |    20       |   20   |      10     |
 ----------------------------------------------------------------------------------------------------------
 
 ### Hard Mode
@@ -203,10 +204,51 @@ Had a meeting with 5 other groups on 16.04 to collect data.
 |        7      |      100      |     100       |     100           |    85       |   100  |      95     |
 |        8      |       5       |      5        |      65           |    55       |   55   |      0      |
 |        9      |       45      |      45       |      90           |    75       |   80   |      65     |
+|       10      |       50      |      40       |      65           |    65       |   60   |      60     |
 ----------------------------------------------------------------------------------------------------------
+
+### Interpreting the Results
+Using these results we are able to calculate the perceived difference in workload. First we used the formula  _(x - 1) * 5_ [where __x__ = score)  to calculate the participant's percevied demand for each dimension. Using these scores we can calculate the total perceived workload for each participant, using the formula  _(sum of each dimension) / 6_  to calculate their overall rating, as given in the final column of both tables. 
+
+Comparing the two sets of data gave us this information :
+
+| Participant # | Easy Workload | Hard Workload | Difference |
+|---------------|---------------|---------------|------------|
+|       1       |      45       |      55       |    -10     |
+|       2       |      49       |      53       |    -4      |
+|       3       |      46       |      58       |    -12     |    
+|       4       |      43       |      62       |    -19     |
+|       5       |      26       |      56       |    -30     |
+|       6       |      55       |      69       |    -14     |
+|       7       |      72       |      94       |    -22     |
+|       8       |      30       |      40       |    -10     |
+|       9       |      61       |      73       |    -12     |  
+|       10      |      18       |      57       |    -39     |
+---------------------------------------------------------------
+
+With this data we used the Wilcoxon Signed Rank Test to find the calcualted W test statistic. _N_ was 10 as that was the number of participants, and we set the significance at 0.05. Since we had 10 participants the W test statistic generated would need to be less than 8 in order for there to be a statistically significant difference in our game's difficulty levels. 
+
+|  Difference | Rank | Signed Rank |
+|-------------|------|-------------|
+|     -4      |  1   |     -1      |
+|     -10     |  2   |     -2      |
+|     -10     |  3   |     -3      |
+|     -12     |  4   |     -4      |
+|     -12     |  5   |     -5      |
+|     -14     |  6   |     -6      |
+|     -19     |  7   |     -7      |
+|     -22     |  8   |     -8      |
+|     -30     |  9   |     -9      |
+|     -39     |  10  |     -10     |
+-----------------------------------
+Ranks 2,3 and 4,5 have the same value differences. Fortunately, because they are of the same sign, this doesn't impact the test's results. The sum of our positive ranks is 0 and the sum of our negative ranks is 55, with the W test statistic coming out as 0. Since this is well below the maximum value of 8 as specified above, we can say with confidence that there is a statistically significant difference in our easy and hard difficulty modes. 
+
+
+### Testing Feedback 
 Menu Pages Feedback - lots of issues with slider, everyone wants to click a strawberry. Tutorial page moved to being a pop up when the game starts. More clarity as to what food does. Menu bar in game feedback - giving venom a out of sign so you know how much you have, why it's limited to six. More clarity as to what your venom does. Adding points for killing enemies. Making pushable buttons more obvious. 
 Game feedback - slower enemy snakes, less enemy snakes. Making easier mode easier and harder mode ramp up in difficulty. Cap on number of enemies. Adding points when killing enemies. 
 Accessibility Feedback - transition to red-green colour blindness feature.
+
 <br>
 
 ## 7. Process
