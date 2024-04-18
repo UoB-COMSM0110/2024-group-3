@@ -187,13 +187,13 @@ public class GameScreen {
   }
 
   public void handleKeyPress() {
-    if (keyCode == UP) {
+    if (keyCode == UP || key == 'w' || key == 'W') {
       snake.setVelocity(0, -1); // Move up
-    } else if (keyCode == DOWN) {
+    } else if (keyCode == DOWN|| key == 's' || key == 'S') {
       snake.setVelocity(0, 1);  // Move down
-    } else if (keyCode == LEFT) {
+    } else if (keyCode == LEFT|| key == 'a' || key == 'A') {
       snake.setVelocity(-1, 0); // Move left
-    } else if (keyCode == RIGHT) {
+    } else if (keyCode == RIGHT|| key == 'd' || key == 'D') {
       snake.setVelocity(1, 0);  // Move right
     } else if (keyCode == KeyEvent.VK_SPACE  && snakeVenom > 0) {
       // Instantiate a Venom using the snake's current velocity and position
