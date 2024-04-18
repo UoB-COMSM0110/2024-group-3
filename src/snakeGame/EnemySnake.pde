@@ -16,24 +16,24 @@ public class EnemySnake extends AbstractSnake {
     protected PVector generateStartingPosition(GameScreen game, int len) {
         Random rand = new Random(System.currentTimeMillis());
         PVector playerHead = game.snake.getSnakeCells().getLast().gridLocation;
-        boolean validPositionFound = false;
+        int positionsAttempted = 0;
+        int maxAttempts = 20;
         int startX = 0;
         int startY = 0;
-        int buffer = 5;
+        int buffer = 6;
 
-        while (!validPositionFound) {
+        while (positionsAttempted < maxAttempts) {
             startX = rand.nextInt(Main.COLS - 2 * buffer) + buffer;
             startY = rand.nextInt(Main.ROWS - 2 * buffer) + buffer;
-            boolean empty = true;
+            boolean isValid = true;
 
             for (int i = 0; i < len; i++) {
-                int x = (startX + i) % Main.COLS;
-                PVector testPosition = new PVector(x, startY);
-                Object gridObject = game.getMapGridObjectData(x, startY);
+                int y = (startY - i) % Main.ROWS;
+                PVector testPosition = new PVector(startX, y);
+                Object gridObject = game.getMapGridObjectData(startX, y);
                 
-             if (gridObject != null ||
-                PVector.dist(testPosition, playerHead) < 18) {
-                empty = false;
+             if (gridObject != null || PVector.dist(testPosition, playerHead) < 18) {
+                isValid = false;
                 break;
             }
                 
@@ -50,12 +50,14 @@ public class EnemySnake extends AbstractSnake {
                 */
             }            
 
-            if (empty) {
-                validPositionFound = true;
+            if (isValid) {
+                return new PVector(startX, startY);
             }
+            
+            positionsAttempted++;
         }
 
-        return new PVector(startX, startY);
+        return null;
     }
   
     @Override
@@ -68,14 +70,19 @@ public class EnemySnake extends AbstractSnake {
         float minDistance = Float.MAX_VALUE;
         PVector bestMove = null;
 
-        int[][] directions = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}, {0, 0}}; // Up, Right, Down, Left, Stay
+        int[][] directions = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}}; // Up, Right, Down, Left, Stay
 
         for (int[] dir : directions) {
+          
             PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
 
             if (game.snake.isPositionInSnake(testPosition)) {
                 gameState = GameState.OVER;
                 return;
+            }
+          
+            if (headPosition.x + dir[0] < 1 || headPosition.x + dir[0] > Main.COLS - 1 || headPosition.y + dir[1] < 1 || headPosition.y + dir[1] > Main.ROWS - 1) {
+              continue;
             }
             
             Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
@@ -92,7 +99,83 @@ public class EnemySnake extends AbstractSnake {
                 }
             }
         }
+        
+        if (bestMove == null) {
+          for (int[] dir : directions) {
+            PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
 
+            if (game.snake.isPositionInSnake(testPosition)) {
+                gameState = GameState.OVER;
+                return;
+            }
+            
+            Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
+
+            if (!(gridObject instanceof Wall) &&
+                !(gridObject instanceof Food) &&
+                !(gridObject instanceof Consumable) &&
+                !isPositionInSnake(testPosition) &&
+                occupiedPositionsByEnemies.contains(testPosition)) {
+                float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    bestMove = testPosition;
+                }
+            }
+        }
+      }
+      
+
+            if (bestMove == null) {
+          for (int[] dir : directions) {
+            PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
+
+            if (game.snake.isPositionInSnake(testPosition)) {
+                gameState = GameState.OVER;
+                return;
+            }
+            
+            Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
+
+            if (!(gridObject instanceof Wall) &&
+                (gridObject instanceof Food) &&
+                !(gridObject instanceof Consumable) &&
+                !isPositionInSnake(testPosition) &&
+                !occupiedPositionsByEnemies.contains(testPosition)) {
+                float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    bestMove = testPosition;
+                }
+            }
+        }
+      }
+      
+                  if (bestMove == null) {
+          for (int[] dir : directions) {
+            PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
+
+            if (game.snake.isPositionInSnake(testPosition)) {
+                gameState = GameState.OVER;
+                return;
+            }
+            
+            Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
+
+            if (!(gridObject instanceof Wall) &&
+                !(gridObject instanceof Food) &&
+                (gridObject instanceof Consumable) &&
+                !isPositionInSnake(testPosition) &&
+                !occupiedPositionsByEnemies.contains(testPosition)) {
+                float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    bestMove = testPosition;
+                }
+            }
+        }
+      }
+    
         if (bestMove != null) {
             velocity.set(bestMove.x - headPosition.x, bestMove.y - headPosition.y);
 
