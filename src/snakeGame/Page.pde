@@ -409,6 +409,7 @@ public class Page //<>// //<>// //<>// //<>//
               inputName="";
             }
           }
+          file_button.play();
           currentPage = butList.get(i).getPagePoi();
           jumped=1;
           break;

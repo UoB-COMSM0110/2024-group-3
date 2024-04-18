@@ -1,4 +1,5 @@
-// Grid/Screen Size Global Configuration: //<>// //<>// //<>// //<>// //<>//
+import processing.sound.*; //<>//
+// Grid/Screen Size Global Configuration: //<>// //<>// //<>// //<>//
 public static final int ROWS = 45;
 public static final int COLS = 100;
 public static final int CELL_SIZE = 12;
@@ -29,6 +30,9 @@ public int totalScore;
 boolean isNameBoxSelected = false;
 int cursorTimer = 0;
 
+
+SoundFile file,file_button;
+
 public void settings() {
   size(width, height+100);
 }
@@ -41,6 +45,9 @@ public void setup() {
   currentPage = WhatPage.MAINPAGE;
   isMapLoaded = false;
   inputName="";
+  file = new SoundFile(this, sketchPath("../music/sound_1.mp3"));
+  file_button = new SoundFile(this, sketchPath("../music/sound_2.mp3"));
+  
 }
 public void draw() {
   background(255);

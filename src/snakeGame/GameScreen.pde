@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.awt.event.KeyEvent;
 
+
 /*
  Game Screen which maps objects to a 2d grid for look up/collision detection:
  It has a setup function where anything that needs to be initialised at start of (e.g. walls) can be done.
@@ -76,6 +77,8 @@ public class GameScreen {
     this.venomRefillerOne.setRandomConsumableLocation();
     this.venomRefillerTwo = new VenomRefiller(this);
     this.venomRefillerTwo.setRandomConsumableLocation();
+    
+    
   }
 
   public void update() {
@@ -208,6 +211,7 @@ public class GameScreen {
       int venomColour = color(200, 0, 200); // Set venom color (e.g., red)
       venom.add(new Venom(this, venomColour, snakePosition, snakeVelocity, snake));
       depleteVenomBar();
+      file.play();
     }else if(keyCode==ESC){
       key=0;
     }
