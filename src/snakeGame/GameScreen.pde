@@ -78,7 +78,6 @@ public class GameScreen {
     this.venomRefillerTwo = new VenomRefiller(this);
     this.venomRefillerTwo.setRandomConsumableLocation();
     
-    
   }
 
   public void update() {

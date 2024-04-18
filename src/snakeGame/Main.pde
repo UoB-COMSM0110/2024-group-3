@@ -31,7 +31,7 @@ boolean isNameBoxSelected = false;
 int cursorTimer = 0;
 
 
-SoundFile file,file_button,file_click;
+SoundFile file,file_button,file_click,file_background;
 
 public void settings() {
   size(width, height+100);
@@ -48,6 +48,7 @@ public void setup() {
   file = new SoundFile(this, sketchPath("../music/sound_1.mp3"));
   file_button = new SoundFile(this, sketchPath("../music/sound_2.mp3"));
   file_click = new SoundFile(this, sketchPath("../music/sound_3.mp3"));
+  file_background = new SoundFile(this, sketchPath("../music/sound_4.mp3"));
   
 }
 public void draw() {
@@ -159,11 +160,10 @@ void keyPressed() {
         }else{
           highScore_hard.compare(new ScoreData(inputName, totalScore));
         }
-        
         inputName="";
       }
       currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
-      System.out.println("c");
+      
     }
   }
 }
@@ -180,6 +180,8 @@ void mousePressed() {
   } else if (currentPage==WhatPage.POPHELPPAGE) {
     if (page.jumped!=1) {
       currentPage=WhatPage.PLAYING;
+      file.amp(0.3);
+      file_background.loop();
     }
   }
 
@@ -195,6 +197,7 @@ void mousePressed() {
 // Process Ending of Game:
 public void gameOver() {
   // clean up resources used in ended game:
+  file_background.stop();
   background(0, 0, 0);
   gameScreen.cleanUp();
 

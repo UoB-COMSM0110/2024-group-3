@@ -267,6 +267,7 @@ public class Page //<>// //<>// //<>// //<>//
     }
     text("PRESS ANY KEY TO START",width/2,540);
     
+    
     update(mouseX,mouseY);
   }
 
@@ -424,5 +425,7 @@ public class Page //<>// //<>// //<>// //<>//
         }
       }
     }
+    
   }
+  
 }
