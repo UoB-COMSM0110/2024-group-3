@@ -176,7 +176,7 @@ public class Page //<>// //<>// //<>//
       fill(255);
       textAlign(CENTER, CENTER);
       textSize(80);
-      text("High Score", width / 2, height / 10);
+      text("High Score Easy", width / 2, height / 10);
       textSize(48);
       float w=width / 2-160;
       float h=(height / 10)+100;
@@ -185,6 +185,17 @@ public class Page //<>// //<>// //<>//
         text(highScore.infor[i].score, w+320, h+100*i);
       }
     } else {
+      fill(255);
+      textAlign(CENTER, CENTER);
+      textSize(80);
+      text("High Score Hard", width / 2, height / 10);
+      textSize(48);
+      float w=width / 2-160;
+      float h=(height / 10)+100;
+      for (int i = 0; i < highScoreNumber; i++) {
+        text(highScore_hard.infor[i].name, w, h+100*i);
+        text(highScore_hard.infor[i].score, w+320, h+100*i);
+      }
       
     }
   }
@@ -387,7 +398,12 @@ public class Page //<>// //<>// //<>//
         if (butList.get(i).inside(mouseX, mouseY)) {
           if (gameState == GameState.OVER&&currentPage==WhatPage.PLAYING) {
             if (inputName!="") {
-              highScore.compare(new ScoreData(inputName, totalScore));
+              if(difficultyMode==0){
+                highScore.compare(new ScoreData(inputName, totalScore));
+              }else{
+                highScore_hard.compare(new ScoreData(inputName, totalScore));
+              }
+              
               inputName="";
             }
           }

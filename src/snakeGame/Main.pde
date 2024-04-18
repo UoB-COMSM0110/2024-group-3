@@ -22,7 +22,7 @@ public WhatPage currentPage;
 public int isShowTips=1;
 public int isShowTips2=1;
 public int volume=0;
-public HighScore highScore;
+public HighScore highScore,highScore_hard;
 public String inputName;
 public int totalScore;
 
@@ -36,7 +36,8 @@ public void setup() {
   //background(255);
   gameState = GameState.PLAY;
   page = new Page();
-  highScore = new HighScore();
+  highScore = new HighScore("../mapsCSV/highscore.csv");
+  highScore_hard = new HighScore("../mapsCSV/highscore_hard.csv");
   currentPage = WhatPage.MAINPAGE;
   isMapLoaded = false;
   inputName="";
@@ -139,7 +140,12 @@ void keyPressed() {
       System.out.println("asdasd");
     } else if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
       if (inputName!="") {
-        highScore.compare(new ScoreData(inputName, totalScore));
+        if(difficultyMode == 0){
+          highScore.compare(new ScoreData(inputName, totalScore));
+        }else{
+          highScore_hard.compare(new ScoreData(inputName, totalScore));
+        }
+        
         inputName="";
       }
       currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;

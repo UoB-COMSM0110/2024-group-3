@@ -160,7 +160,12 @@ public class GameScreen {
     fill(255);
     totalScore = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore() + enemyScore;
     text("Your score: "+totalScore, 1000, height+50);
-    text("High score: "+highScore.infor[0].score, 1000, height+20);
+    if(difficultyMode==0){
+      text("High score: "+highScore.infor[0].score, 1000, height+20);
+    }else{
+      text("High score: "+highScore_hard.infor[0].score, 1000, height+20);
+    }
+    
     fill(255,0,0);
     if(totalScore>highScore.infor[0].score){
        text("New", 1100, height+50);
