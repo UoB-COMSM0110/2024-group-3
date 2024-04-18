@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.awt.event.KeyEvent;
 
+
 /*
  Game Screen which maps objects to a 2d grid for look up/collision detection:
  It has a setup function where anything that needs to be initialised at start of (e.g. walls) can be done.
@@ -76,6 +77,8 @@ public class GameScreen {
     this.venomRefillerOne.setRandomConsumableLocation();
     this.venomRefillerTwo = new VenomRefiller(this);
     this.venomRefillerTwo.setRandomConsumableLocation();
+    
+    
   }
 
   public void update() {
@@ -84,12 +87,12 @@ public class GameScreen {
 
     // frameCount value can vary depending on difficulty level!
       if (frameCount <= 450) {
-        if (frameCount % 150 == 0) {
+        if (frameCount % 140 == 0) {
           enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
         }
       }
       if (frameCount > 450 && frameCount <= 825) {
-        if (frameCount % 125 == 0) {
+        if (frameCount % 120 == 0) {
           enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
         }
       } 
@@ -99,7 +102,7 @@ public class GameScreen {
         }
       } 
       if (frameCount > 1125) {
-        if (frameCount % 75 == 0) {
+        if (frameCount % 60 == 0) {
           enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
         }
       }       
@@ -160,7 +163,12 @@ public class GameScreen {
     fill(255);
     totalScore = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore() + enemyScore;
     text("Your score: "+totalScore, 1000, height+50);
-    text("High score: "+highScore.infor[0].score, 1000, height+20);
+    if(difficultyMode==0){
+      text("High score: "+highScore.infor[0].score, 1000, height+20);
+    }else{
+      text("High score: "+highScore_hard.infor[0].score, 1000, height+20);
+    }
+    
     fill(255,0,0);
     if(totalScore>highScore.infor[0].score){
        text("New", 1100, height+50);
@@ -203,6 +211,7 @@ public class GameScreen {
       int venomColour = color(200, 0, 200); // Set venom color (e.g., red)
       venom.add(new Venom(this, venomColour, snakePosition, snakeVelocity, snake));
       depleteVenomBar();
+      file.play();
     }else if(keyCode==ESC){
       key=0;
     }

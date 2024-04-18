@@ -1,4 +1,4 @@
-public class Page //<>// //<>// //<>//
+public class Page //<>// //<>// //<>// //<>//
 {
   ArrayList<Button> butList = new ArrayList<>();
   
@@ -16,11 +16,14 @@ public class Page //<>// //<>// //<>//
   Button highScoPrePag=new Button(400,550,450,600,"<",36);
   Button highScoNexPag=new Button(750,550,800,600,">",36);
   
-  PImage mainPageE, mainPageH, helpPage, highScorePage,checkIcon;
+  PImage mainPageE, mainPageH, helpPage, highScorePage, popHelpPage, checkIcon;
   boolean diffTog=false;
   
   int helpPagInd=1,highScoPagInd=1;
   int maxVolume=12,maxHelpInd=2,maxHighScoInd=2;
+  
+  int frameCount=0;
+  int jumped=0; //record if the page jumped in method handlePageJump
 
   public void mainPage() {
     mainPageE=loadImage("../images/mainPageEasy.png");
@@ -46,7 +49,7 @@ public class Page //<>// //<>// //<>//
 
     butList.clear();
 
-    Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, WhatPage.PLAYING, "PLAY", 72);
+    Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, WhatPage.POPHELPPAGE, "PLAY", 72);
     butList.add(sg_but);
 
     Button hs_but = new Button(180, 190, 360, 234, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score", 36);
@@ -58,20 +61,8 @@ public class Page //<>// //<>// //<>//
     Button help_but = new Button(180, 270, 360, 316, WhatPage.MAINPAGE, WhatPage.SETTING, "Settings", 36);
     butList.add(help_but);
 
-    //Button hard_but = new Button(900, 70, 990, 105, WhatPage.MAINPAGE, WhatPage.MAINPAGE_hard, "Hard"+(difficultyMode==1?" √":""), 24);
-    //butList.add(hard_but);
-
-    //Button easy_but = new Button(900, 290, 990, 325, WhatPage.MAINPAGE, WhatPage.MAINPAGE, "Easy"+(difficultyMode==0?" √":""), 24);
-    //butList.add(easy_but);
-
     update(mouseX, mouseY);
     
-    //if (difficultyMode==0) {
-    //  easy_but.hover=1;
-    //}
-    //else {
-    //  hard_but.hover=1;
-    //}
     //drawButton(hs_but);
     //drawButton(sg_but);
     //drawButton(help_but);
@@ -111,7 +102,7 @@ public class Page //<>// //<>// //<>//
 
     butList.clear();
 
-    Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE_hard, WhatPage.PLAYING, "PLAY", 72);
+    Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE_hard, WhatPage.POPHELPPAGE, "PLAY", 72);
     butList.add(sg_but);
 
     Button hs_but = new Button(180, 190, 360, 234, WhatPage.MAINPAGE_hard, WhatPage.HIGHSCORE, "High Score", 36);
@@ -123,20 +114,8 @@ public class Page //<>// //<>// //<>//
     Button help_but = new Button(180, 270, 360, 316, WhatPage.MAINPAGE_hard, WhatPage.SETTING, "Settings", 36);
     butList.add(help_but);
 
-    //Button hard_but = new Button(900, 70, 990, 105, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE_hard, "Hard"+(difficultyMode==1?" √":""), 24);
-    //butList.add(hard_but);
-
-    //Button easy_but = new Button(900, 290, 990, 325, WhatPage.MAINPAGE_hard, WhatPage.MAINPAGE, "Easy"+(difficultyMode==0?" √":""), 24);
-    //butList.add(easy_but);
-
     update(mouseX, mouseY);
     
-    //if (difficultyMode==0) {
-    //  easy_but.hover=1;
-    //}
-    //else {
-    //  hard_but.hover=1;
-    //}
     //drawButton(hs_but);
     //drawButton(sg_but);
     //drawButton(help_but);
@@ -176,7 +155,7 @@ public class Page //<>// //<>// //<>//
       fill(255);
       textAlign(CENTER, CENTER);
       textSize(80);
-      text("High Score", width / 2, height / 10);
+      text("High Score Easy", width / 2, height / 10);
       textSize(48);
       float w=width / 2-160;
       float h=(height / 10)+100;
@@ -185,6 +164,17 @@ public class Page //<>// //<>// //<>//
         text(highScore.infor[i].score, w+320, h+100*i);
       }
     } else {
+      fill(255);
+      textAlign(CENTER, CENTER);
+      textSize(80);
+      text("High Score Hard", width / 2, height / 10);
+      textSize(48);
+      float w=width / 2-160;
+      float h=(height / 10)+100;
+      for (int i = 0; i < highScoreNumber; i++) {
+        text(highScore_hard.infor[i].name, w, h+100*i);
+        text(highScore_hard.infor[i].score, w+320, h+100*i);
+      }
       
     }
   }
@@ -256,6 +246,28 @@ public class Page //<>// //<>// //<>//
     }
     drawButton(esc_but);
     
+  }
+
+  public void popHelpPage() {
+    ++frameCount;
+    
+    popHelpPage=loadImage("../images/highScore.png");
+    image(popHelpPage, 0, 0);
+    
+    textSize(24);
+    textAlign(CENTER,CENTER);
+    if (frameCount<10) {
+      fill(255);
+    } 
+    else if (frameCount>=10 && frameCount<15) {
+      fill(180);
+    }
+    else if (frameCount>=15) {
+      frameCount=0;
+    }
+    text("PRESS ANY KEY TO START",width/2,540);
+    
+    update(mouseX,mouseY);
   }
 
   public void drawButton(Button but) {
@@ -335,18 +347,22 @@ public class Page //<>// //<>// //<>//
   public void handleHelp() {
     if (helpPrePag.inside(mouseX,mouseY)) {
       if (helpPagInd>1) --helpPagInd;
+      file_button.play();
     }
     else if (helpNexPag.inside(mouseX,mouseY)) {
       if (helpPagInd<maxHelpInd) ++helpPagInd;
+      file_button.play();
     }
   }
   
   public void handleHighSco() {
     if (highScoPrePag.inside(mouseX,mouseY)) {
       if (highScoPagInd>1) --highScoPagInd;
+      file_button.play();
     }
     else if (highScoNexPag.inside(mouseX,mouseY)) {
       if (highScoPagInd<maxHighScoInd) ++highScoPagInd;
+      file_button.play();
     }
   }
 
@@ -355,10 +371,12 @@ public class Page //<>// //<>// //<>//
       println("easy");
       difficultyMode=0;
       currentPage=WhatPage.MAINPAGE;
+      file_click.play();
     } else if (hard.inside(mouseX,mouseY)) {
       println("hard");
       difficultyMode=1;
       currentPage=WhatPage.MAINPAGE_hard;
+      file_click.play();
     }
   }
 
@@ -374,24 +392,34 @@ public class Page //<>// //<>// //<>//
     else if (tips.inside(mouseX,mouseY)) {
       isShowTips^=1;
       System.out.println("isShowTips"+isShowTips);
+      file_click.play();
     }
     else if (tips2.inside(mouseX,mouseY)) {
       isShowTips2^=1;
       System.out.println("isShowTips2"+isShowTips2);
+      file_click.play();
     }
   }
 
   public void handlePageJump() {
+    jumped=0;
     for (int i = 0; i < butList.size(); ++i) {
       if (currentPage == butList.get(i).getCurPag()) {
         if (butList.get(i).inside(mouseX, mouseY)) {
           if (gameState == GameState.OVER&&currentPage==WhatPage.PLAYING) {
             if (inputName!="") {
-              highScore.compare(new ScoreData(inputName, totalScore));
+              if(difficultyMode==0){
+                highScore.compare(new ScoreData(inputName, totalScore));
+              }else{
+                highScore_hard.compare(new ScoreData(inputName, totalScore));
+              }
+              
               inputName="";
             }
           }
+          file_button.play();
           currentPage = butList.get(i).getPagePoi();
+          jumped=1;
           break;
         }
       }

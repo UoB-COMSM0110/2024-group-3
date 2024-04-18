@@ -1,8 +1,9 @@
 import java.io.*;
 public class HighScore {
   ScoreData[] infor=new ScoreData[highScoreNumber];
-  String datafile = sketchPath("../mapsCSV/highscore.csv");
-  public HighScore() {
+  String datafile;
+  public HighScore(String s) {
+    datafile = sketchPath(s);
     String line = "";
     try (BufferedReader br = new BufferedReader(new FileReader(datafile))) {
       for (int i = 0; i < highScoreNumber; i++) {

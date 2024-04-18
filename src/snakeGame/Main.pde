@@ -1,3 +1,4 @@
+import processing.sound.*; //<>//
 // Grid/Screen Size Global Configuration: //<>// //<>// //<>// //<>//
 public static final int ROWS = 45;
 public static final int COLS = 100;
@@ -16,18 +17,21 @@ public enum GameState {
 }
 public Page page;
 public enum WhatPage {
-  MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING, MAINPAGE_hard
+  MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING, MAINPAGE_hard, POPHELPPAGE
 }
 public WhatPage currentPage;
 public int isShowTips=1;
 public int isShowTips2=1;
 public int volume=0;
-public HighScore highScore;
+public HighScore highScore,highScore_hard;
 public String inputName;
 public int totalScore;
 
 boolean isNameBoxSelected = false;
 int cursorTimer = 0;
+
+
+SoundFile file,file_button,file_click;
 
 public void settings() {
   size(width, height+100);
@@ -36,10 +40,15 @@ public void setup() {
   //background(255);
   gameState = GameState.PLAY;
   page = new Page();
-  highScore = new HighScore();
+  highScore = new HighScore("../mapsCSV/highscore.csv");
+  highScore_hard = new HighScore("../mapsCSV/highscore_hard.csv");
   currentPage = WhatPage.MAINPAGE;
   isMapLoaded = false;
   inputName="";
+  file = new SoundFile(this, sketchPath("../music/sound_1.mp3"));
+  file_button = new SoundFile(this, sketchPath("../music/sound_2.mp3"));
+  file_click = new SoundFile(this, sketchPath("../music/sound_3.mp3"));
+  
 }
 public void draw() {
   background(255);
@@ -80,6 +89,8 @@ public void draw() {
     isMapLoaded=false;
     page.MAINPAGE_hard();
     gameState = GameState.PLAY;
+  } else if (currentPage==WhatPage.POPHELPPAGE) {
+    page.popHelpPage();
   }
 }
 void keyPressed() {
@@ -119,6 +130,10 @@ void keyPressed() {
       currentPage=WhatPage.MAINPAGE;
       key=0;
     }
+  } else if (currentPage==WhatPage.POPHELPPAGE) {
+    if (keyCode!=0) {
+      currentPage=WhatPage.PLAYING;
+    }
   }
   if (keyCode==ESC&&currentPage!=WhatPage.PLAYING) {
     if (difficultyMode == 0) {
@@ -135,11 +150,16 @@ void keyPressed() {
   //}
   if (keyCode == ENTER || keyCode == RETURN) {
     if (currentPage==WhatPage.MAINPAGE||currentPage==WhatPage.MAINPAGE_hard) {
-      currentPage=WhatPage.PLAYING;
+      currentPage=WhatPage.POPHELPPAGE;
       System.out.println("asdasd");
     } else if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
       if (inputName!="") {
-        highScore.compare(new ScoreData(inputName, totalScore));
+        if(difficultyMode == 0){
+          highScore.compare(new ScoreData(inputName, totalScore));
+        }else{
+          highScore_hard.compare(new ScoreData(inputName, totalScore));
+        }
+        
         inputName="";
       }
       currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
@@ -157,11 +177,16 @@ void mousePressed() {
     page.handleHighSco();
   } else if (currentPage==WhatPage.MAINPAGE || currentPage==WhatPage.MAINPAGE_hard) {
     page.handleDifMod();
+  } else if (currentPage==WhatPage.POPHELPPAGE) {
+    if (page.jumped!=1) {
+      currentPage=WhatPage.PLAYING;
+    }
   }
 
   if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
     if (mouseX >= 450 && mouseX <= 750 && mouseY >= 300 && mouseY <= 350) {
       isNameBoxSelected = true;
+      file_click.play();
     } else {
       isNameBoxSelected = false;
     }
