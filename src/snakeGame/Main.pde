@@ -31,7 +31,7 @@ boolean isNameBoxSelected = false;
 int cursorTimer = 0;
 
 
-SoundFile file,file_button;
+SoundFile file,file_button,file_click;
 
 public void settings() {
   size(width, height+100);
@@ -47,6 +47,7 @@ public void setup() {
   inputName="";
   file = new SoundFile(this, sketchPath("../music/sound_1.mp3"));
   file_button = new SoundFile(this, sketchPath("../music/sound_2.mp3"));
+  file_click = new SoundFile(this, sketchPath("../music/sound_3.mp3"));
   
 }
 public void draw() {
@@ -185,6 +186,7 @@ void mousePressed() {
   if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
     if (mouseX >= 450 && mouseX <= 750 && mouseY >= 300 && mouseY <= 350) {
       isNameBoxSelected = true;
+      file_click.play();
     } else {
       isNameBoxSelected = false;
     }

@@ -347,18 +347,22 @@ public class Page //<>// //<>// //<>// //<>//
   public void handleHelp() {
     if (helpPrePag.inside(mouseX,mouseY)) {
       if (helpPagInd>1) --helpPagInd;
+      file_button.play();
     }
     else if (helpNexPag.inside(mouseX,mouseY)) {
       if (helpPagInd<maxHelpInd) ++helpPagInd;
+      file_button.play();
     }
   }
   
   public void handleHighSco() {
     if (highScoPrePag.inside(mouseX,mouseY)) {
       if (highScoPagInd>1) --highScoPagInd;
+      file_button.play();
     }
     else if (highScoNexPag.inside(mouseX,mouseY)) {
       if (highScoPagInd<maxHighScoInd) ++highScoPagInd;
+      file_button.play();
     }
   }
 
@@ -367,10 +371,12 @@ public class Page //<>// //<>// //<>// //<>//
       println("easy");
       difficultyMode=0;
       currentPage=WhatPage.MAINPAGE;
+      file_click.play();
     } else if (hard.inside(mouseX,mouseY)) {
       println("hard");
       difficultyMode=1;
       currentPage=WhatPage.MAINPAGE_hard;
+      file_click.play();
     }
   }
 
@@ -386,10 +392,12 @@ public class Page //<>// //<>// //<>// //<>//
     else if (tips.inside(mouseX,mouseY)) {
       isShowTips^=1;
       System.out.println("isShowTips"+isShowTips);
+      file_click.play();
     }
     else if (tips2.inside(mouseX,mouseY)) {
       isShowTips2^=1;
       System.out.println("isShowTips2"+isShowTips2);
+      file_click.play();
     }
   }
 
