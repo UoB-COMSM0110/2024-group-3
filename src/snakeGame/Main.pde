@@ -1,4 +1,4 @@
-// Grid/Screen Size Global Configuration: //<>// //<>// //<>// //<>//
+// Grid/Screen Size Global Configuration: //<>// //<>// //<>// //<>// //<>//
 public static final int ROWS = 45;
 public static final int COLS = 100;
 public static final int CELL_SIZE = 12;
@@ -16,7 +16,7 @@ public enum GameState {
 }
 public Page page;
 public enum WhatPage {
-  MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING, MAINPAGE_hard
+  MAINPAGE, PLAYING, HIGHSCORE, HELP, SETTING, MAINPAGE_hard, POPHELPPAGE
 }
 public WhatPage currentPage;
 public int isShowTips=1;
@@ -81,6 +81,8 @@ public void draw() {
     isMapLoaded=false;
     page.MAINPAGE_hard();
     gameState = GameState.PLAY;
+  } else if (currentPage==WhatPage.POPHELPPAGE) {
+    page.popHelpPage();
   }
 }
 void keyPressed() {
@@ -120,6 +122,10 @@ void keyPressed() {
       currentPage=WhatPage.MAINPAGE;
       key=0;
     }
+  } else if (currentPage==WhatPage.POPHELPPAGE) {
+    if (keyCode!=0) {
+      currentPage=WhatPage.PLAYING;
+    }
   }
   if (keyCode==ESC&&currentPage!=WhatPage.PLAYING) {
     if (difficultyMode == 0) {
@@ -136,7 +142,7 @@ void keyPressed() {
   //}
   if (keyCode == ENTER || keyCode == RETURN) {
     if (currentPage==WhatPage.MAINPAGE||currentPage==WhatPage.MAINPAGE_hard) {
-      currentPage=WhatPage.PLAYING;
+      currentPage=WhatPage.POPHELPPAGE;
       System.out.println("asdasd");
     } else if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
       if (inputName!="") {
@@ -163,6 +169,10 @@ void mousePressed() {
     page.handleHighSco();
   } else if (currentPage==WhatPage.MAINPAGE || currentPage==WhatPage.MAINPAGE_hard) {
     page.handleDifMod();
+  } else if (currentPage==WhatPage.POPHELPPAGE) {
+    if (page.jumped!=1) {
+      currentPage=WhatPage.PLAYING;
+    }
   }
 
   if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
