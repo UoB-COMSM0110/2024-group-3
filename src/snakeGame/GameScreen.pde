@@ -84,12 +84,12 @@ public class GameScreen {
 
     // frameCount value can vary depending on difficulty level!
       if (frameCount <= 450) {
-        if (frameCount % 150 == 0) {
+        if (frameCount % 140 == 0) {
           enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
         }
       }
       if (frameCount > 450 && frameCount <= 825) {
-        if (frameCount % 125 == 0) {
+        if (frameCount % 120 == 0) {
           enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
         }
       } 
@@ -99,7 +99,7 @@ public class GameScreen {
         }
       } 
       if (frameCount > 1125) {
-        if (frameCount % 75 == 0) {
+        if (frameCount % 60 == 0) {
           enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
         }
       }       

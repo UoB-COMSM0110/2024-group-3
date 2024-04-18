@@ -16,6 +16,7 @@ public class EnemySnake extends AbstractSnake {
     protected PVector generateStartingPosition(GameScreen game, int len) {
         Random rand = new Random(System.currentTimeMillis());
         PVector playerHead = game.snake.getSnakeCells().getLast().gridLocation;
+        PVector playerTail = game.snake.getSnakeCells().getFirst().gridLocation;
         int positionsAttempted = 0;
         int maxAttempts = 20;
         int startX = 0;
@@ -32,7 +33,7 @@ public class EnemySnake extends AbstractSnake {
                 PVector testPosition = new PVector(startX, y);
                 Object gridObject = game.getMapGridObjectData(startX, y);
                 
-             if (gridObject != null || PVector.dist(testPosition, playerHead) < 18) {
+             if (gridObject != null || PVector.dist(testPosition, playerHead) < 18 || PVector.dist(testPosition, playerTail) < 18) {
                 isValid = false;
                 break;
             }
@@ -111,10 +112,8 @@ public class EnemySnake extends AbstractSnake {
             
             Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
 
-            if (!(gridObject instanceof Wall) &&
-                !(gridObject instanceof Food) &&
-                !(gridObject instanceof Consumable) &&
-                !isPositionInSnake(testPosition) &&
+            if ((gridObject instanceof Food) ||
+                (gridObject instanceof Consumable) ||
                 occupiedPositionsByEnemies.contains(testPosition)) {
                 float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);
                 if (distance < minDistance) {
@@ -134,39 +133,8 @@ public class EnemySnake extends AbstractSnake {
                 gameState = GameState.OVER;
                 return;
             }
-            
-            Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
 
-            if (!(gridObject instanceof Wall) &&
-                (gridObject instanceof Food) &&
-                !(gridObject instanceof Consumable) &&
-                !isPositionInSnake(testPosition) &&
-                !occupiedPositionsByEnemies.contains(testPosition)) {
-                float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    bestMove = testPosition;
-                }
-            }
-        }
-      }
-      
-                  if (bestMove == null) {
-          for (int[] dir : directions) {
-            PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
-
-            if (game.snake.isPositionInSnake(testPosition)) {
-                gameState = GameState.OVER;
-                return;
-            }
-            
-            Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
-
-            if (!(gridObject instanceof Wall) &&
-                !(gridObject instanceof Food) &&
-                (gridObject instanceof Consumable) &&
-                !isPositionInSnake(testPosition) &&
-                !occupiedPositionsByEnemies.contains(testPosition)) {
+            if (isPositionInSnake(testPosition)) {
                 float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);
                 if (distance < minDistance) {
                     minDistance = distance;
@@ -179,16 +147,12 @@ public class EnemySnake extends AbstractSnake {
         if (bestMove != null) {
             velocity.set(bestMove.x - headPosition.x, bestMove.y - headPosition.y);
 
-            if (velocity.x == 0 && velocity.y == 0) {
-                return; // If the best move is to stay, do not update the snake's position
-            }
-
             PVector newHeadPosition = headPosition.copy().add(velocity);
             game.setMapGridObjectData(snakeCells.getLast().gridLocation, null); // Clear old tail position from grid
             snakeCells.removeLast();
             snakeCells.addFirst(new SnakeCell(newHeadPosition, this.colour));
             game.setMapGridObjectData(newHeadPosition, this); // Update new head position in grid
-        }
+        }        
     }
 
     @Override
