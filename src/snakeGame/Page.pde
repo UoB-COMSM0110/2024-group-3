@@ -52,14 +52,14 @@ public class Page //<>// //<>// //<>// //<>//
     Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, WhatPage.POPHELPPAGE, "PLAY", 72);
     butList.add(sg_but);
 
-    Button hs_but = new Button(180, 190, 360, 234, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score", 36);
+    Button hs_but = new Button(180, 220, 360, 264, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score", 36);
     butList.add(hs_but);
-
-    Button set_but = new Button(180, 350, 360, 398, WhatPage.MAINPAGE, WhatPage.HELP, "Help", 36);
-    butList.add(set_but);
-
-    Button help_but = new Button(180, 270, 360, 316, WhatPage.MAINPAGE, WhatPage.SETTING, "Settings", 36);
+    
+    Button help_but = new Button(180, 310, 360, 356, WhatPage.MAINPAGE, WhatPage.SETTING, "Settings", 36);
     butList.add(help_but);
+    
+    Button set_but = new Button(180, 400, 360, 448, WhatPage.MAINPAGE, WhatPage.HELP, "Help", 36);
+    butList.add(set_but);
 
     update(mouseX, mouseY);
     
@@ -105,14 +105,14 @@ public class Page //<>// //<>// //<>// //<>//
     Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE_hard, WhatPage.POPHELPPAGE, "PLAY", 72);
     butList.add(sg_but);
 
-    Button hs_but = new Button(180, 190, 360, 234, WhatPage.MAINPAGE_hard, WhatPage.HIGHSCORE, "High Score", 36);
+    Button hs_but = new Button(180, 220, 360, 264, WhatPage.MAINPAGE_hard, WhatPage.HIGHSCORE, "High Score", 36);
     butList.add(hs_but);
 
-    Button set_but = new Button(180, 350, 360, 398, WhatPage.MAINPAGE_hard, WhatPage.HELP, "Help", 36);
-    butList.add(set_but);
-
-    Button help_but = new Button(180, 270, 360, 316, WhatPage.MAINPAGE_hard, WhatPage.SETTING, "Settings", 36);
+    Button help_but = new Button(180, 310, 360, 356, WhatPage.MAINPAGE_hard, WhatPage.SETTING, "Settings", 36);
     butList.add(help_but);
+
+    Button set_but = new Button(180, 400, 360, 448, WhatPage.MAINPAGE_hard, WhatPage.HELP, "Help", 36);
+    butList.add(set_but);
 
     update(mouseX, mouseY);
     
@@ -251,7 +251,7 @@ public class Page //<>// //<>// //<>// //<>//
   public void popHelpPage() {
     ++frameCount;
     
-    popHelpPage=loadImage("../images/highScore.png");
+    popHelpPage=loadImage("../images/popHelp.png");
     image(popHelpPage, 0, 0);
     
     textSize(24);
@@ -265,7 +265,7 @@ public class Page //<>// //<>// //<>// //<>//
     else if (frameCount>=15) {
       frameCount=0;
     }
-    text("PRESS ANY KEY TO START",width/2,540);
+    text("PRESS ANY KEY TO START",width/2,590);
     
     update(mouseX,mouseY);
   }
