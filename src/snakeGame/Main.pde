@@ -1,4 +1,4 @@
-import processing.sound.*; //<>//
+import processing.sound.*; //<>// //<>// //<>//
 // Grid/Screen Size Global Configuration: //<>// //<>// //<>// //<>//
 public static final int ROWS = 45;
 public static final int COLS = 100;
@@ -48,8 +48,9 @@ public void setup() {
   file = new SoundFile(this, sketchPath("../music/sound_1.mp3"));
   file_button = new SoundFile(this, sketchPath("../music/sound_2.mp3"));
   file_click = new SoundFile(this, sketchPath("../music/sound_3.mp3"));
-  file_background = new SoundFile(this, sketchPath("../music/sound_4.mp3"));
   
+  file_background = new SoundFile(this, sketchPath("../music/sound_4.mp3"));
+
 }
 public void draw() {
   background(255);
@@ -132,6 +133,8 @@ void keyPressed() {
       key=0;
     }
   } else if (currentPage==WhatPage.POPHELPPAGE) {
+    file.amp(0.3);
+      file_background.loop();
     if (keyCode!=0) {
       currentPage=WhatPage.PLAYING;
     }
@@ -152,7 +155,6 @@ void keyPressed() {
   if (keyCode == ENTER || keyCode == RETURN) {
     if (currentPage==WhatPage.MAINPAGE||currentPage==WhatPage.MAINPAGE_hard) {
       currentPage=WhatPage.POPHELPPAGE;
-      System.out.println("asdasd");
     } else if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
       if (inputName!="") {
         if(difficultyMode == 0){
@@ -160,10 +162,11 @@ void keyPressed() {
         }else{
           highScore_hard.compare(new ScoreData(inputName, totalScore));
         }
+        
         inputName="";
       }
       currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
-      
+      System.out.println("c");
     }
   }
 }
@@ -179,9 +182,9 @@ void mousePressed() {
     page.handleDifMod();
   } else if (currentPage==WhatPage.POPHELPPAGE) {
     if (page.jumped!=1) {
-      currentPage=WhatPage.PLAYING;
       file.amp(0.3);
       file_background.loop();
+      currentPage=WhatPage.PLAYING;
     }
   }
 
