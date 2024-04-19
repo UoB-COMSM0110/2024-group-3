@@ -211,7 +211,7 @@ public class GameScreen {
       int venomColour = color(200, 0, 200); // Set venom color (e.g., red)
       venom.add(new Venom(this, venomColour, snakePosition, snakeVelocity, snake));
       depleteVenomBar();
-      file.play();
+ //     file.play();
     }else if(keyCode==ESC){
       key=0;
     }

@@ -30,7 +30,6 @@ public int totalScore;
 boolean isNameBoxSelected = false;
 int cursorTimer = 0;
 
-
 SoundFile file,file_button,file_click,file_background;
 
 public void settings() {

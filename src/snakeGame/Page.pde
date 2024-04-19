@@ -155,7 +155,7 @@ public class Page //<>// //<>// //<>// //<>// //<>//
       fill(255);
       textAlign(CENTER, CENTER);
       textSize(80);
-      text("High Score Easy", width / 2, height / 10);
+      text("High Scores: Easy", width / 2, height / 10);
       textSize(48);
       float w=width / 2-160;
       float h=(height / 10)+100;
@@ -167,7 +167,7 @@ public class Page //<>// //<>// //<>// //<>// //<>//
       fill(255);
       textAlign(CENTER, CENTER);
       textSize(80);
-      text("High Score Hard", width / 2, height / 10);
+      text("High Scores: Hard", width / 2, height / 10);
       textSize(48);
       float w=width / 2-160;
       float h=(height / 10)+100;
@@ -215,7 +215,7 @@ public class Page //<>// //<>// //<>// //<>// //<>//
     textAlign(LEFT,TOP);
     textSize(36);
     text("Volume",300,190);
-    text("Display prompts during the game",300,290);
+    text("Display controls during the game",300,290);
     text("Display grid during the game",300,390);
     
     //textAlign(LEFT,BOTTOM);
