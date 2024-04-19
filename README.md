@@ -1,6 +1,6 @@
 # Overview of Software Engineering - Group 3
 
-## 1. Team
+# 1. Team
 
 | Name             | Email                     | GitHub Account       |
 |------------------|---------------------------|----------------------|
@@ -14,14 +14,16 @@
 <img title="a title" alt="Alt text" src="/images/group3.jpg" width="522">
 <br>
 
-## 2. Introduction 
-Our game is a take on the classic 'Snake' game called 'Survival Snake'. The overarching principle remains the same - the player's goal is to grow their snake in length by consuming food that appears on the map, whilst also avoiding collisions with the snake itself or the map's borders. But, our game expands upon these principles by incorporating elements of the first person shooter genre into our game. 
-The player snake has a finite 'Venom' ability that allows you to destroy walls, collect food to grow your snake, and kill the enemy snakes that spawn into the game. The enemy snakes track the player snake around the map, and will kill the player snake and thus end the game if they manage to catch it. 
-Another element we've added to Survival Snake is the creation of custom maps. We have designed 4 possible maps, 2 for each difficulty mode, with each map having its own unique wall placements. In all the maps the player has the ability to 'wrap around', exiting one side of the map to re-appear on the other side, thereby adding another layer to the player snake's movement possibilities. 
+# 2. Introduction 
+Our game is a take on the classic 'Snake' game called 'Survival Snake'. The overarching principle remains the same - the player's goal is to grow their snake in length by consuming food that appears on the map, whilst also avoiding collisions with the snake itself or the map's borders. But, our game expands upon these principles by incorporating elements of the first-person shooter genre into our game. 
+
+The player snake has a finite 'Venom' ability that allows you to destroy walls, collect food to grow your snake and kill the enemy snakes that spawn into the game. The enemy snakes track the player snake around the map and will kill the player snake, thus ending the game if they manage to catch it. 
+
+Another element we've added to Survival Snake is the creation of custom maps. We have designed 4 possible maps, 2 for each difficulty mode, with each map having unique wall placements. In all the maps the player has the ability to 'wrap around', exiting one side of the map to re-appear on the other side, thereby adding another layer to the player snake's movement possibilities. 
 <br><br>
 
 
-## 3. Requirements 
+# 3. Requirements 
 
 
 ### Initial Paper Prototyping
@@ -77,7 +79,7 @@ Player, markers, the development team.
 
 **Description**
 
-In Survival Snake the player controls a snake's movements, directing it to eat food so that it may grow whilst trying to survive for as long as possible. The player must avoid obstacles in the map in the form of walls and enemy snakes that track the player snake around the map. The player snake has a Venom ability that allows it to shoot venom at enemy snakes to kill them, whilst the enemy snakes will use  AI tracking to hunt the player snake across the map and attempt to kill it by colliding with it. 
+In Survival Snake the player controls a snake's movements, directing it to eat food so that it may grow whilst trying to survive for as long as possible. The player must avoid obstacles on the map in the form of walls and enemy snakes that track the player's snake around the map. The player snake has a Venom ability that allows it to shoot venom at enemy snakes to kill them, whilst the enemy snakes will use  AI tracking to hunt the player snake across the map and attempt to kill it by colliding with it. 
 
 **Preconditions**
 
@@ -86,7 +88,7 @@ The player is familiar with the game controls.
 
 **Postconditions**
 
-The game ends when the snake collides with a wall or an enemy.
+The game ends when the user snake collides with a wall or an enemy.
 The player's score is recorded and can be displayed.
 
 **Basic Flow**
@@ -111,38 +113,11 @@ The player's score is recorded and can be displayed.
 
 If the player selects the "Exit" option from the main menu, the game will terminate, and the player will be returned to the device's home screen.
 
-**Extensions**
 
-(Optional) Worm mode: The player can activate this mode to change the visual appearance of the snake, without altering the core game mechanics.
-
-### Our Inital Reflections
-
-* Difficult to write user stories when the features of the game haven’t been fully clarified
-  
-* Difficult to work on tasks (e.g. create user stories, list stakeholders) independently, because these tasks depend on each other. Better for everyone to get together and do everything as a group
-  
-* Doing things as a group also gives people a sense of ownership and allows everyone to contribute to everything. Also makes sure we don’t miss anything or have blindspots
-  
-* Writing user stories / use cases can highlight areas of ambiguity that need to be clarified in the group, for example (in the use case specification), does the player use arrow keys or swipes to move the snake? What button does the player press to shoot venom?
-  
-* This task forces us to come up with the name of the game
-  
-* Task highlighted the need for an agreed workflow for collaborating on the repo (i.e. do we add everything in the README on main branch, or work on separate branches? Do we each have our own branch or dedicated “feature” branches?)
-  
-* So far we only have two personas in our user stories (player and marker). Does this mean we’re missing something? Is this because the user stories were written independently of the stakeholders list?
-  
-* Writing user stories can highlight that we want to measure subjective things like enjoyment and experience of nostalgia. This suggests that we need to find ways to measure subjective experience
-  
-* Use case diagram: 
-  * Do we have any relationships other than “extends”?
-  * Highlights ambiguity: does the snake die when its tail is cut off, or just shrink, or only die if it loses a certain amount of its tail 
-
-
-As we narrowed down our 
 
 <br>
 
-## 4. Design 
+# 4. Design 
 
 ### Design Challenges
 * AI enemies that track the player snake around the map.
@@ -158,30 +133,29 @@ As we narrowed down our
 
 
 
-## 5. Implementation
-To do
+# 5. Implementation
 Three areas of challenge :
 1. AI Implementation for Enemy Snakes - why did we feel we needed this. What two bugs came up the most often when writing this bit of code? How did you solve them? How did we finally implement them? What kind of player feedback did we get for this feature, how did it change the direction in which our code went?
 2. High Score Tracker - what were the challenges associated with incorporating this feature? What kind of player feedback did we get from it? 
 3. Venom Mechanic - how integral this is for our game flow. 
 <br>
 
-## 6. Evaluation 
-As part of our game development process we engaged in both Quantative and Qualative analysis. This was a really rewarding experience, allowing us to get user feedback in an actionabale form that could direct the devlopment of our game as well as identify bugs that we could iron out. 
+# 6. Evaluation 
+As part of our game development process we engaged in both quantitative and qualitative analysis. This was a really rewarding experience, allowing us to get user feedback in an actionable form that could direct the development of our game as well as identify bugs that we could iron out. 
 
-## Qualative Analysis
-On the 11.03 we used our lab session to obtain some initial Think-Aloud feedback for our game. We then repeated this process on the 14.04, and the below data is an amalgamation of both of these sessions' feedback and the steps they directed us to take :
+## Qualitative Analysis
+On 11.03 we used our lab session to obtain some initial Think-Aloud feedback for our game. We then repeated this process on 14.04, and the below data is an amalgamation of both of these sessions' feedback and the steps they directed us to take :
 
 ### Positive Feedback
 > "Shooting venom is really fun."
 
 > "Visually it's really cool."
 
-> On dying with zero score - "why am I not on the high score board."
+> On dying with zero score - "why am I not on the high scoreboard."
 
-> "I really the tutorial page."
+> "I really like the tutorial page."
 
-> "Movement is realy clean."
+> "Movement is really clean."
 
 > "I like this."
 
@@ -197,8 +171,8 @@ No changes, as we received a lot of comments that the hard mode was too hard and
 
 > "What are the pink things, are they venom?."
 
-More information on the help page and signange on the menu bar in the game.
-A lot of users tried to click the strawberry on the the menu page to toggle the differences
+More information on the help page and signage on the menu bar in the game.
+A lot of users tried to click the strawberry on the menu page to toggle the differences
 Added a button next to the difficulty slider to better indicate where the user should click.
 
 > "Easy mode could be dialled down in terms of speed."
@@ -209,7 +183,7 @@ Added a button next to the difficulty slider to better indicate where the user s
 
 > "Easy is enough of a challenge."
 
-Reduced the framrate on easy mode.
+Reduced the framerate on easy mode.
 
 > "The Snake title looks like it might be a button too."
 
@@ -218,7 +192,7 @@ Added lines around the buttons on the main menu page to make it clear what was c
 ### Potential Features
 > "Could you implement a colour-blindness feature?"
 
-We strongly considered this, as having a setting that could toggle the colour of the enemy snakes and user snake would be a really satisfying way to advocate for functionality within the game. Unfortunately we ran out of time to implement this feature. 
+We strongly considered this, as having a setting that could toggle the colour of the enemy snakes and user snake would be a really satisfying way to advocate for functionality within the game. Unfortunately, we ran out of time to implement this feature. 
 
 > "Having your previous score visible on the game screen would make things more competitive"
 
@@ -228,9 +202,9 @@ Added a high score tracking for the difficulty mode to the game screen.
 
 Implemented this change.
 
-> "For high score does it matter if it's easy o rhard - shouldn't it be separate?"
+> "For high score does it matter if it's easy or hard - shouldn't it be separate?"
 
-Tweaked the high score tracker so that is differentiates between hard and easy mode. Separate lists for each difficulty.
+Tweaked the high score tracker so that it differentiates between hard and easy mode. Separate lists for each difficulty.
 
 ### Bugs
 > "When you're on hard, when you fire venom, it doesn't react quick enough".
@@ -247,7 +221,7 @@ Fixed this bug.
 
 
 ## Quantative Evluation
-On the 14.04 we got together a little meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantative and qualitive testing components of our code. For the quantitative testing we used the NASA TLX questionairre to record feedback in 6 dimensions for both the easy and hard modes of the game : 
+On the 14.04 we got together a little meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing, we used the NASA TLX questionnaire to record feedback in 6 dimensions for both the easy and hard modes of the game : 
 
 ### Easy Mode
 
@@ -282,7 +256,7 @@ On the 14.04 we got together a little meeting between our group and 5 other grou
 ----------------------------------------------------------------------------------------------------------
 
 ### Interpreting the Results
-Using these results we are able to calculate the perceived difference in workload. First we used the formula  _(x - 1) * 5_ [where __x__ = score)  to calculate the participant's percevied demand for each dimension. Using these scores we can calculate the total perceived workload for each participant, using the formula  _(sum of each dimension) / 6_  to calculate their overall rating, as given in the final column of both tables. 
+Using these results we are able to calculate the perceived difference in workload. First we used the formula  _(x - 1) * 5_ [where __x__ = score)  to calculate the participant's perceived demand for each dimension. Using these scores we can calculate the total perceived workload for each participant, using the formula  _(sum of each dimension) / 6_  to calculate their overall rating, as given in the final column of both tables. 
 
 Comparing the two sets of data gave us this information :
 
@@ -300,7 +274,7 @@ Comparing the two sets of data gave us this information :
 |       10      |      18       |      57       |    -39     |
 ---------------------------------------------------------------
 
-With this data we used the Wilcoxon Signed Rank Test to find the calcualted W test statistic. _N_ was 10 as that was the number of participants, and we set the significance at 0.05. Since we had 10 participants the W test statistic generated would need to be less than 8 in order for there to be a statistically significant difference in our game's difficulty levels. 
+With this data we used the Wilcoxon Signed Rank Test to find the calculated W test statistic. _N_ was 10 as that was the number of participants, and we set the significance at 0.05. Since we had 10 participants the W test statistic generated would need to be less than 8 for there to be a statistically significant difference in our game's difficulty levels. 
 
 |  Difference | Rank | Signed Rank |
 |-------------|------|-------------|
@@ -320,16 +294,22 @@ Ranks 2,3 and 4,5 have the same value differences. Fortunately, because they are
 
 <br>
 
-## 7. Process
-* Kanban Board
-* Weekly scrum meetings 
-* Devlop branch and main branch
-* Transfer from Java to Processing
-* Everyone given little chunks to work on individually
-* Software labs useful for testing other games and getting people to test our game
-<br>
+# 7. Process
+As a group, we've come away from this project feeling satisfied and proud of our team's communication and cohesiveness. 
 
-## 8. Conclusion 
+Our communication has overall been stellar. We made a group chat using WhatsApp during the first week of this term, and it has proven invaluable for organising our time and sharing ideas. Being able to share media with one another, discuss feedback and identify goals via a platform that allows virtually instantaneous communication has been invaluable. However, face-to-face meetings were also integral. Our lab sessions on Monday were very helpful for this, partially in how they facilitated discussion with other groups, but also in the opportunity they gave to plan approximately 1-2 other face-to-face meetings each week. In these meetings we tended to adopt a scrum/stand-up style approach, with Alex often taking the role of the scrum leader. We discussed as a group how our personal areas of code were progressing, and if there were any features we wanted to suggest exploring. Depending on our respective schedules we'd then try to work on our respective parts of the code together in the labs. This was helpful because it meant we could show one another the areas of challenging/interesting code in person, as it can be somewhat tricky to discuss coding issues without being able to see the code in question. On a few occasions we took advantage of Teams' video call feature to meet face-to-face virtually if a team member was unable to make it to the labs that day. 
+
+An initial snag we did encounter in our project was the transition from using IntelliJ and Java rather than the Processing IDE. In the beginning we thought that IntelliJ's increased functionality, specifically in areas such as code quality and testing, would prove it to be advantageous over Processing. However, after discussion with other groups and our module leads our group concluded that Processing would better serve the game's development. Fortunately, we weren't too far along in our code's lifespan when we made this decision, so the actual amount of code we had to translate from one environment to another wasn't too arduous. 
+
+As a whole, we found using GitHub to be relatively straightforward. Our team encountered some instances of merge conflicts that we had to solve, but an early decision to split our repository into two branches - Main and Develop - allowed us to stagger the rate at which code was pushed to our Main branch. Uncompleted/potentially buggy features would be limited to the Develop branch, ensuring that the Main branch stayed free of broken or uncompleted code. GitHub did provide us with an integral part of our development process, namely the Kanban Board. We found our Kanban Board to be incredibly helpful because it functioned as simultaneously an accessible to-do list, planning tool, and way to dispense the workload. Chris fulfilled the role of project manager in this department, adding tasks to the Kanban Board and assigning them to members of the team as needed.
+
+__INSERT SCREENSHOT OF BOARDS__
+
+Our team also created a Git Convention documentation that detailed the acceptable way for our commits to be structured. It required that our commits be formatted __"[type]:[title] [body] [footer]__ . This encouraged us to be specific with our commit messages, ensuring that the relevant information as to what the new/altered code did was contained within the message itself. The use of a <type> system was particularly helpful in categorising our commits, ensuring that our repo has a very coherent and simple commit history that can understood and searched through with ease. 
+
+
+
+# 8. Conclusion 
 To do
 
 <br>
