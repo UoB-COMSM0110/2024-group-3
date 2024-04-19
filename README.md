@@ -167,12 +167,86 @@ Three areas of challenge :
 <br>
 
 ## 6. Evaluation 
-Qualitive Evaluation - need Chris to decipher his handwriting.
-16.04
+As part of our game development process we engaged in both Quantative and Qualative analysis. This was a really rewarding experience, allowing us to get user feedback in an actionabale form that could direct the devlopment of our game as well as identify bugs that we could iron out. 
 
-Focus Group - Need to transcribe this. 
+## Qualative Analysis
+On the 11.03 we used our lab session to obtain some initial Think-Aloud feedback for our game. We then repeated this process on the 14.04, and the below data is an amalgamation of both of these sessions' feedback and the steps they directed us to take :
 
-Quantative Evluation - NASA TLX Scores 
+### Positive Feedback
+> "Shooting venom is really fun."
+
+> "Visually it's really cool."
+
+> On dying with zero score - "why am I not on the high score board."
+
+> "I really the tutorial page."
+
+> "Movement is realy clean."
+
+> "I like this."
+
+> "I like the feature and the bar."
+
+> "Well it's addictive."
+
+
+### Negative Feedback
+> "It's not obvious to me what's harder about the hard mode."
+
+No changes, as we received a lot of comments that the hard mode was too hard and decided that increasing the difficulty may be counterproductive.
+
+> "What are the pink things, are they venom?."
+
+More information on the help page and signange on the menu bar in the game.
+A lot of users tried to click the strawberry on the the menu page to toggle the differences
+Added a button next to the difficulty slider to better indicate where the user should click.
+
+> "Easy mode could be dialled down in terms of speed."
+
+> "Easy seems pretty hard already."
+
+> "It's already pretty tough."
+
+> "Easy is enough of a challenge."
+
+Reduced the framrate on easy mode.
+
+> "The Snake title looks like it might be a button too."
+
+Added lines around the buttons on the main menu page to make it clear what was clickable.
+
+### Potential Features
+> "Could you implement a colour-blindness feature?"
+
+We strongly considered this, as having a setting that could toggle the colour of the enemy snakes and user snake would be a really satisfying way to advocate for functionality within the game. Unfortunately we ran out of time to implement this feature. 
+
+> "Having your previous score visible on the game screen would make things more competitive"
+
+Added a high score tracking for the difficulty mode to the game screen.
+
+> "You could load up help on game start or call it 'how to play', not help"
+
+Implemented this change.
+
+> "For high score does it matter if it's easy o rhard - shouldn't it be separate?"
+
+Tweaked the high score tracker so that is differentiates between hard and easy mode. Separate lists for each difficulty.
+
+### Bugs
+> "When you're on hard, when you fire venom, it doesn't react quick enough".
+
+Fixed this bug. 
+
+> User went through the wall without it disappearing.
+
+Fixed this bug.
+<br><br>
+
+## Heuristic Analysis
+
+
+
+## Quantative Evluation
 On the 14.04 we got together a little meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantative and qualitive testing components of our code. For the quantitative testing we used the NASA TLX questionairre to record feedback in 6 dimensions for both the easy and hard modes of the game : 
 
 ### Easy Mode
@@ -243,11 +317,6 @@ With this data we used the Wilcoxon Signed Rank Test to find the calcualted W te
 -----------------------------------
 Ranks 2,3 and 4,5 have the same value differences. Fortunately, because they are of the same sign, this doesn't impact the test's results. The sum of our positive ranks is 0 and the sum of our negative ranks is 55, with the W test statistic coming out as 0. Since this is well below the maximum value of 8 as specified above, we can say with confidence that there is a statistically significant difference in our easy and hard difficulty modes. 
 
-
-### Testing Feedback 
-Menu Pages Feedback - lots of issues with slider, everyone wants to click a strawberry. Tutorial page moved to being a pop up when the game starts. More clarity as to what food does. Menu bar in game feedback - giving venom a out of sign so you know how much you have, why it's limited to six. More clarity as to what your venom does. Adding points for killing enemies. Making pushable buttons more obvious. 
-Game feedback - slower enemy snakes, less enemy snakes. Making easier mode easier and harder mode ramp up in difficulty. Cap on number of enemies. Adding points when killing enemies. 
-Accessibility Feedback - transition to red-green colour blindness feature.
 
 <br>
 
