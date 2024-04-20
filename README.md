@@ -89,7 +89,7 @@ Player, markers, the development team.
 
 **Description**
 
-In Survival Snake the player controls a snake's movements, directing it to eat food so that it may grow whilst trying to survive for as long as possible. The player must avoid obstacles on the map in the form of walls and enemy snakes that track the player's snake around the map. The player snake has a Venom ability that allows it to shoot venom at enemy snakes to kill them, whilst the enemy snakes will use  AI tracking to hunt the player snake across the map and attempt to kill it by colliding with it. 
+In Survival Snake the player controls a snake's movements, directing it to eat food so that it may grow whilst trying to survive for as long as possible. The player must avoid obstacles on the map in the form of walls and enemy snakes that track the player's snake around the map. The player snake has a Venom ability that allows it to shoot venom at enemy snakes to kill them, whilst the enemy snakes will use pathfinding to hunt the player snake across the map and attempt to kill it by colliding with it. 
 
 **Preconditions**
 
@@ -233,7 +233,7 @@ We added this feature so that the player snake's movement responds to both the a
 
 > "You could load up help on game start or call it 'how to play', not help"
 
-Implemented this change.
+Added a pop up tutorial page that triggers after the user presses 'play'. 
 
 > "For high score does it matter if it's easy or hard - shouldn't it be separate?"
 
@@ -268,7 +268,7 @@ We also asked our users to provide some heuristic feedback after the talk-aloud 
 
 
 ## Quantative Evluation
-On the 14.04 we put together a meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing, we used the NASA TLX questionnaire to record feedback in 6 dimensions for both the easy and hard modes of the game : 
+On the 14.04 we put together a meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing we used the NASA TLX questionnaire to record feedback in 6 dimensions for both the easy and hard modes of the game : 
 
 ### Easy Mode
 
