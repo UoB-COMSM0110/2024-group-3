@@ -55,16 +55,17 @@ public void draw() {
   background(255);
 
   if (!isMapLoaded) {
-    if (difficultyMode==0) {
-      frameRate(8);
-      gameScreen = new GameScreen();
-      gameScreen.setup("mapsCSV/1.csv");
-    } else {
-      frameRate(13);
-      gameScreen = new GameScreen();
-      gameScreen.setup("mapsCSV/2.csv");
-    }
-    isMapLoaded=true;
+        Random rand = new Random();
+        int mapIndex = rand.nextInt(2) + 1;
+        String mapFile = "mapsCSV/" + (difficultyMode == 0 ? "E" + mapIndex : "H" + mapIndex) + ".csv";
+        if (difficultyMode == 0) {
+            frameRate(10);
+        } else {
+            frameRate(15);
+        }
+        gameScreen = new GameScreen();
+        gameScreen.setup(mapFile);
+        isMapLoaded = true;
   }
   if (currentPage==WhatPage.MAINPAGE) {
     frameRate(30);
