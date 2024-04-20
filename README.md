@@ -119,8 +119,7 @@ The player's score is recorded and can be displayed.
 16. The player is taken back to the main menu.
     
 **Alternate Flows**
-
-If the player selects the "Exit" option from the main menu, the game will terminate, and the player will be returned to the device's home screen.
+Need to do better me thinks. 
 
 <br>
 
@@ -141,8 +140,12 @@ If the player selects the "Exit" option from the main menu, the game will termin
 
 
 # 5. Implementation
-Three areas of challenge :
-1. AI Implementation for Enemy Snakes - why did we feel we needed this. What two bugs came up the most often when writing this bit of code? How did you solve them? How did we finally implement them? What kind of player feedback did we get for this feature, how did it change the direction in which our code went?
+During our game's implementation there were some features that we were certain we wanted to include in our game. From these we identified three specific areas of challenge; the enemy snake pathfinding, the venom mechanic and the highscore tracker.  
+
+
+### Enemy Snake Pathfinding
+
+- why did we feel we needed this. What two bugs came up the most often when writing this bit of code? How did you solve them? How did we finally implement them? What kind of player feedback did we get for this feature, how did it change the direction in which our code went?
    The biggest things I had to work around were the movement of the enemy snakes and their interactions with other elements of the map. For example, originally I didn't have the enemy snakes as part of the map grid that lots of the other elements are tracked on, and that made it hard to manage interactions. Implementing the framework Alex had made for the map grid made this much easier!  I didn't want the snakes to move through walls, food, consumables, their own body, or each other. However, this led to the snakes freezing in place when they had no free spaces to move to. This didn't look good, and was affecting gameplay. I had to instead use a heirarchy, where the enemy snake finds the best (closest to the player's snake) FREE cell that they can move to, and if there are no free cells, then they choose the best cell that is occupied by another snake, and then food or consumables. This means that they avoid moving over these things when possible, but will do if absolutely necessary to stop them from breaking.  Overall the snake behaviour and interactions was hard, also when dealing with venom and killing of the enemy snakes, that was an interesting interaction to manage!
    Firstly, I'd probably not call it AI as that isn't technically what it is - its more dynamic seeking of the player snake. Its quite simple so maybe not worth going into extensively as I found interactions to be the hardest part of the enemy snake stuff. It simply finds the square which reduces the distance to the player's snake head the most. This means when theres not many snakes you can slightly manipulate them if they are behind a wall, but if you dont deal with them, the number of enemy snakes on the map increases and its hard to manage their positions! This stops a really passive play style from being fruitful in the long run
 3. High Score Tracker - what were the challenges associated with incorporating this feature? What kind of player feedback did we get from it?
@@ -154,11 +157,29 @@ Three areas of challenge :
 <img width="800" alt="Screenshot 2024-04-18 at 17 14 58" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/2ebb726c-00a7-42b5-9ba4-9cc2e5fe3eba">
 </p>
    
-5. Venom Mechanic - how integral this is for our game flow.
+### Venom Mechanic
    s whole not too difficult to implement. The issues were based on edge case surrounding edge of map and walls. Once these were discovered during testing (playing) they were simple to fix. Essentially some extra conditions needed to be added which weren’t initially due to the quick development.
 Alex will be the one to talk to about this but for me, it was reasonably simple to handle the interactions between enemy snakes and venom due to the helpful framework we had.
 
-Help Page to Tutorial Transition 
+
+### High Score Tracker
+We knew that we wanted a high-score feature in our game from the beginning. It added an element of competition and replayability that we thought really suited our game's style, so Jie and Ziyuan took the task of integrating this feature into our game. 
+
+They did this through two classes; a 'ScoreData' class and a 'HighScore' class. The 'ScoreData' class is a simple data structure that holds information about the player's score, specifically their 'name' as a string and their 'score' as an integer. During runtime, the constructor of this class would initialise the above fields with the values provided by the user when they saved their score at the end of the game. 
+
+The 'HighScore' class was designed to manage a list of the top scores in the form of a .csv file that we stored in our Map folder. It did this through an array that would store all saved high scores, and a constructor that read the saved scores in the .csv file via a 'BufferedReader'. Then, the 'compare' method takes the given values from the 'ScoreData' class and compares them against the scores already saved in the array. This would be looped through until all the array's cells were checked, and if the method found an instance where the 'ScoreData' value was greater than the value saved in the array it would replace it. At this point, the updated list of scores is written back to the .csv file using a 'BufferedWriter'.
+
+Initially, we did this using just one list of high scores for the game, but after user feedback, we decided to create two separate lists for each difficulty mode. We felt this made the high scores more of a goal for the player, and by including the high score in the menu bar of the game as well we found this encouraged our players a lot more.
+
+<p align="center">
+<img width="800" alt="Screenshot 2024-04-18 at 17 15 01" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/c4903af2-1361-4acd-a28d-e42ea46a0cbd">
+</p>
+
+<p align="center">
+<img width="800" alt="Screenshot 2024-04-18 at 17 14 58" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/9e85e4f6-b3b2-4789-805c-f22b36ebd97f">
+</p>
+
+During the implementation process we found the data we gained through our evaluations to be invaluable in directing our code. One of the pieces of feedback we received was that the tutorial information for our game might be better placed in the game itself rather than on the 'Help' page, we created a pop-up screen that would appear after the player clicked play. This screen showed the same information as the 'Help' page but did so in a much more accessible way for the user, and by having the pop-up information disappear by pressing any key we ensured that the flow of clicking the play button and starting the game remained uninterrupted. 
 
 <p align="center">
 <img width="800" alt="Screenshot 2024-04-19 at 13 44 02" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/67139394-8530-494c-8383-b91b041c8ea2">
@@ -356,7 +377,7 @@ As a group, we've come away from this project feeling satisfied and proud of our
 
 Our communication has overall been stellar. We made a group chat using WhatsApp during the first week of this term, and it has proven invaluable for organising our time and sharing ideas. Being able to share media with one another, discuss feedback and identify goals via a platform that allows virtually instantaneous communication has been invaluable. However, face-to-face meetings were also integral. Our lab sessions on Monday were very helpful for this, partially in how they facilitated discussion with other groups, but also in the opportunity they gave to plan approximately 1-2 other face-to-face meetings each week. In these meetings we tended to adopt a scrum/stand-up style approach, with Alex often taking the role of the scrum leader. We discussed as a group how our personal areas of code were progressing, and if there were any features we wanted to suggest exploring. Depending on our respective schedules we'd then try to work on our respective parts of the code together in the labs. This was helpful because it meant we could show one another the areas of challenging/interesting code in person, as it can be somewhat tricky to discuss coding issues without being able to see the code in question. On a few occasions we took advantage of Teams' video call feature to meet face-to-face virtually if a team member was unable to make it to the labs that day. 
 
-An initial snag we did encounter in our project was the transition from using IntelliJ and Java rather than the Processing IDE. In the beginning we thought that IntelliJ's increased functionality, specifically in areas such as code quality and testing, would prove it to be advantageous over Processing. However, after discussion with other groups and our module leads our group concluded that Processing would better serve the game's development. Fortunately, we weren't too far along in our code's lifespan when we made this decision, so the actual amount of code we had to translate from one environment to another wasn't too arduous. 
+An initial snag we did encounter in our project was the transition from using IntelliJ and Java rather than the Processing IDE. In the beginning we thought that IntelliJ's increased functionality, specifically in areas such as code quality and testing, would prove it to be advantageous over Processing. However, after discussion with other groups and our module leads our group concluded that Processing would better serve the game's development. Fortunately, we weren't too far along in our code's lifespan when we made this decision, so the actual amount of code we had to translate from one environment to another wasn't too arduous. The aesthetic and user interface for our game was created through a combination of Photoshop and Processing, a task which Ziyuan headed up and executed wonderfully. 
 
 As a whole, we found using GitHub to be relatively straightforward. Our team encountered some instances of merge conflicts that we had to solve, but an early decision to split our repository into two branches - Main and Develop - allowed us to stagger the rate at which code was pushed to our Main branch. Uncompleted/potentially buggy features would be limited to the Develop branch, ensuring that the Main branch stayed free of broken or uncompleted code. GitHub did provide us with an integral part of our development process, namely the Kanban Board. We found our Kanban Board to be incredibly helpful because it functioned as simultaneously an accessible to-do list, planning tool, and way to dispense the workload. Chris fulfilled the role of project manager in this department, adding tasks to the Kanban Board and assigning them to members of the team as needed.
 
