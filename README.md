@@ -48,11 +48,11 @@ When we first got together we brainstormed two possible initial ideas - an 'Endl
 [![](https://res.cloudinary.com/marcomontalbano/image/upload/v1707426766/video_to_markdown/images/youtube--akkWPsFFah0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=akkWPsFFah0 "")
 
 **Game Idea 3 : Snake Game**
+
 However, as discussions continued we decided against pursuing either of these ideas further. The 'Endless Runner' idea seemed somewhat done to death, and we weren't sure how to implement a genuinely exciting and fun to play twist. As for the 'Survival Game' concept, whilst as a group we agreed that it would be a really fun game to create with a substantial amount of potential, we were concerned about the amount of time available to us. Instead, we decided to take some elements from both our initial thoughts - fighting an enemy 'mob' whilst managing resources + suriving for as long as possible whilst traversing a map - and applied them to a game we all knew and loved : Snake. 
 
 [![game](https://res.cloudinary.com/marcomontalbano/image/upload/v1713364450/video_to_markdown/images/youtube--BAkjjOerpcU-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=BAkjjOerpcU&ab_channel=jiefang "game")
 
-<br>
 As a pre-cursor to feature implementation we sat down as a team and ran through the requirements stage of our game creation. This required us to consider the following factors : 
 
 ### Stakeholders
@@ -102,28 +102,25 @@ The game ends when the user snake collides with a wall or an enemy.
 The player's score is recorded and can be displayed.
 
 **Basic Flow**
-
 1. The player launches the game.
 2. The game displays the main menu.
-3. The player selects the "Start" option to begin the game.
-4. The game generates a snake and places it on the game grid.
-5. The player controls the snake's movement using the arrow keys.
-6. As the game starts, food items and Venom powerups will appear on the map. 
-7. The player navigates the snake towards the food items to make it grow.
-8. Each time the snake eats a piece of food, its size increases.
-9. The player can press the spacebar to shoot venom from from the snake's mouth, eliminating enemies in its path.
-10. The player must navigate carefully to avoid collision with the map's walls. 
-11. Enemies are introduced, and they start moving towards the snake's head, aiming to eliminate it.
+3. The player selects which difficulty they desire to play at.
+4. The player is shown the tutorial page.
+5. The player presses any key and the game begins.
+6. The player controls the snake's movement using either WASD or the arrow keys.
+7. The player navigates towards food items and avoids enemy snakes + walls.
+8. Each time the snake consumes a piece of food it grows in size by 1 square.
+9. The player can press the spacebar to shoot venom, which can collect food, destroy walls and kill enemy snakes.
+10. The player must navigate carefully to avoid collision with walls, enemy snakes and itself.
+11. Enemy snakes start appearing on the map.
 12. The game continues as long as the snake avoids collision with walls and enemies.
 13. When the snake collides with a wall, an enemy or itself, the game ends.
-14. The player's score is recorded and saved for future reference.
-15. The player is presented with the option to play again or exit the game.
-
+14. The player's score is recored and can be saved under whatever name they choose.
+16. The player is taken back to the main menu.
+    
 **Alternate Flows**
 
 If the player selects the "Exit" option from the main menu, the game will terminate, and the player will be returned to the device's home screen.
-
-
 
 <br>
 
@@ -227,6 +224,9 @@ We strongly considered this, as having a setting that could toggle the colour of
 
 Added a high score tracking for the difficulty mode to the game screen.
 
+> "mac users may prefer to use the WASD keys rather than the keyboard"
+We added this feature so that the player snake's movement responds to both the arrow keys and WASD keys.
+
 > "You could load up help on game start or call it 'how to play', not help"
 
 Implemented this change.
@@ -251,7 +251,7 @@ Fixed this bug.
 <br><br>
 
 ## Heuristic Analysis
-We also asked our users to provide some heuristic feedback after the talk-aloud evaluation was completed. This gave us a lot of similar information as we obtained from the talk-aloud but it did so in a more empirical fashion. We asked our users to consider their proposed issues in three dimensions - impact, frequency and persistence - and used the scores provided to evaluate the issue's severity. 
+We also asked our users to provide some heuristic feedback after the talk-aloud evaluation was completed. This provided us with a lot of similar information to the talk-aloud evalutation, but it did so in a more empirical fashion. We asked our users to consider their proposed issues in three dimensions - impact, frequency and persistence - and to rate them out of three. We then combined these scores to calculate the issue's severity. 
 
 | ID | Game Component | Heuristic | Description of Issue | Impact (0-3) | Frequency (0-3) | Persistence (0-3) | Overall Severity (0-9) | Recommendations |
 |----|----------------|-----------|----------------------|--------------|-----------------|--------------------|------------------------|-----------------|
@@ -269,7 +269,7 @@ We also asked our users to provide some heuristic feedback after the talk-aloud 
 
 
 ## Quantative Evluation
-On the 14.04 we got together a little meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing, we used the NASA TLX questionnaire to record feedback in 6 dimensions for both the easy and hard modes of the game : 
+On the 14.04 we put together a meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing, we used the NASA TLX questionnaire to record feedback in 6 dimensions for both the easy and hard modes of the game : 
 
 ### Easy Mode
 
