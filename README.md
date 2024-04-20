@@ -26,8 +26,12 @@ Our game is a take on the classic 'Snake' game called 'Survival Snake'. The over
 The player snake has a finite 'Venom' ability that allows you to destroy walls, collect food to grow your snake and kill the enemy snakes that spawn into the game. The enemy snakes track the player snake around the map and will kill the player snake, thus ending the game if they manage to catch it. 
 
 Another element we've added to Survival Snake is the creation of custom maps. We have designed 4 possible maps, 2 for each difficulty mode, with each map having unique wall placements. In all the maps the player has the ability to 'wrap around', exiting one side of the map to re-appear on the other side, thereby adding another layer to the player snake's movement possibilities. 
-<br><br>
 
+<p align="center">
+<img width="800" alt="Screenshot 2024-04-18 at 17 15 10" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/25c9f921-3caf-48fd-a917-f5de49dd245b">
+</p>
+
+<br>
 
 # 3. Requirements 
 
@@ -43,9 +47,9 @@ When we first got together we brainstormed two possible initial ideas - an 'Endl
 <br>
 [![](https://res.cloudinary.com/marcomontalbano/image/upload/v1707426766/video_to_markdown/images/youtube--akkWPsFFah0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=akkWPsFFah0 "")
 
+**Game Idea 3 : Snake Game**
 However, as discussions continued we decided against pursuing either of these ideas further. The 'Endless Runner' idea seemed somewhat done to death, and we weren't sure how to implement a genuinely exciting and fun to play twist. As for the 'Survival Game' concept, whilst as a group we agreed that it would be a really fun game to create with a substantial amount of potential, we were concerned about the amount of time available to us. Instead, we decided to take some elements from both our initial thoughts - fighting an enemy 'mob' whilst managing resources + suriving for as long as possible whilst traversing a map - and applied them to a game we all knew and loved : Snake. 
 
-**Game Idea 3 : Snake Game**
 [![game](https://res.cloudinary.com/marcomontalbano/image/upload/v1713364450/video_to_markdown/images/youtube--BAkjjOerpcU-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=BAkjjOerpcU&ab_channel=jiefang "game")
 
 <br>
@@ -67,7 +71,7 @@ Player, markers, the development team.
 
 > “As a player, I want to see a clear control scheme, so I understand exactly what I need to do."
 
-> “As a player, I want to avoid enemy AI while playing, as it will be really cool to tackle this dynamic aspect of the game."
+> “As a player, I want to avoid enemy snakes while playing, as it will be really cool to tackle this dynamic aspect of the game."
 
 > “As a player, I want to be invested in my score or progress in the game, so that I enjoy playing it more!"
 
@@ -142,8 +146,27 @@ If the player selects the "Exit" option from the main menu, the game will termin
 # 5. Implementation
 Three areas of challenge :
 1. AI Implementation for Enemy Snakes - why did we feel we needed this. What two bugs came up the most often when writing this bit of code? How did you solve them? How did we finally implement them? What kind of player feedback did we get for this feature, how did it change the direction in which our code went?
-2. High Score Tracker - what were the challenges associated with incorporating this feature? What kind of player feedback did we get from it? 
-3. Venom Mechanic - how integral this is for our game flow. 
+   The biggest things I had to work around were the movement of the enemy snakes and their interactions with other elements of the map. For example, originally I didn't have the enemy snakes as part of the map grid that lots of the other elements are tracked on, and that made it hard to manage interactions. Implementing the framework Alex had made for the map grid made this much easier!  I didn't want the snakes to move through walls, food, consumables, their own body, or each other. However, this led to the snakes freezing in place when they had no free spaces to move to. This didn't look good, and was affecting gameplay. I had to instead use a heirarchy, where the enemy snake finds the best (closest to the player's snake) FREE cell that they can move to, and if there are no free cells, then they choose the best cell that is occupied by another snake, and then food or consumables. This means that they avoid moving over these things when possible, but will do if absolutely necessary to stop them from breaking.  Overall the snake behaviour and interactions was hard, also when dealing with venom and killing of the enemy snakes, that was an interesting interaction to manage!
+   Firstly, I'd probably not call it AI as that isn't technically what it is - its more dynamic seeking of the player snake. Its quite simple so maybe not worth going into extensively as I found interactions to be the hardest part of the enemy snake stuff. It simply finds the square which reduces the distance to the player's snake head the most. This means when theres not many snakes you can slightly manipulate them if they are behind a wall, but if you dont deal with them, the number of enemy snakes on the map increases and its hard to manage their positions! This stops a really passive play style from being fruitful in the long run
+3. High Score Tracker - what were the challenges associated with incorporating this feature? What kind of player feedback did we get from it?
+
+<p align="center">
+<img width="800" alt="Screenshot 2024-04-18 at 17 15 01" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/b01946d9-d5ca-4966-9d2b-349322aad1bc">
+</p>
+<p align="center">
+<img width="800" alt="Screenshot 2024-04-18 at 17 14 58" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/2ebb726c-00a7-42b5-9ba4-9cc2e5fe3eba">
+</p>
+   
+5. Venom Mechanic - how integral this is for our game flow.
+   s whole not too difficult to implement. The issues were based on edge case surrounding edge of map and walls. Once these were discovered during testing (playing) they were simple to fix. Essentially some extra conditions needed to be added which weren’t initially due to the quick development.
+Alex will be the one to talk to about this but for me, it was reasonably simple to handle the interactions between enemy snakes and venom due to the helpful framework we had.
+
+Help Page to Tutorial Transition 
+
+<p align="center">
+<img width="800" alt="Screenshot 2024-04-19 at 13 44 02" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/67139394-8530-494c-8383-b91b041c8ea2">
+</p>
+
 <br>
 
 # 6. Evaluation 
@@ -212,6 +235,11 @@ Implemented this change.
 
 Tweaked the high score tracker so that it differentiates between hard and easy mode. Separate lists for each difficulty.
 
+<p align="center">
+   
+![ezgif-5-6aff67af59](https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/f6508a9b-9f59-452e-8fb5-6c89893f51d1)
+</p>
+
 ### Bugs
 > "When you're on hard, when you fire venom, it doesn't react quick enough".
 
@@ -223,6 +251,20 @@ Fixed this bug.
 <br><br>
 
 ## Heuristic Analysis
+We also asked our users to provide some heuristic feedback after the talk-aloud evaluation was completed. This gave us a lot of similar information as we obtained from the talk-aloud but it did so in a more empirical fashion. We asked our users to consider their proposed issues in three dimensions - impact, frequency and persistence - and used the scores provided to evaluate the issue's severity. 
+
+| ID | Game Component | Heuristic | Description of Issue | Impact (0-3) | Frequency (0-3) | Persistence (0-3) | Overall Severity (0-9) | Recommendations |
+|----|----------------|-----------|----------------------|--------------|-----------------|--------------------|------------------------|-----------------|
+| 1  | Game Modes     | Visibility of System Status | Unclear difficulty distinction in game modes. | 2 | 2 | 2 | 6 | No changes made; feedback on increased difficulty was noted as counterproductive.
+| 2  | Help Menu      | Recognition Rather Than Recall | Confusion about game elements (e.g., pink things). | 2 | 2 | 3 | 7 | Added detailed descriptions and visual indicators on the help page and menu bar.
+| 3  | Main Menu      | User Control and Freedom | Difficulty selection was confusing; users mistook a decoration for a button. | 3 | 3 | 3 | 9 | Added a clear, labeled button next to the difficulty slider.
+| 4  | Easy Mode      | Flexibility and Efficiency of Use | Easy mode perceived as too challenging. | 3 | 3 | 3 | 9 | Reduced framerate in easy mode to adjust game speed. | Various |
+| 5  | UI: Main Menu  | Consistency and Standards | Misleading UI elements that looked clickable but were not. | 2 | 3 | 2 | 7 | Enhanced UI clarity with distinct lines around buttons.
+| 6  | Accessibility  | Aesthetic and Minimalist Design | Lack of a color-blindness feature. | 1 | 1 | 3 | 5 | Planned but not implemented due to time constraints. | Various |
+| 7  | Game Screen    | Help Users Recognize, Diagnose, and Recover from Errors | No visible tracking for previous scores on game screen. | 2 | 3 | 3 | 8 | Added high score tracking visible on the game screen.
+| 8  | High Scores    | Consistency and Standards | High score tracking did not differentiate between game difficulties. | 3 | 2 | 3 | 8 | Modified high score system to differentiate between easy and hard modes.
+| 9  | Gameplay: Hard Mode | Visibility of System Status | Slow reaction when firing venom in hard mode. | 3 | 2 | 3 | 8 | Improved responsiveness of venom firing in hard mode. | 
+| 10 | Gameplay       | Error Prevention | Players could move through walls due to a bug. | 3 | 1 | 1 | 5 | Fixed collision detection to prevent going through walls.|
 
 
 
@@ -304,6 +346,9 @@ With this data we used the Wilcoxon Signed Rank Test to find the calculated W te
 
 Ranks 2,3 and 4,5 have the same value differences. Fortunately, because they are of the same sign, this doesn't impact the test's results. The sum of our positive ranks is 0 and the sum of our negative ranks is 55, with the W test statistic coming out as 0. Since this is well below the maximum value of 8 as specified above, we can say with confidence that there is a statistically significant difference in our easy and hard difficulty modes. 
 
+### Testing
+Black Box
+White Box
 
 <br>
 
@@ -316,9 +361,9 @@ An initial snag we did encounter in our project was the transition from using In
 
 As a whole, we found using GitHub to be relatively straightforward. Our team encountered some instances of merge conflicts that we had to solve, but an early decision to split our repository into two branches - Main and Develop - allowed us to stagger the rate at which code was pushed to our Main branch. Uncompleted/potentially buggy features would be limited to the Develop branch, ensuring that the Main branch stayed free of broken or uncompleted code. GitHub did provide us with an integral part of our development process, namely the Kanban Board. We found our Kanban Board to be incredibly helpful because it functioned as simultaneously an accessible to-do list, planning tool, and way to dispense the workload. Chris fulfilled the role of project manager in this department, adding tasks to the Kanban Board and assigning them to members of the team as needed.
 
-
-<img width="1075" alt="Screenshot 2024-04-20 at 13 31 26" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/7ec558fb-076f-49cf-88c2-913c3a56122c">
-
+<p align="center">
+<img width="800" alt="Screenshot 2024-04-20 at 13 31 26" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/7ec558fb-076f-49cf-88c2-913c3a56122c">
+</p>
 
 
 Our team also created a Git Convention documentation that detailed the acceptable way for our commits to be structured. It required that our commits be formatted __"[type]:[title] [body] [footer]__ . This encouraged us to be specific with our commit messages, ensuring that the relevant information as to what the new/altered code did was contained within the message itself. The use of a <type> system was particularly helpful in categorising our commits, ensuring that our repo has a very coherent and simple commit history that can understood and searched through with ease. 
