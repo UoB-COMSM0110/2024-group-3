@@ -115,7 +115,7 @@ The player's score is recorded and can be displayed.
 11. Enemy snakes start appearing on the map.
 12. The game continues as long as the snake avoids collision with walls and enemies.
 13. When the snake collides with a wall, an enemy or itself, the game ends.
-14. The player's score is recored and can be saved under whatever name they choose.
+14. The player's score is recorded and can be saved under whatever name they choose.
 16. The player is taken back to the main menu.
     
 **Alternate Flows**
@@ -198,7 +198,11 @@ No changes, as we received a lot of comments that the hard mode was too hard and
 > "What are the pink things, are they venom?."
 
 More information on the help page and signage on the menu bar in the game.
+
 A lot of users tried to click the strawberry on the menu page to toggle the differences
+
+![ezgif-7-a072d64fbc](https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/042cd1eb-8023-46d2-baa3-39ccf6c82fd6)
+
 Added a button next to the difficulty slider to better indicate where the user should click.
 
 > "Easy mode could be dialled down in terms of speed."
@@ -224,7 +228,7 @@ We strongly considered this, as having a setting that could toggle the colour of
 
 Added a high score tracking for the difficulty mode to the game screen.
 
-> "mac users may prefer to use the WASD keys rather than the keyboard"
+> "Mac users may prefer to use the WASD keys rather than the keyboard"
 We added this feature so that the player snake's movement responds to both the arrow keys and WASD keys.
 
 > "You could load up help on game start or call it 'how to play', not help"
@@ -234,11 +238,6 @@ Implemented this change.
 > "For high score does it matter if it's easy or hard - shouldn't it be separate?"
 
 Tweaked the high score tracker so that it differentiates between hard and easy mode. Separate lists for each difficulty.
-
-<p align="center">
-   
-![ezgif-5-6aff67af59](https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/f6508a9b-9f59-452e-8fb5-6c89893f51d1)
-</p>
 
 ### Bugs
 > "When you're on hard, when you fire venom, it doesn't react quick enough".
