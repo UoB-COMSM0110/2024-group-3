@@ -65,7 +65,13 @@ public class EnemySnake extends AbstractSnake {
   
     @Override
     protected void move() {
+      if (difficultyMode == 0) {
+        if (!(frameCount % 3 == 0)) return;
+      }
+      else {
         if (frameCount % 2 == 0) return;
+      }
+      
         if (snakeCells.isEmpty()) return;
 
         ArrayList<PVector> occupiedPositionsByEnemies = game.getOccupiedPositionsByEnemies(this);
