@@ -148,19 +148,14 @@ During our game's implementation there were some features that we were certain w
 - why did we feel we needed this. What two bugs came up the most often when writing this bit of code? How did you solve them? How did we finally implement them? What kind of player feedback did we get for this feature, how did it change the direction in which our code went?
    The biggest things I had to work around were the movement of the enemy snakes and their interactions with other elements of the map. For example, originally I didn't have the enemy snakes as part of the map grid that lots of the other elements are tracked on, and that made it hard to manage interactions. Implementing the framework Alex had made for the map grid made this much easier!  I didn't want the snakes to move through walls, food, consumables, their own body, or each other. However, this led to the snakes freezing in place when they had no free spaces to move to. This didn't look good, and was affecting gameplay. I had to instead use a heirarchy, where the enemy snake finds the best (closest to the player's snake) FREE cell that they can move to, and if there are no free cells, then they choose the best cell that is occupied by another snake, and then food or consumables. This means that they avoid moving over these things when possible, but will do if absolutely necessary to stop them from breaking.  Overall the snake behaviour and interactions was hard, also when dealing with venom and killing of the enemy snakes, that was an interesting interaction to manage!
    Firstly, I'd probably not call it AI as that isn't technically what it is - its more dynamic seeking of the player snake. Its quite simple so maybe not worth going into extensively as I found interactions to be the hardest part of the enemy snake stuff. It simply finds the square which reduces the distance to the player's snake head the most. This means when theres not many snakes you can slightly manipulate them if they are behind a wall, but if you dont deal with them, the number of enemy snakes on the map increases and its hard to manage their positions! This stops a really passive play style from being fruitful in the long run
-3. High Score Tracker - what were the challenges associated with incorporating this feature? What kind of player feedback did we get from it?
 
-<p align="center">
-<img width="800" alt="Screenshot 2024-04-18 at 17 15 01" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/b01946d9-d5ca-4966-9d2b-349322aad1bc">
-</p>
-<p align="center">
-<img width="800" alt="Screenshot 2024-04-18 at 17 14 58" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/2ebb726c-00a7-42b5-9ba4-9cc2e5fe3eba">
-</p>
    
 ### Venom Mechanic
 The venom mechanic was one of the foundational parts of our game. Overall the implementation process was relatively smooth sailing, and the greatest challenges we found vase on the edge cases dealing with the borders of the map and walls. Our evaluation process was immensely helpful here, as we found that the increased play time by a lot of different users was great at identifiying bugs and potential issues. 
 
 The venom mechanic's functionality was written primarily via the 'Venom' class. This class is responsible for modelling the venom projectile that the snake uses to interact with the environment and to target enemies. Initally venom was only going to be used offensively, but as our game developed our team decided that it would be more fun for the player if venom could also be to collect food and destroy walls as well. The venom class makes use of a PVector to determine the venom's direction and velocity, with its starting position determined by the location of the player snake's head. This information is handled by the class' constructor, which creates the initial set of venom cells and positions them in the game grid. We created a 'handleCollusion(PVector position)' method that manages the effects when venom collides with other game objects like walls or enemy snakes, and a 'updateGridData()' method that would update the game grid to reflect the current position of venom cells.
+
+![Venom-ezgif com-resize](https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/88415e3f-25ca-47cd-a0c1-868b467490b7)
 
 
 ### High Score Tracker
