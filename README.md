@@ -2,6 +2,12 @@
 
 # 1. Team
 
+<p align="center">
+   <img title="a title" alt="Alt text" src="/images/group3.jpg" width="522">
+</p>
+
+<div align="center">
+ 
 | Name             | Email                     | GitHub Account       |
 |------------------|---------------------------|----------------------|
 | Chris Kerr       | [th23780@bristol.ac.uk](mailto:th23780@bristol.ac.uk) | [@chriskerrc](https://github.com/chriskerrc) |
@@ -10,8 +16,8 @@
 | Ziyuan Lu        | [py23518@bristol.ac.uk](mailto:py23518@bristol.ac.uk) | [@LzYzL](https://github.com/LzYzL) |
 | Alexander Fisher | [af17918@bristol.ac.uk](mailto:af17918@bristol.ac.uk) | [@alexandermfisher](https://github.com/alexandermfisher) |
 | Jie Fang         | [yh23030@bristol.ac.uk](mailto:yh23030@bristol.ac.uk) | [@Jiebristol](https://github.com/Jiebristol) |
+</div>
 
-<img title="a title" alt="Alt text" src="/images/group3.jpg" width="522">
 <br>
 
 # 2. Introduction 
@@ -260,6 +266,8 @@ Using these results we are able to calculate the perceived difference in workloa
 
 Comparing the two sets of data gave us this information :
 
+<div align="center">
+ 
 | Participant # | Easy Workload | Hard Workload | Difference |
 |---------------|---------------|---------------|------------|
 |       1       |      45       |      55       |    -10     |
@@ -273,9 +281,12 @@ Comparing the two sets of data gave us this information :
 |       9       |      61       |      73       |    -12     |  
 |       10      |      18       |      57       |    -39     |
 ---------------------------------------------------------------
+</div>
 
 With this data we used the Wilcoxon Signed Rank Test to find the calculated W test statistic. _N_ was 10 as that was the number of participants, and we set the significance at 0.05. Since we had 10 participants the W test statistic generated would need to be less than 8 for there to be a statistically significant difference in our game's difficulty levels. 
 
+<div align="center">
+ 
 |  Difference | Rank | Signed Rank |
 |-------------|------|-------------|
 |     -4      |  1   |     -1      |
@@ -289,6 +300,8 @@ With this data we used the Wilcoxon Signed Rank Test to find the calculated W te
 |     -30     |  9   |     -9      |
 |     -39     |  10  |     -10     |
 -----------------------------------
+</div>
+
 Ranks 2,3 and 4,5 have the same value differences. Fortunately, because they are of the same sign, this doesn't impact the test's results. The sum of our positive ranks is 0 and the sum of our negative ranks is 55, with the W test statistic coming out as 0. Since this is well below the maximum value of 8 as specified above, we can say with confidence that there is a statistically significant difference in our easy and hard difficulty modes. 
 
 
@@ -303,9 +316,20 @@ An initial snag we did encounter in our project was the transition from using In
 
 As a whole, we found using GitHub to be relatively straightforward. Our team encountered some instances of merge conflicts that we had to solve, but an early decision to split our repository into two branches - Main and Develop - allowed us to stagger the rate at which code was pushed to our Main branch. Uncompleted/potentially buggy features would be limited to the Develop branch, ensuring that the Main branch stayed free of broken or uncompleted code. GitHub did provide us with an integral part of our development process, namely the Kanban Board. We found our Kanban Board to be incredibly helpful because it functioned as simultaneously an accessible to-do list, planning tool, and way to dispense the workload. Chris fulfilled the role of project manager in this department, adding tasks to the Kanban Board and assigning them to members of the team as needed.
 
-__INSERT SCREENSHOT OF BOARDS__
+
+<img width="1075" alt="Screenshot 2024-04-20 at 13 31 26" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/7ec558fb-076f-49cf-88c2-913c3a56122c">
+
+
 
 Our team also created a Git Convention documentation that detailed the acceptable way for our commits to be structured. It required that our commits be formatted __"[type]:[title] [body] [footer]__ . This encouraged us to be specific with our commit messages, ensuring that the relevant information as to what the new/altered code did was contained within the message itself. The use of a <type> system was particularly helpful in categorising our commits, ensuring that our repo has a very coherent and simple commit history that can understood and searched through with ease. 
+
+<p align="center">
+<img width="800" alt="Screenshot 2024-04-20 at 13 44 42" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/976cc2db-7692-4488-8f1b-0bdbb3de2bad">
+</p>
+
+<p align="center">
+  <img width="430" alt="Screenshot 2024-04-20 at 13 47 16" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/c39480e2-4e99-4599-9540-12094ded20f1">
+</p>
 
 
 
