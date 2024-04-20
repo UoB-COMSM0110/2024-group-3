@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.List;
+import java.util.ArrayList;
 import processing.core.PVector;
 
 public class EnemySnake extends AbstractSnake {
@@ -93,7 +95,7 @@ public class EnemySnake extends AbstractSnake {
                 !(gridObject instanceof Consumable) &&
                 !isPositionInSnake(testPosition) &&
                 !occupiedPositionsByEnemies.contains(testPosition)) {
-                float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);
+                float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
                 if (distance < minDistance) {
                     minDistance = distance;
                     bestMove = testPosition;
@@ -115,7 +117,7 @@ public class EnemySnake extends AbstractSnake {
             if ((gridObject instanceof Food) ||
                 (gridObject instanceof Consumable) ||
                 occupiedPositionsByEnemies.contains(testPosition)) {
-                float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);
+                float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
                 if (distance < minDistance) {
                     minDistance = distance;
                     bestMove = testPosition;
@@ -135,7 +137,7 @@ public class EnemySnake extends AbstractSnake {
             }
 
             if (isPositionInSnake(testPosition)) {
-                float distance = PVector.dist(testPosition, game.snake.getSnakeCells().getLast().gridLocation);
+                float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
                 if (distance < minDistance) {
                     minDistance = distance;
                     bestMove = testPosition;
@@ -154,6 +156,18 @@ public class EnemySnake extends AbstractSnake {
             game.setMapGridObjectData(newHeadPosition, this); // Update new head position in grid
         }        
     }
+    
+// Helper method to calculate the closest distance from a test position to any cell in the player snake
+private float calculateClosestDistance(PVector testPosition, LinkedList<SnakeCell> playerCells) {
+    float minDistance = Float.MAX_VALUE;
+    for (SnakeCell cell : playerCells) {
+        float distance = PVector.dist(testPosition, cell.getGridLocation());
+        if (distance < minDistance) {
+            minDistance = distance;
+        }
+    }
+    return minDistance;
+}
 
     @Override
     protected void setVelocity(float x, float y) {
