@@ -146,6 +146,8 @@ We knew from the start that we needed the enemy snakes (ESs) to pose a real chal
 
 Originally the ESs weren't a part of the map grid that we track our game's objects on (walls, food, venom etc.), and this made managing the interactions of the ESs with our game's objects really tricky. As a consequence we tweaked the ES implemention to make use of the framework Alex created for the game grid, allowing us to impose limitations on the ESs movements so they couldn't move through walls, food, their own bodies or one another. This second attempt led to problems as well, causing the ESs to freeze in place when they had no square to occupy. Josh created a hierarchy, where the ESs find the best (closet to player snake) free cell that it could move to, and if there were no free cells then the ESs would move identify the best cell by whether it was occupied by another snake, and then food or consumables. The ESs are designed to avoid moving over these things wherever possible, but they will if there is absolutely no other move available to them.
 
+![Pathfinding-ezgif com-resize](https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/ea6279d2-a9bc-449d-9309-801cd57508de)
+
    
 ### Venom Mechanic
 The venom mechanic was one of the foundational parts of our game. Overall the implementation process was relatively smooth sailing, and the greatest challenges were with edge cases dealing with the borders of the map and walls. Our evaluation process was helpful here, as we found that the increased play time by a lot of different users was great at identifiying bugs and potential issues. 
