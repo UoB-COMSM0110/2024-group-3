@@ -89,7 +89,7 @@ Player, markers, the development team.
 
 **Description**
 
-In Survival Snake the player controls a snake's movements, directing it to eat food so that it may grow whilst trying to survive for as long as possible. The player must avoid obstacles on the map in the form of walls and enemy snakes that track the player's snake around the map. The player snake has a Venom ability that allows it to shoot venom at enemy snakes to kill them, whilst the enemy snakes will use pathfinding to hunt the player snake across the map and attempt to kill it by colliding with it. 
+In Survival Snake the player controls a snake's movements, directing it to eat food so that it may grow whilst trying to survive for as long as possible. The player must avoid obstacles on the map in the form of walls and enemy snakes that track the player snake around the map. The player snake has a venom ability that allows it to shoot venom at enemy snakes to kill them, whilst the enemy snakes will use pathfinding to hunt the player snake across the map and attempt to kill it by colliding with it. 
 
 **Preconditions**
 
@@ -103,20 +103,22 @@ The player's score is recorded and can be displayed.
 
 **Basic Flow**
 1. The player launches the game.
-2. The game displays the main menu.
-3. The player selects which difficulty they desire to play at.
-4. The player is shown the tutorial page.
-5. The player presses any key and the game begins.
-6. The player controls the snake's movement using either WASD or the arrow keys.
-7. The player navigates towards food items and avoids enemy snakes + walls.
-8. Each time the snake consumes a piece of food it grows in size by 1 square.
-9. The player can press the spacebar to shoot venom, which can collect food, destroy walls and kill enemy snakes.
-10. The player must navigate carefully to avoid collision with walls, enemy snakes and itself.
-11. Enemy snakes start appearing on the map.
-12. The game continues as long as the snake avoids collision with walls and enemies.
-13. When the snake collides with a wall, an enemy or itself, the game ends.
-14. The player's score is recorded and can be saved under whatever name they choose.
-16. The player is taken back to the main menu.
+2. The game displays the main menu page.
+3. The player choose which difficulty they wish to play on.
+4. The player selects the 'play' button to start the game.
+5. The game randomy decides between which two maps it will launch with.
+6. The map loads and the player snake is placed on the grid.
+7. The player controls the snake's movements using the arrow keys or WASD keys.
+8. The player navigates towards food, and can either collide with it or use its venom to consume the food.
+9. The player snake grows in size whenever food is consumed.
+10. The player can use the spacebar to shoot venom from the snake's head.
+11. The player must navigate carefully to avoid collision with the map's walls. 
+12. Enemies are introduced, and they start moving towards the player's snake.
+13. The game continues as long as the snake avoids collision with walls and enemies.
+14. When the snake collides with a wall, an enemy or itself, the game ends.
+15. The player's score is recorded and saved for future reference.
+16. The player can enter their name to save their score.
+17. The player returns to the main menu page. 
     
 **Alternate Flows**
 Need to do better me thinks. 
@@ -126,11 +128,7 @@ Need to do better me thinks.
 # 4. Design 
 
 ### Design Challenges
-* AI enemies that track the player snake around the map.
-* Collision detection.
-* Consuming food and growing the snake in length.
-* Venom mechanic.
-* Map design and difficulty modes.
+System architecture, class diagrams, behavioural diagrams. 
 
 ### Class Diagram
 
@@ -144,15 +142,15 @@ During our game's implementation there were some features that we were certain w
 
 
 ### Enemy Snake Pathfinding
+We knew from the start that we needed the enemy snakes (ESs) to pose a real challenge to the player. This meant creating ESs that responded to in-game obstacles, tracked the player snake around the map and moved towards the player snake in a way that felt logical and intuitive to the player. The ESs use pathfinding to track the player snake around the map by finding the square that reduces the distance to the player snake's head the most.
 
-   The biggest things I had to work around were the movement of the enemy snakes and their interactions with other elements of the map. For example, originally I didn't have the enemy snakes as part of the map grid that lots of the other elements are tracked on, and that made it hard to manage interactions. Implementing the framework Alex had made for the map grid made this much easier!  I didn't want the snakes to move through walls, food, consumables, their own body, or each other. However, this led to the snakes freezing in place when they had no free spaces to move to. This didn't look good, and was affecting gameplay. I had to instead use a heirarchy, where the enemy snake finds the best (closest to the player's snake) FREE cell that they can move to, and if there are no free cells, then they choose the best cell that is occupied by another snake, and then food or consumables. This means that they avoid moving over these things when possible, but will do if absolutely necessary to stop them from breaking.  Overall the snake behaviour and interactions was hard, also when dealing with venom and killing of the enemy snakes, that was an interesting interaction to manage!
-   Firstly, I'd probably not call it AI as that isn't technically what it is - its more dynamic seeking of the player snake. Its quite simple so maybe not worth going into extensively as I found interactions to be the hardest part of the enemy snake stuff. It simply finds the square which reduces the distance to the player's snake head the most. This means when theres not many snakes you can slightly manipulate them if they are behind a wall, but if you dont deal with them, the number of enemy snakes on the map increases and its hard to manage their positions! This stops a really passive play style from being fruitful in the long run
+Originally the ESs weren't a part of the map grid that we track our game's objects on (walls, food, venom etc.), and this made managing the interactions of the ESs with our game's objects really tricky. As a consequence we tweaked the ES implemention to make use of the framework Alex created for the game grid, allowing us to impose limitations on the ESs movements so they couldn't move through walls, food, their own bodies or one another. This second attempt led to problems as well, causing the ESs to freeze in place when they had no square to occupy. Josh created a hierarchy, where the ESs find the best (closet to player snake) free cell that it could move to, and if there were no free cells then the ESs would move identify the best cell by whether it was occupied by another snake, and then food or consumables. The ESs are designed to avoid moving over these things wherever possible, but they will if there is absolutely no other move available to them.
 
    
 ### Venom Mechanic
 The venom mechanic was one of the foundational parts of our game. Overall the implementation process was relatively smooth sailing, and the greatest challenges were with edge cases dealing with the borders of the map and walls. Our evaluation process was helpful here, as we found that the increased play time by a lot of different users was great at identifiying bugs and potential issues. 
 
-The venom mechanic's functionality was written primarily via the 'Venom' class. This class is responsible for modelling the venom projectile that the snake uses to interact with the environment and to target enemies. Initally venom was only going to be used offensively, but as our game developed our team decided that it would be more fun for the player if venom could also be used to collect food and destroy walls as well. The venom class makes use of a PVector to determine the venom's direction and velocity, with its starting position determined by the location of the player snake's head. This information is handled by the class' constructor, which creates the initial set of venom cells and positions them in the game grid. We created a 'handleCollusion(PVector position)' method that manages the effects when venom collides with other game objects like walls or enemy snakes, and a 'updateGridData()' method that would update the game grid to reflect the current position of venom cells.
+The venom mechanic's functionality was written primarily via the 'Venom' class. This class is responsible for modelling the venom projectile that the snake uses to interact with the environment and to target enemies. Initally venom was only going to be used offensively, but during development we decided that it would be more fun for the player if venom could be used to collect food and destroy walls as well. The venom class makes use of a PVector to determine the venom's direction and velocity, with its starting position determined by the location of the player snake's head. This information is handled by the class' constructor, which creates the initial set of venom cells and positions them in the game grid. We created a 'handleCollusion(PVector position)' method that manages the effects when venom collides with other game objects like walls or enemy snakes, and an 'updateGridData()' method that update's the game grid to reflect the current position of venom cells.
 
 ![Venom-ezgif com-resize-2](https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/edb750d7-9c50-4273-9b2b-aa43c29a884d)
 
@@ -163,7 +161,7 @@ This was added via two classes; a 'ScoreData' class and a 'HighScore' class. The
 
 The 'HighScore' class was designed to manage a list of the top scores in the form of a .csv file that we stored in our Map folder. This was done through an array that would store all saved high scores, and a constructor that read the saved scores in the .csv file. Then, the 'compare' method takes the given values from the 'ScoreData' class and compares them against the scores already saved in the array. This would be looped through until all the array's cells were checked, and if the method found an instance where the 'ScoreData' value was greater than the value saved in the array it would replace it. At this point, the updated list of scores is written back to the .csv file.
 
-Initially, we did this using just one list of high scores for the game, but after user feedback, we decided to create two separate lists for each difficulty mode. We felt this made the high scores more of a goal for the player, and by including the high score in the menu bar of the game as well we found this encouraged our players a lot more.
+Initially, we did this using just one list of high scores for the game, but after user feedback, we decided to create two separate lists for each difficulty mode. We felt this made the high scores more of a goal for the player, and by including the high score in the menu bar of the game as well we felt it was worked better as a goal for the players. 
 
 <p align="center">
 <img width="800" alt="Screenshot 2024-04-18 at 17 15 01" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/c4903af2-1361-4acd-a28d-e42ea46a0cbd">
@@ -173,7 +171,7 @@ Initially, we did this using just one list of high scores for the game, but afte
 <img width="800" alt="Screenshot 2024-04-18 at 17 14 58" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/9e85e4f6-b3b2-4789-805c-f22b36ebd97f">
 </p>
 
-One of the pieces of feedback we received during evaluation was that the tutorial information for our game might be better placed in the game itself rather than on the 'Help' page. We created a pop-up screen that would appear after the player clicked play. This screen showed the same information as the 'Help' page but did so in a much more accessible way for the user, and by having the pop-up information disappear by pressing any key we ensured that the flow of clicking the play button and starting the game remained uninterrupted. 
+As our game developed we were continously checking for bugs and adding new features. The UI was created in photoshop by Jie and Ziyuan, who did an outstanding job at both creating the game's overall aesthetic and menu functionality. Our tutuorial page was originally behind a button on the main menu called 'help', but after some user feedback we decided to create a pop up tutorial page that would launch when the game started and could be navigated away from by pressing any key. We felt that this was a good way to increase the visibility of the game's help information wihtout interrupting the flow of starting and playing the game. 
 
 <p align="center">
 <img width="800" alt="Screenshot 2024-04-19 at 13 44 02" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/67139394-8530-494c-8383-b91b041c8ea2">
@@ -265,7 +263,7 @@ Fixed this bug.
 <br><br>
 
 ## Heuristic Analysis
-We also asked our users to provide some heuristic feedback after the talk-aloud evaluation was completed. This provided us with a lot of similar information to the talk-aloud evalutation, but it did so in a more empirical fashion. We asked our users to consider their proposed issues in three dimensions - impact, frequency and persistence - and to rate them out of three. We then combined these scores to calculate the issue's severity. 
+We conducted a heuristic analysis as well, which touched upon a lot of the same issues we identified during the Think-Aloud evaluation. We compiled this data in the below table by, giving each issue its own unique ID and asking our participants how they would rate its impact, frequency and persistence. We then added these values together to give us the overall severity of the problem. 
 
 | ID | Game Component | Heuristic | Description of Issue | Impact (0-3) | Frequency (0-3) | Persistence (0-3) | Overall Severity (0-9) | Recommendations |
 |----|----------------|-----------|----------------------|--------------|-----------------|--------------------|------------------------|-----------------|
