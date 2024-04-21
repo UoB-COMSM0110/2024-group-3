@@ -265,7 +265,7 @@ Fixed this bug.
 <br><br>
 
 ## Heuristic Analysis
-We conducted a heuristic analysis as well, which touched upon a lot of the same issues we identified during the Think-Aloud evaluation. We compiled this data in the below table by, giving each issue its own unique ID and asking our participants how they would rate its impact, frequency and persistence. We then added these values together to give us the overall severity of the problem. 
+We conducted a heuristic analysis as well, which touched upon a lot of the same issues we identified during the Think-Aloud evaluation. We compiled this data in the below table by, giving each issue its own unique ID and asking our evaluators how they would rate its impact, frequency and persistence. We then added these values together to give us the overall severity of the problem. 
 
 | ID | Game Component | Heuristic | Description of Issue | Impact (0-3) | Frequency (0-3) | Persistence (0-3) | Overall Severity (0-9) | Recommendations |
 |----|----------------|-----------|----------------------|--------------|-----------------|--------------------|------------------------|-----------------|
