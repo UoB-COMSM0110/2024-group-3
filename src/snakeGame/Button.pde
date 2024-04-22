@@ -3,9 +3,11 @@ class Button {
     private WhatPage curPag,pagePoi;
     private String txt;
 
-    private int colr = 255, colg = 255, colb = 255;
+    private int colr = 78, colg = 68, colb = 61;
+    private int bgColr =255, bgColg = 255, bgColb = 255;
 
     private int txtsize = 32;
+    public int hover=0;
 
     public Button(int x, int y, int w, int v, WhatPage curPag, WhatPage pagePoi, String txt, int txtsize) {
         this.x = x;
@@ -14,6 +16,15 @@ class Button {
         this.v = v;
         this.curPag = curPag;
         this.pagePoi = pagePoi;
+        this.txt = txt;
+        this.txtsize=txtsize;
+    }
+    
+    public Button(int x,int y,int w,int v,String txt,int txtsize) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.v = v;
         this.txt = txt;
         this.txtsize=txtsize;
     }
@@ -56,6 +67,12 @@ class Button {
 
     public int getColb() {
         return colb;
+    }
+
+    public void setBgColour(int colr,int colg,int colb) {
+        this.bgColr = colr;
+        this.bgColg = colg;
+        this.bgColb = colb;
     }
 
     public void setColour(int colr, int colg, int colb) {

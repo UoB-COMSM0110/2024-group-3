@@ -1,12 +1,8 @@
 public class Snake extends AbstractSnake { 
-
-  private Food food;
-
   public Snake(GameScreen game, int len, int colour) {
-    super(game, len, colour); 
+    super(game, colour); 
   
     PVector position = findEmptyRectangle(game, 15, 1, 5);
-    System.out.println(position);
     for (int i = 0; i < len; i++) {
       snakeCells.add(new SnakeCell(position.copy(), colour));
       position.add(velocity); // Move to the next position based on velocity
@@ -52,7 +48,6 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
                 int middleX = x + cols / 2;
                 int middleY = y + rows / 2;
                 middlePoint.set(middleX, middleY);
-                System.out.println(middlePoint);
                 return middlePoint;
             }
         }
@@ -63,6 +58,12 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
 
   // add colision detecion here:
   // Method to move the snake
+  
+  private boolean hasVenomHitFood = false; //to tell snake about interaction between venom and food
+  
+  public void venomHitFood(){
+    hasVenomHitFood = true;
+  }
 
   protected void move() {
     // Move the head of the snake based on velocity
@@ -82,18 +83,28 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
     }
 
     Object gridObject = game.getMapGridObjectData(headPosition);
-    if (gridObject instanceof Wall || gridObject instanceof Snake) {
-      state = GameState.OVER;
+    if (gridObject instanceof Wall || gridObject instanceof Snake && !isSnakeCellWithinFirstThree(headPosition)) {
+      gameState = GameState.OVER;
       return;
     }
     SnakeCell newHead = new SnakeCell(headPosition, colour);
     snakeCells.add(newHead);
     game.setMapGridObjectData(headPosition, this);
 
-    if (gridObject instanceof Food) {
-      ((Food) gridObject).setRandomFoodLocation();
+    if (gridObject instanceof Food ) {
+      ((Food) gridObject).setRandomConsumableLocation();
       // add new head but dont remove tail:
       return;
+    }
+    if (hasVenomHitFood == true) {
+      hasVenomHitFood = false;
+      return; // return early to add new head but not remove tail:
+    }
+    
+    if (gridObject instanceof Powerup) {
+      ((Powerup) gridObject).setRandomConsumableLocation();
+      game.refillVenomBar();
+      // add new head and remove tail
     }
 
     // remove tail cell:
@@ -107,11 +118,19 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
       velocity.set(x, y);
     }
   }
-
-/* Josh made into a seperate Class!
-  private class SnakeCellAlex extends GridCell {
-    private SnakeCellAlex(PVector gridLocation, int colour) {
-      super(gridLocation, colour);
+  
+  private boolean isSnakeCellWithinFirstThree(PVector position) {
+    int count = 0;
+    for (SnakeCell cell : snakeCells) {
+        // Check if the position matches any of the first three cells of the snake
+        //System.out.println("Head: " + cell.gridLocation);
+        //System.out.println("Wall: " + position + "\n");
+        if (position.equals(cell.gridLocation) && count < 4) {
+            return true;
+        }
+        count++;
     }
-  }*/
+    return false;
+}
+  
 }

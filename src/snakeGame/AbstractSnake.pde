@@ -7,7 +7,7 @@ abstract class AbstractSnake {
   protected int colour;
   protected GameScreen game;
 
-  public AbstractSnake(GameScreen game, int len, int colour) {
+  public AbstractSnake(GameScreen game, int colour) {
     this.snakeCells = new LinkedList<>();
     this.velocity = new PVector(0, -1); // Initial velocity (upwards)
     this.colour = colour;
@@ -29,21 +29,33 @@ abstract class AbstractSnake {
   public SnakeCell removeFirst() {
     return snakeCells.removeFirst();
   }
-  
+
   public LinkedList<SnakeCell> getSnakeCells() {
-     return this.snakeCells; 
+    return this.snakeCells;
+  }
+
+  public PVector getVelocity() {
+    return velocity;
   }
 
   protected abstract void move();
-  
+
   protected abstract void setVelocity(float x, float y);
-  
+
   public boolean isPositionInSnake(PVector position) {
     for (SnakeCell cell : snakeCells) {
-        if (cell.gridLocation.x == position.x && cell.gridLocation.y == position.y) {
-            return true;
-        }
+      if (cell.gridLocation.x == position.x && cell.gridLocation.y == position.y) {
+        return true;
+      }
     }
     return false;
+  }
+
+  public void cleanUp() {
+    // Clear snake cells from the game grid
+    for (SnakeCell cell : snakeCells) {
+      game.setMapGridObjectData(cell.gridLocation, null);
+    }
+    snakeCells.clear();
   }
 }
