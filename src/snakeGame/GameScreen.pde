@@ -143,8 +143,8 @@ public class GameScreen {
     String timeString = nf(minutes, 2) + ":" + nf(seconds, 2);
     
 
-    snakeVenom = max(snakeVenom , 0); //venom bar can't exceed this amount 
-    snakeVenom  = min(snakeVenom , maxVenom); //venom bar can't go below zero 
+    snakeVenom = max(snakeVenom , 0); //venom bar can't go below zero (even though it says max)
+    snakeVenom  = min(snakeVenom , maxVenom); //venom bar can't exceed maximum (even though it says min)
     fill(255, 0, 0); //red 
 
     windowResize(width, height+100);
