@@ -420,6 +420,7 @@ public class Page //<>// //<>// //<>// //<>// //<>//
             gameScreen.setup(mapFile);
             isMapLoaded = true;
             gameState=GameState.PLAY;
+            end = false;
           }
           inputName="";
           file_button.play();

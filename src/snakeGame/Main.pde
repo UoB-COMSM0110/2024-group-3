@@ -29,8 +29,9 @@ public int totalScore;
 
 boolean isNameBoxSelected = false;
 int cursorTimer = 0;
+boolean end = false;
 
-SoundFile file, file_button, file_click, file_background;
+SoundFile file, file_button, file_click, file_background,file_new,file_d;
 
 public void settings() {
   size(width, height+100);
@@ -47,8 +48,9 @@ public void setup() {
   file = new SoundFile(this, sketchPath("../music/sound_1.mp3"));
   file_button = new SoundFile(this, sketchPath("../music/sound_2.mp3"));
   file_click = new SoundFile(this, sketchPath("../music/sound_3.mp3"));
-
   file_background = new SoundFile(this, sketchPath("../music/sound_4.mp3"));
+  file_new = new SoundFile(this, sketchPath("../music/sound_5.wav"));
+  file_d = new SoundFile(this, sketchPath("../music/sound_6.mp3"));
 }
 public void draw() {
   background(255);
@@ -65,8 +67,10 @@ public void draw() {
     gameScreen = new GameScreen();
     gameScreen.setup(mapFile);
     isMapLoaded = true;
+    end = false;
   }
   if (currentPage==WhatPage.MAINPAGE) {
+    end = false;
     frameRate(30);
     difficultyMode=0;
     isMapLoaded=false;
@@ -74,6 +78,10 @@ public void draw() {
     gameState = GameState.PLAY;
   } else if (currentPage==WhatPage.PLAYING) {
     if (gameState == GameState.OVER) {
+      if(!end){
+        file_d.play();
+        end = true;
+      }
       gameOver();
     } else {
       gameScreen.update();

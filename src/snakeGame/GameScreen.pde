@@ -45,6 +45,7 @@ public class GameScreen {
   private final int venomIncrementEasy = 30;
   private final int venomIncrementHard = 50;
   private int enemyScore = 0;
+  boolean play=false;
 
 
   public GameScreen() {
@@ -58,6 +59,7 @@ public class GameScreen {
     this.melon = new Melon(this);
   }
   public void setup(String mapPath) {
+    play=false;
     //drawGameBoard();
     background(0, 0, 0);
     makeWalls(mapPath);
@@ -149,12 +151,13 @@ public class GameScreen {
     fill(255, 0, 0);
 
     windowResize(width, height+100);
-    //fill(100, 100, 100);
-    //rect(0, height,width,100);
-    PImage highScorePage=loadImage("../images/highScore.png");
-    image(highScorePage, 0, height);
+    fill(150, 200, 150);
+    rect(0, height,width,100);
+    //PImage highScorePage=loadImage("../images/highScore.png");
+    //image(highScorePage, 0, height);
     
     fill(255);
+    fill(0);
 
     text("Time: "+timeString, 200, height+50);
     //track shots in UI
@@ -178,6 +181,7 @@ public class GameScreen {
     fill(200, 0, 200);
     rect(450, height+50, snakeVenom , 20);
     fill(255);
+    fill(0);
     totalScore = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore() + enemyScore;
     text("Your score: "+totalScore, 1000, height+50);
     if(difficultyMode==0){
@@ -189,6 +193,10 @@ public class GameScreen {
     fill(255,0,0);
     if(totalScore>highScore.infor[0].score){
        text("New", 1100, height+50);
+       if(!play){
+         file_new.play();
+         play=true;
+       }
     }
     
     if (isShowTips==1) {
