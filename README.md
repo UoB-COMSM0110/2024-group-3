@@ -61,7 +61,7 @@ Another element we've added to Survival Snake is the creation of custom maps. We
 <br>
 
 # 3. Requirements 
-
+In this section we're going to describe the ideation process for our game. We hope to explain factors that were considering during our game's inception, and how these factors influence the development process. We started with paper prototyping, and then we created user stories, use case diagrams and determine the basic+alternate flows that we wanted our game to have. 
 
 ### Initial Paper Prototyping
 When we first got together we brainstormed two possible initial ideas - an 'Endless Runner' game or a 'Survival Game'. In our first session we managed to successfully create paper prototypes for both of these ideas : 
@@ -132,26 +132,41 @@ The game ends when the user snake collides with a wall or an enemy.
 The player's score is recorded and can be displayed.
 
 **Basic Flow**
-1. The player launches the game.
-2. The game displays the main menu page.
-3. The player choose which difficulty they wish to play on.
-4. The player selects the 'play' button to start the game.
-5. The game randomy decides between which two maps it will launch with.
-6. The map loads and the player snake is placed on the grid.
-7. The player controls the snake's movements using the arrow keys or WASD keys.
-8. The player navigates towards food, and can either collide with it or use its venom to consume the food.
-9. The player snake grows in size whenever food is consumed.
-10. The player can use the spacebar to shoot venom from the snake's head.
-11. The player must navigate carefully to avoid collision with the map's walls. 
-12. Enemies are introduced, and they start moving towards the player's snake.
-13. The game continues as long as the snake avoids collision with walls and enemies.
-14. When the snake collides with a wall, an enemy or itself, the game ends.
-15. The player's score is recorded and saved for future reference.
-16. The player can enter their name to save their score.
-17. The player returns to the main menu page. 
+| Step | Game Action                                                        |
+|------|--------------------------------------------------------------------|
+| 1    | The player launches the game.                                      |
+| 2    | The game displays the main menu page.                              |
+| 3    | The player chooses which difficulty they wish to play on.          |
+| 4    | The player selects the 'play' button to start the game.            |
+| 5    | The game randomly decides between which two maps it will launch with. |
+| 6    | The map loads and the player snake is placed on the grid.          |
+| 7    | The player controls the snake's movements using the arrow keys or WASD keys. |
+| 8    | The player navigates towards food, and can either collide with it or use its venom to consume the food. |
+| 9    | The player snake grows in size whenever food is consumed.          |
+| 10   | The player can use the spacebar to shoot venom from the snake's head. |
+| 11   | The player must navigate carefully to avoid collision with the map's walls. |
+| 12   | Enemies are introduced, and they start moving towards the player's snake. |
+| 13   | The game continues as long as the snake avoids collision with walls and enemies. |
+| 14   | When the snake collides with a wall, an enemy, or itself, the game ends. |
+| 15   | The player's score is recorded and saved for future reference.     |
+| 16   | The player can enter their name to save their score.               |
+| 17   | The player returns to the main menu page.                          |
+
     
 **Alternate Flows**
-Need to do better me thinks. 
+| Step | High Scores Workflow                             | Settings Workflow                                 | Help Workflow                                       |
+|------|--------------------------------------------------|---------------------------------------------------|-----------------------------------------------------|
+| 1    | The player launches the game.                    | The player launches the game.                     | The player launches the game.                       |
+| 2    | The game displays the main menu page.            | The game displays the main menu page.             | The game displays the main menu page.               |
+| 3    | The player selects the 'High Scores' button.     | The player selects the 'Settings' button.         | The player selects the 'Help' button.               |
+| 4    | The game loads the 'High Score: Easy' page.      | The game loads the 'Settings' page.               | The game loads the 'Help' page.                     |
+| 5    | The player selects '>'.                          | The player changes the volume level, or turns the | The player reads the first page of help information.|
+|      |                                                  | grid lines and/or game controls on/off.           |                                                     |
+| 6    | The game loads the 'High Score: Hard' page.      | The player selects 'back'.                        | The player selects '>'.                             |
+| 7    | The player selects 'back'.                       | The player is returned to the main menu.          | The player reads the second page of help information.|
+| 8    | The player is returned to the main menu.         |                                                   | The player selects 'back'.                          |
+| 9    |                                                  |                                                   | The player is returned to the main menu.            |
+
 
 <br>
 
@@ -218,7 +233,6 @@ Initially, we did this using just one list of high scores for the game, but afte
 </div>
 
 
-
 As our game developed we were continously checking for bugs and adding new features. The UI was created in photoshop by Jie and Ziyuan, who did an outstanding job at both creating the game's overall aesthetic and menu functionality. Our tutuorial page was originally behind a button on the main menu called 'help', but after some user feedback we decided to create a pop up tutorial page that would launch when the game started and could be navigated away from by pressing any key. We felt that this was a good way to increase the visibility of the game's help information wihtout interrupting the flow of starting and playing the game. 
 
 <div align="center">
@@ -233,7 +247,7 @@ As our game developed we were continously checking for bugs and adding new featu
 As part of our game development process we engaged in both quantitative and qualitative analysis. This was a really rewarding experience, allowing us to get user feedback in an actionable form that could direct the development of our game as well as identify bugs that we could iron out. 
 
 ## Qualitative Analysis
-On 11.03 we used our lab session to obtain some initial Think-Aloud feedback for our game. We then repeated this process on 14.04, and the below data is an amalgamation of both of these sessions' feedback and the steps they directed us to take :
+On 11.03 we used our lab session to obtain some initial Think-Aloud feedback for our game. Florence divided this feedback into 4 categories; positive, negative, potential features and bugs. We chose the Think-Aloud method because of how quick it was to perform, and because we timed it for a lab session we had a sizable quantity of participants to perform it with. 
 
 ### Positive Feedback
 > Participant 1 - "Shooting venom is really fun."
@@ -268,7 +282,6 @@ A lot of users tried to click the strawberry on the menu page to toggle the diff
     <img src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/042cd1eb-8023-46d2-baa3-39ccf6c82fd6" alt="Animated GIF example">
     <p><em>Difficulty Slider</em></p>
 </div>
-
 
 Added a button next to the difficulty slider to better indicate where the user should click.
 
@@ -317,7 +330,7 @@ Fixed this bug.
 <br><br>
 
 ## Heuristic Analysis
-We conducted a heuristic analysis as well, which touched upon a lot of the same issues we identified during the Think-Aloud evaluation. We compiled this data in the below table by, giving each issue its own unique ID and asking our evaluators how they would rate its impact, frequency and persistence. We then added these values together to give us the overall severity of the problem. 
+On 12.04 we conducted a heuristic analysis, which touched upon a lot of the same issues we identified during the Think-Aloud evaluation. Chris and Florence performed this evaluation on members from 5 other groups, with 8 participants in total. Ideally we would have had 10 > participants, but time constraints prevented this. Florence subsequently analysed this data and compiled the below table. She gave each issue its own unique ID and asking our evaluators how they would rate its impact, frequency and persistence, and then added these values together to give the overall severity of the problem. 
 
 | ID | Game Component | Heuristic | Description of Issue | Impact (0-3) | Frequency (0-3) | Persistence (0-3) | Overall Severity (0-9) | Recommendations |
 |----|----------------|-----------|----------------------|--------------|-----------------|--------------------|------------------------|-----------------|
@@ -335,7 +348,7 @@ We conducted a heuristic analysis as well, which touched upon a lot of the same 
 
 
 ## Quantitative Evluation
-On the 14.04 we put together a meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing we used the NASA TLX questionnaire to record feedback in 6 dimensions for both the easy and hard modes of the game : 
+On the 14.04 Chris and Florence put together a meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing we used the NASA TLX questionnaire to make sure that our game's two difficulty modes varied substantially in ease of play :
 
 ### Easy Mode
 body
@@ -370,7 +383,7 @@ body
 ----------------------------------------------------------------------------------------------------------
 
 ### Interpreting the Results
-Using these results we are able to calculate the perceived difference in workload. First we used the formula  _(x - 1) * 5_ [where __x__ = score)  to calculate the participant's perceived demand for each dimension. Using these scores we can calculate the total perceived workload for each participant, using the formula  _(sum of each dimension) / 6_  to calculate their overall rating, as given in the final column of both tables. 
+Using these results Florence was able to calculate the perceived difference in workload. First she used the formula  _(x - 1) * 5_ [where __x__ = score)  to calculate the participant's perceived demand for each dimension. Using these scores she then calculated the total perceived workload for each participant, using the formula  _(sum of each dimension) / 6_  to calculate their overall rating, as given in the final column of both tables. 
 
 Comparing the two sets of data gave us this information :
 
@@ -391,7 +404,7 @@ Comparing the two sets of data gave us this information :
 ---------------------------------------------------------------
 </div>
 
-With this data we used the Wilcoxon Signed Rank Test to find the calculated W test statistic. _N_ was 10 as that was the number of participants, and we set the significance at 0.05. Since we had 10 participants the W test statistic generated would need to be less than 8 for there to be a statistically significant difference in our game's difficulty levels. 
+She then used the Wilcoxon Signed Rank Test to find the calculated W test statistic. _N_ was 10 as that was the number of participants, and she set the significance at 0.05. Since the test had 10 participants the W test statistic generated would need to be less than 8 for there to be a statistically significant difference in our game's difficulty levels. 
 
 <div align="center">
  
@@ -421,7 +434,7 @@ White Box
 # 7. Process
 As a group, we've come away from this project feeling satisfied and proud of our team's communication and cohesiveness. 
 
-Our communication has overall been stellar. We made a group chat using WhatsApp during the first week of this term, and it has proven invaluable for organising our time and sharing ideas. Being able to share media with one another, discuss feedback and identify goals via a platform that allows virtually instantaneous communication has been invaluable. However, face-to-face meetings were also integral. Our lab sessions on Monday were very helpful for this, partially in how they facilitated discussion with other groups, but also in the opportunity they gave to plan approximately 1-2 other face-to-face meetings each week. In these meetings we tended to adopt a scrum/stand-up style approach, with Alex often taking the role of the scrum leader. We discussed as a group how our personal areas of code were progressing, and if there were any features we wanted to suggest exploring. Depending on our respective schedules we'd then try to work on our respective parts of the code together in the labs. This was helpful because it meant we could show one another the areas of challenging/interesting code in person, as it can be somewhat tricky to discuss coding issues without being able to see the code in question. On a few occasions we took advantage of Teams' video call feature to meet face-to-face virtually if a team member was unable to make it to the labs that day. 
+We made a group chat using WhatsApp during the first week of this term, and it has proven immensely helpful for organising our time and sharing ideas. Being able to share media with one another, discuss feedback and identify goals via a platform that allows virtually instantaneous communication has been invaluable. However, face-to-face meetings were also integral. Our lab sessions on Monday were very helpful for this, partially in how they facilitated discussion with other groups, but also in the opportunity they gave to plan approximately 1-2 other face-to-face meetings each week. In these meetings we tended to adopt a scrum/stand-up style approach, with Alex often taking the role of the scrum leader. We discussed as a group how our personal areas of code were progressing, and if there were any features we wanted to suggest exploring. Depending on our respective schedules we'd then try to work on our respective parts of the code together in the labs. This was helpful because it meant we could show one another the areas of challenging/interesting code in person, as it can be somewhat tricky to discuss coding issues without being able to see the code in question. On a few occasions we took advantage of Teams' video call feature to meet face-to-face virtually if a team member was unable to make it to the labs that day. 
 
 An initial snag we did encounter in our project was the transition from using IntelliJ and Java rather than the Processing IDE. In the beginning we thought that IntelliJ's increased functionality, specifically in areas such as code quality and testing, would prove it to be advantageous over Processing. However, after discussion with other groups and our module leads our group concluded that Processing would better serve the game's development. Fortunately, we weren't too far along in our code's lifespan when we made this decision, so the actual amount of code we had to translate from one environment to another wasn't too arduous. The aesthetic and user interface for our game was created through a combination of Photoshop and Processing, a task which Ziyuan headed up and executed wonderfully. 
 
@@ -437,6 +450,7 @@ As a whole, we found using GitHub to be relatively straightforward. Our team enc
 Our team also created a Git Convention documentation that detailed the acceptable way for our commits to be structured. It required that our commits be formatted __"[type]:[title] [body] [footer]__ . This encouraged us to be specific with our commit messages, ensuring that the relevant information as to what the new/altered code did was contained within the message itself. The use of a <type> system was particularly helpful in categorising our commits, ensuring that our repo has a very coherent and simple commit history that can understood and searched through with ease. 
 
 We would also like to mention the map creating software that Alex wrote for our game. Using Processing Alex created a piece of code that allows you to create and save maps for our game in a .csv format. The user draws maps onto the canvas using the mouse, and increments the map counter for each wall they create. Once their map is created it can be named and saved, with the .csv suffix added automatically by the program. We store the created maps in a relevant folder in our game code, and they can subsequently loaded into the game with ease, with in-game walls being placed in the same locations as chosen during the map creation process. This allowed us to create unique maps with ease, thereby helping us to differentiate between the easy and difficult modes of our game in a way that the player can immediately appreciate. 
+
 <div align="center">
     <img width="800" alt="Screenshot 2024-04-20 at 13 44 42" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/976cc2db-7692-4488-8f1b-0bdbb3de2bad">
     <p><em>Processing Program to Create Maps</em></p>
