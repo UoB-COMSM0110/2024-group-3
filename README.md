@@ -1,4 +1,7 @@
-# Overview of Software Engineering - Group 3
+<div align="center">
+    <img src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/c75424b0-11bb-4a1e-b1ab-8a0418648ae3" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
+</div>
+
 
 
 # Table of Contents
@@ -54,7 +57,7 @@ Another element we've added to Survival Snake is the creation of custom maps. We
 
 <div align="center">
     <img width="800" alt="Screenshot 2024-04-18 at 17 15 10" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/25c9f921-3caf-48fd-a917-f5de49dd245b">
-    <p><em>Surivale Snake, Main Page</em></p>
+    <p><em>Survival Snake, Main Page</em></p>
 </div>
 
 
