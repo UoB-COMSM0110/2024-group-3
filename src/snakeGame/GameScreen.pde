@@ -148,6 +148,11 @@ public class GameScreen {
     fill(255, 0, 0); //red 
 
     windowResize(width, height+100);
+    //fill(100, 100, 100);
+    //rect(0, height,width,100);
+    PImage highScorePage=loadImage("../images/highScore.png");
+    image(highScorePage, 0, height);
+    
     fill(255);
     text("Time: "+timeString, 200, height+50);
     
