@@ -61,6 +61,7 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
   
   private boolean hasVenomHitFood = false; //to tell snake about interaction between venom and food
   
+  //this method is called in the Venom class 
   public void venomHitFood(){
     hasVenomHitFood = true;
   }
@@ -92,19 +93,20 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
     game.setMapGridObjectData(headPosition, this);
 
     if (gridObject instanceof Food ) {
+      //when snake eats food, move the food
       ((Food) gridObject).setRandomConsumableLocation();
-      // add new head but dont remove tail:
+      // add new head but dont remove tail: snake grows when it eats
       return;
     }
     if (hasVenomHitFood == true) {
-      hasVenomHitFood = false;
-      return; // return early to add new head but not remove tail:
+      hasVenomHitFood = false; //reset boolean for next time
+      return; // return early to add new head but not remove tail: snake grows when it eats (via venom)
     }
     
     if (gridObject instanceof Powerup) {
-      ((Powerup) gridObject).setRandomConsumableLocation();
-      game.refillVenomBar();
-      // add new head and remove tail
+      ((Powerup) gridObject).setRandomConsumableLocation(); //move the powerup
+      game.refillVenomBar(); //replenish venom
+      // add new head and remove tail: snake doesn't grow
     }
 
     // remove tail cell:
