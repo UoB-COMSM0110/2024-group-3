@@ -32,7 +32,7 @@ public class GameScreen {
   private Apple apple;
   private Banana banana;
   private Melon melon;
-  private VenomRefiller venomRefillerOne;
+  private VenomRefiller venomRefillerOne; //two VenomRefiller powerups, because only having one makes it too hard
   private VenomRefiller venomRefillerTwo;
 
   //dynamic objects:
@@ -70,6 +70,7 @@ public class GameScreen {
     //for (EnemySnake enemy : enemySnakes) {
     //  enemy.renderSnake();
     //}
+    //there's always one of each of the three types of food on the grid 
     this.apple = new Apple(this);
     this.apple.setRandomConsumableLocation();
     this.banana = new Banana(this);
@@ -80,8 +81,6 @@ public class GameScreen {
     this.venomRefillerOne.setRandomConsumableLocation();
     this.venomRefillerTwo = new VenomRefiller(this);
     this.venomRefillerTwo.setRandomConsumableLocation();
-    
-    
   }
 
   public void update() {
@@ -146,9 +145,9 @@ public class GameScreen {
     String timeString = nf(minutes, 2) + ":" + nf(seconds, 2);
     
 
-    snakeVenom = max(snakeVenom , 0);
-    snakeVenom  = min(snakeVenom , maxVenom);
-    fill(255, 0, 0);
+    snakeVenom = max(snakeVenom , 0); //venom bar can't go below zero (even though it says max)
+    snakeVenom  = min(snakeVenom , maxVenom); //venom bar can't exceed maximum (even though it says min)
+    fill(255, 0, 0); //red 
 
     windowResize(width, height+100);
     fill(150, 200, 150);
@@ -157,36 +156,48 @@ public class GameScreen {
     //image(highScorePage, 0, height);
     
     fill(255);
+<<<<<<< HEAD
     fill(0);
 
+=======
+>>>>>>> f7eca58c054ff1ace59530b9568c42566239885c
     text("Time: "+timeString, 200, height+50);
-    //track shots in UI
-    String venomString = "Venom (empty: eat + powerup!)";  // fallback message
-    //6 shots of venom in easy mode
+    
+    //The score bar at the bottom of the screen displays how many shots of venom you have
+    String venomString = "Venom (empty: eat + powerup!)";  // fallback message for when shots == 0
+    float venomShots = 0;
+    //Snake has 6 shots of venom in easy mode, depleted from 300 in increments of 50 (50*6 == 300)
     if(difficultyMode == 0){
+       //if there's a shot remaining, snake venom is in bounds and the venom has been reduced by an increment as expected
        if (snakeVenom >= venomIncrementEasy && snakeVenom <= maxVenom && snakeVenom % venomIncrementEasy == 0) {
-          float venomBullets = snakeVenom / venomIncrementEasy;
-          venomString = "Venom (" + (int)venomBullets + "/10 shots)";
+          venomShots = snakeVenom / venomIncrementEasy; //calculate remaining shots
+          venomString = "Venom (" + (int)venomShots + "/10 shots)"; //display number of current venom shots according to caluclation
        }
     }
-    //10 shots of venom in hard mode
+    //Snake has 10 shots of venom in hard mode, depleted from 300 in increments of 30 (30*10 == 300)
     else{
+      //if there's a shot remaining, snake venom is in bounds and the venom has been reduced by an increment as expected
       if (snakeVenom >= venomIncrementHard && snakeVenom <= maxVenom && snakeVenom % venomIncrementHard == 0) {
-          float venomBullets = snakeVenom / venomIncrementHard;
-          venomString = "Venom (" + (int)venomBullets + "/6 shots)";
+          venomShots = snakeVenom / venomIncrementHard; //calculate remaining shots
+          venomString = "Venom (" + (int)venomShots + "/6 shots)"; //display number of current venom shots according to caluclation
        }
     }
       
     text(venomString, 600, height + 20); 
-    fill(200, 0, 200);
+    fill(200, 0, 200); //venom purple
     rect(450, height+50, snakeVenom , 20);
     fill(255);
+<<<<<<< HEAD
     fill(0);
+=======
+    //total score is sum of score for eating food plus score for killing enemy snakes 
+>>>>>>> f7eca58c054ff1ace59530b9568c42566239885c
     totalScore = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore() + enemyScore;
     text("Your score: "+totalScore, 1000, height+50);
-    if(difficultyMode==0){
+    //display high scores for easy and hard modes separtely 
+    if(difficultyMode==0){ //easy mode
       text("High score: "+highScore.infor[0].score, 1000, height+20);
-    }else{
+    }else{ //hard mode
       text("High score: "+highScore_hard.infor[0].score, 1000, height+20);
     }
     
@@ -207,6 +218,7 @@ public class GameScreen {
     }
   }
   
+  //killing enemy snakes increases your score by 5
   public void incrementEnemyScore(){
      enemyScore+=5; 
   }
@@ -241,7 +253,6 @@ public class GameScreen {
       key=0;
     }
   }
-
 
   public void setMapGridObjectData(int x, int y, Object obj) {
     this.mapGridObjectData[x][y] = obj;
@@ -361,6 +372,7 @@ public class GameScreen {
 
   //venom setters
 
+  //called when you consume a venom powerup
   public void refillVenomBar() {
     snakeVenom +=maxVenom;
   }
