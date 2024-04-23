@@ -1,5 +1,5 @@
-import processing.sound.*; //<>// //<>// //<>// //<>//
-// Grid/Screen Size Global Configuration: //<>// //<>// //<>//
+import processing.sound.*; //<>// //<>// //<>// //<>// //<>//
+// Grid/Screen Size Global Configuration: //<>// //<>//
 public static final int ROWS = 45;
 public static final int COLS = 100;
 public static final int CELL_SIZE = 12;
@@ -23,14 +23,14 @@ public WhatPage currentPage;
 public int isShowTips=1;
 public int isShowTips2=1;
 public int volume=0;
-public HighScore highScore,highScore_hard;
+public HighScore highScore, highScore_hard;
 public String inputName;
 public int totalScore;
 
 boolean isNameBoxSelected = false;
 int cursorTimer = 0;
 
-SoundFile file,file_button,file_click,file_background;
+SoundFile file, file_button, file_click, file_background;
 
 public void settings() {
   size(width, height+100);
@@ -47,25 +47,24 @@ public void setup() {
   file = new SoundFile(this, sketchPath("../music/sound_1.mp3"));
   file_button = new SoundFile(this, sketchPath("../music/sound_2.mp3"));
   file_click = new SoundFile(this, sketchPath("../music/sound_3.mp3"));
-  
-  file_background = new SoundFile(this, sketchPath("../music/sound_4.mp3"));
 
+  file_background = new SoundFile(this, sketchPath("../music/sound_4.mp3"));
 }
 public void draw() {
   background(255);
 
   if (!isMapLoaded) {
-        Random rand = new Random();
-        int mapIndex = rand.nextInt(2) + 1;
-        String mapFile = "mapsCSV/" + (difficultyMode == 0 ? "E" + mapIndex : "H" + mapIndex) + ".csv";
-        if (difficultyMode == 0) {
-            frameRate(10);
-        } else {
-            frameRate(15);
-        }
-        gameScreen = new GameScreen();
-        gameScreen.setup(mapFile);
-        isMapLoaded = true;
+    Random rand = new Random();
+    int mapIndex = rand.nextInt(2) + 1;
+    String mapFile = "mapsCSV/" + (difficultyMode == 0 ? "E" + mapIndex : "H" + mapIndex) + ".csv";
+    if (difficultyMode == 0) {
+      frameRate(10);
+    } else {
+      frameRate(15);
+    }
+    gameScreen = new GameScreen();
+    gameScreen.setup(mapFile);
+    isMapLoaded = true;
   }
   if (currentPage==WhatPage.MAINPAGE) {
     frameRate(30);
@@ -134,7 +133,7 @@ void keyPressed() {
     }
   } else if (currentPage==WhatPage.POPHELPPAGE) {
     file.amp(0.3);
-      file_background.loop();
+    file_background.loop();
     if (keyCode!=0) {
       currentPage=WhatPage.PLAYING;
     }
@@ -157,12 +156,12 @@ void keyPressed() {
       currentPage=WhatPage.POPHELPPAGE;
     } else if (currentPage==WhatPage.PLAYING&&gameState==GameState.OVER) {
       if (inputName!="") {
-        if(difficultyMode == 0){
+        if (difficultyMode == 0) {
           highScore.compare(new ScoreData(inputName, totalScore));
-        }else{
+        } else {
           highScore_hard.compare(new ScoreData(inputName, totalScore));
         }
-        
+
         inputName="";
       }
       currentPage = difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard;
@@ -218,10 +217,16 @@ public void gameOver() {
   text("Final score: "+totalScore, width/2, 200);
   fill(255);
   drawNameBox();
-  Button rt_but = new Button(480, 440, 720, 480, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save", 24);
+  Button rt_but = new Button(480, 390, 720, 430, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save", 24);
+  Button exit_but = new Button(480, 460, 720, 500, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Exit", 24);
+  Button re_but = new Button(480, 530, 720, 570, WhatPage.PLAYING, WhatPage.POPHELPPAGE, "Restart", 24);
   page.butList.add(rt_but);
+  page.butList.add(exit_but);
+  page.butList.add(re_but);
   page.update(mouseX, mouseY);
   page.drawButton(rt_but);
+  page.drawButton(exit_but);
+  page.drawButton(re_but);
 }
 
 //void handleReturn(Button but)
