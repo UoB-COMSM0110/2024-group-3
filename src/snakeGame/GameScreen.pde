@@ -42,7 +42,8 @@ public class GameScreen {
   private int startTime;
   private float snakeVenom = 300;
   private final int maxVenom = 300;
-  private final int venomIncrement = 50;
+  private final int venomIncrementEasy = 30;
+  private final int venomIncrementHard = 50;
   private int enemyScore = 0;
 
 
@@ -151,12 +152,23 @@ public class GameScreen {
     fill(255);
 
     text("Time: "+timeString, 200, height+50);
-    //track bullets in UI
+    //track shots in UI
     String venomString = "Venom (empty: eat + powerup!)";  // fallback message
-    if (snakeVenom >= venomIncrement && snakeVenom <= maxVenom && snakeVenom % venomIncrement == 0) {
-       float venomBullets = snakeVenom / venomIncrement;
-       venomString = "Venom (" + (int)venomBullets + "/6 shots)";
+    //6 shots of venom in easy mode
+    if(difficultyMode == 0){
+       if (snakeVenom >= venomIncrementEasy && snakeVenom <= maxVenom && snakeVenom % venomIncrementEasy == 0) {
+          float venomBullets = snakeVenom / venomIncrementEasy;
+          venomString = "Venom (" + (int)venomBullets + "/10 shots)";
+       }
     }
+    //10 shots of venom in hard mode
+    else{
+      if (snakeVenom >= venomIncrementHard && snakeVenom <= maxVenom && snakeVenom % venomIncrementHard == 0) {
+          float venomBullets = snakeVenom / venomIncrementHard;
+          venomString = "Venom (" + (int)venomBullets + "/6 shots)";
+       }
+    }
+      
     text(venomString, 600, height + 20); 
     fill(200, 0, 200);
     rect(450, height+50, snakeVenom , 20);
@@ -340,8 +352,14 @@ public class GameScreen {
     snakeVenom +=maxVenom;
   }
   
+  //venom bar depleted by different amounts depending on easy/hard mode
   public void depleteVenomBar() {
-    snakeVenom -=venomIncrement;
+    if(difficultyMode == 0){
+       snakeVenom -=venomIncrementEasy;
+    }
+    else{
+       snakeVenom -=venomIncrementHard;
+    }
   }
 
   public void cleanUp() {
