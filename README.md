@@ -1,10 +1,35 @@
 # Overview of Software Engineering - Group 3
 
+
+# Table of Contents
+- [1. Team](#1-team)
+- [2. Introduction](#2-introduction)
+- [3. Requirements](#3-requirements)
+  - [Initial Paper Prototyping](#initial-paper-prototyping)
+  - [Use-Case Diagram](#use-case-diagram)
+  - [Use-Case Specification](#use-case-specification)
+- [4. Design](#4-design)
+  - [Design Challenges](#design-challenges)
+  - [Class Diagram](#class-diagram)
+- [5. Implementation](#5-implementation)
+  - [Challenge 1 - Enemy Snake Pathfinding](#challenge-1-enemy-snake-pathfinding)
+  - [Challenge 2 - Venom Mechanic](#challenge-2-venom-mechanic)
+  - [Challenge 3 -High Score Tracker](#challenge-3-high-score-tracker)
+- [6. Evaluation](#6-evaluation)
+  - [Qualitative Analysis](#qualitative-analysis)
+  - [Heuristic Analysis](#heuristic-analysis)
+  - [Quantitative Analysis](#quantitative-analysis)
+- [7. Process](#7-process)
+- [8. Conclusion](#8-conclusion)
+
+
+
 # 1. Team
 
-<p align="center">
-   <img title="a title" alt="Alt text" src="/images/group3.jpg" width="522">
-</p>
+<div align="center">
+    <img title="a title" alt="Alt text" src="/images/group3.jpg" width="522">
+    <p><em>The team</em></p>
+</div>
 
 <div align="center">
  
@@ -81,7 +106,10 @@ Player, markers, the development team.
 
 ### Use-Case Diagram
 
-<img src='/images/use_case_diagram.png'/>
+<div align="center">
+    <img src="/images/use_case_diagram.png" alt="Use Case Diagram">
+    <p><em>Use Case Diagram</em></p>
+</div>
 
 
 ### Use-Case Specification
@@ -132,7 +160,10 @@ System architecture, class diagrams, behavioural diagrams.
 
 ### Class Diagram
 
-<img src='/images/class_diagram.png'/>
+<div align="center">
+    <img src="/images/class_diagram.png" alt="Class Diagram">
+    <p><em>Class Diagram</em></p>
+</div>
 
 
 
@@ -141,50 +172,58 @@ System architecture, class diagrams, behavioural diagrams.
 During our game's implementation there were some features that we were certain we wanted to include in our game. From these we identified three specific areas of challenge; the enemy snake pathfinding, the venom mechanic and the highscore tracker.  
 
 
-### Enemy Snake Pathfinding
+### Challenge 1 - Enemy Snake Pathfinding
 We knew from the start that we needed the enemy snakes (ESs) to pose a real challenge to the player. This meant creating ESs that responded to in-game obstacles, tracked the player snake around the map and moved towards the player snake in a way that felt logical and intuitive to the player. The ESs use pathfinding to track the player snake around the map by finding the square that reduces the distance to the player snake (the closest part of it's body) the most.
 
-Originally the ESs weren't a part of the map grid that we track our game's objects on (walls, food, venom etc.), and this made managing the interactions of the ESs with our game's objects really tricky. As a consequence we tweaked the ES implemention to make use of the framework Alex created for the game grid, allowing us to impose limitations on the ESs movements so they couldn't move through walls, food, their own bodies or one another. This second attempt led to problems as well, causing the ESs to freeze in place when they had no square to occupy. Some serious consideration had to go into decisions surrounding ES movement and how different movements were prioritised. 
+Originally the ESs weren't a part of the map grid that we track our game's objects on (walls, food, venom etc.), and this made managing the interactions of the ESs with our game's objects really tricky. As a consequence we tweaked the ES implemention to make use of the framework Alex created for the game grid, allowing us to impose limitations on the ESs movements so they couldn't move through walls, food, their own bodies or one another. This second attempt led to problems as well, causing the ESs to freeze in place when they had no square to occupy.
+
+To solve this Josh implemented a hierarchical system of movement. This ensures the ESs find the best path to the player snake whilst minimising gameplay disruption as much as possible. The highest priority is to prevent the ESs from moving through walls because doing so would fundamentally alter the gameplay, so this rule is non-negotiable. The next priority is to prevent them from moving through themselves or one another. This is crucial for maintaining visibility and predictability in the game, as the player needs to see and predict the movements of enemy snakes to strategize their own. If no other free cells are available then the most acceptable move for the ESs to make is by traversing food/consumable occupied cells since this wouldn't disrupt gameplay hugely, as the player can still interact with consumables using their venom. 
+
+The hierachy was designed so that the ESs would always prioritize the cell type over the distance to the player snake.
 
 
-### Enemy Snake movement heirarchy
+<div align="center">
+    <img src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/ea6279d2-a9bc-449d-9309-801cd57508de" alt="Pathfinding GIF">
+    <p><em>ES Pathfinding</em></p>
+</div>
 
-<img src='/images/ESMovementHeirarchy.png'/>
-
-Of course, in an ideal world, an enemy snake would never have to move through food, consumables, other ESs, itself, and walls. However, this is unrealistic, and we realised there would be scenarios where an enemy snake had no empty cells on the screen to move to, especially as there might be multiple ESs near eachother blocking eachothers movements. Josh decided to address this by creating a heirarchy of cell objects which determined the choice the ES would make. The concrete wall here was that the ES should never move through walls, as this rule is too fundamental and would change the gameplay significantly if it was ever broken. Next, ESs own bodies, and other ESs were the next to avoid, as the player should be able to see where all the ESs are as it might affect their decision making. Lastly, he decided that the most acceptable movement if there are no free cells would be to move over food/consumables, as this wouldn't affect gameplay massively, and the player can still use venom to collect food/consumables that are blocked by snakes! The heirarchy was designed so that the ESs would ALWAYS prioritize the choice of cell type over simply the distance to the player snake, and then once the best cell type is found, only then will it find the best cell of that type to move to.
-
-![Pathfinding-ezgif com-resize](https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/ea6279d2-a9bc-449d-9309-801cd57508de)
 
    
-### Venom Mechanic
+### Challenge 2 - Venom Mechanic
 The venom mechanic was one of the foundational parts of our game. Overall the implementation process was relatively smooth sailing, and the greatest challenges were with edge cases dealing with the borders of the map and walls. Our evaluation process was helpful here, as we found that the increased play time by a lot of different users was great at identifiying bugs and potential issues. 
 
 The venom mechanic's functionality was written primarily via the 'Venom' class. This class is responsible for modelling the venom projectile that the snake uses to interact with the environment and to target enemies. Initally venom was only going to be used offensively, but during development we decided that it would be more fun for the player if venom could be used to collect food and destroy walls as well. The venom class makes use of a PVector to determine the venom's direction and velocity, with its starting position determined by the location of the player snake's head. This information is handled by the class' constructor, which creates the initial set of venom cells and positions them in the game grid. We created a 'handleCollusion(PVector position)' method that manages the effects when venom collides with other game objects like walls or enemy snakes, and an 'updateGridData()' method that update's the game grid to reflect the current position of venom cells.
 
-![Venom-ezgif com-resize-2](https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/edb750d7-9c50-4273-9b2b-aa43c29a884d)
+<div align="center">
+    <img src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/edb750d7-9c50-4273-9b2b-aa43c29a884d" alt="Venom Mechanic Animation">
+    <p><em>Venom Mechanic</em></p>
+</div>
 
 
 
-### High Score Tracker
+
+### Challenge 3 - High Score Tracker
 This was added via two classes; a 'ScoreData' class and a 'HighScore' class. The 'ScoreData' class is a simple data structure that holds the player's score and name. During runtime, the constructor of this class would initialise this data with the values provided by the user when they saved their score at the end of the game. 
 
 The 'HighScore' class was designed to manage a list of the top scores in the form of a .csv file that we stored in our Map folder. This was done through an array that would store all saved high scores, and a constructor that read the saved scores in the .csv file. Then, the 'compare' method takes the given values from the 'ScoreData' class and compares them against the scores already saved in the array. This would be looped through until all the array's cells were checked, and if the method found an instance where the 'ScoreData' value was greater than the value saved in the array it would replace it. At this point, the updated list of scores is written back to the .csv file.
 
 Initially, we did this using just one list of high scores for the game, but after user feedback, we decided to create two separate lists for each difficulty mode. We felt this made the high scores more of a goal for the player, and by including the high score in the menu bar of the game as well we felt it was worked better as a goal for the players. 
 
-<p align="center">
-<img width="800" alt="Screenshot 2024-04-18 at 17 15 01" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/c4903af2-1361-4acd-a28d-e42ea46a0cbd">
-</p>
+<div align="center">
+    <img src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/c4903af2-1361-4acd-a28d-e42ea46a0cbd" alt="Screenshot 2024-04-18 at 17 15 01" width="400">
+    <img src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/9e85e4f6-b3b2-4789-805c-f22b36ebd97f" alt="Screenshot 2024-04-18 at 17 14 58" width="400">
+    <p><em>High Score Trackers for Both Difficulties</em></p>
+</div>
 
-<p align="center">
-<img width="800" alt="Screenshot 2024-04-18 at 17 14 58" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/9e85e4f6-b3b2-4789-805c-f22b36ebd97f">
-</p>
+
 
 As our game developed we were continously checking for bugs and adding new features. The UI was created in photoshop by Jie and Ziyuan, who did an outstanding job at both creating the game's overall aesthetic and menu functionality. Our tutuorial page was originally behind a button on the main menu called 'help', but after some user feedback we decided to create a pop up tutorial page that would launch when the game started and could be navigated away from by pressing any key. We felt that this was a good way to increase the visibility of the game's help information wihtout interrupting the flow of starting and playing the game. 
 
-<p align="center">
-<img width="800" alt="Screenshot 2024-04-19 at 13 44 02" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/67139394-8530-494c-8383-b91b041c8ea2">
-</p>
+<div align="center">
+    <img width="600" alt="Screenshot 2024-04-19 at 13 44 02" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/67139394-8530-494c-8383-b91b041c8ea2">
+    <p><em>Tutorial Pop Up Page</em></p>
+</div>
+
 
 <br>
 
@@ -195,69 +234,73 @@ As part of our game development process we engaged in both quantitative and qual
 On 11.03 we used our lab session to obtain some initial Think-Aloud feedback for our game. We then repeated this process on 14.04, and the below data is an amalgamation of both of these sessions' feedback and the steps they directed us to take :
 
 ### Positive Feedback
-> "Shooting venom is really fun."
+> Participant 1 - "Shooting venom is really fun."
 
-> "Visually it's really cool."
+> Participant 2 - "Visually it's really cool."
 
-> On dying with zero score - "why am I not on the high scoreboard."
+> Participant 2 - (On dying with zero score) "why am I not on the high scoreboard."
 
-> "I really like the tutorial page."
+> Participant 3 - "I really like the tutorial page."
 
-> "Movement is really clean."
+> Participant 4 - "Movement is really clean."
 
-> "I like this."
+> Participant 5 - "I like this."
 
-> "I like the feature and the bar."
+> Participant 9 - "I like the feature and the bar."
 
-> "Well it's addictive."
+> Participant 7 - "Well it's addictive."
 
 
 ### Negative Feedback
-> "It's not obvious to me what's harder about the hard mode."
+> Participant 3 - "It's not obvious to me what's harder about the hard mode."
 
 No changes, as we received a lot of comments that the hard mode was too hard and decided that increasing the difficulty may be counterproductive.
 
-> "What are the pink things, are they venom?."
+> Participant 2 - "What are the pink things, are they venom?."
 
 More information on the help page and signage on the menu bar in the game.
 
 A lot of users tried to click the strawberry on the menu page to toggle the differences
 
-![ezgif-7-a072d64fbc](https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/042cd1eb-8023-46d2-baa3-39ccf6c82fd6)
+<div align="center">
+    <img src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/042cd1eb-8023-46d2-baa3-39ccf6c82fd6" alt="Animated GIF example">
+    <p><em>Difficulty Slider</em></p>
+</div>
+
 
 Added a button next to the difficulty slider to better indicate where the user should click.
 
-> "Easy mode could be dialled down in terms of speed."
+> Participant 4 - "Easy mode could be dialled down in terms of speed."
 
-> "Easy seems pretty hard already."
+> Participant 7 - "Easy seems pretty hard already."
 
-> "It's already pretty tough."
+> Participant 5 - "It's already pretty tough."
 
-> "Easy is enough of a challenge."
+> Participant 3 - "Easy is enough of a challenge."
 
 Reduced the framerate on easy mode.
 
-> "The Snake title looks like it might be a button too."
+> Participant 1 - "The Snake title looks like it might be a button too."
 
 Added lines around the buttons on the main menu page to make it clear what was clickable.
 
 ### Potential Features
-> "Could you implement a colour-blindness feature?"
+> Participant 1 - "Could you implement a colour-blindness feature?"
 
 We strongly considered this, as having a setting that could toggle the colour of the enemy snakes and user snake would be a really satisfying way to advocate for functionality within the game. Unfortunately, we ran out of time to implement this feature. 
 
-> "Having your previous score visible on the game screen would make things more competitive"
+> Participant 3 - "Having your previous score visible on the game screen would make things more competitive"
 
 Added a high score tracking for the difficulty mode to the game screen.
 
-> "Mac users may prefer to use the WASD keys rather than the keyboard"
+> Participant 2 - "Mac users may prefer to use the WASD keys rather than the keyboard"
 We added this feature so that the player snake's movement responds to both the arrow keys and WASD keys.
 
-> "You could load up help on game start or call it 'how to play', not help"
+> Participant 1 - "You could load up help on game start or call it 'how to play', not help"
 
 Added a pop up tutorial page that triggers after the user presses 'play'. 
 
-> "For high score does it matter if it's easy or hard - shouldn't it be separate?"
+> Participant 7 - "For high score does it matter if it's easy or hard - shouldn't it be separate?"
 
 Tweaked the high score tracker so that it differentiates between hard and easy mode. Separate lists for each difficulty.
 
@@ -289,7 +332,7 @@ We conducted a heuristic analysis as well, which touched upon a lot of the same 
 
 
 
-## Quantative Evluation
+## Quantitative Evluation
 On the 14.04 we put together a meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing we used the NASA TLX questionnaire to record feedback in 6 dimensions for both the easy and hard modes of the game : 
 
 ### Easy Mode
@@ -382,21 +425,27 @@ An initial snag we did encounter in our project was the transition from using In
 
 As a whole, we found using GitHub to be relatively straightforward. Our team encountered some instances of merge conflicts that we had to solve, but an early decision to split our repository into two branches - Main and Develop - allowed us to stagger the rate at which code was pushed to our Main branch. Uncompleted/potentially buggy features would be limited to the Develop branch, ensuring that the Main branch stayed free of broken or uncompleted code. GitHub did provide us with an integral part of our development process, namely the Kanban Board. We found our Kanban Board to be incredibly helpful because it functioned as simultaneously an accessible to-do list, planning tool, and way to dispense the workload. Chris fulfilled the role of project manager in this department, adding tasks to the Kanban Board and assigning them to members of the team as needed.
 
-<p align="center">
-<img width="800" alt="Screenshot 2024-04-20 at 13 31 26" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/7ec558fb-076f-49cf-88c2-913c3a56122c">
-</p>
+<div align="center">
+    <img width="800" alt="Screenshot 2024-04-20 at 13 31 26" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/7ec558fb-076f-49cf-88c2-913c3a56122c">
+    <p><em>Our Kanban Board</em></p>
+</div>
+
 
 
 Our team also created a Git Convention documentation that detailed the acceptable way for our commits to be structured. It required that our commits be formatted __"[type]:[title] [body] [footer]__ . This encouraged us to be specific with our commit messages, ensuring that the relevant information as to what the new/altered code did was contained within the message itself. The use of a <type> system was particularly helpful in categorising our commits, ensuring that our repo has a very coherent and simple commit history that can understood and searched through with ease. 
 
 We would also like to mention the map creating software that Alex wrote for our game. Using Processing Alex created a piece of code that allows you to create and save maps for our game in a .csv format. The user draws maps onto the canvas using the mouse, and increments the map counter for each wall they create. Once their map is created it can be named and saved, with the .csv suffix added automatically by the program. We store the created maps in a relevant folder in our game code, and they can subsequently loaded into the game with ease, with in-game walls being placed in the same locations as chosen during the map creation process. This allowed us to create unique maps with ease, thereby helping us to differentiate between the easy and difficult modes of our game in a way that the player can immediately appreciate. 
-<p align="center">
-<img width="800" alt="Screenshot 2024-04-20 at 13 44 42" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/976cc2db-7692-4488-8f1b-0bdbb3de2bad">
-</p>
+<div align="center">
+    <img width="800" alt="Screenshot 2024-04-20 at 13 44 42" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/976cc2db-7692-4488-8f1b-0bdbb3de2bad">
+    <p><em>Processing Program to Create Maps</em></p>
+</div>
 
-<p align="center">
-  <img width="430" alt="Screenshot 2024-04-20 at 13 47 16" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/c39480e2-4e99-4599-9540-12094ded20f1">
-</p>
+
+<div align="center">
+    <img width="430" alt="Screenshot 2024-04-20 at 13 47 16" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/c39480e2-4e99-4599-9540-12094ded20f1">
+    <p><em>Map Folder Screenshot</em></p>
+</div>
+
 
 
 
