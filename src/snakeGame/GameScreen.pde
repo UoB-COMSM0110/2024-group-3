@@ -156,11 +156,7 @@ public class GameScreen {
     //image(highScorePage, 0, height);
     
     fill(255);
-<<<<<<< HEAD
     fill(0);
-
-=======
->>>>>>> f7eca58c054ff1ace59530b9568c42566239885c
     text("Time: "+timeString, 200, height+50);
     
     //The score bar at the bottom of the screen displays how many shots of venom you have
@@ -187,11 +183,8 @@ public class GameScreen {
     fill(200, 0, 200); //venom purple
     rect(450, height+50, snakeVenom , 20);
     fill(255);
-<<<<<<< HEAD
     fill(0);
-=======
     //total score is sum of score for eating food plus score for killing enemy snakes 
->>>>>>> f7eca58c054ff1ace59530b9568c42566239885c
     totalScore = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore() + enemyScore;
     text("Your score: "+totalScore, 1000, height+50);
     //display high scores for easy and hard modes separtely 
