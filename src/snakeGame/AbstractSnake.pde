@@ -9,7 +9,7 @@ abstract class AbstractSnake {
 
   public AbstractSnake(GameScreen game, int colour) {
     this.snakeCells = new LinkedList<>();
-    this.velocity = new PVector(0, -1); // Initial velocity (upwards)
+    this.velocity = new PVector(0, -1); 
     this.colour = colour;
     this.game = game;
   }

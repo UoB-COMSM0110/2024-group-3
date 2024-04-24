@@ -45,7 +45,8 @@ public class GameScreen {
   private final int venomIncrementEasy = 30;
   private final int venomIncrementHard = 50;
   private int enemyScore = 0;
-  boolean play=false;
+  private boolean play=false;
+  private boolean acceptDirectionInput;
 
 
   public GameScreen() {
@@ -59,6 +60,8 @@ public class GameScreen {
     this.melon = new Melon(this);
   }
   public void setup(String mapPath) {
+    acceptDirectionInput = false;
+    
     play=false;
     //drawGameBoard();
     background(0, 0, 0);
@@ -82,8 +85,11 @@ public class GameScreen {
     this.venomRefillerTwo = new VenomRefiller(this);
     this.venomRefillerTwo.setRandomConsumableLocation();
   }
-
+  
   public void update() {
+    // accepy key presses to update direction 
+    acceptDirectionInput = true;
+    
     // move all dynamic objects first before rendering:
     snake.move();
 
@@ -217,6 +223,11 @@ public class GameScreen {
   }
 
   public void handleKeyPress() {
+    if (!acceptDirectionInput) {
+        return;
+    }
+    acceptDirectionInput = false;
+    
     if (keyCode == UP || key == 'w' || key == 'W') {
       snake.setVelocity(0, -1); // Move up
     } else if (keyCode == DOWN|| key == 's' || key == 'S') {

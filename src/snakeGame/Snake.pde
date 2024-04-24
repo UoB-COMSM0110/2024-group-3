@@ -1,68 +1,70 @@
-public class Snake extends AbstractSnake { 
+import java.util.Iterator;
+
+public class Snake extends AbstractSnake {
   public Snake(GameScreen game, int len, int colour) {
-    super(game, colour); 
-  
+    super(game, colour);
+
     PVector position = findEmptyRectangle(game, 15, 1, 5);
     for (int i = 0; i < len; i++) {
       snakeCells.add(new SnakeCell(position.copy(), colour));
       position.add(velocity); // Move to the next position based on velocity
     }
-  
+
 
     // update map gripobjectData
     for (SnakeCell cell : snakeCells) {
       game.setMapGridObjectData((int) cell.gridLocation.x, (int) cell.gridLocation.y, this);
     }
-}
+  }
 
-private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len) {
+  private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len) {
     PVector middlePoint = new PVector();
-    
+
     rows = 2*rows + len;
     cols = 2*cols;
-    
-    
+
+
     // Iterate over the grid to find a rectangle of empty cells
     for (int y = 0; y <= Main.ROWS - rows; y++) {
-        for (int x = 0; x <= Main.COLS - cols; x++) {
-            boolean isEmptyRectangle = true;
-            // Check if the cells in the rectangle are empty
-            for (int rowOffset = 0; rowOffset < rows; rowOffset++) {
-                for (int colOffset = 0; colOffset < cols; colOffset++) {
-                    int checkX = x + colOffset;
-                    int checkY = y + rowOffset;
-                    // Ensure the check indices stay within the valid range
-                    if (checkX >= 0 && checkX < Main.COLS && checkY >= 0 && checkY < Main.ROWS &&
-                            game.getMapGridObjectData(checkX, checkY) != null) {
-                        isEmptyRectangle = false;
-                        break; // Break out of the inner loop if not empty
-                    }
-                }
-                if (!isEmptyRectangle) {
-                    break; // Break out of the outer loop if not empty
-                }
+      for (int x = 0; x <= Main.COLS - cols; x++) {
+        boolean isEmptyRectangle = true;
+        // Check if the cells in the rectangle are empty
+        for (int rowOffset = 0; rowOffset < rows; rowOffset++) {
+          for (int colOffset = 0; colOffset < cols; colOffset++) {
+            int checkX = x + colOffset;
+            int checkY = y + rowOffset;
+            // Ensure the check indices stay within the valid range
+            if (checkX >= 0 && checkX < Main.COLS && checkY >= 0 && checkY < Main.ROWS &&
+              game.getMapGridObjectData(checkX, checkY) != null) {
+              isEmptyRectangle = false;
+              break; // Break out of the inner loop if not empty
             }
-            // If an empty rectangle is found, calculate the middle point and return
-            if (isEmptyRectangle) {
-                // Calculate the middle point based on the dimensions of the empty rectangle
-                int middleX = x + cols / 2;
-                int middleY = y + rows / 2;
-                middlePoint.set(middleX, middleY);
-                return middlePoint;
-            }
+          }
+          if (!isEmptyRectangle) {
+            break; // Break out of the outer loop if not empty
+          }
         }
+        // If an empty rectangle is found, calculate the middle point and return
+        if (isEmptyRectangle) {
+          // Calculate the middle point based on the dimensions of the empty rectangle
+          int middleX = x + cols / 2;
+          int middleY = y + rows / 2;
+          middlePoint.set(middleX, middleY);
+          return middlePoint;
+        }
+      }
     }
 
     return middlePoint; // Return (0, 0) if no empty rectangle is found
-}
+  }
 
   // add colision detecion here:
   // Method to move the snake
-  
+
   private boolean hasVenomHitFood = false; //to tell snake about interaction between venom and food
-  
-  //this method is called in the Venom class 
-  public void venomHitFood(){
+
+  //this method is called in the Venom class
+  public void venomHitFood() {
     hasVenomHitFood = true;
   }
 
@@ -102,7 +104,7 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
       hasVenomHitFood = false; //reset boolean for next time
       return; // return early to add new head but not remove tail: snake grows when it eats (via venom)
     }
-    
+
     if (gridObject instanceof Powerup) {
       ((Powerup) gridObject).setRandomConsumableLocation(); //move the powerup
       game.refillVenomBar(); //replenish venom
@@ -113,26 +115,24 @@ private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len)
     SnakeCell removedCell = snakeCells.removeFirst();
     game.setMapGridObjectData(removedCell.gridLocation, null);
   }
-  
-    protected void setVelocity(float x, float y) {
+
+  protected void setVelocity(float x, float y) {
     // Ensure the velocity is not reversed (snake can't turn 180 degrees instantly)
     if (x != -velocity.x || y != -velocity.y) {
       velocity.set(x, y);
     }
   }
-  
+
   private boolean isSnakeCellWithinFirstThree(PVector position) {
     int count = 0;
-    for (SnakeCell cell : snakeCells) {
-        // Check if the position matches any of the first three cells of the snake
-        //System.out.println("Head: " + cell.gridLocation);
-        //System.out.println("Wall: " + position + "\n");
-        if (position.equals(cell.gridLocation) && count < 4) {
-            return true;
-        }
-        count++;
+    Iterator<SnakeCell> iterator = snakeCells.descendingIterator();
+    while (iterator.hasNext() && count < 3) {
+      SnakeCell cell = iterator.next();
+      if (position.equals(cell.gridLocation)) {
+        return true;
+      }
+      count++;
     }
     return false;
-}
-  
+  }
 }
