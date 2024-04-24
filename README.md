@@ -175,23 +175,30 @@ The player's score is recorded and can be displayed.
 
 # 4. Design 
 
-### Design Challenges
-System architecture, class diagrams, behavioural diagrams. 
-
-To do: add text introducing diagrams. 
+[To do: introduce design section]
 
 ### System Architecture 
 
-To do
+[To do] 
 
 ### Class Diagram
 
+This class diagram was created before we implemented the game, as part of the design process:
+
 <div align="center">
-    <img src="/images/class_diagram.png" alt="Class diagram">
-    <p><em>Class diagram</em></p>
+    <img src="/images/class_diagram.png" alt="Early class diagram">
+    <p><em>Early class diagram</em></p>
 </div>
 
+This class diagram was created once the game was complete, and shows the final game design: 
+
+[Add diagram here] 
+
+Compare and contrast...
+
 ### Behavioural diagrams 
+
+[Add text introducing the sequence diagram]
 
 <div align="center">
     <img src="/images/sequence_diagram.png" alt="Sequence diagram">
