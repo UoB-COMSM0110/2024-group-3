@@ -15,9 +15,9 @@
   - [Design Challenges](#design-challenges)
   - [Class Diagram](#class-diagram)
 - [5. Implementation](#5-implementation)
-  - [Challenge 1 - Enemy Snake Pathfinding](#challenge-1-enemy-snake-pathfinding)
-  - [Challenge 2 - Venom Mechanic](#challenge-2-venom-mechanic)
-  - [Challenge 3 -High Score Tracker](#challenge-3-high-score-tracker)
+  - [Challenge 1 - Enemy Snake Pathfinding](#challenge-1---enemy-snake-pathfinding)
+  - [Challenge 2 - Venom Mechanic](#challenge-2---venom-mechanic)
+  - [Challenge 3 - High Score Tracker](#challenge-3---high-score-tracker)
 - [6. Evaluation](#6-evaluation)
   - [Qualitative Analysis](#qualitative-analysis)
   - [Heuristic Analysis](#heuristic-analysis)
@@ -350,7 +350,7 @@ On 12.04 we conducted a heuristic analysis, which touched upon a lot of the same
 
 
 
-## Quantitative Evluation
+## Quantitative Analysis
 On the 14.04 Chris and Florence put together a meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing we used the NASA TLX questionnaire to make sure that our game's two difficulty modes varied substantially in ease of play :
 
 ### Easy Mode
