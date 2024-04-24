@@ -194,7 +194,7 @@ To do
 ### Behavioural diagrams 
 
 <div align="center">
-    <img src="/images/sequence_diagram_.png" alt="Sequence diagram">
+    <img src="/images/sequence_diagram.png" alt="Sequence diagram">
     <p><em>Sequence diagram</em></p>
 </div>
 
