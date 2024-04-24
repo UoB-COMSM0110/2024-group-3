@@ -178,15 +178,25 @@ The player's score is recorded and can be displayed.
 ### Design Challenges
 System architecture, class diagrams, behavioural diagrams. 
 
+To do: add text introducing diagrams. 
+
+### System Architecture 
+
+To do
+
 ### Class Diagram
 
 <div align="center">
-    <img src="/images/class_diagram.png" alt="Class Diagram">
-    <p><em>Class Diagram</em></p>
+    <img src="/images/class_diagram.png" alt="Class diagram">
+    <p><em>Class diagram</em></p>
 </div>
 
+### Behavioural diagrams 
 
-
+<div align="center">
+    <img src="/images/sequence_diagram_.png" alt="Sequence diagram">
+    <p><em>Sequence diagram</em></p>
+</div>
 
 # 5. Implementation
 During our game's implementation there were some features that we were certain we wanted to include in our game. From these we identified three specific areas of challenge; the enemy snake pathfinding, the venom mechanic and the highscore tracker.  
