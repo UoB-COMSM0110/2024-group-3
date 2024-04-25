@@ -53,112 +53,114 @@ import processing.core.PVector;
     }
     
       
-    @Override
-    protected void move() {
-      if (difficultyMode == 0) {
-        if (!(frameCount % 3 == 0)) return;
-      }
-      else {
-        if (frameCount % 2 == 0) return;
-      }
+      @Override
+      protected void move() {
+        if (difficultyMode == 0) {
+          if (!(frameCount % 3 == 0)) return;
+        }
+        else {
+          if (frameCount % 2 == 0) return;
+        }
       
         if (snakeCells.isEmpty()) return;
     
-            ArrayList<PVector> occupiedPositionsByEnemies = game.getOccupiedPositionsByEnemies(this);
-            PVector headPosition = snakeCells.getFirst().gridLocation;
-            float minDistance = Float.MAX_VALUE;
-            PVector bestMove = null;
+        ArrayList<PVector> occupiedPositionsByEnemies = game.getOccupiedPositionsByEnemies(this);
+        PVector headPosition = snakeCells.getFirst().gridLocation;
+        float minDistance = Float.MAX_VALUE;
+        PVector bestMove = null;
+        int[][] directions = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}}; // Up, Right, Down, Left, Stay
     
-            int[][] directions = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}}; // Up, Right, Down, Left, Stay
-    
-            for (int[] dir : directions) {
+        for (int[] dir : directions) {
               
-                PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
+          PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
     
-                if (game.snake.isPositionInSnake(testPosition)) {
-                    gameState = GameState.OVER;
-                    return;
-                }
-              
-                if (headPosition.x + dir[0] < 1 || headPosition.x + dir[0] > Main.COLS - 1 || headPosition.y + dir[1] < 1 || headPosition.y + dir[1] > Main.ROWS - 1) {
-                  continue;
-                }
-                
-                Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
-    
-                if (!(gridObject instanceof Wall) &&
-                    !(gridObject instanceof Food) &&
-                    !(gridObject instanceof Consumable) &&
-                    !isPositionInSnake(testPosition) &&
-                    !occupiedPositionsByEnemies.contains(testPosition)) {
-                    float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                        bestMove = testPosition;
-                    }
-                  }
-               }
-            
-            if (bestMove == null) {
-              for (int[] dir : directions) {
-                PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
-                
-                Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
-    
-                if (gridObject instanceof Consumable) {
-                    float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                        bestMove = testPosition;
-                     }
-                  }
-               }
-            }
-          
-    
-          if (bestMove == null) {
-              for (int[] dir : directions) {
-                PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
-                
-                Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
-    
-                if (gridObject instanceof EnemySnake) {
-                    float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                        bestMove = testPosition;
-                        }
-                }
-             }
+          if (game.snake.isPositionInSnake(testPosition)) {
+            gameState = GameState.OVER;
+            return;
           }
-        
-            if (bestMove != null) {
-                velocity.set(bestMove.x - headPosition.x, bestMove.y - headPosition.y);
+              
+          if (headPosition.x + dir[0] < 1 || headPosition.x + dir[0] > Main.COLS - 1 || headPosition.y + dir[1] < 1 || headPosition.y + dir[1] > Main.ROWS - 1) {
+            continue;
+          }
+                
+          Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
     
-                PVector newHeadPosition = headPosition.copy().add(velocity);
-                game.setMapGridObjectData(snakeCells.getLast().gridLocation, null); // Clear old tail position from grid
-                snakeCells.removeLast();
-                snakeCells.addFirst(new SnakeCell(newHeadPosition, this.colour));
-                game.setMapGridObjectData(newHeadPosition, this); // Update new head position in grid
-            }        
+          if (!(gridObject instanceof Wall) &&
+            !(gridObject instanceof Food) &&
+            !(gridObject instanceof Consumable) &&
+            !isPositionInSnake(testPosition) &&
+            !occupiedPositionsByEnemies.contains(testPosition)) {
+            float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
+          
+            if (distance < minDistance) {
+              minDistance = distance;
+              bestMove = testPosition;
+            }
+          }
         }
-        
-      // Helper method to calculate the closest distance from a test position to any cell in the player snake
-        private float calculateClosestDistance(PVector testPosition, LinkedList<SnakeCell> playerCells) {
-          float minDistance = Float.MAX_VALUE;
-            for (SnakeCell cell : playerCells) {
-              float distance = PVector.dist(testPosition, cell.getGridLocation());
+            
+        if (bestMove == null) {
+          for (int[] dir : directions) {
+          
+            PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
+            Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
+    
+            if (gridObject instanceof Consumable) {
+              float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
+            
               if (distance < minDistance) {
                 minDistance = distance;
-                }
+                bestMove = testPosition;
+              }
             }
-        return minDistance;
+          }
         }
+      
+        if (bestMove == null) {
+          for (int[] dir : directions) {
+          
+            PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
+            Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
     
-     @Override
-       protected void setVelocity(float x, float y) {
-         velocity.set(x, y);
-       }
-       
-       
+            if (gridObject instanceof EnemySnake) {
+              float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
+            
+              if (distance < minDistance) {
+                minDistance = distance;
+                bestMove = testPosition;
+              }
+            }
+          }
+        }      
+
+        
+        if (bestMove != null) {
+          velocity.set(bestMove.x - headPosition.x, bestMove.y - headPosition.y);
+          PVector newHeadPosition = headPosition.copy().add(velocity);
+          game.setMapGridObjectData(snakeCells.getLast().gridLocation, null); // Clear old tail position from grid
+          snakeCells.removeLast();
+          snakeCells.addFirst(new SnakeCell(newHeadPosition, this.colour));
+          game.setMapGridObjectData(newHeadPosition, this); // Update new head position in grid
+        }        
+      }    
+        
+      // Helper method to calculate the closest distance from a test position to any cell in the player snake
+      private float calculateClosestDistance(PVector testPosition, LinkedList<SnakeCell> playerCells) {
+        float minDistance = Float.MAX_VALUE;
+      
+        for (SnakeCell cell : playerCells) {
+          float distance = PVector.dist(testPosition, cell.getGridLocation());
+        
+          if (distance < minDistance) {
+            minDistance = distance;
+          }
+        }
+      
+        return minDistance;
+      }
+    
+      @Override
+      protected void setVelocity(float x, float y) {
+        velocity.set(x, y);
+      }   
     }
