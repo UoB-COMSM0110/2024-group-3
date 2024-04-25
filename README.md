@@ -12,12 +12,13 @@
   - [Use-Case Diagram](#use-case-diagram)
   - [Use-Case Specification](#use-case-specification)
 - [4. Design](#4-design)
-  - [Design Challenges](#design-challenges)
+  - [System Architecture](#system-architecture)
   - [Class Diagram](#class-diagram)
+  - [Behavioural Diagrams](#behavioural-diagrams)
 - [5. Implementation](#5-implementation)
-  - [Challenge 1 - Enemy Snake Pathfinding](#challenge-1-enemy-snake-pathfinding)
-  - [Challenge 2 - Venom Mechanic](#challenge-2-venom-mechanic)
-  - [Challenge 3 -High Score Tracker](#challenge-3-high-score-tracker)
+  - [Challenge 1 - Enemy Snake Pathfinding](#challenge-1---enemy-snake-pathfinding)
+  - [Challenge 2 - Venom Mechanic](#challenge-2---venom-mechanic)
+  - [Challenge 3 - High Score Tracker](#challenge-3---high-score-tracker)
 - [6. Evaluation](#6-evaluation)
   - [Qualitative Analysis](#qualitative-analysis)
   - [Heuristic Analysis](#heuristic-analysis)
@@ -175,18 +176,35 @@ The player's score is recorded and can be displayed.
 
 # 4. Design 
 
-### Design Challenges
-System architecture, class diagrams, behavioural diagrams. 
+[To do: introduce design section]
+
+### System Architecture 
+
+[To do] 
 
 ### Class Diagram
 
+This class diagram was created before we implemented the game, as part of the design process:
+
 <div align="center">
-    <img src="/images/class_diagram.png" alt="Class Diagram">
-    <p><em>Class Diagram</em></p>
+    <img src="/images/class_diagram.png" alt="Early class diagram">
+    <p><em>Early class diagram</em></p>
 </div>
 
+This class diagram was created once the game was complete, and shows the final game design: 
 
+[Add diagram here] 
 
+Compare and contrast...
+
+### Behavioural diagrams 
+
+[Add text introducing the sequence diagram]
+
+<div align="center">
+    <img src="/images/sequence_diagram.png" alt="Sequence diagram">
+    <p><em>Sequence diagram</em></p>
+</div>
 
 # 5. Implementation
 During our game's implementation there were some features that we were certain we wanted to include in our game. From these we identified three specific areas of challenge; the enemy snake pathfinding, the venom mechanic and the highscore tracker.  
@@ -350,7 +368,7 @@ On 12.04 we conducted a heuristic analysis, which touched upon a lot of the same
 
 
 
-## Quantitative Evluation
+## Quantitative Analysis
 On the 14.04 Chris and Florence put together a meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing we used the NASA TLX questionnaire to make sure that our game's two difficulty modes varied substantially in ease of play :
 
 ### Easy Mode
