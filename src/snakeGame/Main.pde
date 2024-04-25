@@ -66,9 +66,9 @@
         int mapIndex = rand.nextInt(2) + 1;
         String mapFile = "mapsCSV/" + (difficultyMode == 0 ? "E" + mapIndex : "H" + mapIndex) + ".csv";
           if (difficultyMode == 0) {
-            frameRate(10);
+            frameRate(8);
           } else {
-            frameRate(15);
+            frameRate(12);
           }
         gameScreen = new GameScreen();
         gameScreen.setup(mapFile);
