@@ -40,18 +40,6 @@ import processing.core.PVector;
                 isValid = false;
                 break;
                 }
-                    
-      /*                                          
-                    if (game.getMapGridObjectData(x, startY) != null ||
-                        PVector.dist(testPosition, playerHead) < 18 ||
-                        gridObject instanceof Wall ||
-                        gridObject instanceof EnemySnake ||
-                        gridObject instanceof Food ||
-                        gridObject instanceof Consumable) {
-                        empty = false;
-                        break;
-                    }
-                    */
                 }            
     
               if (isValid) {
@@ -64,80 +52,6 @@ import processing.core.PVector;
         return null;
     }
     
-    /*
-  
-    @Override
-    protected void move() {
-      if (difficultyMode == 0) {
-        if (!(frameCount % 3 == 0)) return;
-      }
-      else {
-        if (frameCount % 2 == 0) return;
-      }
-      
-        if (snakeCells.isEmpty()) return;
-
-        ArrayList<PVector> occupiedPositionsByEnemies = game.getOccupiedPositionsByEnemies(this);
-        PVector headPosition = snakeCells.getFirst().gridLocation;
-        float minDistance = Float.MAX_VALUE;
-        PVector bestMove = null;
-
-        int[][] directions = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}}; // Up, Right, Down, Left, Stay
-
-        for (int[] dir : directions) {
-          
-            PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
-
-            if (game.snake.isPositionInSnake(testPosition)) {
-                gameState = GameState.OVER;
-                return;
-            }
-          
-            if (headPosition.x + dir[0] < 1 || headPosition.x + dir[0] > Main.COLS - 1 || headPosition.y + dir[1] < 1 || headPosition.y + dir[1] > Main.ROWS - 1) {
-              continue;
-            }
-            
-            Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
-
-            if (!(gridObject instanceof Wall) &&
-                !(gridObject instanceof Food) &&
-                !(gridObject instanceof Consumable) &&
-                !isPositionInSnake(testPosition) &&
-                !occupiedPositionsByEnemies.contains(testPosition)) {
-                float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    bestMove = testPosition;
-                }
-            }
-        }
-        
-        if (bestMove == null) {
-          for (int[] dir : directions) {
-            PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
-
-            if (game.snake.isPositionInSnake(testPosition)) {
-                gameState = GameState.OVER;
-                return;
-            }
-            
-            Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
-
-            if ((gridObject instanceof Food) ||
-                (gridObject instanceof Consumable) ||
-                occupiedPositionsByEnemies.contains(testPosition)) {
-                float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    bestMove = testPosition;
-                }
-            }
-        }
-=======
->>>>>>> acb20c215125ac2e1d0f7996889d9411190f985f
-      }
-      
-      */
       
     @Override
     protected void move() {
@@ -188,17 +102,10 @@ import processing.core.PVector;
             if (bestMove == null) {
               for (int[] dir : directions) {
                 PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
-    
-                if (game.snake.isPositionInSnake(testPosition)) {
-                    gameState = GameState.OVER;
-                    return;
-                }
                 
                 Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
     
-                if ((gridObject instanceof Food) ||
-                    (gridObject instanceof Consumable) ||
-                    occupiedPositionsByEnemies.contains(testPosition)) {
+                if (gridObject instanceof Consumable) {
                     float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
                     if (distance < minDistance) {
                         minDistance = distance;
@@ -212,13 +119,10 @@ import processing.core.PVector;
           if (bestMove == null) {
               for (int[] dir : directions) {
                 PVector testPosition = new PVector(headPosition.x + dir[0], headPosition.y + dir[1]);
+                
+                Object gridObject = game.getMapGridObjectData((int)testPosition.x, (int)testPosition.y);
     
-                if (game.snake.isPositionInSnake(testPosition)) {
-                    gameState = GameState.OVER;
-                    return;
-                }
-    
-                if (isPositionInSnake(testPosition)) {
+                if (gridObject instanceof EnemySnake) {
                     float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
                     if (distance < minDistance) {
                         minDistance = distance;
