@@ -6,6 +6,7 @@ import processing.core.PVector;
     
     public class EnemySnake extends AbstractSnake {
     
+      
       public EnemySnake(GameScreen game, int len, int colour) {
         super(game, colour);
         PVector position = generateStartingPosition(game, len);
@@ -52,6 +53,7 @@ import processing.core.PVector;
 
         return null;
       }
+   
       
       // Scans each possible cell for the Enemy Snake to move to. Prioritises empty cells, then consumable cells, then Enemy Snake cells
       @Override
@@ -161,6 +163,7 @@ import processing.core.PVector;
       
         return minDistance;
       }
+    
     
       @Override
       protected void setVelocity(float x, float y) {
