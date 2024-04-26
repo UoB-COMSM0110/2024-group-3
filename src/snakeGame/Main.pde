@@ -68,7 +68,7 @@
           if (difficultyMode == 0) {
             frameRate(8);
           } else {
-            frameRate(12);
+            frameRate(10);
           }
         gameScreen = new GameScreen();
         gameScreen.setup(mapFile);
