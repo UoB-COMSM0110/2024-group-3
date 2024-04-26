@@ -95,7 +95,7 @@ import java.awt.event.KeyEvent;
           // move all dynamic objects first before rendering:
           snake.move();
           
-          int maxEnemyCount = 10;
+          int maxEnemyCount = 7;
           
           if (difficultyMode == 1) {
           maxEnemyCount = 12;
@@ -107,27 +107,27 @@ import java.awt.event.KeyEvent;
             
             // frameCount value can vary depending on difficulty level!
               if (frameCount < 240) {
-                if (frameCount % 100 == 0) {
+                if (frameCount % 120 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }
               else if (frameCount >= 240 && frameCount <= 480) {
-                if (frameCount % 75 == 0) {
+                if (frameCount % 100 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               } 
               else if (frameCount >= 480 && frameCount <= 720) {
-                if (frameCount % 50 == 0) {
+                if (frameCount % 80 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }  
               else if (frameCount >= 720 && frameCount <= 960) {
-                if (frameCount % 35 == 0) {
+                if (frameCount % 60 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }  
               else if (frameCount > 960) {
-                if (frameCount % 20 == 0) {
+                if (frameCount % 40 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               } 
