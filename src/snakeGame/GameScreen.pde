@@ -95,7 +95,7 @@ import java.awt.event.KeyEvent;
           // move all dynamic objects first before rendering:
           snake.move();
           
-          int maxEnemyCount = 7;
+          int maxEnemyCount = 10;
           
           if (difficultyMode == 1) {
           maxEnemyCount = 12;
@@ -106,21 +106,31 @@ import java.awt.event.KeyEvent;
             if (difficultyMode == 0) {  
             
             // frameCount value can vary depending on difficulty level!
-              if (frameCount < 315) {
-                if (frameCount % 105 == 0) {
+              if (frameCount < 240) {
+                if (frameCount % 100 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }
-              else if (frameCount >= 315 && frameCount <= 480) {
-                if (frameCount % 80 == 0) {
+              else if (frameCount >= 240 && frameCount <= 480) {
+                if (frameCount % 75 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               } 
-              else if (frameCount > 480) {
-                if (frameCount % 60 == 0) {
+              else if (frameCount >= 480 && frameCount <= 720) {
+                if (frameCount % 50 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }  
+              else if (frameCount >= 720 && frameCount <= 960) {
+                if (frameCount % 35 == 0) {
+                  enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
+                }
+              }  
+              else if (frameCount > 960) {
+                if (frameCount % 20 == 0) {
+                  enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
+                }
+              } 
             }
             else {
               if (frameCount <= 300) {
@@ -134,12 +144,12 @@ import java.awt.event.KeyEvent;
                 }
               } 
               else if (frameCount > 600 && frameCount <= 900) {
-                if (frameCount % 100 == 0) {
+                if (frameCount % 90 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               } 
               else if (frameCount > 900) {
-                if (frameCount % 80 == 0) {
+                if (frameCount % 70 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }

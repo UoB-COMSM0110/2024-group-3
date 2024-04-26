@@ -5,7 +5,6 @@ import processing.core.PVector;
     
     
     public class EnemySnake extends AbstractSnake {
-    
       
       public EnemySnake(GameScreen game, int len, int colour) {
         super(game, colour);
@@ -71,7 +70,6 @@ import processing.core.PVector;
       
         if (snakeCells.isEmpty()) return;
     
-        ArrayList<PVector> occupiedPositionsByEnemies = game.getOccupiedPositionsByEnemies(this);
         PVector headPosition = snakeCells.getFirst().gridLocation;
         float minDistance = Float.MAX_VALUE;
         PVector bestMove = null;
@@ -96,8 +94,7 @@ import processing.core.PVector;
           if (!(gridObject instanceof Wall) &&
             !(gridObject instanceof Food) &&
             !(gridObject instanceof Consumable) &&
-            !isPositionInSnake(testPosition) &&
-            !occupiedPositionsByEnemies.contains(testPosition)) {
+            !(gridObject instanceof EnemySnake)) {
             float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
           
             if (distance < minDistance) {
