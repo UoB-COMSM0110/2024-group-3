@@ -125,10 +125,10 @@ TODO:
 1. Download processing from the following link: [download here](https://processing.org/download).
       This downloads the graphical library and integrated development environment that the game will run on.
 
-1. Download and extract the following ZIP file: [Survival Sanke]()   TODO ADD LINK WHEN GAME IS FINISHED.
-      This downloads the game program.
+1. Download and extract the following ZIP file: [Survival Sanke]().
 
 1. Run Processing and then open the game by clicking: **File -> Open -> {root_dir_game}/src/snakeGame/main.pde** 
+    -   *_* note: replace 'root_dir_game' with the actual filepath/location the extracted root directory*
 
 1. Install the following libraries using the package manager accessed by clicking **Tools -> Import Libra... -> Manage Libraries...**
       - Sound
