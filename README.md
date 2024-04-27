@@ -126,11 +126,11 @@ TODO:
 
 1. Run Processing and then open the game by clicking: **File -> Open -> {root_dir}/src/snakeGame/main.pde** 
        
-    ***note**: replace 'root_dir' with the actual filepath/location of the extracted root directory*
+        ***note**: replace 'root_dir' with the actual filepath/location of the extracted root directory*
 
 1. Install the following libraries by clicking **Tools -> Import Libra... -> Manage Libraries...**
 
-    **Sound** | Provides a simple way to work with audio (Author: The Processing Foundation)  
+        **Sound** | Provides a simple way to work with audio (Author: The Processing Foundation)  
 
 1. Click the **Play** button located to the top-left of the ide window to run the game.
 
