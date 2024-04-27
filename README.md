@@ -12,6 +12,7 @@
 - [6. Evaluation](#6-evaluation)
 - [7. Process](#7-process)
 - [8. Conclusion](#8-conclusion)
+- [9. Installation](#9-installation)
 
 
 # 1. Team
@@ -23,14 +24,14 @@
 
 <div align="center">
  
-| Name             | Email                     | GitHub Account       |
-|------------------|---------------------------|----------------------|
-| Chris Kerr       | [th23780@bristol.ac.uk](mailto:th23780@bristol.ac.uk) | [@chriskerrc](https://github.com/chriskerrc) |
-| Florence Rose    | [xd23758@bristol.ac.uk](mailto:xd23758@bristol.ac.uk) | [@frose2024](https://github.com/frose2024) |
-| Josh Wierszycki  | [el20063@bristol.ac.uk](mailto:el20063@bristol.ac.uk) | [@JWierszycki](https://github.com/JWierszycki) |
-| Ziyuan Lu        | [py23518@bristol.ac.uk](mailto:py23518@bristol.ac.uk) | [@LzYzL](https://github.com/LzYzL) |
-| Alexander Fisher | [af17918@bristol.ac.uk](mailto:af17918@bristol.ac.uk) | [@alexandermfisher](https://github.com/alexandermfisher) |
-| Jie Fang         | [yh23030@bristol.ac.uk](mailto:yh23030@bristol.ac.uk) | [@Jiebristol](https://github.com/Jiebristol) |
+| Name             | Role                           | Email                                                 | GitHub Account                                            |
+|------------------|--------------------------------|-------------------------------------------------------|-----------------------------------------------------------|
+| Chris Kerr       | Project Manager / Developer    | [th23780@bristol.ac.uk](mailto:th23780@bristol.ac.uk) | [@chriskerrc](https://github.com/chriskerrc)              |
+| Florence Rose    | Map Designer / Tester          | [xd23758@bristol.ac.uk](mailto:xd23758@bristol.ac.uk) | [@frose2024](https://github.com/frose2024)                |
+| Josh Wierszycki  | Lead Developer                 | [el20063@bristol.ac.uk](mailto:el20063@bristol.ac.uk) | [@JWierszycki](https://github.com/JWierszycki)            |
+| Ziyuan Lu        | UI Developer                   | [py23518@bristol.ac.uk](mailto:py23518@bristol.ac.uk) | [@LzYzL](https://github.com/LzYzL)                        |
+| Alexander Fisher | Lead Developer                 | [af17918@bristol.ac.uk](mailto:af17918@bristol.ac.uk) | [@alexandermfisher](https://github.com/alexandermfisher)  |
+| Jie Fang         | UI Developer                   | [yh23030@bristol.ac.uk](mailto:yh23030@bristol.ac.uk) | [@Jiebristol](https://github.com/Jiebristol)              |
 </div>
 
 <br>
@@ -56,7 +57,7 @@ Another element we've added to Survival Snake is the creation of custom maps. We
 
 # Requirements
 
-Refer to our [requirement document](/docs/report/requirements.md) for an overview of our requirements engineering:
+Refer to our [requirement document](/docs/report/requirements.md) to see our:
 - Initial Paper Prototyping
 - Use-Case Diagram
 - User-Case Specification
@@ -65,7 +66,7 @@ Refer to our [requirement document](/docs/report/requirements.md) for an overvie
 
 # Design
 
-Refer to our [design document](/docs/report/design.md) for an overview of our design process:
+Refer to our [design document](/docs/report/design.md) to see our:
 - System Architecture
 - Class Diagram
 - Behavioural Diagrams
@@ -74,7 +75,7 @@ Refer to our [design document](/docs/report/design.md) for an overview of our de
 
 # Implementation
 
-Refer to our [implementation document](/docs/report/implementation.md) for an overview of our implementation process:
+Refer to our [implementation document](/docs/report/implementation.md) to see our:
 - Challenge 1 - Enemy Snake Pathfinding
 - Challenge 2 - Venom Mechanic
 - Challenge 3 - High Score Tracker
@@ -83,7 +84,7 @@ Refer to our [implementation document](/docs/report/implementation.md) for an ov
 
 # Evaluation
 
-Refer to our [evaluation document](/docs/report/evaluation.md) for an overview of our evaluation process:
+Refer to our [evaluation document](/docs/report/evaluation.md) to see our:
 - Qualitative Analysis
 - Heuristic Analysis
 - Quantitative Analysis
@@ -92,7 +93,7 @@ Refer to our [evaluation document](/docs/report/evaluation.md) for an overview o
 
 # Process
 
-Refer to our [process document](/docs/report/process.md) for an overview of our development practices."
+Refer to our [process document](/docs/report/process.md) to see our:
 - TODO: Add subcategories
 
 ---
@@ -112,3 +113,21 @@ TODO:
 | Ziyuan Lu        | 1            | 
 | Alexander Fisher | 1            | 
 | Jie Fang         | 1            | 
+
+---
+
+# 9. Installation
+
+1. Download processing from the following link: [download here](https://processing.org/download).
+      This downloads the graphical library and integrated development environment that the game will run on.
+
+1. Download and extract the following ZIP file: [Survival Sanke]()   TODO ADD LINK WHEN GAME IS FINISHED.
+      This downloads the game program.
+
+1. Run Processing and then open the game by clicking: **File -> Open -> {root_dir_game}/src/snakeGame/main.pde** 
+
+1. Install the following libraries using the package manager accessed by clicking **Tools -> Import Libra... -> Manage Libraries...**
+      - Sound
+
+1. Click the 'Play' button located to the top-left of the ide window to run the game.
+
