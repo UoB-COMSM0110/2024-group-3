@@ -59,9 +59,6 @@ Another element we've added to Survival Snake is the creation of custom maps. We
 
 Refer to our [requirement document](/docs/report/requirements.md) to see our:
 - Initial Paper Prototyping
-- Use-Case Diagram
-- User-Case Specification
-- Initial Paper Prototyping
 - Stakeholders
 - User Stories
 - Use-Case Diagram
@@ -127,11 +124,13 @@ TODO:
 
 1. Download and extract the following ZIP file: [Survival Sanke]().
 
-1. Run Processing and then open the game by clicking: **File -> Open -> {root_dir_game}/src/snakeGame/main.pde** 
-    -   *_* note: replace 'root_dir_game' with the actual filepath/location the extracted root directory*
+1. Run Processing and then open the game by clicking: **File -> Open -> {root_dir}/src/snakeGame/main.pde** 
+       
+    ***note**: replace 'root_dir' with the actual filepath/location of the extracted root directory*
 
-1. Install the following libraries using the package manager accessed by clicking **Tools -> Import Libra... -> Manage Libraries...**
-      - Sound
+1. Install the following libraries by clicking **Tools -> Import Libra... -> Manage Libraries...**
 
-1. Click the **'Play'** button located to the top-left of the ide window to run the game.
+    **Sound** | Provides a simple way to work with audio (Author: The Processing Foundation)  
+
+1. Click the **Play** button located to the top-left of the ide window to run the game.
 

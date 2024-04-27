@@ -1,3 +1,9 @@
+
+<div align="center">
+    <img src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/c75424b0-11bb-4a1e-b1ab-8a0418648ae3" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 60%;">
+</div>
+
+
 # 4. Design 
 
 [To do: introduce design section]
