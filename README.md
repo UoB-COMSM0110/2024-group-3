@@ -55,7 +55,7 @@ Another element we've added to Survival Snake is the creation of custom maps. We
 
 ---
 
-# Requirements
+# 3. Requirements
 
 Refer to our [requirement document](/docs/report/requirements.md) to see our:
 - Initial Paper Prototyping
@@ -66,7 +66,7 @@ Refer to our [requirement document](/docs/report/requirements.md) to see our:
 
 ---
 
-# Design
+# 4. Design
 
 Refer to our [design document](/docs/report/design.md) to see our:
 - System Architecture
@@ -75,7 +75,7 @@ Refer to our [design document](/docs/report/design.md) to see our:
 
 ---
 
-# Implementation
+# 5. Implementation
 
 Refer to our [implementation document](/docs/report/implementation.md) to see our:
 - Challenge 1 - Enemy Snake Pathfinding
@@ -84,7 +84,7 @@ Refer to our [implementation document](/docs/report/implementation.md) to see ou
 
 ---
 
-# Evaluation
+# 6. Evaluation
 
 Refer to our [evaluation document](/docs/report/evaluation.md) to see our:
 - Qualitative Analysis
@@ -93,7 +93,7 @@ Refer to our [evaluation document](/docs/report/evaluation.md) to see our:
 
 ---
 
-# Process
+# 7. Process
 
 Refer to our [process document](/docs/report/process.md) to see an overview of our development process:
 
