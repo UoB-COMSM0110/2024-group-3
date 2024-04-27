@@ -4,6 +4,7 @@
 
 
 # Table of Contents
+- [Table of Contents](#table-of-contents)
 - [1. Team](#1-team)
 - [2. Introduction](#2-introduction)
 - [3. Requirements](#3-requirements)
@@ -12,6 +13,7 @@
 - [6. Evaluation](#6-evaluation)
 - [7. Process](#7-process)
 - [8. Conclusion](#8-conclusion)
+  - [Individual Contributions](#individual-contributions)
 - [9. Installation](#9-installation)
 
 
@@ -44,7 +46,7 @@ The player snake has a finite 'Venom' ability that allows you to destroy walls, 
 Another element we've added to Survival Snake is the creation of custom maps. We have designed 4 possible maps, 2 for each difficulty mode, with each map having unique wall placements. In all the maps the player has the ability to 'wrap around', exiting one side of the map to re-appear on the other side, thereby adding another layer to the player snake's movement possibilities. 
 
 <div align="center">
-    <img width="800" alt="Screenshot 2024-04-18 at 17 15 10" src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/25c9f921-3caf-48fd-a917-f5de49dd245b">
+    <img width="800" alt="Screenshot 2024-04-18 at 17 15 10" src="images/mainPage.png">
     <p><em>Survival Snake, Main Page</em></p>
 </div>
 
