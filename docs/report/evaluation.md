@@ -1,6 +1,13 @@
 # 6. Evaluation 
 As part of our game development process we engaged in both quantitative and qualitative analysis. This was a really rewarding experience, allowing us to get user feedback in an actionable form that could direct the development of our game as well as identify bugs that we could iron out. 
 
+# Table of Contents
+- [Qualitative Analysis](#qualitative-analysis)
+- [Heuristic Analysis](#heuristic-analysis)
+- [Quantitative Analysis](#quantitative-analysis)
+
+---
+
 ## Qualitative Analysis
 On 11.03 we used our lab session to obtain some initial Think-Aloud feedback for our game. Florence divided this feedback into 4 categories; positive, negative, potential features and bugs. We chose the Think-Aloud method because of how quick it was to perform, and because we timed it for a lab session we had a sizable quantity of participants to perform it with. 
 
@@ -21,6 +28,7 @@ On 11.03 we used our lab session to obtain some initial Think-Aloud feedback for
 
 > Participant 7 - "Well it's addictive."
 
+--
 
 ### Negative Feedback
 > Participant 3 - "It's not obvious to me what's harder about the hard mode."
@@ -54,6 +62,8 @@ Reduced the framerate on easy mode.
 
 Added lines around the buttons on the main menu page to make it clear what was clickable.
 
+-- 
+
 ### Potential Features
 > Participant 1 - "Could you implement a colour-blindness feature?"
 
@@ -74,6 +84,8 @@ Added a pop up tutorial page that triggers after the user presses 'play'.
 
 Tweaked the high score tracker so that it differentiates between hard and easy mode. Separate lists for each difficulty.
 
+-- 
+
 ### Bugs
 > "When you're on hard, when you fire venom, it doesn't react quick enough".
 
@@ -83,6 +95,8 @@ Fixed this bug.
 
 Fixed this bug.
 <br><br>
+
+---
 
 ## Heuristic Analysis
 On 12.04 we conducted a heuristic analysis, which touched upon a lot of the same issues we identified during the Think-Aloud evaluation. Chris and Florence performed this evaluation on members from 5 other groups, with 8 participants in total. Ideally we would have had 10 > participants, but time constraints prevented this. Florence subsequently analysed this data and compiled the below table. She gave each issue its own unique ID and asking our evaluators how they would rate its impact, frequency and persistence, and then added these values together to give the overall severity of the problem. 
@@ -100,7 +114,7 @@ On 12.04 we conducted a heuristic analysis, which touched upon a lot of the same
 | 9  | Gameplay: Hard Mode | Visibility of System Status | Slow reaction when firing venom in hard mode. | 3 | 2 | 3 | 8 | Improved responsiveness of venom firing in hard mode. | 
 | 10 | Gameplay       | Error Prevention | Players could move through walls due to a bug. | 3 | 1 | 1 | 5 | Fixed collision detection to prevent going through walls.|
 
-
+---
 
 ## Quantitative Analysis
 On the 14.04 Chris and Florence put together a meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing we used the NASA TLX questionnaire to make sure that our game's two difficulty modes varied substantially in ease of play :

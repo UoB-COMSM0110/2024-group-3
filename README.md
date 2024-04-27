@@ -61,6 +61,11 @@ Refer to our [requirement document](/docs/report/requirements.md) to see our:
 - Initial Paper Prototyping
 - Use-Case Diagram
 - User-Case Specification
+- Initial Paper Prototyping
+- Stakeholders
+- User Stories
+- Use-Case Diagram
+- User-Case Specification
 
 ---
 
@@ -93,8 +98,7 @@ Refer to our [evaluation document](/docs/report/evaluation.md) to see our:
 
 # Process
 
-Refer to our [process document](/docs/report/process.md) to see our:
-- TODO: Add subcategories
+Refer to our [process document](/docs/report/process.md) to see an overview of our development process:
 
 ---
 
@@ -129,5 +133,5 @@ TODO:
 1. Install the following libraries using the package manager accessed by clicking **Tools -> Import Libra... -> Manage Libraries...**
       - Sound
 
-1. Click the 'Play' button located to the top-left of the ide window to run the game.
+1. Click the **'Play'** button located to the top-left of the ide window to run the game.
 

@@ -1,6 +1,17 @@
 # 3. Requirements 
 In this section we're going to describe the ideation process for our game. We hope to explain factors that were considering during our game's inception, and how these factors influence the development process. We started with paper prototyping, and then we created user stories, use case diagrams and determine the basic+alternate flows that we wanted our game to have. 
 
+
+# Table of Contents
+- [Initial Paper Prototyping](#initial-paper-prototyping)
+- [Stakeholders](#stakeholders)
+- [User Stories](#user-stories)
+- [Use-Case Diagram](#use-case-diagram)
+- [User-Case Specification](#use-case-specification)
+
+
+---
+
 ### Initial Paper Prototyping
 When we first got together we brainstormed two possible initial ideas - an 'Endless Runner' game or a 'Survival Game'. In our first session we managed to successfully create paper prototypes for both of these ideas : 
 
@@ -20,8 +31,12 @@ However, as discussions continued we decided against pursuing either of these id
 
 As a pre-cursor to feature implementation we sat down as a team and ran through the requirements stage of our game creation. This required us to consider the following factors : 
 
+--- 
+
 ### Stakeholders
 Player, markers, the development team. 
+
+--- 
 
 ### User Stories
 > "As a player, I want to play a game that gives me nostalgia with a new twist.”
@@ -44,6 +59,8 @@ Player, markers, the development team.
  
 > “As a marker, I want to play this game for a brief period and understand all aspects of the game quickly so that I can judge it fairly.” 
 
+--- 
+
 ### Use-Case Diagram
 
 <div align="center">
@@ -51,6 +68,7 @@ Player, markers, the development team.
     <p><em>Use Case Diagram</em></p>
 </div>
 
+--- 
 
 ### Use-Case Specification
 **Actors** - Player

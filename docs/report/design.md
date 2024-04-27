@@ -2,9 +2,18 @@
 
 [To do: introduce design section]
 
+# Table of Contents
+- [System Architecture](#system-architecture)
+- [Class Diagram](#class-diagram)
+- [Behavioural Diagrams](#behavioural-diagrams)
+
+--- 
+
 ### System Architecture 
 
 [To do] 
+
+---
 
 ### Class Diagram
 
@@ -23,6 +32,8 @@ This class diagram was created once the game was complete, and shows the final g
 </div>
 
 Compare and contrast...
+
+---
 
 ### Behavioural diagrams 
 

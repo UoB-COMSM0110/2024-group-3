@@ -2,6 +2,14 @@
 During our game's implementation there were some features that we were certain we wanted to include in our game. From these we identified three specific areas of challenge; the enemy snake pathfinding, the venom mechanic and the highscore tracker.  
 
 
+
+# Table of Contents
+- [Challenge 1 - Enemy Snake Pathfinding](#challenge-1---enemy-snake-pathfinding)
+- [Challenge 2 - Venom Mechanic](#challenge-2---venom-mechanic)
+- [Challenge 3 - High Score Tracker](#challenge-3---high-score-tracker)
+
+---
+
 ### Challenge 1 - Enemy Snake Pathfinding
 We knew from the start that we needed the enemy snakes (ESs) to pose a real challenge to the player. This meant creating ESs that responded to in-game obstacles, tracked the player snake around the map and moved towards the player snake in a way that felt logical and intuitive to the player. The ESs use pathfinding to track the player snake around the map by finding the square that reduces the distance to the player snake (the closest part of it's body) the most.
 
@@ -17,7 +25,7 @@ The hierachy was designed so that the ESs would always prioritize the cell type 
     <p><em>ES Pathfinding</em></p>
 </div>
 
-
+---
    
 ### Challenge 2 - Venom Mechanic
 The venom mechanic was one of the foundational parts of our game. Overall the implementation process was relatively smooth sailing, and the greatest challenges were with edge cases dealing with the borders of the map and walls. Our evaluation process was helpful here, as we found that the increased play time by a lot of different users was great at identifiying bugs and potential issues. 
@@ -29,8 +37,7 @@ The venom mechanic's functionality was written primarily via the 'Venom' class. 
     <p><em>Venom Mechanic</em></p>
 </div>
 
-
-
+---
 
 ### Challenge 3 - High Score Tracker
 This was added via two classes; a 'ScoreData' class and a 'HighScore' class. The 'ScoreData' class is a simple data structure that holds the player's score and name. During runtime, the constructor of this class would initialise this data with the values provided by the user when they saved their score at the end of the game. 
