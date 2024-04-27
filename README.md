@@ -194,7 +194,7 @@ This class diagram was created before we implemented the game, as part of the de
 This class diagram was created once the game was complete, and shows the final game design: 
 
 <div align="center">
-    <img src="/images/class_diagram_final_transparent.svg" alt="Early class diagram">
+    <img src="/images/class_diagram_final.svg" alt="Final Class Diagram">
     <p><em>Early class diagram</em></p>
 </div>
 
