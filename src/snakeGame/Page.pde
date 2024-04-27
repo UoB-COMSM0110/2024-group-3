@@ -27,7 +27,6 @@
       int frameCount=0;
       int jumped=0; //record if the page jumped in method handlePageJump
       
-      int needHelpPage=1;
       int helpPagePoped=0;
     
       public void mainPage() {
@@ -416,6 +415,9 @@
         for (int i = 0; i < butList.size(); ++i) {
           if (currentPage == butList.get(i).getCurPag()) {
             if (butList.get(i).inside(mouseX, mouseY)) {
+              if (butList.get(i).getTxt()=="PLAY" && butList.get(i).getPagePoi()==WhatPage.PLAYING){
+                file_background.loop();
+              }
               if (butList.get(i).getTxt()=="Save") {
                 if (gameState == GameState.OVER&&currentPage==WhatPage.PLAYING) {
                   if (inputName!="") {
@@ -431,15 +433,19 @@
                 int mapIndex = rand.nextInt(2) + 1;
                 String mapFile = "mapsCSV/" + (difficultyMode == 0 ? "E" + mapIndex : "H" + mapIndex) + ".csv";
                 if (difficultyMode == 0) {
-                  frameRate(10);
+                  frameRate(8);
                 } else {
-                  frameRate(15);
+                  frameRate(10);
                 }
                 gameScreen = new GameScreen();
                 gameScreen.setup(mapFile);
                 isMapLoaded = true;
                 gameState=GameState.PLAY;
                 end = false;
+                if(needHelpPage==0){
+                  file_background.loop();
+                }
+                
               }
               inputName="";
               file_button.play();

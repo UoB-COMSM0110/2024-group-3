@@ -32,6 +32,7 @@
     boolean isNameBoxSelected = false;
     int cursorTimer = 0;
     boolean end = false;
+    public int needHelpPage=1;
   
     SoundFile file, file_button, file_click, file_background,file_new,file_d;
     Sound s;
@@ -219,7 +220,7 @@
         drawNameBox();
           Button rt_but = new Button(480, 390, 720, 430, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save", 24);
           Button exit_but = new Button(480, 460, 720, 500, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Exit", 24);
-          Button re_but = new Button(480, 530, 720, 570, WhatPage.PLAYING, WhatPage.POPHELPPAGE, "Restart", 24);
+          Button re_but = new Button(480, 530, 720, 570, WhatPage.PLAYING, needHelpPage==1?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "Restart", 24);
           page.butList.add(rt_but);
           page.butList.add(exit_but);
           page.butList.add(re_but);
