@@ -195,7 +195,7 @@ This class diagram was created once the game was complete, and shows the final g
 
 <div align="center">
     <img src="/images/class_diagram_final.svg" alt="Final Class Diagram">
-    <p><em>Early class diagram</em></p>
+    <p><em>Final Class Diagram</em></p>
 </div>
 
 Compare and contrast...
