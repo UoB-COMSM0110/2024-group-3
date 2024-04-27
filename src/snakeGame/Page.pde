@@ -392,9 +392,11 @@
         if (volPlus.inside(mouseX, mouseY)) {
           //volume=min(11,volume+1);
           if (volume<maxVolume) ++volume;
+          file_button.play();
         } else if (volMinus.inside(mouseX, mouseY)) {
           //volume=max(0,volume-1);
           if (volume>0) --volume;
+          file_button.play();
         } else if (tips.inside(mouseX, mouseY)) {
           isShowTips^=1;
           System.out.println("isShowTips"+isShowTips);

@@ -24,7 +24,7 @@
     public WhatPage currentPage;
     public int isShowTips=1;
     public int isShowTips2=1;
-    public int volume=0;
+    public float volume=6;
     public HighScore highScore, highScore_hard;
     public String inputName;
     public int totalScore;
@@ -34,6 +34,7 @@
     boolean end = false;
   
     SoundFile file, file_button, file_click, file_background,file_new,file_d;
+    Sound s;
   
   
     public void settings() {
@@ -56,10 +57,12 @@
       file_background = new SoundFile(this, sketchPath("../music/sound_4.mp3"));
       file_new = new SoundFile(this, sketchPath("../music/sound_5.wav"));
       file_d = new SoundFile(this, sketchPath("../music/sound_6.mp3"));
+      
     }
   
   
     public void draw() {
+      s.volume(volume/12);
       background(255);
       if (!isMapLoaded) {
         Random rand = new Random();
