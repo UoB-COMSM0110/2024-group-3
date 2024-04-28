@@ -114,7 +114,9 @@ TODO:
    
 1. Install the following libraries by clicking **Tools -> Import Libra... -> Manage Libraries...**
  
-   ##### &emsp;**Sound** | Provides a simple way to work with audio (Author: The Processing Foundation)
+   ##### &emsp;**Sound** | Provides a simple way to work with audio (Author: The Processing Foundation) [^1]
 
 1. Click the **Play** button located to the top-left of the ide window to run the game.
 
+
+[^1]: Folow the link for more information on the [Sound Library](https://processing.org/reference/libraries/sound/index.html). 
