@@ -13,7 +13,6 @@
 - [6. Evaluation](#6-evaluation)
 - [7. Process](#7-process)
 - [8. Conclusion](#8-conclusion)
-  - [Individual Contributions](#individual-contributions)
 - [9. Installation](#9-installation)
 
 
