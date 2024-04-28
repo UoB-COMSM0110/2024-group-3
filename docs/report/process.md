@@ -1,3 +1,7 @@
+<div align="center">
+    <img width="800" src="../../images/titlePro.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
+</div>
+
 # 7. Process
 As a group, we've come away from this project feeling satisfied and proud of our team's communication and cohesiveness. 
 

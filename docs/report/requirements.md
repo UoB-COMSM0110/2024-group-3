@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/c75424b0-11bb-4a1e-b1ab-8a0418648ae3" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
+    <img width="800" src="../../images/titleReq.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
 </div>
 
 
@@ -8,11 +8,13 @@ In this section we're going to describe the ideation process for our game. We ho
 
 
 # Table of Contents
-- [Initial Paper Prototyping](#initial-paper-prototyping)
-- [Stakeholders](#stakeholders)
-- [User Stories](#user-stories)
-- [Use-Case Diagram](#use-case-diagram)
-- [User-Case Specification](#use-case-specification)
+- [3. Requirements](#3-requirements)
+- [Table of Contents](#table-of-contents)
+    - [Initial Paper Prototyping](#initial-paper-prototyping)
+    - [Stakeholders](#stakeholders)
+    - [User Stories](#user-stories)
+    - [Use-Case Diagram](#use-case-diagram)
+    - [Use-Case Specification](#use-case-specification)
 
 
 ---

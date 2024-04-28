@@ -1,12 +1,18 @@
+<div align="center">
+    <img width="800" src="../../images/titleImp.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
+</div>
+
 # 5. Implementation
 During our game's implementation there were some features that we were certain we wanted to include in our game. From these we identified three specific areas of challenge; the enemy snake pathfinding, the venom mechanic and the highscore tracker.  
 
 
 
 # Table of Contents
-- [Challenge 1 - Enemy Snake Pathfinding](#challenge-1---enemy-snake-pathfinding)
-- [Challenge 2 - Venom Mechanic](#challenge-2---venom-mechanic)
-- [Challenge 3 - High Score Tracker](#challenge-3---high-score-tracker)
+- [5. Implementation](#5-implementation)
+- [Table of Contents](#table-of-contents)
+    - [Challenge 1 - Enemy Snake Pathfinding](#challenge-1---enemy-snake-pathfinding)
+    - [Challenge 2 - Venom Mechanic](#challenge-2---venom-mechanic)
+    - [Challenge 3 - High Score Tracker](#challenge-3---high-score-tracker)
 
 ---
 

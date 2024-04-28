@@ -1,3 +1,7 @@
+<div align="center">
+    <img width="800" src="../../images/titleEva.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
+</div>
+
 # 6. Evaluation 
 As part of our game development process we engaged in both quantitative and qualitative analysis. This was a really rewarding experience, allowing us to get user feedback in an actionable form that could direct the development of our game as well as identify bugs that we could iron out. 
 
@@ -195,7 +199,7 @@ She then used the Wilcoxon Signed Rank Test to find the calculated W test statis
 Ranks 2,3 and 4,5 have the same value differences. Fortunately, because they are of the same sign, this doesn't impact the test's results. The sum of our positive ranks is 0 and the sum of our negative ranks is 55, with the W test statistic coming out as 0. Since this is well below the maximum value of 8 as specified above, we can say with confidence that there is a statistically significant difference in our easy and hard difficulty modes. 
 
 ### Testing
-Black Box
+Black Box  
 White Box
 
 <br>
