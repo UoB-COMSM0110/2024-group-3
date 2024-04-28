@@ -15,8 +15,6 @@
 - [9. Installation](#9-installation)
 
 
-<br>
-
 # 1. Team
 
 <div align="center">
@@ -36,7 +34,6 @@
 | Jie Fang         | UI Developer                   | [yh23030@bristol.ac.uk](mailto:yh23030@bristol.ac.uk) | [@Jiebristol](https://github.com/Jiebristol)              |
 </div>
 
-<br>
 
 # 2. Introduction 
 Our game is a take on the classic 'Snake' game called 'Survival Snake'. The overarching principle remains the same - the player's goal is to grow their snake in length by consuming food that appears on the map, whilst also avoiding collisions with the snake itself or the map's borders. But, our game expands upon these principles by incorporating elements of the first-person shooter genre into our game. 
@@ -52,9 +49,6 @@ Another element we've added to Survival Snake is the creation of custom maps. We
 </div>
 
 
-<br>
-
-
 # 3. Requirements
 
 Refer to our [requirement document](/docs/report/requirements.md) to see our:
@@ -64,17 +58,12 @@ Refer to our [requirement document](/docs/report/requirements.md) to see our:
 - Use-Case Diagram
 - User-Case Specification
 
-
-<br>
-
 # 4. Design
 
 Refer to our [design document](/docs/report/design.md) to see our:
 - System Architecture
 - Class Diagram
 - Behavioural Diagrams
-
-<br>
 
 # 5. Implementation
 
@@ -83,7 +72,6 @@ Refer to our [implementation document](/docs/report/implementation.md) to see ou
 - Challenge 2 - Venom Mechanic
 - Challenge 3 - High Score Tracker
 
-<br>
 
 # 6. Evaluation
 
@@ -92,18 +80,14 @@ Refer to our [evaluation document](/docs/report/evaluation.md) to see our:
 - Heuristic Analysis
 - Quantitative Analysis
 
-<br>
 
 # 7. Process
 
 Refer to our [process document](/docs/report/process.md) to see an overview of our development process:
 
-<br>
-
 # 8. Conclusion 
 TODO:
 
-<br>
 
 ### Individual Contributions 
 
@@ -116,7 +100,6 @@ TODO:
 | Alexander Fisher | 1            | 
 | Jie Fang         | 1            | 
 
-<br>
 
 # 9. Installation
 
@@ -127,11 +110,11 @@ TODO:
 
 1. Run Processing and then open the game by clicking: **File -> Open -> {root_dir}/src/snakeGame/main.pde** 
        
-   <blockquote>    ***note**: replace 'root_dir' with the actual filepath/location of the extracted root directory*</blockquote>
-
+   >    ##### *__note__: replace 'root_dir' with the actual filepath/location of the extracted root directory*
+   
 1. Install the following libraries by clicking **Tools -> Import Libra... -> Manage Libraries...**
-
-   - **Sound** | Provides a simple way to work with audio (Author: The Processing Foundation)
+ 
+   ##### &emsp;**Sound** | Provides a simple way to work with audio (Author: The Processing Foundation)
 
 1. Click the **Play** button located to the top-left of the ide window to run the game.
 
