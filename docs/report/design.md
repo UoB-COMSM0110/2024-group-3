@@ -98,21 +98,12 @@ private ArrayList<Wall> walls;
 private Apple apple;
 private Banana banana;
 private Melon melon;
-private VenomRefiller venomRefillerOne; //two VenomRefiller powerups, because only having one makes it too hard
 private VenomRefiller venomRefillerTwo;
 
 //dynamic objects:
 private Snake snake;
 private ArrayList<EnemySnake> enemySnakes;
 private ArrayList<Venom> venom;
-private int startTime;
-private float snakeVenom = 300;
-private final int maxVenom = 300;
-private final int venomIncrementEasy = 30;
-private final int venomIncrementHard = 50;
-private int enemyScore = 0;
-private boolean play=false;
-private boolean acceptDirectionInput;
 
 ```
 A key attribute in this class pertinent to collision detection is mapGridObjectData. This is a 2D array of object references which encapsulates the current state of the game. Each iteration of the game, dynamic objects are mapped to their new grid locations. This provides an efficient lookup to determine which object occupies a specific grid, forming the first step of managing object interaction and collision detections. For example, if the player's snake moves into a wall, this collision is detected, and the game will end. Alternatively, if the snake moves into a grid cell containing a consumable, the appropriate action will be taken to increase body length, score, or venom available, and the game would continue. A key component of enabling each grid to be tracked but still having objects interact with others as a whole is the aggregation of cells to make the objects. This ultimately means that if an object is an aggregation of multiple cells, then each cell references the same object. This ensures that if an enemy snake is killed by the venom, the whole enemy snake dies and not just the first cell or the cell where the collision was detected.
@@ -135,20 +126,17 @@ snakeCells.add(newHead);
 game.setMapGridObjectData(headPosition, this);
 
 if (gridObject instanceof Food ) {
-    //when snake eats food, move the food
-    ((Food) gridObject).setRandomConsumableLocation();
+    // when snake eats food, move the food
     // add new head but dont remove tail: snake grows when it eats
-    return;
 }
 
 if (hasVenomHitFood == true) {
-    hasVenomHitFood = false; //reset boolean for next time
-    return; // return early to add new head but not remove tail: snake grows when it eats (via venom)
+    // return early to add new head but not remove tail: snake grows when it eats (via venom)
 }
 
 if (gridObject instanceof Powerup) {
-    ((Powerup) gridObject).setRandomConsumableLocation(); //move the powerup
-    game.refillVenomBar(); //replenish venom
+    //move the powerup
+    //replenish venom
     // add new head and remove tail: snake doesn't grow
 }
 
