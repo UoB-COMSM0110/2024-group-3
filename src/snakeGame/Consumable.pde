@@ -5,6 +5,7 @@ import java.util.ArrayList;
       protected int colour;
       protected GameScreen game;
       protected ArrayList<PVector> shape = new ArrayList<>(); //consumables are arraylists of PVectors
+      protected Object[][] mapGridObjectData; //for assert testing
       //start by randomly choosing some potential rows and columns, before checking if they're free
       int potentialRow;
       int potentialColumn;
@@ -52,6 +53,7 @@ import java.util.ArrayList;
         }
         return true;
     }
+    
     
       //add all GridCells of the consumable to the grid metadata
       protected void setConsumableMapGridObjectData() {

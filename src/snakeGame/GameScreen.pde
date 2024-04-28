@@ -78,10 +78,14 @@ import java.awt.event.KeyEvent;
           //there's always one of each of the three types of food on the grid 
           this.apple = new Apple(this);
           this.apple.setRandomConsumableLocation();
+          //assert that object at this location in metadata is an apple
+          assert getMapGridObjectData((int) apple.gridLocation.x, (int)apple.gridLocation.y) instanceof Apple; 
           this.banana = new Banana(this);
           this.banana.setRandomConsumableLocation();
+          assert getMapGridObjectData((int) banana.gridLocation.x, (int)banana.gridLocation.y) instanceof Banana;
           this.melon = new Melon(this);
           this.melon.setRandomConsumableLocation();
+          assert getMapGridObjectData((int) melon.gridLocation.x, (int)melon.gridLocation.y) instanceof Melon;
           this.venomRefillerOne = new VenomRefiller(this);
           this.venomRefillerOne.setRandomConsumableLocation();
           this.venomRefillerTwo = new VenomRefiller(this);
@@ -191,6 +195,8 @@ import java.awt.event.KeyEvent;
           
           snakeVenom = max(snakeVenom , 0); //venom bar can't go below zero (even though it says max)
           snakeVenom  = min(snakeVenom , maxVenom); //venom bar can't exceed maximum (even though it says min)
+          //assert test venom bar stays in valid range 
+          assert snakeVenom >= 0 && snakeVenom <= 300;
           fill(255, 0, 0); //red 
       
           windowResize(width, height+100);
@@ -438,22 +444,27 @@ import java.awt.event.KeyEvent;
           if (apple != null) {
             apple.cleanUp();
             apple = null;
+            assert apple == null; //assert apple has been removed
           }
           if (banana != null) {
             banana.cleanUp();
             banana = null;
+            assert banana == null; //assert banana has been removed
           }
           if (melon != null) {
             melon.cleanUp();
             melon = null;
+            assert melon == null; //assert melon has been removed
           }
           if (venomRefillerOne != null) {
             venomRefillerOne.cleanUp();
             venomRefillerOne = null;
+            assert venomRefillerOne == null; //assert venom refiller has been removed
           }
           if (venomRefillerTwo != null) {
             venomRefillerTwo.cleanUp();
             venomRefillerTwo = null;
+            assert venomRefillerTwo == null; //assert venom refiller has been removed
           }
       
           // Clear main snake

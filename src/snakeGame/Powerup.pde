@@ -2,7 +2,7 @@
       int baselineTime = 0;
       int intervalTime = 500; //0.5 seconds
       boolean isColour = false; 
-      //to differentiate powerups from food, powerups flash
+      //powerups flash to differentiate powerups from food
       
       public Powerup(GameScreen game, PVector gridLocation, int colour) {
             super(game, gridLocation, colour); 
