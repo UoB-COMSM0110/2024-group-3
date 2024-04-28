@@ -1,10 +1,9 @@
 <div align="center">
     <img src="images/titleReadme.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
 </div>
-
+<br>
 
 # Table of Contents
-- [Table of Contents](#table-of-contents)
 - [1. Team](#1-team)
 - [2. Introduction](#2-introduction)
 - [3. Requirements](#3-requirements)
@@ -15,6 +14,8 @@
 - [8. Conclusion](#8-conclusion)
 - [9. Installation](#9-installation)
 
+
+<br>
 
 # 1. Team
 
@@ -44,6 +45,7 @@ The player snake has a finite 'Venom' ability that allows you to destroy walls, 
 
 Another element we've added to Survival Snake is the creation of custom maps. We have designed 4 possible maps, 2 for each difficulty mode, with each map having unique wall placements. In all the maps the player has the ability to 'wrap around', exiting one side of the map to re-appear on the other side, thereby adding another layer to the player snake's movement possibilities. 
 
+<br>
 <div align="center">
     <img width="800" alt="Screenshot 2024-04-18 at 17 15 10" src="images/mainPage.png">
     <p><em>Survival Snake, Main Page</em></p>
@@ -52,9 +54,6 @@ Another element we've added to Survival Snake is the creation of custom maps. We
 
 <br>
 
-
-
----
 
 # 3. Requirements
 
@@ -65,7 +64,8 @@ Refer to our [requirement document](/docs/report/requirements.md) to see our:
 - Use-Case Diagram
 - User-Case Specification
 
----
+
+<br>
 
 # 4. Design
 
@@ -74,7 +74,7 @@ Refer to our [design document](/docs/report/design.md) to see our:
 - Class Diagram
 - Behavioural Diagrams
 
----
+<br>
 
 # 5. Implementation
 
@@ -83,7 +83,7 @@ Refer to our [implementation document](/docs/report/implementation.md) to see ou
 - Challenge 2 - Venom Mechanic
 - Challenge 3 - High Score Tracker
 
----
+<br>
 
 # 6. Evaluation
 
@@ -92,20 +92,20 @@ Refer to our [evaluation document](/docs/report/evaluation.md) to see our:
 - Heuristic Analysis
 - Quantitative Analysis
 
----
+<br>
 
 # 7. Process
 
 Refer to our [process document](/docs/report/process.md) to see an overview of our development process:
 
----
+<br>
 
 # 8. Conclusion 
 TODO:
 
 <br>
 
-## Individual Contributions 
+### Individual Contributions 
 
 | Name             | Contribution | 
 |------------------|--------------|
@@ -116,7 +116,7 @@ TODO:
 | Alexander Fisher | 1            | 
 | Jie Fang         | 1            | 
 
----
+<br>
 
 # 9. Installation
 

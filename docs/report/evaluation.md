@@ -2,8 +2,12 @@
     <img width="800" src="../../images/titleEva.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
 </div>
 
-# 6. Evaluation 
+<br>
+
 As part of our game development process we engaged in both quantitative and qualitative analysis. This was a really rewarding experience, allowing us to get user feedback in an actionable form that could direct the development of our game as well as identify bugs that we could iron out. 
+
+
+---
 
 # Table of Contents
 - [Qualitative Analysis](#qualitative-analysis)
@@ -32,7 +36,8 @@ On 11.03 we used our lab session to obtain some initial Think-Aloud feedback for
 
 > Participant 7 - "Well it's addictive."
 
---
+---
+
 
 ### Negative Feedback
 > Participant 3 - "It's not obvious to me what's harder about the hard mode."
@@ -66,7 +71,7 @@ Reduced the framerate on easy mode.
 
 Added lines around the buttons on the main menu page to make it clear what was clickable.
 
--- 
+---
 
 ### Potential Features
 > Participant 1 - "Could you implement a colour-blindness feature?"
@@ -88,7 +93,7 @@ Added a pop up tutorial page that triggers after the user presses 'play'.
 
 Tweaked the high score tracker so that it differentiates between hard and easy mode. Separate lists for each difficulty.
 
--- 
+---
 
 ### Bugs
 > "When you're on hard, when you fire venom, it doesn't react quick enough".
@@ -98,11 +103,12 @@ Fixed this bug.
 > User went through the wall without it disappearing.
 
 Fixed this bug.
-<br><br>
+
 
 ---
 
 ## Heuristic Analysis
+
 On 12.04 we conducted a heuristic analysis, which touched upon a lot of the same issues we identified during the Think-Aloud evaluation. Chris and Florence performed this evaluation on members from 5 other groups, with 8 participants in total. Ideally we would have had 10 > participants, but time constraints prevented this. Florence subsequently analysed this data and compiled the below table. She gave each issue its own unique ID and asking our evaluators how they would rate its impact, frequency and persistence, and then added these values together to give the overall severity of the problem. 
 
 | ID | Game Component | Heuristic | Description of Issue | Impact (0-3) | Frequency (0-3) | Persistence (0-3) | Overall Severity (0-9) | Recommendations |
