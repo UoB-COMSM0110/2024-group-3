@@ -24,7 +24,7 @@
     public WhatPage currentPage;
     public int isShowTips=1;
     public int isShowTips2=1;
-    public int volume=0;
+    public float volume=6;
     public HighScore highScore, highScore_hard;
     public String inputName;
     public int totalScore;
@@ -32,8 +32,10 @@
     boolean isNameBoxSelected = false;
     int cursorTimer = 0;
     boolean end = false;
+    public int needHelpPage=1;
   
     SoundFile file, file_button, file_click, file_background,file_new,file_d;
+    Sound s;
   
   
     public void settings() {
@@ -56,10 +58,12 @@
       file_background = new SoundFile(this, sketchPath("../music/sound_4.mp3"));
       file_new = new SoundFile(this, sketchPath("../music/sound_5.wav"));
       file_d = new SoundFile(this, sketchPath("../music/sound_6.mp3"));
+      
     }
   
   
     public void draw() {
+      s.volume(volume/12);
       background(255);
       if (!isMapLoaded) {
         Random rand = new Random();
@@ -68,7 +72,7 @@
           if (difficultyMode == 0) {
             frameRate(8);
           } else {
-            frameRate(12);
+            frameRate(10);
           }
         gameScreen = new GameScreen();
         gameScreen.setup(mapFile);
@@ -216,7 +220,7 @@
         drawNameBox();
           Button rt_but = new Button(480, 390, 720, 430, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save", 24);
           Button exit_but = new Button(480, 460, 720, 500, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Exit", 24);
-          Button re_but = new Button(480, 530, 720, 570, WhatPage.PLAYING, WhatPage.POPHELPPAGE, "Restart", 24);
+          Button re_but = new Button(480, 530, 720, 570, WhatPage.PLAYING, needHelpPage==1?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "Restart", 24);
           page.butList.add(rt_but);
           page.butList.add(exit_but);
           page.butList.add(re_but);

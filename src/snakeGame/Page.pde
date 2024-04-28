@@ -7,6 +7,7 @@
       Button volPlus=new Button(850, 180, 900, 230, "+", 36);
       Button tips=new Button(850, 280, 900, 330, " ", 36);
       Button tips2=new Button(850, 380, 900, 430, " ", 36);
+      Button popHelPag=new Button(850, 480, 900, 530, " ", 36);
       Button hard=new Button(940, 140, 970, 170, " ", 36);
       Button easy=new Button(940, 355, 970, 385, " ", 36);
     
@@ -25,6 +26,8 @@
     
       int frameCount=0;
       int jumped=0; //record if the page jumped in method handlePageJump
+      
+      int helpPagePoped=0;
     
       public void mainPage() {
         mainPageE=loadImage("../images/mainPageEasy.png");
@@ -50,7 +53,7 @@
     
         butList.clear();
     
-        Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, WhatPage.POPHELPPAGE, "PLAY", 72);
+        Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, (needHelpPage==1 || (needHelpPage==0 && helpPagePoped==0))?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "PLAY", 72);
         butList.add(sg_but);
     
         Button hs_but = new Button(180, 220, 360, 264, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score", 36);
@@ -104,7 +107,7 @@
     
         butList.clear();
     
-        Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE_hard, WhatPage.POPHELPPAGE, "PLAY", 72);
+        Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE_hard, (needHelpPage==1 || (needHelpPage==0 && helpPagePoped==0))?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "PLAY", 72);
         butList.add(sg_but);
     
         Button hs_but = new Button(180, 220, 360, 264, WhatPage.MAINPAGE_hard, WhatPage.HIGHSCORE, "High Score", 36);
@@ -218,6 +221,7 @@
         text("Volume", 300, 190);
         text("Display controls during the game", 300, 290);
         text("Display grid during the game", 300, 390);
+        text("Display help page before starting", 300, 490);
     
         //textAlign(LEFT,BOTTOM);
         //text(". . . . . . . . . . ",560,190);
@@ -235,6 +239,7 @@
         drawButton(volMinus);
         drawTipsButton(tips);
         drawTipsButton(tips2);
+        drawTipsButton(popHelPag);
         if (isShowTips==1) {
           checkIcon=loadImage("../images/check.png");
           checkIcon.resize(tips.w-tips.x, tips.v-tips.y);
@@ -245,11 +250,17 @@
           checkIcon.resize(tips2.w-tips2.x, tips2.v-tips2.y);
           image(checkIcon, tips2.x, tips2.y);
         }
+        if (needHelpPage==1) {
+          checkIcon=loadImage("../images/check.png");
+          checkIcon.resize(popHelPag.w-popHelPag.x, popHelPag.v-popHelPag.y);
+          image(checkIcon, popHelPag.x, popHelPag.y);
+        }
         drawButton(esc_but);
       }
     
       public void popHelpPage() {
         ++frameCount;
+        helpPagePoped=1;
     
         popHelpPage=loadImage("../images/popHelp.png");
         image(popHelpPage, 0, 0);
@@ -380,9 +391,11 @@
         if (volPlus.inside(mouseX, mouseY)) {
           //volume=min(11,volume+1);
           if (volume<maxVolume) ++volume;
+          file_button.play();
         } else if (volMinus.inside(mouseX, mouseY)) {
           //volume=max(0,volume-1);
           if (volume>0) --volume;
+          file_button.play();
         } else if (tips.inside(mouseX, mouseY)) {
           isShowTips^=1;
           System.out.println("isShowTips"+isShowTips);
@@ -390,6 +403,9 @@
         } else if (tips2.inside(mouseX, mouseY)) {
           isShowTips2^=1;
           System.out.println("isShowTips2"+isShowTips2);
+          file_click.play();
+        } else if (popHelPag.inside(mouseX,mouseY)) {
+          needHelpPage^=1;
           file_click.play();
         }
       }
@@ -399,6 +415,9 @@
         for (int i = 0; i < butList.size(); ++i) {
           if (currentPage == butList.get(i).getCurPag()) {
             if (butList.get(i).inside(mouseX, mouseY)) {
+              if (butList.get(i).getTxt()=="PLAY" && butList.get(i).getPagePoi()==WhatPage.PLAYING){
+                file_background.loop();
+              }
               if (butList.get(i).getTxt()=="Save") {
                 if (gameState == GameState.OVER&&currentPage==WhatPage.PLAYING) {
                   if (inputName!="") {
@@ -414,15 +433,19 @@
                 int mapIndex = rand.nextInt(2) + 1;
                 String mapFile = "mapsCSV/" + (difficultyMode == 0 ? "E" + mapIndex : "H" + mapIndex) + ".csv";
                 if (difficultyMode == 0) {
-                  frameRate(10);
+                  frameRate(8);
                 } else {
-                  frameRate(15);
+                  frameRate(10);
                 }
                 gameScreen = new GameScreen();
                 gameScreen.setup(mapFile);
                 isMapLoaded = true;
                 gameState=GameState.PLAY;
                 end = false;
+                if(needHelpPage==0){
+                  file_background.loop();
+                }
+                
               }
               inputName="";
               file_button.play();

@@ -7,6 +7,7 @@ import java.util.ArrayList;
       
       public Food(GameScreen game, PVector gridLocation, int colour) {
             super(game, gridLocation, colour); 
+            this.mapGridObjectData = new Object[height][width];
       }
       
       @Override
@@ -28,7 +29,9 @@ import java.util.ArrayList;
          setConsumableMapGridObjectData();
          //when food is eaten, clear it from metadata
          clearConsumableMapGridObjectData(oldColumn, oldRow); 
-         //keep track of food score for UI display 
+         //assert that consumable cleared from metadata
+         assert getMapGridObjectData(oldColumn, oldRow) == null; 
+        //keep track of food score for UI display 
          incrementFoodCount();
       }
       
@@ -44,5 +47,12 @@ import java.util.ArrayList;
       public PVector getFoodLocation() {
         return this.gridLocation;
       }  
+      
+      protected Object getMapGridObjectData(int x, int y) {
+        return this.mapGridObjectData[x][y];
+      }
+    
+      
+      
       
     }

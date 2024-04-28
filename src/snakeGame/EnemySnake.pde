@@ -5,7 +5,6 @@ import processing.core.PVector;
     
     
     public class EnemySnake extends AbstractSnake {
-    
       
       public EnemySnake(GameScreen game, int len, int colour) {
         super(game, colour);
@@ -41,10 +40,14 @@ import processing.core.PVector;
               if (gridObject != null || PVector.dist(testPosition, playerHead) < 18 || PVector.dist(testPosition, playerTail) < 18) {
                 isValid = false;
                 break;
-                }
-                }            
+              }
+          }            
     
               if (isValid) {
+                
+                // Assertion testing
+                assert startX >= 1 && startX <= 100;
+                assert startY >= 1 && startY <= 45;
                 return new PVector(startX, startY);
                 }
                 
@@ -67,7 +70,6 @@ import processing.core.PVector;
       
         if (snakeCells.isEmpty()) return;
     
-        ArrayList<PVector> occupiedPositionsByEnemies = game.getOccupiedPositionsByEnemies(this);
         PVector headPosition = snakeCells.getFirst().gridLocation;
         float minDistance = Float.MAX_VALUE;
         PVector bestMove = null;
@@ -92,8 +94,7 @@ import processing.core.PVector;
           if (!(gridObject instanceof Wall) &&
             !(gridObject instanceof Food) &&
             !(gridObject instanceof Consumable) &&
-            !isPositionInSnake(testPosition) &&
-            !occupiedPositionsByEnemies.contains(testPosition)) {
+            !(gridObject instanceof EnemySnake)) {
             float distance = calculateClosestDistance(testPosition, game.snake.getSnakeCells());
           
             if (distance < minDistance) {
@@ -140,13 +141,20 @@ import processing.core.PVector;
         }      
         
         if (bestMove != null) {
+          
+          // Assertion testing
+          assert bestMove != null;
+          assert bestMove.x >= 1 && bestMove.x <= 100;
+          assert bestMove.y >= 1 && bestMove.y <= 45; 
+          assert minDistance >= 0;
+          
           velocity.set(bestMove.x - headPosition.x, bestMove.y - headPosition.y);
           PVector newHeadPosition = headPosition.copy().add(velocity);
           game.setMapGridObjectData(snakeCells.getLast().gridLocation, null);
           snakeCells.removeLast();
           snakeCells.addFirst(new SnakeCell(newHeadPosition, this.colour));
           game.setMapGridObjectData(newHeadPosition, this);
-        }        
+        }
       }    
         
       // Calculates the distance from the enemy snake head to the closest player snake cell
@@ -164,9 +172,18 @@ import processing.core.PVector;
         return minDistance;
       }
     
-    
       @Override
       protected void setVelocity(float x, float y) {
-        velocity.set(x, y);
-      }   
-    }
+        velocity.set(x, y); 
+        
+        // Assertion testing
+        assert (x == -1 || x == 0 || x == 1);
+        assert (y == -1 || y == 0 || y == 1);        
+        if (x == -1 || x == 1) {
+          assert y == 0;
+        }        
+        if (y == -1 || y == 1) {
+          assert x == 0;
+        }
+      }        
+}
