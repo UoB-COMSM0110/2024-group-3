@@ -16,6 +16,9 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ipfVU5qfzrM?si=Y0Hus9IRWOcaQats" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/ipfVU5qfzrM?si=Y0Hus9IRWOcaQats/0.jpg)](http://www.youtube.com/watch?v=ipfVU5qfzrM?si=Y0Hus9IRWOcaQats)
+
+
 ![](./video.svg)
 
 # 1. Team
