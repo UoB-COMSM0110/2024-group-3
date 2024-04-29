@@ -103,7 +103,7 @@ TODO:
 
 # 9. Installation
 
-1. Download processing from the following link: [download here](https://processing.org/download).
+1. Download Processing from the following link: [download here](https://processing.org/download).
       This downloads the graphical library and integrated development environment that the game will run on.
 
 1. Download and extract the following ZIP file: [Survival Sanke]().
