@@ -208,4 +208,59 @@ Ranks 2,3 and 4,5 have the same value differences. Fortunately, because they are
 Black Box  
 White Box
 
+Chris's assert testing (for Florence to write up: no need to include evertyhing I did)
+
+I added some assert testing for consumables. For example in the Food class (https://github.com/UoB-COMSM0110/2024-group-3/blob/main/src/snakeGame/Food.pde) I asserted that the old food object is removed from the metadata:
+
+         //assert that consumable cleared from metadata
+          assert getMapGridObjectData(oldColumn, oldRow) == null; 
+
+In the GameScreen class (https://github.com/UoB-COMSM0110/2024-group-3/blob/main/src/snakeGame/GameScreen.pde), I asserted that the food objects were added to the metadata correctly:
+
+          this.apple = new Apple(this);
+          this.apple.setRandomConsumableLocation();
+          //assert that object at this location in metadata is an apple
+          assert getMapGridObjectData((int) apple.gridLocation.x, (int)apple.gridLocation.y) instanceof Apple; 
+          this.banana = new Banana(this);
+          this.banana.setRandomConsumableLocation();
+          assert getMapGridObjectData((int) banana.gridLocation.x, (int)banana.gridLocation.y) instanceof Banana;
+          this.melon = new Melon(this);
+          this.melon.setRandomConsumableLocation();
+          assert getMapGridObjectData((int) melon.gridLocation.x, (int)melon.gridLocation.y) instanceof Melon;
+          
+And I asserted that the venom bar stays in range: 
+
+         //assert test venom bar stays in valid range 
+          assert snakeVenom >= 0 && snakeVenom <= 300;
+          
+          
+And finally that the consumables are removed from the metadata at the end:
+
+          // Clear consumables
+          if (apple != null) {
+            apple.cleanUp();
+            apple = null;
+            assert apple == null; //assert apple has been removed
+          }
+          if (banana != null) {
+            banana.cleanUp();
+            banana = null;
+            assert banana == null; //assert banana has been removed
+          }
+          if (melon != null) {
+            melon.cleanUp();
+            melon = null;
+            assert melon == null; //assert melon has been removed
+          }
+          if (venomRefillerOne != null) {
+            venomRefillerOne.cleanUp();
+            venomRefillerOne = null;
+            assert venomRefillerOne == null; //assert venom refiller has been removed
+          }
+          if (venomRefillerTwo != null) {
+            venomRefillerTwo.cleanUp();
+            venomRefillerTwo = null;
+            assert venomRefillerTwo == null; //assert venom refiller has been removed
+          }
+
 <br>
