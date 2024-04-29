@@ -8,8 +8,6 @@ In this section we're going to describe the ideation process for our game. We ho
 
 
 # Table of Contents
-- [3. Requirements](#3-requirements)
-- [Table of Contents](#table-of-contents)
     - [Initial Paper Prototyping](#initial-paper-prototyping)
     - [Stakeholders](#stakeholders)
     - [User Stories](#user-stories)

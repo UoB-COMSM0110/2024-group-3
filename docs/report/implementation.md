@@ -8,11 +8,9 @@ During our game's implementation there were some features that we were certain w
 
 
 # Table of Contents
-- [5. Implementation](#5-implementation)
-- [Table of Contents](#table-of-contents)
-    - [Challenge 1 - Enemy Snake Pathfinding](#challenge-1---enemy-snake-pathfinding)
-    - [Challenge 2 - Venom Mechanic](#challenge-2---venom-mechanic)
-    - [Challenge 3 - High Score Tracker](#challenge-3---high-score-tracker)
+- [Challenge 1 - Enemy Snake Pathfinding](#challenge-1---enemy-snake-pathfinding)
+- [Challenge 2 - Venom Mechanic](#challenge-2---venom-mechanic)
+- [Challenge 3 - High Score Tracker](#challenge-3---high-score-tracker)
 
 ---
 
