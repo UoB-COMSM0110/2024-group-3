@@ -3,16 +3,15 @@
 </div>
 
 
-# 3. Requirements 
 In this section we're going to describe the ideation process for our game. We hope to explain factors that were considering during our game's inception, and how these factors influence the development process. We started with paper prototyping, and then we created user stories, use case diagrams and determine the basic+alternate flows that we wanted our game to have. 
 
 
 # Table of Contents
-    - [Initial Paper Prototyping](#initial-paper-prototyping)
-    - [Stakeholders](#stakeholders)
-    - [User Stories](#user-stories)
-    - [Use-Case Diagram](#use-case-diagram)
-    - [Use-Case Specification](#use-case-specification)
+- [Initial Paper Prototyping](#initial-paper-prototyping)
+- [Stakeholders](#stakeholders)
+- [User Stories](#user-stories)
+- [Use-Case Diagram](#use-case-diagram)
+- [Use-Case Specification](#use-case-specification)
 
 
 ---
