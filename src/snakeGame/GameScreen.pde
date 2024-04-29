@@ -47,6 +47,7 @@ import java.awt.event.KeyEvent;
         private int enemyScore = 0;
         private boolean play=false;
         private boolean acceptDirectionInput;
+        private int startFrames = 0;
       
       
         public GameScreen() {
@@ -58,6 +59,7 @@ import java.awt.event.KeyEvent;
           this.apple = new Apple(this);
           this.banana = new Banana(this);
           this.melon = new Melon(this);
+          this.startFrames = frameCount;
         }
         
         public void setup(String mapPath) {
@@ -105,55 +107,57 @@ import java.awt.event.KeyEvent;
           maxEnemyCount = 12;
           }
           
+          int gameFrames = frameCount - startFrames;
+          
           if (enemySnakes.size() <= maxEnemyCount) {
           
             if (difficultyMode == 0) {  
             
             // frameCount value can vary depending on difficulty level!
-              if (frameCount < 240) {
-                if (frameCount % 120 == 0) {
+              if (gameFrames < 240) {
+                if (gameFrames % 120 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }
-              else if (frameCount >= 240 && frameCount <= 480) {
-                if (frameCount % 100 == 0) {
+              else if (gameFrames >= 240 && gameFrames <= 480) {
+                if (gameFrames % 100 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               } 
-              else if (frameCount >= 480 && frameCount <= 720) {
-                if (frameCount % 80 == 0) {
+              else if (gameFrames >= 480 && gameFrames <= 720) {
+                if (gameFrames % 80 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }  
-              else if (frameCount >= 720 && frameCount <= 960) {
-                if (frameCount % 60 == 0) {
+              else if (gameFrames >= 720 && gameFrames <= 960) {
+                if (gameFrames % 60 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }  
-              else if (frameCount > 960) {
-                if (frameCount % 40 == 0) {
+              else if (gameFrames > 960) {
+                if (gameFrames % 40 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               } 
             }
             else {
-              if (frameCount <= 300) {
-                if (frameCount % 140 == 0) {
+              if (gameFrames <= 300) {
+                if (gameFrames % 140 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }
-              else if (frameCount > 300 && frameCount <= 600) {
-                if (frameCount % 110 == 0) {
+              else if (gameFrames > 300 && gameFrames <= 600) {
+                if (gameFrames % 110 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               } 
-              else if (frameCount > 600 && frameCount <= 900) {
-                if (frameCount % 90 == 0) {
+              else if (gameFrames > 600 && gameFrames <= 900) {
+                if (gameFrames % 90 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               } 
-              else if (frameCount > 900) {
-                if (frameCount % 70 == 0) {
+              else if (gameFrames > 900) {
+                if (gameFrames % 70 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
                 }
               }
