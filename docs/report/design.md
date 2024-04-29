@@ -6,14 +6,14 @@
 
 [To do: introduce design section]
 
---- 
+
 
 # Table of Contents
 - [System Architecture](#system-architecture)
 - [Class Diagram](#class-diagram)
 - [Behavioural Diagrams](#behavioural-diagrams)
 
-
+---
 
 ## System Architecture 
 
