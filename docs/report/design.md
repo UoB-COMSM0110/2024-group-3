@@ -155,6 +155,7 @@ This class diagram was created before we implemented the game, as part of the de
 </div>
 
 This class diagram was created once the game was complete, and shows the final game design: 
+For a larger version of this diagram click [here](https://raw.githubusercontent.com/UoB-COMSM0110/2024-group-3/8d870d0a43221233c5dd77c008d40066b09cd375/images/class_diagram_final.svg).
 
 <div id=final-class-diagram align="center">
     <img src="/images/class_diagram_final.svg" alt="Final Class Diagram">
