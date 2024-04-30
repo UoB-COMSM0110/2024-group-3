@@ -32,13 +32,13 @@
     
     // Default
     public float volume=6; 
-    public HighScore highScore, highScore_hard;
-    public String inputName;
-    public int totalScore;
+    public HighScore highScore, highScore_hard;//Store separately
+    public String inputName;//player name
+    public int totalScore;//player score
   
-    boolean isNameBoxSelected = false;
+    boolean isNameBoxSelected = false;//Whether to click the name box
     int cursorTimer = 0;
-    boolean end = false;
+    boolean end = false; //Whether to load sounds
     public int needHelpPage=1;
   
     // Music file
@@ -72,7 +72,7 @@
   
   
     public void draw() {
-      s.volume(volume/12);
+      s.volume(volume/12); //change the volume
       background(255);
       if (!isMapLoaded) {
         Random rand = new Random();
