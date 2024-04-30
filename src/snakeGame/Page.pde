@@ -149,7 +149,8 @@
         drawButton(highScoPrePag);
         drawButton(highScoNexPag);
         drawButton(esc_but);
-    
+        
+        // Switch between easy and hard mode scores
         if (highScoPagInd==1) {
           fill(255);
           textAlign(CENTER, CENTER);
@@ -175,6 +176,7 @@
             text(highScore_hard.infor[i].score, w+320, h+100*i);
           }
         }
+        
       }
     
       public void help() {

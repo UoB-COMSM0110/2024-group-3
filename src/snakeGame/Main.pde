@@ -83,6 +83,7 @@ public void setup() {
 
 
 public void draw() {
+  
   // Change the volume for all music
   s.volume(volume/12);
   background(255);
