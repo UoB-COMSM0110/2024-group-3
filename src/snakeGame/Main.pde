@@ -264,6 +264,7 @@
       text(inputName, 460, 325);
         if (isNameBoxSelected) {
           cursorTimer++;
+          
         //Realize the cursor flashing
         if (cursorTimer % 12 < 6) { 
           float cursorX = textWidth(inputName) + 465;

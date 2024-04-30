@@ -256,6 +256,7 @@
       }
     
       public void popHelpPage() {
+
         // Count the frame for the flicker effect
         ++frameCount;
         helpPagePoped=1;
@@ -285,6 +286,7 @@
 
         // Draw a rectangle with round corners in radius 20
         int rad=20;
+
         // When the mouse hovering on the button, just draw the skeleton, otherwise, draw the backgroung colour
         if (but.hover==0) fill(but.bgColr, but.bgColg, but.bgColb);
         else
@@ -414,6 +416,7 @@
     
       // Response to mouse clicking in the buttons which point to another page
       public void handlePageJump() {
+
         // Record the jump action to avoid repeated page changes during a single click event
         jumped=0;
         for (int i = 0; i < butList.size(); ++i) {
@@ -464,6 +467,7 @@
               inputName="";
               file_button.play();
               currentPage = butList.get(i).getPagePoi();
+              
               // record the jump action to avoid repeated page changes during a single click event
               jumped=1;
               break;
