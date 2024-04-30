@@ -34,9 +34,9 @@
     public float volume=6; 
     //Store separately
     public HighScore highScore, highScore_hard;
-    //player name
+    //Player name
     public String inputName;
-    //player score
+    //Player score
     public int totalScore;
   
     boolean isNameBoxSelected = false;//Whether to click the name box
@@ -75,7 +75,8 @@
   
   
     public void draw() {
-      s.volume(volume/12); //change the volume
+      //change the volume
+      s.volume(volume/12);
       background(255);
       if (!isMapLoaded) {
         Random rand = new Random();

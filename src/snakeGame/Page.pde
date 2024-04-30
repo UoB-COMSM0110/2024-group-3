@@ -431,6 +431,7 @@
                   }
                 }
               } else if (butList.get(i).getTxt()=="Restart") {
+                //Reload the map
                 Random rand = new Random();
                 int mapIndex = rand.nextInt(2) + 1;
                 String mapFile = "mapsCSV/" + (difficultyMode == 0 ? "E" + mapIndex : "H" + mapIndex) + ".csv";
@@ -442,7 +443,10 @@
                 gameScreen = new GameScreen();
                 gameScreen.setup(mapFile);
                 isMapLoaded = true;
+                
+                //Restar
                 gameState=GameState.PLAY;
+                //Reload the music
                 end = false;
                 if(needHelpPage==0){
                   file_background.loop();
