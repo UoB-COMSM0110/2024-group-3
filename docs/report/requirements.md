@@ -2,6 +2,7 @@
     <img width="800" src="../../images/titleReq.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
 </div>
 
+<br>
 
 In this section we're going to describe the ideation process for our game. We hope to explain factors that were considering during our game's inception, and how these factors influence the development process. We started with paper prototyping, and then we created user stories, use case diagrams and determine the basic+alternate flows that we wanted our game to have. 
 
