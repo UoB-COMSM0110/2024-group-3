@@ -241,19 +241,19 @@
         text("Final score: "+totalScore, width/2, 200);
         fill(255);
         drawNameBox();
-          Button rt_but = new Button(480, 390, 720, 430, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save", 24);
-          Button exit_but = new Button(480, 460, 720, 500, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Exit", 24);
-          Button re_but = new Button(480, 530, 720, 570, WhatPage.PLAYING, needHelpPage==1?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "Restart", 24);
-          page.butList.add(rt_but);
-          page.butList.add(exit_but);
-          page.butList.add(re_but);
-          page.update(mouseX, mouseY);
-          page.drawButton(rt_but);
-          page.drawButton(exit_but);
-          page.drawButton(re_but);
+        Button rt_but = new Button(480, 390, 720, 430, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Save", 24);
+        Button exit_but = new Button(480, 460, 720, 500, WhatPage.PLAYING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Exit", 24);
+        Button re_but = new Button(480, 530, 720, 570, WhatPage.PLAYING, needHelpPage==1?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "Restart", 24);
+        page.butList.add(rt_but);
+        page.butList.add(exit_but);
+        page.butList.add(re_but);
+        page.update(mouseX, mouseY);
+        page.drawButton(rt_but);
+        page.drawButton(exit_but);
+        page.drawButton(re_but);
     }
   
-    //box for name
+    //Box for name
     void drawNameBox() {
       fill(200);
       rect(450, 300, 300, 50);
@@ -263,7 +263,9 @@
       text(inputName, 460, 325);
         if (isNameBoxSelected) {
           cursorTimer++;
-        if (cursorTimer % 12 < 6) { //Realize the cursor flashing
+        if (cursorTimer % 12 < 6) { 
+          
+          //Realize the cursor flashing
           float cursorX = textWidth(inputName) + 465;
           stroke(0);
           line(cursorX, 310, cursorX, 340);

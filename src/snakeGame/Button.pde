@@ -1,8 +1,9 @@
 class Button {
-    // left top coordinate (x,y) and bottom right coordinate (w,v)
+
+    // Left top coordinate (x,y) and bottom right coordinate (w,v)
     private int x, y, w, v;
 
-    // in which page the button is active and to which page the screen should jump
+    // In which page the button is active and to which page the screen should jump
     private WhatPage curPag,pagePoi;
     private String txt;
 
@@ -10,7 +11,8 @@ class Button {
     private int bgColr =255, bgColg = 255, bgColb = 255;
 
     private int txtsize = 32;
-    // indicates whether the mouse is hovering on the button
+    
+    // Indicates whether the mouse is hovering on the button
     public int hover=0;
 
     public Button(int x, int y, int w, int v, WhatPage curPag, WhatPage pagePoi, String txt, int txtsize) {
@@ -24,7 +26,7 @@ class Button {
         this.txtsize=txtsize;
     }
     
-    // initialize a tick box button without text or page poiter
+    // Initialize a tick box button without text or page pointer
     public Button(int x,int y,int w,int v,String txt,int txtsize) {
         this.x = x;
         this.y = y;

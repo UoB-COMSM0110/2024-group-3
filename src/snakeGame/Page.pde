@@ -71,7 +71,7 @@
         drawTipsButton(easy);
         drawTipsButton(hard);
 
-        // fullfill the easy tick box
+        // Fullfill the easy tick box
         checkIcon=loadImage("../images/check.png");
         checkIcon.resize(easy.w-easy.x, easy.v-easy.y);
         image(checkIcon, easy.x, easy.y);
@@ -120,7 +120,7 @@
         drawTipsButton(easy);
         drawTipsButton(hard);
 
-        // fullfill the hard tick box
+        // Fullfill the hard tick box
         checkIcon=loadImage("../images/check.png");
         checkIcon.resize(hard.w-hard.x, hard.v-hard.y);
         image(checkIcon, hard.x, hard.y);
@@ -138,13 +138,13 @@
         Button esc_but=new Button(50, 50, 150, 100, WhatPage.HIGHSCORE, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
         butList.add(esc_but);
     
-        // page indicator
+        // Page indicator
         fill(255);
         textSize(24);
         textAlign(CENTER, CENTER);
         text(highScoPagInd+" / "+maxHighScoInd, width/2, 575);
     
-        // page controller and BACK button
+        // Page controller and BACK button
         update(mouseX, mouseY);
         drawButton(highScoPrePag);
         drawButton(highScoNexPag);
@@ -186,7 +186,7 @@
         Button esc_but=new Button(50, 50, 150, 100, WhatPage.HELP, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
         butList.add(esc_but);
     
-        // page indicator
+        // Page indicator
         fill(255);
         textSize(24);
         textAlign(CENTER, CENTER);
@@ -207,7 +207,7 @@
         Button esc_but=new Button(50, 50, 150, 100, WhatPage.SETTING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
         butList.add(esc_but);
     
-        // header
+        // Header
         fill(255);
         textAlign(CENTER, CENTER);
         textSize(48);
@@ -236,7 +236,7 @@
         drawTipsButton(tips2);
         drawTipsButton(popHelPag);
 
-        // fullfill tick boxes
+        // Fullfill tick boxes
         if (isShowTips==1) {
           checkIcon=loadImage("../images/check.png");
           checkIcon.resize(tips.w-tips.x, tips.v-tips.y);
@@ -256,17 +256,19 @@
       }
     
       public void popHelpPage() {
-        // count the frame for the flicker effect
+
+        // Count the frame for the flicker effect
         ++frameCount;
         helpPagePoped=1;
     
         popHelpPage=loadImage("../images/popHelp.png");
         image(popHelpPage, 0, 0);
     
-        // tell the player how to enter the game
+        // Tell the player how to enter the game
         textSize(24);
         textAlign(CENTER, CENTER);
-        // white colour for 10 frames and grey colour for the next 5 frames
+
+        // White colour for 10 frames and grey colour for the next 5 frames
         if (frameCount<10) {
           fill(255);
         } else if (frameCount>=10 && frameCount<15) {
@@ -282,9 +284,10 @@
       public void drawButton(Button but) {
         rectMode(CORNER);
 
-        // draw a rectangle with round corners in radius 20
+        // Draw a rectangle with round corners in radius 20
         int rad=20;
-        // when the mouse hovering on the button, just draw the skeleton, otherwise, draw the backgroung colour
+
+        // When the mouse hovering on the button, just draw the skeleton, otherwise, draw the backgroung colour
         if (but.hover==0) fill(but.bgColr, but.bgColg, but.bgColb);
         else
         {
@@ -295,7 +298,8 @@
     
         textAlign(CENTER, CENTER);
         textSize(but.txtsize);
-        // when the mouse hovering on the button, draw the background colour instead
+
+        // When the mouse hovering on the button, draw the background colour instead
         if (but.hover==1) {
           fill(but.bgColr, but.bgColg, but.bgColb);
         } else {
@@ -314,7 +318,7 @@
         return;
       }
     
-      // check on which button the mouse is hovering
+      // Check on which button the mouse is hovering
       void update(int mousex, int mousey) {
         for (int i = 0; i < butList.size(); ++i) {
           if (butList.get(i).inside(mousex, mousey)) {
@@ -351,7 +355,7 @@
         }
       }
     
-      // response to mouse clicking in help page
+      // Response to mouse clicking in help page
       public void handleHelp() {
         if (helpPrePag.inside(mouseX, mouseY)) {
           if (helpPagInd>1) --helpPagInd;
@@ -362,7 +366,7 @@
         }
       }
     
-      // response to mouse clicking in high score page
+      // Response to mouse clicking in high score page
       public void handleHighSco() {
         if (highScoPrePag.inside(mouseX, mouseY)) {
           if (highScoPagInd>1) --highScoPagInd;
@@ -373,7 +377,7 @@
         }
       }
     
-      // response to mouse clicking on tick boxes in main page
+      // Response to mouse clicking on tick boxes in main page
       public void handleDifMod() {
         if (easy.inside(mouseX, mouseY)) {
           println("easy");
@@ -388,7 +392,7 @@
         }
       }
     
-      // response to mouse clicking in setting page
+      // Response to mouse clicking in setting page
       public void handleSetting() {
         if (volPlus.inside(mouseX, mouseY)) {
           if (volume<maxVolume) ++volume;
@@ -410,9 +414,10 @@
         }
       }
     
-      // response to mouse clicking in the buttons which point to another page
+      // Response to mouse clicking in the buttons which point to another page
       public void handlePageJump() {
-        // record the jump action to avoid repeated page changes during a single click event
+
+        // Record the jump action to avoid repeated page changes during a single click event
         jumped=0;
         for (int i = 0; i < butList.size(); ++i) {
           if (currentPage == butList.get(i).getCurPag()) {
@@ -424,15 +429,18 @@
                 if (gameState == GameState.OVER&&currentPage==WhatPage.PLAYING) {
                   if (inputName!="") {
                     if (difficultyMode==0) {
+
                       //Save the mark for EASY
                       highScore.compare(new ScoreData(inputName, totalScore));
                     } else {
+
                       //Save the mark for Hard
                       highScore_hard.compare(new ScoreData(inputName, totalScore));
                     }
                   }
                 }
               } else if (butList.get(i).getTxt()=="Restart") {
+                
                 //Reload the map
                 Random rand = new Random();
                 int mapIndex = rand.nextInt(2) + 1;
@@ -448,6 +456,7 @@
                 
                 //Restar
                 gameState=GameState.PLAY;
+
                 //Reload the music
                 end = false;
                 if(needHelpPage==0){
@@ -458,7 +467,8 @@
               inputName="";
               file_button.play();
               currentPage = butList.get(i).getPagePoi();
-              // record the jump action to avoid repeated page changes during a single click event
+              
+              // Record the jump action to avoid repeated page changes during a single click event
               jumped=1;
               break;
             }
