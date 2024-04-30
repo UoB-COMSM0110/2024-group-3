@@ -32,16 +32,16 @@
     
     // Default volume
     public float volume=6; 
-    //Store separately
+    // Store separately
     public HighScore highScore, highScore_hard;
-    //Player name
+    // Player name
     public String inputName;
-    //Player score
+    // Player score
     public int totalScore;
-    //Whether to click the name box
+    // Whether to click the name box
     boolean isNameBoxSelected = false;
     int cursorTimer = 0;
-    //Whether to load sounds
+    // Whether to load sounds
     boolean end = false; 
     public int needHelpPage=1;
   
@@ -76,7 +76,7 @@
   
   
     public void draw() {
-      //Change the volume for all music
+      // Change the volume for all music
       s.volume(volume/12);
       background(255);
       if (!isMapLoaded) {
@@ -254,7 +254,7 @@
           page.drawButton(re_but);
     }
   
-    //box for name
+    // Box for name
     void drawNameBox() {
       fill(200);
       rect(450, 300, 300, 50);
@@ -264,7 +264,8 @@
       text(inputName, 460, 325);
         if (isNameBoxSelected) {
           cursorTimer++;
-        if (cursorTimer % 12 < 6) { //Realize the cursor flashing
+        //Realize the cursor flashing
+        if (cursorTimer % 12 < 6) { 
           float cursorX = textWidth(inputName) + 465;
           stroke(0);
           line(cursorX, 310, cursorX, 340);
