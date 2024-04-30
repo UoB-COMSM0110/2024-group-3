@@ -148,8 +148,10 @@
               inputName = inputName.substring(0, inputName.length() - 1);
             }
           } else if (Character.isLetterOrDigit(key)) {
+            
             //Limit the name for letter or number
             inputName += key;
+            
             }
           }
         }
