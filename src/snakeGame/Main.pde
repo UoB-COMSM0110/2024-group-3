@@ -24,7 +24,7 @@
     public WhatPage currentPage;
     public int isShowTips=1;
     public int isShowTips2=1;
-    public float volume=6;
+    public float volume=6; //default
     public HighScore highScore, highScore_hard;
     public String inputName;
     public int totalScore;
@@ -34,8 +34,8 @@
     boolean end = false;
     public int needHelpPage=1;
   
-    SoundFile file, file_button, file_click, file_background,file_new,file_d;
-    Sound s;
+    SoundFile file, file_button, file_click, file_background,file_new,file_d;//music file
+    Sound s;//sound control
   
   
     public void settings() {
