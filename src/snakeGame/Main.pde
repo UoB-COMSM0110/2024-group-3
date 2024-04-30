@@ -260,7 +260,7 @@
       rect(450, 300, 300, 50);
       textAlign(LEFT, CENTER);
       textSize(32);
-      fill(0);
+      fill(255);
       text(inputName, 460, 325);
         if (isNameBoxSelected) {
           cursorTimer++;
