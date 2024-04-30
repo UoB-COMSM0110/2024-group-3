@@ -3,7 +3,9 @@ import java.util.ArrayList;
     public abstract class Food extends Consumable {
       int potentialRow;
       int potentialColumn;
-      int foodEaten = 0; //at game start, no food is eaten
+      
+      // At game start, no food is eaten
+      int foodEaten = 0; 
       
       public Food(GameScreen game, PVector gridLocation, int colour) {
             super(game, gridLocation, colour); 
@@ -13,11 +15,16 @@ import java.util.ArrayList;
       @Override
       public void renderConsumable() {
             for (PVector cell : this.shape) {
-                //offset gridLocation with cell location
+              
+                // Offset gridLocation with cell location
                 float i = (this.gridLocation.x + cell.x) * CELL_SIZE; 
                 float j = (this.gridLocation.y + cell.y) * CELL_SIZE; 
-                fill(this.colour);  //each concrete implementation of this class has its own colour
-                rect(i, j, CELL_SIZE, CELL_SIZE); //create a square the size of a GridCell
+                
+                // Each concrete implementation of this class has its own colour
+                fill(this.colour);  
+                
+                // Create a square the size of a GridCell
+                rect(i, j, CELL_SIZE, CELL_SIZE); 
             }
       }
       
@@ -25,34 +32,34 @@ import java.util.ArrayList;
          int oldColumn = (int) this.gridLocation.x;
          int oldRow = (int) this.gridLocation.y;
          findGridLocation();
-         //add food to grid metadata
+         
+         // Add food to grid metadata
          setConsumableMapGridObjectData();
-         //when food is eaten, clear it from metadata
+         
+         // When food is eaten, clear it from metadata
          clearConsumableMapGridObjectData(oldColumn, oldRow); 
-         //assert that consumable cleared from metadata
+         
+         // Assert that consumable cleared from metadata
          assert getMapGridObjectData(oldColumn, oldRow) == null; 
-        //keep track of food score for UI display 
+         
+        // Keep track of food score for UI display 
          incrementFoodCount();
       }
       
-      //getter method for menu bar score
+      // Getter method for menu bar score
       public int getFoodScore(){
          return foodEaten;
       }
       
-      //when snake eats food, increment the count 
+      // When snake eats food, increment the count 
       abstract public void incrementFoodCount();
       
-      //return shape list, not just a single coordinate 
+      // Return shape list, not just a single coordinate 
       public PVector getFoodLocation() {
         return this.gridLocation;
       }  
       
       protected Object getMapGridObjectData(int x, int y) {
         return this.mapGridObjectData[x][y];
-      }
-    
-      
-      
-      
+      }   
     }

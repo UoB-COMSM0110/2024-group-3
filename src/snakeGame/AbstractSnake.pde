@@ -52,6 +52,7 @@ import processing.core.PVector;
       }
     
       public void cleanUp() {
+        
         // Clear snake cells from the game grid
         for (SnakeCell cell : snakeCells) {
           game.setMapGridObjectData(cell.gridLocation, null);

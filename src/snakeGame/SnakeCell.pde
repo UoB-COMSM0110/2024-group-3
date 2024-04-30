@@ -2,6 +2,5 @@
       
         public SnakeCell(PVector gridLocation, int colour) {
             super(gridLocation, colour);
-        }
-        
+        }        
     }

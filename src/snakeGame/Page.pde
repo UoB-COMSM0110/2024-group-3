@@ -1,4 +1,4 @@
-    public class Page //<>// //<>// //<>// //<>// //<>// //<>//
+    public class Page //<>//
 
     {
       ArrayList<Button> butList = new ArrayList<>();
@@ -25,7 +25,9 @@
       int maxVolume=12, maxHelpInd=2, maxHighScoInd=2;
     
       int frameCount=0;
-      int jumped=0; //record if the page jumped in method handlePageJump
+      
+      // Record if the page jumped in method handlePageJump
+      int jumped=0; 
       
       int helpPagePoped=0;
     
@@ -40,7 +42,6 @@
           image(mainPageH, 0, 0);
         }
     
-        //textSize(32);
         textAlign(CENTER, CENTER);
         fill(255);
         textSize(100);
@@ -67,12 +68,6 @@
     
         update(mouseX, mouseY);
     
-        //drawButton(hs_but);
-        //drawButton(sg_but);
-        //drawButton(help_but);
-        //drawButton(set_but);
-        //drawButton(hard_but);
-        //drawButton(easy_but);
         drawTipsButton(easy);
         drawTipsButton(hard);
         checkIcon=loadImage("../images/check.png");
@@ -93,8 +88,7 @@
         } else {
           image(mainPageH, 0, 0);
         }
-    
-        //textSize(32);
+
         textAlign(CENTER, CENTER);
         fill(255);
         textSize(100);
@@ -121,12 +115,6 @@
     
         update(mouseX, mouseY);
     
-        //drawButton(hs_but);
-        //drawButton(sg_but);
-        //drawButton(help_but);
-        //drawButton(set_but);
-        //drawButton(hard_but);
-        //drawButton(easy_but);
         drawTipsButton(easy);
         drawTipsButton(hard);
         checkIcon=loadImage("../images/check.png");
@@ -206,7 +194,7 @@
         helpPage=loadImage("../images/highScore.png");
         image(helpPage, 0, 0);
     
-        // back button
+        // Back button
         butList.clear();
         Button esc_but=new Button(50, 50, 150, 100, WhatPage.SETTING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
         butList.add(esc_but);
@@ -222,9 +210,7 @@
         text("Display controls during the game", 300, 290);
         text("Display grid during the game", 300, 390);
         text("Display help page before starting", 300, 490);
-    
-        //textAlign(LEFT,BOTTOM);
-        //text(". . . . . . . . . . ",560,190);
+
         String st="";
         for (int i=0; i<12; ++i) {
           if (i<volume) st=st+"|";
@@ -280,11 +266,8 @@
       }
     
       public void drawButton(Button but) {
-        //nofill();
-        //fill(but.getColr(), but.getColg(), but.getColb());
-        //rect(but.getX(), but.getY(), but.getW() - but.getX(), but.getV() - but.getY());
-    
-        //draw rounded rectangle
+
+        // Draw rounded rectangle
         rectMode(CORNER);
         int rad=20;
         if (but.hover==0) fill(but.bgColr, but.bgColg, but.bgColb);
@@ -298,7 +281,6 @@
         textAlign(CENTER, CENTER);
         textSize(but.txtsize);
         if (but.hover==1) {
-          //fill(but.colr, but.colg, but.colb);
           fill(but.bgColr, but.bgColg, but.bgColb);
         } else {
           fill(but.colr, but.colg, but.colb);
@@ -320,7 +302,6 @@
         for (int i = 0; i < butList.size(); ++i) {
           if (butList.get(i).inside(mousex, mousey)) {
             butList.get(i).setColour(99, 87, 80);
-            //butList.get(i).setBgColour(255,255,255);
             butList.get(i).hover=1;
           } else butList.get(i).hover=0;
         }
@@ -389,11 +370,9 @@
     
       public void handleSetting() {
         if (volPlus.inside(mouseX, mouseY)) {
-          //volume=min(11,volume+1);
           if (volume<maxVolume) ++volume;
           file_button.play();
         } else if (volMinus.inside(mouseX, mouseY)) {
-          //volume=max(0,volume-1);
           if (volume>0) --volume;
           file_button.play();
         } else if (tips.inside(mouseX, mouseY)) {

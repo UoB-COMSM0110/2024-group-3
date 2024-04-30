@@ -7,10 +7,12 @@ import java.util.Iterator;
         PVector position = findEmptyRectangle(game, 15, 1, 5);
         for (int i = 0; i < len; i++) {
           snakeCells.add(new SnakeCell(position.copy(), colour));
-          position.add(velocity); // Move to the next position based on velocity
+          
+          // Move to the next position based on velocity
+          position.add(velocity); 
         }
     
-        // update map gripobjectData
+        // Update map gripobjectData
         for (SnakeCell cell : snakeCells) {
           game.setMapGridObjectData((int) cell.gridLocation.x, (int) cell.gridLocation.y, this);
         }
@@ -26,24 +28,32 @@ import java.util.Iterator;
         for (int y = 0; y <= Main.ROWS - rows; y++) {
           for (int x = 0; x <= Main.COLS - cols; x++) {
             boolean isEmptyRectangle = true;
+            
             // Check if the cells in the rectangle are empty
             for (int rowOffset = 0; rowOffset < rows; rowOffset++) {
               for (int colOffset = 0; colOffset < cols; colOffset++) {
                 int checkX = x + colOffset;
                 int checkY = y + rowOffset;
+                
                 // Ensure the check indices stay within the valid range
                 if (checkX >= 0 && checkX < Main.COLS && checkY >= 0 && checkY < Main.ROWS &&
                   game.getMapGridObjectData(checkX, checkY) != null) {
                   isEmptyRectangle = false;
-                  break; // Break out of the inner loop if not empty
+                  
+                  // Break out of the inner loop if not empty
+                  break; 
                 }
               }
               if (!isEmptyRectangle) {
-                break; // Break out of the outer loop if not empty
+                
+                // Break out of the outer loop if not empty
+                break; 
               }
             }
+            
             // If an empty rectangle is found, calculate the middle point and return
             if (isEmptyRectangle) {
+              
               // Calculate the middle point based on the dimensions of the empty rectangle
               int middleX = x + cols / 2;
               int middleY = y + rows / 2;
@@ -52,35 +62,43 @@ import java.util.Iterator;
             }
           }
         }
-    
-        return middlePoint; // Return (0, 0) if no empty rectangle is found
+        
+        // Return (0, 0) if no empty rectangle is found
+        return middlePoint; 
       }
     
-      // add colision detecion here:
-      // Method to move the snake
+      // To tell snake about interaction between venom and food
+      private boolean hasVenomHitFood = false; 
     
-      private boolean hasVenomHitFood = false; //to tell snake about interaction between venom and food
-    
-      //this method is called in the Venom class
+      // This method is called in the Venom class
       public void venomHitFood() {
         hasVenomHitFood = true;
       }
     
       protected void move() {
+        
         // Move the head of the snake based on velocity
         PVector headPosition = snakeCells.getLast().gridLocation.copy();
         headPosition.add(velocity);
     
         // Wrap around the screen if the head goes off the screen
         if (headPosition.x < 0) {
-          headPosition.x = COLS - 1;  // Move to the right edge
+          
+          // Move to the right edge
+          headPosition.x = COLS - 1;  
         } else if (headPosition.x >= COLS) {
-          headPosition.x = 0;          // Move to the left edge
+          
+          // Move to the left edge
+          headPosition.x = 0;          
         }
         if (headPosition.y < 0) {
-          headPosition.y = ROWS - 1; // Move to the bottom edge
+          
+          // Move to the bottom edge
+          headPosition.y = ROWS - 1; 
         } else if (headPosition.y >= ROWS) {
-          headPosition.y = 0;          // Move to the top edge
+          
+          // Move to the top edge
+          headPosition.y = 0;          
         }
     
         Object gridObject = game.getMapGridObjectData(headPosition);
@@ -93,28 +111,38 @@ import java.util.Iterator;
         game.setMapGridObjectData(headPosition, this);
     
         if (gridObject instanceof Food ) {
-          //when snake eats food, move the food
+          
+          // When snake eats food, move the food
           ((Food) gridObject).setRandomConsumableLocation();
-          // add new head but dont remove tail: snake grows when it eats
+          
+          // Add new head but dont remove tail: snake grows when it eats
           return;
         }
         if (hasVenomHitFood == true) {
-          hasVenomHitFood = false; //reset boolean for next time
-          return; // return early to add new head but not remove tail: snake grows when it eats (via venom)
+          
+          // Reset boolean for next time
+          hasVenomHitFood = false; 
+          
+          // Return early to add new head but not remove tail: snake grows when it eats (via venom)
+          return; 
         }
     
         if (gridObject instanceof Powerup) {
-          ((Powerup) gridObject).setRandomConsumableLocation(); //move the powerup
-          game.refillVenomBar(); //replenish venom
-          // add new head and remove tail: snake doesn't grow
+          
+          // Move the powerup
+          ((Powerup) gridObject).setRandomConsumableLocation(); 
+          
+          // Replenish venom
+          game.refillVenomBar(); 
         }
     
-        // remove tail cell:
+        // Remove tail cell:
         SnakeCell removedCell = snakeCells.removeFirst();
         game.setMapGridObjectData(removedCell.gridLocation, null);
       }
     
       protected void setVelocity(float x, float y) {
+        
         // Ensure the velocity is not reversed (snake can't turn 180 degrees instantly)
         if (x != -velocity.x || y != -velocity.y) {
           velocity.set(x, y);

@@ -11,31 +11,31 @@ import java.awt.event.KeyEvent;
  It has a setup function where anything that needs to be initialised at start of (e.g. walls) can be done.
  Other logic during game can be 'CALLED' in update.
  
- Grid is 45 rows by 100 cols where each cell has an index of (x, y) with the following mapping:#
+ Grid is 45 rows by 100 cols where each cell has an index of (x, y) with the following mapping:
  (0,0) --> top left
  (99, 0) --> top right
  (44, 0) --> bottom left
  (99, 44) --> bottom right
- 
- 
  */
 
 
     public class GameScreen {
     
-        // metadata of object on grid:
-        //private ArrayList<ArrayList<Object>> mapGridObjectData;
+        // Metadata of object on grid:
+        // Private ArrayList<ArrayList<Object>> mapGridObjectData;
         private Object[][] mapGridObjectData;
       
-        //inanimate objects
+        // Inanimate objects
         private ArrayList<Wall> walls;
         private Apple apple;
         private Banana banana;
         private Melon melon;
-        private VenomRefiller venomRefillerOne; //two VenomRefiller powerups, because only having one makes it too hard
+        
+        // Two VenomRefiller powerups, because only having one makes it too hard
+        private VenomRefiller venomRefillerOne; 
         private VenomRefiller venomRefillerTwo;
       
-        //dynamic objects:
+        // Dynamic objects:
         private Snake snake;
         private ArrayList<EnemySnake> enemySnakes;
         private ArrayList<Venom> venom;
@@ -66,21 +66,17 @@ import java.awt.event.KeyEvent;
           acceptDirectionInput = false;
           
           play=false;
-          //drawGameBoard();
           background(0, 0, 0);
           makeWalls(mapPath);
-          //renderWalls();
           snake = new Snake(this, 5, color(0, 190, 0));
-          //snake.renderSnake();
           
           enemySnakes.add(new EnemySnake(this, 5, color(190, 0, 0)));
-          //for (EnemySnake enemy : enemySnakes) {
-          //  enemy.renderSnake();
-          //}
-          //there's always one of each of the three types of food on the grid 
+
+          // There's always one of each of the three types of food on the grid 
           this.apple = new Apple(this);
           this.apple.setRandomConsumableLocation();
-          //assert that object at this location in metadata is an apple
+          
+          // Assert that object at this location in metadata is an apple
           assert getMapGridObjectData((int) apple.gridLocation.x, (int)apple.gridLocation.y) instanceof Apple; 
           this.banana = new Banana(this);
           this.banana.setRandomConsumableLocation();
@@ -95,10 +91,11 @@ import java.awt.event.KeyEvent;
         }
         
         public void update() {
-          // accepy key presses to update direction 
+          
+          // Accept key presses to update direction 
           acceptDirectionInput = true;
           
-          // move all dynamic objects first before rendering:
+          // Move all dynamic objects first before rendering:
           snake.move();
           
           int maxEnemyCount = 7;
@@ -113,7 +110,7 @@ import java.awt.event.KeyEvent;
           
             if (difficultyMode == 0) {  
             
-            // frameCount value can vary depending on difficulty level!
+               // gameFrames modulus value can vary depending on difficulty level!
               if (gameFrames < 240) {
                 if (gameFrames % 120 == 0) {
                   enemySnakes.add(new EnemySnake(this, 5, color((int) random(100, 255), 0, 0)));
@@ -173,10 +170,10 @@ import java.awt.event.KeyEvent;
               venom.remove(currVenom);
             }
           }
-          // draw background:
+          // Draw background:
           drawGameBoard();
       
-          // draw all objects:
+          // Draw all objects:
           renderWalls();
           banana.renderConsumable();
           melon.renderConsumable();
@@ -197,9 +194,13 @@ import java.awt.event.KeyEvent;
                 seconds = seconds % 60;
                 String timeString = nf(minutes, 2) + ":" + nf(seconds, 2);
           
-          snakeVenom = max(snakeVenom , 0); //venom bar can't go below zero (even though it says max)
-          snakeVenom  = min(snakeVenom , maxVenom); //venom bar can't exceed maximum (even though it says min)
-          //assert test venom bar stays in valid range 
+          // Venom bar can't go below zero (even though it says max)
+          snakeVenom = max(snakeVenom , 0); 
+          
+          // Venom bar can't exceed maximum (even though it says min)
+          snakeVenom  = min(snakeVenom , maxVenom); 
+          
+          // Assert test venom bar stays in valid range 
           assert snakeVenom >= 0 && snakeVenom <= 300;
           fill(255, 0, 0); //red 
       
@@ -207,46 +208,62 @@ import java.awt.event.KeyEvent;
           fill(150, 200, 150);
           rect(0, height,width,100);
           
-          //PImage highScorePage=loadImage("../images/highScore.png");
-          //image(highScorePage, 0, height);
           fill(255);
           fill(0);
           text("Time: "+timeString, 200, height+50);
           
-          //The score bar at the bottom of the screen displays how many shots of venom you have
-          String venomString = "Venom (empty: eat + powerup!)";  // fallback message for when shots == 0
+          // The score bar at the bottom of the screen displays how many shots of venom you have
+          // Fallback message for when shots == 0
+          String venomString = "Venom (empty: eat + powerup!)";  
           float venomShots = 0;
           
-          //Snake has 6 shots of venom in easy mode, depleted from 300 in increments of 50 (50*6 == 300)
+          // Snake has 6 shots of venom in easy mode, depleted from 300 in increments of 50 (50*6 == 300)
           if(difficultyMode == 0){
-             //if there's a shot remaining, snake venom is in bounds and the venom has been reduced by an increment as expected
+            
+             // If there's a shot remaining, snake venom is in bounds and the venom has been reduced by an increment as expected
              if (snakeVenom >= venomIncrementEasy && snakeVenom <= maxVenom && snakeVenom % venomIncrementEasy == 0) {
-                venomShots = snakeVenom / venomIncrementEasy; //calculate remaining shots
-                venomString = "Venom (" + (int)venomShots + "/10 shots)"; //display number of current venom shots according to caluclation
+               
+                // Calculate remaining shots
+                venomShots = snakeVenom / venomIncrementEasy; 
+                
+                // Display number of current venom shots according to caluclation
+                venomString = "Venom (" + (int)venomShots + "/10 shots)"; 
              }
            }
           
-          //Snake has 10 shots of venom in hard mode, depleted from 300 in increments of 30 (30*10 == 300)
+          // Snake has 10 shots of venom in hard mode, depleted from 300 in increments of 30 (30*10 == 300)
           else {
-            //if there's a shot remaining, snake venom is in bounds and the venom has been reduced by an increment as expected
+            
+            // If there's a shot remaining, snake venom is in bounds and the venom has been reduced by an increment as expected
             if (snakeVenom >= venomIncrementHard && snakeVenom <= maxVenom && snakeVenom % venomIncrementHard == 0) {
-                venomShots = snakeVenom / venomIncrementHard; //calculate remaining shots
-                venomString = "Venom (" + (int)venomShots + "/6 shots)"; //display number of current venom shots according to caluclation
+              
+                // Calculate remaining shots
+                venomShots = snakeVenom / venomIncrementHard; 
+              
+                // Display number of current venom shots according to caluclation
+                venomString = "Venom (" + (int)venomShots + "/6 shots)";
             }
           }
             
             text(venomString, 600, height + 20); 
-            fill(200, 0, 200); //venom purple
+            
+            // Venom purple
+            fill(200, 0, 200);
             rect(450, height+50, snakeVenom , 20);
             fill(255);
             fill(0);
-            //total score is sum of score for eating food plus score for killing enemy snakes 
+            
+            // Total score is sum of score for eating food plus score for killing enemy snakes 
             totalScore = apple.getFoodScore() + banana.getFoodScore() + melon.getFoodScore() + enemyScore;
             text("Your score: "+totalScore, 1000, height+50);
-            //display high scores for easy and hard modes separtely 
-              if(difficultyMode==0){ //easy mode
+            
+              // Display high scores for easy and hard modes separtely 
+              // Easy mode
+              if(difficultyMode==0){ 
                 text("High score: "+highScore.infor[0].score, 1000, height+20);
-                } else { //hard mode
+                
+                // Hard mode
+                } else { 
                 text("High score: "+highScore_hard.infor[0].score, 1000, height+20);
                 }
           
@@ -279,18 +296,28 @@ import java.awt.event.KeyEvent;
             acceptDirectionInput = false;
           
             if (keyCode == UP || key == 'w' || key == 'W') {
-              snake.setVelocity(0, -1); // Move up
+              
+              // Move up
+              snake.setVelocity(0, -1); 
             } else if (keyCode == DOWN|| key == 's' || key == 'S') {
-              snake.setVelocity(0, 1);  // Move down
+              
+              // Move down
+              snake.setVelocity(0, 1);  
             } else if (keyCode == LEFT|| key == 'a' || key == 'A') {
-              snake.setVelocity(-1, 0); // Move left
+              
+              // Move left
+              snake.setVelocity(-1, 0); 
             } else if (keyCode == RIGHT|| key == 'd' || key == 'D') {
-              snake.setVelocity(1, 0);  // Move right
+              
+              // Move right
+              snake.setVelocity(1, 0);  
             } else if (keyCode == KeyEvent.VK_SPACE  && snakeVenom > 0) {
+              
               // Instantiate a Venom using the snake's current velocity and position
               PVector snakePosition = snake.getSnakeCells().getLast().gridLocation.copy();
               PVector snakeVelocity = snake.getVelocity().copy();
-              //if snake's position is too close to top or left border, don't create venom (otherwise whole game freezes)
+              
+              // If snake's position is too close to top or left border, don't create venom (otherwise whole game freezes)
               if(snakePosition.x <= 0 && snakeVelocity.x != 0 || snakePosition.y <= 0 && snakeVelocity.y != 0
                 || snakePosition.y >= 44 && snakeVelocity.y != 0 || snakePosition.x >= 99 && snakeVelocity.x != 0){
                 return;
@@ -299,10 +326,10 @@ import java.awt.event.KeyEvent;
                return; 
               }
             
-            int venomColour = color(200, 0, 200); // Set venom color (e.g., red)
+            // Set venom color (e.g., red)
+            int venomColour = color(200, 0, 200); 
                 venom.add(new Venom(this, venomColour, snakePosition, snakeVelocity, snake));
                 depleteVenomBar();
-                //     file.play();
                 } else if (keyCode==ESC){
                   key=0;
                }
@@ -359,9 +386,13 @@ import java.awt.event.KeyEvent;
               String[] tokens = line.split(",");
               ArrayList<String> row = new ArrayList<>();
               for (String token : tokens) {
-                row.add(token.trim()); // Add trimmed tokens to the row list
+                
+                // Add trimmed tokens to the row list
+                row.add(token.trim()); 
               }
-              mapData.add(row); // Add the row to the map data
+              
+              // Add the row to the map data
+              mapData.add(row); 
             }
       
             // Process the map data to create wall objects
@@ -371,8 +402,10 @@ import java.awt.event.KeyEvent;
               for (int x = 0; x < row.size(); x++) {
                 String cell = row.get(x);
                 if (cell.startsWith("w")) {
+                  
                   // Cell belongs to a wall
-                  int wallNumber = Integer.parseInt(cell.substring(1)); // Extract wall number
+                  // Extract wall number
+                  int wallNumber = Integer.parseInt(cell.substring(1));
                   if (wallNumber > wallCount) {
                     wallCount = wallNumber;
                   }
@@ -388,8 +421,10 @@ import java.awt.event.KeyEvent;
                 for (int x = 0; x < row.size(); x++) {
                   String cell = row.get(x);
                   if (cell.equals("w" + i)) {
+                    
                     // Add cell to the wall
-                    wall.addWallCell(x, y); // Replace 0 with actual colour if needed
+                    // Replace 0 with actual colour if needed
+                    wall.addWallCell(x, y);
                     setMapGridObjectData(x, y, wall);
                   }
                 }
@@ -413,6 +448,7 @@ import java.awt.event.KeyEvent;
         public ArrayList<PVector> getOccupiedPositionsByEnemies(EnemySnake currentEnemy) {
           ArrayList<PVector> occupiedPositions = new ArrayList<>();
           for (EnemySnake enemy : enemySnakes) {
+            
             // Skip the current enemy snake to avoid checking against itself
             if (enemy != currentEnemy) {
               for (SnakeCell cell : enemy.getSnakeCells()) {
@@ -423,14 +459,13 @@ import java.awt.event.KeyEvent;
           return occupiedPositions;
         }
       
-        //venom setters
-      
-        //called when you consume a venom powerup
+        // Venom setters     
+        // Called when you consume a venom powerup
         public void refillVenomBar() {
           snakeVenom +=maxVenom;
         }
         
-        //venom bar depleted by different amounts depending on easy/hard mode
+        // Venom bar depleted by different amounts depending on easy/hard mode
         public void depleteVenomBar() {
           if(difficultyMode == 0){
              snakeVenom -=venomIncrementEasy;
@@ -441,6 +476,7 @@ import java.awt.event.KeyEvent;
         }
       
         public void cleanUp() {
+          
           // Clear walls
           walls.clear();
       
@@ -448,27 +484,37 @@ import java.awt.event.KeyEvent;
           if (apple != null) {
             apple.cleanUp();
             apple = null;
-            assert apple == null; //assert apple has been removed
+            
+            // Assert apple has been removed
+            assert apple == null; 
           }
           if (banana != null) {
             banana.cleanUp();
             banana = null;
-            assert banana == null; //assert banana has been removed
+            
+            // Assert banana has been removed
+            assert banana == null; 
           }
           if (melon != null) {
             melon.cleanUp();
             melon = null;
-            assert melon == null; //assert melon has been removed
+            
+            // Assert melon has been removed
+            assert melon == null;
           }
           if (venomRefillerOne != null) {
             venomRefillerOne.cleanUp();
             venomRefillerOne = null;
-            assert venomRefillerOne == null; //assert venom refiller has been removed
+            
+            // Assert venom refiller has been removed
+            assert venomRefillerOne == null; 
           }
           if (venomRefillerTwo != null) {
             venomRefillerTwo.cleanUp();
             venomRefillerTwo = null;
-            assert venomRefillerTwo == null; //assert venom refiller has been removed
+            
+            // Assert venom refiller has been removed
+            assert venomRefillerTwo == null; 
           }
       
           // Clear main snake
@@ -494,15 +540,25 @@ import java.awt.event.KeyEvent;
           for (int j = 0; j < COLS; j++) {
             Object obj = mapGridObjectData[j][i];
             if (obj == null) {
-              System.out.print(" "); // Empty space
+              
+              // Empty space
+              System.out.print(" "); 
             } else if (obj instanceof Snake) {
-              System.out.print("s"); // Snake
+              
+              // Snake
+              System.out.print("s"); 
             } else if (obj instanceof Wall) {
-              System.out.print("w"); // Wall
+              
+              // Wall
+              System.out.print("w"); 
             } else if (obj instanceof Food) {
-              System.out.print("f"); // Food
+              
+              // Food
+              System.out.print("f"); 
             } else if (obj instanceof Powerup) {
-              System.out.print("p"); // Powerup
+              
+              // Powerup
+              System.out.print("p"); 
             }
               System.out.print(" ");
             }
@@ -512,9 +568,12 @@ import java.awt.event.KeyEvent;
         
       public void removeEnemySnake(EnemySnake snake) {
           for (SnakeCell cell : snake.getSnakeCells()) {
-              setMapGridObjectData(cell.getGridLocation(), null); // Clear each cell from grid
+            
+              // Clear each cell from grid
+              setMapGridObjectData(cell.getGridLocation(), null); 
           }
-          enemySnakes.remove(snake); // Remove snake from list
-      }
-    
+          
+          // Remove snake from list
+          enemySnakes.remove(snake); 
+      }    
     }

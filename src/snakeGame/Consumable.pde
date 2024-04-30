@@ -1,45 +1,62 @@
 import java.util.ArrayList;
 
-    //An abstract class to define common properties across food and powerups 
+    // An abstract class to define common properties across food and powerups 
     abstract class Consumable extends GridCell {
       protected int colour;
       protected GameScreen game;
-      protected ArrayList<PVector> shape = new ArrayList<>(); //consumables are arraylists of PVectors
-      protected Object[][] mapGridObjectData; //for assert testing
-      //start by randomly choosing some potential rows and columns, before checking if they're free
+      
+      // Consumables are arraylists of PVectors
+      protected ArrayList<PVector> shape = new ArrayList<>(); 
+      
+      // For assert testing
+      protected Object[][] mapGridObjectData;
+      
+      // Start by randomly choosing some potential rows and columns, before checking if they're free
       int potentialRow;
       int potentialColumn;
-      static final int boundsOffset = 2; //prevents consumables spawning off the edge of the grid
+      
+      // Prevents consumables spawning off the edge of the grid
+      static final int boundsOffset = 2;
     
       public Consumable(GameScreen game, PVector gridLocation, int colour) {
         super(gridLocation, colour);
         this.game = game;
-        //add central PVector to grid metadata
+        
+        // Add central PVector to grid metadata
         game.setMapGridObjectData((int) gridLocation.x, (int)gridLocation.y, this);
         this.colour = colour;
       }
     
-      //draw the consumable onscreen
+      // Draw the consumable onscreen
       abstract void renderConsumable();
     
       abstract public void setRandomConsumableLocation();
     
       protected void findGridLocation() {
-        boolean validLocationFound; //this boolean helps keep the method short
-        //while there's no valid location for the consumable, keep looking
+        
+        // This boolean helps keep the method short
+        boolean validLocationFound;
+        
+        // While there's no valid location for the consumable, keep looking
         do {
-            validLocationFound = true; //default boolean to true
-            //subtract double the bounds offset to offset the offset
-            this.potentialColumn = boundsOffset + (int)(Math.random() * (COLS - boundsOffset * 2)); //keep away from edges of grid
+          
+            // Default boolean to true
+            validLocationFound = true; 
+            
+            // Subtract double the bounds offset to offset the offset
+            // Keep away from edges of grid
+            this.potentialColumn = boundsOffset + (int)(Math.random() * (COLS - boundsOffset * 2));
             this.potentialRow = boundsOffset + (int)(Math.random() * (ROWS - boundsOffset * 2));
-            validLocationFound = isWholeShapeValid(); //if whole shape is valid, exit loop. Otherwise, keep searching
+            
+            // If whole shape is valid, exit loop. Otherwise, keep searching
+            validLocationFound = isWholeShapeValid(); 
             
         } while (!validLocationFound);
         this.gridLocation.x = this.potentialColumn;
         this.gridLocation.y = this.potentialRow;
     }
     
-      //helper method to ensure that every cell of the consumable doesn't overlap with other objects (not just the central cell)
+      // Helper method to ensure that every cell of the consumable doesn't overlap with other objects (not just the central cell)
       protected boolean isWholeShapeValid() {
         for (PVector cell : this.shape) {
             int checkColumn = potentialColumn + (int)cell.x;
@@ -55,14 +72,14 @@ import java.util.ArrayList;
     }
     
     
-      //add all GridCells of the consumable to the grid metadata
+      // Add all GridCells of the consumable to the grid metadata
       protected void setConsumableMapGridObjectData() {
         for (PVector cell : this.shape) {
           this.game.setMapGridObjectData(new PVector(potentialColumn + (int)cell.x, potentialRow + (int)cell.y), this);
         }
       }
     
-      //when the consumable is consumed, remove it from the grid metadata
+      // When the consumable is consumed, remove it from the grid metadata
       protected void clearConsumableMapGridObjectData(int oldColumn, int oldRow) {
         for (PVector cell : this.shape) {
           this.game.setMapGridObjectData(new PVector(oldColumn + (int)cell.x, oldRow + (int)cell.y), null);

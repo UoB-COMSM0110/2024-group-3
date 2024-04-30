@@ -1,11 +1,16 @@
-    import processing.sound.*; //<>// //<>// //<>// //<>// //<>// //<>//
+    import processing.sound.*; //<>//
     
-    // Grid/Screen Size Global Configuration: //<>// //<>// //<>//
+    
+    // Grid/Screen Size Global Configuration: //<>//
     public static final int ROWS = 45;
     public static final int COLS = 100;
     public static final int CELL_SIZE = 12;
-    public static final int width = COLS * CELL_SIZE;   //1200
-    public static final int height = ROWS * CELL_SIZE;  //540
+    
+    // 1200
+    public static final int width = COLS * CELL_SIZE;   
+    
+    // 540
+    public static final int height = ROWS * CELL_SIZE;  
   
     // Game State Global Variables:
     public static int difficultyMode = 0;
@@ -44,7 +49,6 @@
   
   
     public void setup() {
-      //background(255);
       gameState = GameState.PLAY;
       page = new Page();
       highScore = new HighScore("../mapsCSV/highscore.csv");
@@ -199,20 +203,31 @@
      
     // Process Ending of Game:
     public void gameOver() {
-      // clean up resources used in ended game:
+      
+        // Clean up resources used in ended game:
         file_background.stop();
         background(0, 0, 0);
         gameScreen.cleanUp();
   
-      // Draw a transparent screen over the current board state
+        // Draw a transparent screen over the current board state
         stroke(0);
-        fill(0, 0, 0, 150); // Set fill color to black with 150 alpha (transparency)
-        rect(-1, -1, width+1, height+101); // Draw a rectangle covering the entire screen
-      // Draw "Game Over" text
-        fill(255); // Set fill color to white
-        textAlign(CENTER, CENTER); // Align text to the center
-        textSize(32); // Set text size
-        text("Game over! Please enter your name: ", width/2, height/2); // Draw text at the center of the screen
+        
+        // Set fill color to black with 150 alpha (transparency)
+        fill(0, 0, 0, 150);
+        
+         // Draw a rectangle covering the entire screen
+        rect(-1, -1, width+1, height+101);
+        
+        // Draw "Game Over" text
+        // Set fill color to white
+        fill(255);
+        
+        // Align text to the center
+        textAlign(CENTER, CENTER);       
+        textSize(32); 
+        
+        // Draw text at the center of the screen
+        text("Game over! Please enter your name: ", width/2, height/2);
         textSize(64);
         fill(255, 0, 0);
         text("Final score: "+totalScore, width/2, 200);

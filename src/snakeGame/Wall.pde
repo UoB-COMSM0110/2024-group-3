@@ -1,14 +1,7 @@
 import java.util.ArrayList;
-
-  /*
-   Spiky wall --> import png --> snake dies
-   teleportation wall --> snake teleports to random part of map
-   weak that you can through
-   semi weak --> shoot venom to break a whole
-   
-   */
   
   public class Wall {
+    
     // Declare an ArrayList of WallCell objects
     private ArrayList<WallCell> wallCells;
     private int colour;
@@ -20,8 +13,6 @@ import java.util.ArrayList;
     }
     
     public void addWallCell(int x, int y) {
-      // Only add the cell if it doesn't have any adjacent brick
-      //if (hasAdjacentBrick(x, y)) {
       this.wallCells.add(new WallCell(new PVector(x, y), colour));
     }
     
@@ -45,6 +36,5 @@ import java.util.ArrayList;
       private WallCell(PVector gridLocation, int colour) {
         super(gridLocation, colour);
       }
-    }
-  
+    }  
   }
