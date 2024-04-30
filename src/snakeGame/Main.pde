@@ -163,6 +163,9 @@ void keyPressed() {
       currentPage=WhatPage.PLAYING;
     }
   }
+  
+  
+  // When not playing a game, pressing ESC will return to the main menu.
   if (keyCode==ESC&&currentPage!=WhatPage.PLAYING) {
     if (difficultyMode == 0) {
       currentPage=WhatPage.MAINPAGE;
@@ -171,6 +174,8 @@ void keyPressed() {
     }
     key=0;
   }
+  
+  // Press enter to save the data by default.
   if (keyCode == ENTER || keyCode == RETURN) {
     if (currentPage==WhatPage.MAINPAGE||currentPage==WhatPage.MAINPAGE_hard) {
       currentPage=WhatPage.POPHELPPAGE;
