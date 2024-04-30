@@ -18,7 +18,7 @@
 - [7. Process](#7-process)
 - [8. Conclusion](#8-conclusion)
 - [9. Acknowledgements](#9-acknowledgements)
-- [10. Installation](#9-installation)
+- [10. Installation](#10-installation)
 
 # 1. Team
 
