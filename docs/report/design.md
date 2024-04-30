@@ -5,7 +5,7 @@
 
 <br> 
 
-In this section, we will delineate the design process for our game. With comprehensive and clearly defined requirements in place, the subsequent phase involves crafting the system architecture and modeling the core objects and their relationships in preparation for the implementation stage.
+In this section, we will delineate the design process for our game. With comprehensive and clearly defined requirements in place, the subsequent phase involved crafting the system architecture and modeling the core objects and their relationships in preparation for the implementation stage.
 
 # Table of Contents
 - [System Architecture](#system-architecture)
