@@ -1,7 +1,12 @@
 <div align="center">
     <img src="images/titleReadme.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
+    <a href="https://youtu.be/I3r15m0HU9E"></a>
 </div>
 <br>
+
+<p align="center">
+  <b><a href="https://youtu.be/I3r15m0HU9E">Click here or the image above to see the VIDEO</a></b>
+</p>
 
 <a href="https://youtu.be/I3r15m0HU9E">Watch Demo Video (hosted on YouTube)</a>
 
