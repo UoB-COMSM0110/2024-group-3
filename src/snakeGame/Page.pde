@@ -424,16 +424,16 @@
                 if (gameState == GameState.OVER&&currentPage==WhatPage.PLAYING) {
                   if (inputName!="") {
                     if (difficultyMode==0) {
-                      //Save the mark for EASY
+                      // Save the mark for EASY
                       highScore.compare(new ScoreData(inputName, totalScore));
                     } else {
-                      //Save the mark for Hard
+                      // Save the mark for Hard
                       highScore_hard.compare(new ScoreData(inputName, totalScore));
                     }
                   }
                 }
               } else if (butList.get(i).getTxt()=="Restart") {
-                //Reload the map
+                // Reload the map
                 Random rand = new Random();
                 int mapIndex = rand.nextInt(2) + 1;
                 String mapFile = "mapsCSV/" + (difficultyMode == 0 ? "E" + mapIndex : "H" + mapIndex) + ".csv";
@@ -446,9 +446,9 @@
                 gameScreen.setup(mapFile);
                 isMapLoaded = true;
                 
-                //Restar
+                // Restar
                 gameState=GameState.PLAY;
-                //Reload the music
+                // Reload the music
                 end = false;
                 if(needHelpPage==0){
                   file_background.loop();
@@ -458,7 +458,7 @@
               inputName="";
               file_button.play();
               currentPage = butList.get(i).getPagePoi();
-              // record the jump action to avoid repeated page changes during a single click event
+              // Record the jump action to avoid repeated page changes during a single click event
               jumped=1;
               break;
             }
