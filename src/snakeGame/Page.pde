@@ -468,7 +468,7 @@
               file_button.play();
               currentPage = butList.get(i).getPagePoi();
               
-              // record the jump action to avoid repeated page changes during a single click event
+              // Record the jump action to avoid repeated page changes during a single click event
               jumped=1;
               break;
             }
