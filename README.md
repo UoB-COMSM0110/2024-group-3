@@ -118,8 +118,7 @@ Looking forward, there are several avenues for further development of 'Survival 
 1. Download Processing from the following link: [download here](https://processing.org/download).
       This downloads the graphical library and integrated development environment that the game will run on.
 
-1. Download and extract the following ZIP file: [game_download_file](https://github.com/UoB-COMSM0110/2024-group-3/blob/develop/download/game_download_file.zip)
-
+1. Download and extract the following ZIP file: [game_download_file](https://github.com/UoB-COMSM0110/2024-group-3/raw/develop/download/game_download_file.zip)
 1. Run Processing and then open the game by clicking: **File -> Open -> {root_dir}/src/snakeGame/main.pde** 
        
    >    ##### *__note__: replace 'root_dir' with the actual filepath/location of the extracted root directory*
