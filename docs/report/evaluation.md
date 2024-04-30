@@ -204,22 +204,22 @@ She then used the Wilcoxon Signed Rank Test to find the calculated W test statis
 
 Ranks 2,3 and 4,5 have the same value differences. Fortunately, because they are of the same sign, this doesn't impact the test's results. The sum of our positive ranks is 0 and the sum of our negative ranks is 55, with the W test statistic coming out as 0. Since this is well below the maximum value of 8 as specified above, we can say with confidence that there is a statistically significant difference in our easy and hard difficulty modes. 
 
-### Testing
-Black Box  
-White Box
+## Testing
+Throughout the development process we tested our code thoroughly. The evaluative part of our process was invaluable here, and user feedback and experience was very helpful at identifying bugs and flaws with our game's design that we could refactor. We found that implementing testing scripts within our code was somewhat harder, mainly because of Processing's limitations as an IDE. After much discussion our team settled on pursuing white box testing coverage by writing assert tests for the integral parts of our code. 
 
-Chris's assert testing (for Florence to write up: no need to include evertyhing I did)
 
-I added some assert testing for consumables. For example in the Food class (https://github.com/UoB-COMSM0110/2024-group-3/blob/main/src/snakeGame/Food.pde) I asserted that the old food object is removed from the metadata:
 
-         //assert that consumable cleared from metadata
+### Consumable Tests
+Test to make sure that old food object is removed from the metadata : 
+
+         //  Assert that consumable cleared from metadata
           assert getMapGridObjectData(oldColumn, oldRow) == null; 
 
-In the GameScreen class (https://github.com/UoB-COMSM0110/2024-group-3/blob/main/src/snakeGame/GameScreen.pde), I asserted that the food objects were added to the metadata correctly:
+Test to make sure that new food objects were added to the metadata : 
 
           this.apple = new Apple(this);
           this.apple.setRandomConsumableLocation();
-          //assert that object at this location in metadata is an apple
+          //  Assert that object at this location in metadata is an apple
           assert getMapGridObjectData((int) apple.gridLocation.x, (int)apple.gridLocation.y) instanceof Apple; 
           this.banana = new Banana(this);
           this.banana.setRandomConsumableLocation();
@@ -228,39 +228,85 @@ In the GameScreen class (https://github.com/UoB-COMSM0110/2024-group-3/blob/main
           this.melon.setRandomConsumableLocation();
           assert getMapGridObjectData((int) melon.gridLocation.x, (int)melon.gridLocation.y) instanceof Melon;
           
-And I asserted that the venom bar stays in range: 
+Test to make sure that the venom bar in the game screen stays in a valid range : 
 
-         //assert test venom bar stays in valid range 
+         //  Assert test venom bar stays in valid range 
           assert snakeVenom >= 0 && snakeVenom <= 300;
           
           
-And finally that the consumables are removed from the metadata at the end:
+Test to make sure that all the consumable are removed from the metadata at the end of the game :
 
-          // Clear consumables
+          //  Clear consumables
           if (apple != null) {
             apple.cleanUp();
             apple = null;
-            assert apple == null; //assert apple has been removed
+            assert apple == null;   //  Assert apple has been removed
           }
           if (banana != null) {
             banana.cleanUp();
             banana = null;
-            assert banana == null; //assert banana has been removed
+            assert banana == null;   //  Assert banana has been removed
           }
           if (melon != null) {
             melon.cleanUp();
             melon = null;
-            assert melon == null; //assert melon has been removed
+            assert melon == null;   //  Assert melon has been removed
           }
           if (venomRefillerOne != null) {
             venomRefillerOne.cleanUp();
             venomRefillerOne = null;
-            assert venomRefillerOne == null; //assert venom refiller has been removed
+            assert venomRefillerOne == null;   //  Assert venom refiller has been removed
           }
           if (venomRefillerTwo != null) {
             venomRefillerTwo.cleanUp();
             venomRefillerTwo = null;
-            assert venomRefillerTwo == null; //assert venom refiller has been removed
+            assert venomRefillerTwo == null;   //  Assert venom refiller has been removed
           }
+
+### Enemy Snake Tests
+Test to make sure that the cell the enemy snake will move to exists, is within bounds and isn't the player snake :
+
+          assert bestMove != null;
+          assert bestMove.x >= 1 && bestMove.x <= 100;
+          assert bestMove.y >= 1 && bestMove.y <= 45;
+          assert minDistance >= 0;
+
+          velocity.set(bestMove.x - headPosition.x, bestMove.y - headPosition.y);
+          PVector newHeadPosition = headPosition.copy().add(velocity);
+          game.setMapGridObjectData(snakeCells.getLast().gridLocation, null);
+          snakeCells.removeLast();
+          snakeCells.addFirst(new SnakeCell(newHeadPosition, this.colour));
+          game.setMapGridObjectData(newHeadPosition, this);
+
+Test to make sure that the ES velocity is acceptable, and isn't trying to move diagonally :
+            
+          @Override
+          protected void setVelocity(float x, float y) {
+          velocity.set(x, y);
+
+          // Assertion testing
+          assert (x == -1 || x == 0 || x == 1);
+          assert (y == -1 || y == 0 || y == 1);
+          if (x == -1 || x == 1) {
+            assert y == 0;
+            }
+          if (y == -1 || y == 1) {
+            assert x == 0;
+            }
+          }
+
+Test to make sure that the starting positions of the enemy snakes are within bounds : 
+
+                  // Assertion testing
+                  assert startX >= 1 && startX <= 100;
+                  assert startY >= 1 && startY <= 45;
+                  return new PVector(startX, startY);
+                  }
+              positionsAttempted++;
+              }
+          return null;
+          }
+          
+        
 
 <br>
