@@ -424,8 +424,10 @@
                 if (gameState == GameState.OVER&&currentPage==WhatPage.PLAYING) {
                   if (inputName!="") {
                     if (difficultyMode==0) {
+                      //Save the mark for EASY
                       highScore.compare(new ScoreData(inputName, totalScore));
                     } else {
+                      //Save the mark for Hard
                       highScore_hard.compare(new ScoreData(inputName, totalScore));
                     }
                   }

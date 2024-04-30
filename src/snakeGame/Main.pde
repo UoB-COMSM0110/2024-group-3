@@ -38,10 +38,11 @@
     public String inputName;
     //Player score
     public int totalScore;
-  
-    boolean isNameBoxSelected = false;//Whether to click the name box
+    //Whether to click the name box
+    boolean isNameBoxSelected = false;
     int cursorTimer = 0;
-    boolean end = false; //Whether to load sounds
+    //Whether to load sounds
+    boolean end = false; 
     public int needHelpPage=1;
   
     // Music file
