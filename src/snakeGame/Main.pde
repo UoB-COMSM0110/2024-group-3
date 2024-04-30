@@ -29,7 +29,9 @@
     public WhatPage currentPage;
     public int isShowTips=1;
     public int isShowTips2=1;
-    public float volume=6;
+    
+    // Default
+    public float volume=6; 
     public HighScore highScore, highScore_hard;
     public String inputName;
     public int totalScore;
@@ -39,7 +41,10 @@
     boolean end = false;
     public int needHelpPage=1;
   
+    // Music file
     SoundFile file, file_button, file_click, file_background,file_new,file_d;
+    
+    // Sound control
     Sound s;
   
   
@@ -140,7 +145,6 @@
         key=0;
       }
       } else if (currentPage==WhatPage.POPHELPPAGE) {
-        file.amp(0.3);
         file_background.loop();
         if (keyCode!=0) {
           currentPage=WhatPage.PLAYING;
@@ -176,7 +180,7 @@
     void mousePressed() {
       page.handlePageJump();
         if (currentPage==WhatPage.SETTING) {
-       page.handleSetting();
+            page.handleSetting();
           } else if (currentPage==WhatPage.HELP) {
             page.handleHelp();
           } else if (currentPage==WhatPage.HIGHSCORE) {
@@ -185,7 +189,6 @@
             page.handleDifMod();
           } else if (currentPage==WhatPage.POPHELPPAGE) {
             if (page.jumped!=1) {
-            file.amp(0.3);
             file_background.loop();
             currentPage=WhatPage.PLAYING;
             }
@@ -245,7 +248,7 @@
           page.drawButton(re_but);
     }
   
-  
+    //box for name
     void drawNameBox() {
       fill(200);
       rect(450, 300, 300, 50);
@@ -255,7 +258,7 @@
       text(inputName, 460, 325);
         if (isNameBoxSelected) {
           cursorTimer++;
-        if (cursorTimer % 12 < 6) {
+        if (cursorTimer % 12 < 6) { //Realize the cursor flashing
           float cursorX = textWidth(inputName) + 465;
           stroke(0);
           line(cursorX, 310, cursorX, 340);

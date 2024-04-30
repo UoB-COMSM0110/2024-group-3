@@ -27,8 +27,7 @@
       int frameCount=0;
       
       // Record if the page jumped in method handlePageJump
-      int jumped=0; 
-      
+      int jumped=0;      
       int helpPagePoped=0;
     
       public void mainPage() {
@@ -41,7 +40,8 @@
         } else {
           image(mainPageH, 0, 0);
         }
-    
+
+        // Title
         textAlign(CENTER, CENTER);
         fill(255);
         textSize(100);
@@ -54,7 +54,7 @@
     
         butList.clear();
     
-        Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, (needHelpPage==1 || (needHelpPage==0 && helpPagePoped==0))?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "PLAY", 72);
+        Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, needHelpPage==1?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "PLAY", 72);
         butList.add(sg_but);
     
         Button hs_but = new Button(180, 220, 360, 264, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score", 36);
@@ -70,6 +70,8 @@
     
         drawTipsButton(easy);
         drawTipsButton(hard);
+
+        // fullfill the easy tick box
         checkIcon=loadImage("../images/check.png");
         checkIcon.resize(easy.w-easy.x, easy.v-easy.y);
         image(checkIcon, easy.x, easy.y);
@@ -117,6 +119,8 @@
     
         drawTipsButton(easy);
         drawTipsButton(hard);
+
+        // fullfill the hard tick box
         checkIcon=loadImage("../images/check.png");
         checkIcon.resize(hard.w-hard.x, hard.v-hard.y);
         image(checkIcon, hard.x, hard.y);
@@ -134,11 +138,13 @@
         Button esc_but=new Button(50, 50, 150, 100, WhatPage.HIGHSCORE, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
         butList.add(esc_but);
     
+        // page indicator
         fill(255);
         textSize(24);
         textAlign(CENTER, CENTER);
         text(highScoPagInd+" / "+maxHighScoInd, width/2, 575);
     
+        // page controller and BACK button
         update(mouseX, mouseY);
         drawButton(highScoPrePag);
         drawButton(highScoNexPag);
@@ -175,10 +181,12 @@
         helpPage=loadImage("../images/helpPageLow"+helpPagInd+".png");
         image(helpPage, 0, 0);
     
+        // BACK button
         butList.clear();
         Button esc_but=new Button(50, 50, 150, 100, WhatPage.HELP, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
         butList.add(esc_but);
     
+        // page indicator
         fill(255);
         textSize(24);
         textAlign(CENTER, CENTER);
@@ -199,6 +207,7 @@
         Button esc_but=new Button(50, 50, 150, 100, WhatPage.SETTING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
         butList.add(esc_but);
     
+        // header
         fill(255);
         textAlign(CENTER, CENTER);
         textSize(48);
@@ -226,6 +235,8 @@
         drawTipsButton(tips);
         drawTipsButton(tips2);
         drawTipsButton(popHelPag);
+
+        // fullfill tick boxes
         if (isShowTips==1) {
           checkIcon=loadImage("../images/check.png");
           checkIcon.resize(tips.w-tips.x, tips.v-tips.y);
@@ -245,14 +256,17 @@
       }
     
       public void popHelpPage() {
+        // count the frame for the flicker effect
         ++frameCount;
         helpPagePoped=1;
     
         popHelpPage=loadImage("../images/popHelp.png");
         image(popHelpPage, 0, 0);
     
+        // tell the player how to enter the game
         textSize(24);
         textAlign(CENTER, CENTER);
+        // white colour for 10 frames and grey colour for the next 5 frames
         if (frameCount<10) {
           fill(255);
         } else if (frameCount>=10 && frameCount<15) {
@@ -266,10 +280,11 @@
       }
     
       public void drawButton(Button but) {
-
-        // Draw rounded rectangle
         rectMode(CORNER);
+
+        // draw a rectangle with round corners in radius 20
         int rad=20;
+        // when the mouse hovering on the button, just draw the skeleton, otherwise, draw the backgroung colour
         if (but.hover==0) fill(but.bgColr, but.bgColg, but.bgColb);
         else
         {
@@ -280,6 +295,7 @@
     
         textAlign(CENTER, CENTER);
         textSize(but.txtsize);
+        // when the mouse hovering on the button, draw the background colour instead
         if (but.hover==1) {
           fill(but.bgColr, but.bgColg, but.bgColb);
         } else {
@@ -298,6 +314,7 @@
         return;
       }
     
+      // check on which button the mouse is hovering
       void update(int mousex, int mousey) {
         for (int i = 0; i < butList.size(); ++i) {
           if (butList.get(i).inside(mousex, mousey)) {
@@ -334,6 +351,7 @@
         }
       }
     
+      // response to mouse clicking in help page
       public void handleHelp() {
         if (helpPrePag.inside(mouseX, mouseY)) {
           if (helpPagInd>1) --helpPagInd;
@@ -344,6 +362,7 @@
         }
       }
     
+      // response to mouse clicking in high score page
       public void handleHighSco() {
         if (highScoPrePag.inside(mouseX, mouseY)) {
           if (highScoPagInd>1) --highScoPagInd;
@@ -354,6 +373,7 @@
         }
       }
     
+      // response to mouse clicking on tick boxes in main page
       public void handleDifMod() {
         if (easy.inside(mouseX, mouseY)) {
           println("easy");
@@ -368,6 +388,7 @@
         }
       }
     
+      // response to mouse clicking in setting page
       public void handleSetting() {
         if (volPlus.inside(mouseX, mouseY)) {
           if (volume<maxVolume) ++volume;
@@ -389,7 +410,9 @@
         }
       }
     
+      // response to mouse clicking in the buttons which point to another page
       public void handlePageJump() {
+        // record the jump action to avoid repeated page changes during a single click event
         jumped=0;
         for (int i = 0; i < butList.size(); ++i) {
           if (currentPage == butList.get(i).getCurPag()) {
@@ -429,6 +452,7 @@
               inputName="";
               file_button.play();
               currentPage = butList.get(i).getPagePoi();
+              // record the jump action to avoid repeated page changes during a single click event
               jumped=1;
               break;
             }

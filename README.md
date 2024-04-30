@@ -3,7 +3,7 @@
 </div>
 <br>
 
-<a href="https://www.youtube.com/watch?v=QrkAz52gXdg">Watch Demo Video (hosted on YouTube)</a>
+<a href="https://youtu.be/I3r15m0HU9E">Watch Demo Video (hosted on YouTube)</a>
 
 # Table of Contents
 - [1. Team](#1-team)
