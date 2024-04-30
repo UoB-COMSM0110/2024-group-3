@@ -17,7 +17,8 @@
 - [6. Evaluation](#6-evaluation)
 - [7. Process](#7-process)
 - [8. Conclusion](#8-conclusion)
-- [9. Installation](#9-installation)
+- [9. Acknowledgements](#9-acknowledgements)
+- [10. Installation](#9-installation)
 
 # 1. Team
 
@@ -112,8 +113,13 @@ Looking forward, there are several avenues for further development of 'Survival 
 | Alexander Fisher | 1            | 
 | Jie Fang         | 1            | 
 
+# 9. Acknowledgements
 
-# 9. Installation
+- [Background music](https://sc.chinaz.com/yinxiao/161022106840.htm)
+- [Button click music](https://www.aigei.com/sound/ui/button_3/)
+- [Player snake death music](https://mixkit.co/free-sound-effects/game-over/)
+
+# 10. Installation
 
 1. Download Processing from the following link: [download here](https://processing.org/download).
       This downloads the graphical library and integrated development environment that the game will run on.
