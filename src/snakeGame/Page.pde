@@ -53,7 +53,7 @@
     
         butList.clear();
     
-        Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, (needHelpPage==1 || (needHelpPage==0 && helpPagePoped==0))?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "PLAY", 72);
+        Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, needHelpPage==1?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "PLAY", 72);
         butList.add(sg_but);
     
         Button hs_but = new Button(180, 220, 360, 264, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score", 36);

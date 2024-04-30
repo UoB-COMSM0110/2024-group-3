@@ -228,7 +228,7 @@
           page.drawButton(re_but);
     }
   
-  
+    //box for name
     void drawNameBox() {
       fill(200);
       rect(450, 300, 300, 50);
@@ -238,7 +238,7 @@
       text(inputName, 460, 325);
         if (isNameBoxSelected) {
           cursorTimer++;
-        if (cursorTimer % 12 < 6) {
+        if (cursorTimer % 12 < 6) { //Realize the cursor flashing
           float cursorX = textWidth(inputName) + 465;
           stroke(0);
           line(cursorX, 310, cursorX, 340);
