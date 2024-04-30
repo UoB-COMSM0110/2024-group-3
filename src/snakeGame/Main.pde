@@ -76,7 +76,7 @@
   
   
     public void draw() {
-      //change the volume
+      //Change the volume for all music
       s.volume(volume/12);
       background(255);
       if (!isMapLoaded) {
@@ -140,6 +140,7 @@
               inputName = inputName.substring(0, inputName.length() - 1);
             }
           } else if (Character.isLetterOrDigit(key)) {
+            //Limit the name for letter or number
             inputName += key;
             }
           }

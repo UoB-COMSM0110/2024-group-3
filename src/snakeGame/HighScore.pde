@@ -1,6 +1,6 @@
 import java.io.*;
 
-//manages a list of top scores stored in a file.
+//Manages a list of top scores stored in a file.
 public class HighScore {
     // Array of ScoreData to store top four highest score
     ScoreData[] infor = new ScoreData[highScoreNumber];
@@ -22,7 +22,7 @@ public class HighScore {
         }
     }
 
-    // compare a new score with existing high scores.
+    // Compare a new score with existing high scores.
     public void compare(ScoreData s) {
         int pos = -1;
         // Find the position where the new score should be inserted.
@@ -33,7 +33,7 @@ public class HighScore {
             }
         }
 
-        // new score does not qualify as a high score
+        // New score does not qualify as a high score
         if (pos == -1) {
             return;
         }
@@ -46,7 +46,7 @@ public class HighScore {
         // Insert the new score
         infor[pos] = s;
 
-        // updated high scores
+        // Updated high scores
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(datafile))) {
             for (int i = 0; i < highScoreNumber; i++) {
                 bw.write(infor[i].name + "," + infor[i].score + "\n");
