@@ -136,7 +136,6 @@
         key=0;
       }
       } else if (currentPage==WhatPage.POPHELPPAGE) {
-        file.amp(0.3);
         file_background.loop();
         if (keyCode!=0) {
           currentPage=WhatPage.PLAYING;
@@ -172,7 +171,7 @@
     void mousePressed() {
       page.handlePageJump();
         if (currentPage==WhatPage.SETTING) {
-       page.handleSetting();
+            page.handleSetting();
           } else if (currentPage==WhatPage.HELP) {
             page.handleHelp();
           } else if (currentPage==WhatPage.HIGHSCORE) {
@@ -181,7 +180,6 @@
             page.handleDifMod();
           } else if (currentPage==WhatPage.POPHELPPAGE) {
             if (page.jumped!=1) {
-            file.amp(0.3);
             file_background.loop();
             currentPage=WhatPage.PLAYING;
             }
