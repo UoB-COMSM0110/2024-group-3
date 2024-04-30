@@ -1,7 +1,12 @@
-<div align="center">
-    <img src="images/titleReadme.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
-</div>
-<br>
+<p align="center">
+  <a href="https://youtu.be/I3r15m0HU9E"" target="_blank">
+      <img src="images/titleReadme.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
+  </a>
+</p>
+
+<p align="center">
+  <b><a href="https://youtu.be/I3r15m0HU9E">Click here or the image above to see the VIDEO</a></b>
+</p>
 
 # Table of Contents
 - [1. Team](#1-team)
@@ -13,7 +18,6 @@
 - [7. Process](#7-process)
 - [8. Conclusion](#8-conclusion)
 - [9. Installation](#9-installation)
-
 
 # 1. Team
 
@@ -27,10 +31,10 @@
 | Name             | Role                           | Email                                                 | GitHub Account                                            |
 |------------------|--------------------------------|-------------------------------------------------------|-----------------------------------------------------------|
 | Chris Kerr       | Project Manager / Developer    | [th23780@bristol.ac.uk](mailto:th23780@bristol.ac.uk) | [@chriskerrc](https://github.com/chriskerrc)              |
-| Florence Rose    | Map Designer / Tester          | [xd23758@bristol.ac.uk](mailto:xd23758@bristol.ac.uk) | [@frose2024](https://github.com/frose2024)                |
-| Josh Wierszycki  | Lead Developer                 | [el20063@bristol.ac.uk](mailto:el20063@bristol.ac.uk) | [@JWierszycki](https://github.com/JWierszycki)            |
-| Ziyuan Lu        | UI Developer                   | [py23518@bristol.ac.uk](mailto:py23518@bristol.ac.uk) | [@LzYzL](https://github.com/LzYzL)                        |
 | Alexander Fisher | Lead Developer                 | [af17918@bristol.ac.uk](mailto:af17918@bristol.ac.uk) | [@alexandermfisher](https://github.com/alexandermfisher)  |
+| Florence Rose    | Map Designer / Tester          | [xd23758@bristol.ac.uk](mailto:xd23758@bristol.ac.uk) | [@frose2024](https://github.com/frose2024)                |
+| Josh Wierszycki  | Gameplay Developer             | [el20063@bristol.ac.uk](mailto:el20063@bristol.ac.uk) | [@JWierszycki](https://github.com/JWierszycki)            |
+| Ziyuan Lu        | UI Developer                   | [py23518@bristol.ac.uk](mailto:py23518@bristol.ac.uk) | [@LzYzL](https://github.com/LzYzL)                        |
 | Jie Fang         | UI Developer                   | [yh23030@bristol.ac.uk](mailto:yh23030@bristol.ac.uk) | [@Jiebristol](https://github.com/Jiebristol)              |
 </div>
 
@@ -86,7 +90,15 @@ Refer to our [evaluation document](/docs/report/evaluation.md) to see our:
 Refer to our [process document](/docs/report/process.md) to see an overview of our development process:
 
 # 8. Conclusion 
-TODO:
+In reflecting upon the completion of "Survival Snake," it becomes clear that this project was not just a lesson in game development but also in collaborative problem-solving, adaptive learning, and strategic planning. The journey from concept to execution taught us invaluable lessons about the complexities of creating a game that balances traditional mechanics with innovative features.
+
+One of the primary lessons learned was the importance of modular design and object-oriented principles. By utilizing a grid-based structure and abstracting game elements into discrete, manageable classes, we were able to maintain clean, maintainable code, which facilitated easier debugging and expansion. This architectural choice proved critical when integrating new features, such as the venom mechanic and enemy snakes, which introduced complex interactions within the game environment.
+
+Collaboration was another important area of growth for our team. Utilizing tools like WhatsApp for communication and GitHub for version control enabled us to streamline our workflow and maintain a continuous exchange of ideas. The adoption of a scrum/stand-up meeting format helped keep the team aligned on goals and milestones, while face-to-face interactions, whether physical or via video calls, were great for resolving the more complex issues that arose.
+
+The introduction of first-person shooter elements into a classic snake game required careful consideration of game balance and player engagement. Ensuring that the venom ability was powerful enough to feel rewarding, yet not so dominant as to overshadow other game mechanics, required numerous iterations and playtesting sessions. The pathfinding of our enemy snakes also presented a significant challenge, necessitating a hierarchical movement system to prevent gameplay disruptions and maintain a logical flow. These obstacles not only tested our technical skills but also our ability to work as a team to find creative solutions.
+
+Looking forward, there are several avenues for further development of 'Survival Snake'. We envision incorporating multiplayer functionality, allowing players to compete or cooperate in real-time. We would also like to add different types of walls, such as exploding walls that damage the player and portal walls that transport the player across the map. The idea of a 'Survival Snake' shop where you could buy different themes for the game and skins for your snake would be really fun to implement too, and would allow us to follow through on the red-green colour blindness change that one of our participants suggested.
 
 
 ### Individual Contributions 
@@ -103,7 +115,7 @@ TODO:
 
 # 9. Installation
 
-1. Download processing from the following link: [download here](https://processing.org/download).
+1. Download Processing from the following link: [download here](https://processing.org/download).
       This downloads the graphical library and integrated development environment that the game will run on.
 
 1. Download and extract the following ZIP file: [Survival Sanke]().

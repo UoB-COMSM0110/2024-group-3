@@ -1,4 +1,4 @@
-    public class Page //<>// //<>// //<>// //<>// //<>// //<>//
+    public class Page //<>//
 
     {
       ArrayList<Button> butList = new ArrayList<>();
@@ -25,8 +25,9 @@
       int maxVolume=12, maxHelpInd=2, maxHighScoInd=2;
     
       int frameCount=0;
-      int jumped=0; //record if the page jumped in method handlePageJump
       
+      // Record if the page jumped in method handlePageJump
+      int jumped=0;      
       int helpPagePoped=0;
     
       public void mainPage() {
@@ -39,8 +40,8 @@
         } else {
           image(mainPageH, 0, 0);
         }
-    
-        //textSize(32);
+
+        // Title
         textAlign(CENTER, CENTER);
         fill(255);
         textSize(100);
@@ -53,7 +54,7 @@
     
         butList.clear();
     
-        Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, (needHelpPage==1 || (needHelpPage==0 && helpPagePoped==0))?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "PLAY", 72);
+        Button sg_but = new Button(600, 340, 800, 420, WhatPage.MAINPAGE, needHelpPage==1?WhatPage.POPHELPPAGE:WhatPage.PLAYING, "PLAY", 72);
         butList.add(sg_but);
     
         Button hs_but = new Button(180, 220, 360, 264, WhatPage.MAINPAGE, WhatPage.HIGHSCORE, "High Score", 36);
@@ -67,14 +68,10 @@
     
         update(mouseX, mouseY);
     
-        //drawButton(hs_but);
-        //drawButton(sg_but);
-        //drawButton(help_but);
-        //drawButton(set_but);
-        //drawButton(hard_but);
-        //drawButton(easy_but);
         drawTipsButton(easy);
         drawTipsButton(hard);
+
+        // Fullfill the easy tick box
         checkIcon=loadImage("../images/check.png");
         checkIcon.resize(easy.w-easy.x, easy.v-easy.y);
         image(checkIcon, easy.x, easy.y);
@@ -93,8 +90,7 @@
         } else {
           image(mainPageH, 0, 0);
         }
-    
-        //textSize(32);
+
         textAlign(CENTER, CENTER);
         fill(255);
         textSize(100);
@@ -121,14 +117,10 @@
     
         update(mouseX, mouseY);
     
-        //drawButton(hs_but);
-        //drawButton(sg_but);
-        //drawButton(help_but);
-        //drawButton(set_but);
-        //drawButton(hard_but);
-        //drawButton(easy_but);
         drawTipsButton(easy);
         drawTipsButton(hard);
+
+        // Fullfill the hard tick box
         checkIcon=loadImage("../images/check.png");
         checkIcon.resize(hard.w-hard.x, hard.v-hard.y);
         image(checkIcon, hard.x, hard.y);
@@ -146,16 +138,19 @@
         Button esc_but=new Button(50, 50, 150, 100, WhatPage.HIGHSCORE, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
         butList.add(esc_but);
     
+        // Page indicator
         fill(255);
         textSize(24);
         textAlign(CENTER, CENTER);
         text(highScoPagInd+" / "+maxHighScoInd, width/2, 575);
     
+        // Page controller and BACK button
         update(mouseX, mouseY);
         drawButton(highScoPrePag);
         drawButton(highScoNexPag);
         drawButton(esc_but);
-    
+        
+        // Switch between easy and hard mode scores
         if (highScoPagInd==1) {
           fill(255);
           textAlign(CENTER, CENTER);
@@ -181,16 +176,19 @@
             text(highScore_hard.infor[i].score, w+320, h+100*i);
           }
         }
+        
       }
     
       public void help() {
         helpPage=loadImage("../images/helpPageLow"+helpPagInd+".png");
         image(helpPage, 0, 0);
     
+        // BACK button
         butList.clear();
         Button esc_but=new Button(50, 50, 150, 100, WhatPage.HELP, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
         butList.add(esc_but);
     
+        // Page indicator
         fill(255);
         textSize(24);
         textAlign(CENTER, CENTER);
@@ -206,11 +204,12 @@
         helpPage=loadImage("../images/highScore.png");
         image(helpPage, 0, 0);
     
-        // back button
+        // Back button
         butList.clear();
         Button esc_but=new Button(50, 50, 150, 100, WhatPage.SETTING, difficultyMode==0?WhatPage.MAINPAGE:WhatPage.MAINPAGE_hard, "Back", 36);
         butList.add(esc_but);
     
+        // Header
         fill(255);
         textAlign(CENTER, CENTER);
         textSize(48);
@@ -222,9 +221,7 @@
         text("Display controls during the game", 300, 290);
         text("Display grid during the game", 300, 390);
         text("Display help page before starting", 300, 490);
-    
-        //textAlign(LEFT,BOTTOM);
-        //text(". . . . . . . . . . ",560,190);
+
         String st="";
         for (int i=0; i<12; ++i) {
           if (i<volume) st=st+"|";
@@ -240,6 +237,8 @@
         drawTipsButton(tips);
         drawTipsButton(tips2);
         drawTipsButton(popHelPag);
+
+        // Fullfill tick boxes
         if (isShowTips==1) {
           checkIcon=loadImage("../images/check.png");
           checkIcon.resize(tips.w-tips.x, tips.v-tips.y);
@@ -259,14 +258,19 @@
       }
     
       public void popHelpPage() {
+
+        // Count the frame for the flicker effect
         ++frameCount;
         helpPagePoped=1;
     
         popHelpPage=loadImage("../images/popHelp.png");
         image(popHelpPage, 0, 0);
     
+        // Tell the player how to enter the game
         textSize(24);
         textAlign(CENTER, CENTER);
+
+        // White colour for 10 frames and grey colour for the next 5 frames
         if (frameCount<10) {
           fill(255);
         } else if (frameCount>=10 && frameCount<15) {
@@ -280,13 +284,12 @@
       }
     
       public void drawButton(Button but) {
-        //nofill();
-        //fill(but.getColr(), but.getColg(), but.getColb());
-        //rect(but.getX(), but.getY(), but.getW() - but.getX(), but.getV() - but.getY());
-    
-        //draw rounded rectangle
         rectMode(CORNER);
+
+        // Draw a rectangle with round corners in radius 20
         int rad=20;
+
+        // When the mouse hovering on the button, just draw the skeleton, otherwise, draw the backgroung colour
         if (but.hover==0) fill(but.bgColr, but.bgColg, but.bgColb);
         else
         {
@@ -297,8 +300,9 @@
     
         textAlign(CENTER, CENTER);
         textSize(but.txtsize);
+
+        // When the mouse hovering on the button, draw the background colour instead
         if (but.hover==1) {
-          //fill(but.colr, but.colg, but.colb);
           fill(but.bgColr, but.bgColg, but.bgColb);
         } else {
           fill(but.colr, but.colg, but.colb);
@@ -316,11 +320,11 @@
         return;
       }
     
+      // Check on which button the mouse is hovering
       void update(int mousex, int mousey) {
         for (int i = 0; i < butList.size(); ++i) {
           if (butList.get(i).inside(mousex, mousey)) {
             butList.get(i).setColour(99, 87, 80);
-            //butList.get(i).setBgColour(255,255,255);
             butList.get(i).hover=1;
           } else butList.get(i).hover=0;
         }
@@ -353,6 +357,7 @@
         }
       }
     
+      // Response to mouse clicking in help page
       public void handleHelp() {
         if (helpPrePag.inside(mouseX, mouseY)) {
           if (helpPagInd>1) --helpPagInd;
@@ -363,6 +368,7 @@
         }
       }
     
+      // Response to mouse clicking in high score page
       public void handleHighSco() {
         if (highScoPrePag.inside(mouseX, mouseY)) {
           if (highScoPagInd>1) --highScoPagInd;
@@ -373,6 +379,7 @@
         }
       }
     
+      // Response to mouse clicking on tick boxes in main page
       public void handleDifMod() {
         if (easy.inside(mouseX, mouseY)) {
           println("easy");
@@ -387,13 +394,12 @@
         }
       }
     
+      // Response to mouse clicking in setting page
       public void handleSetting() {
         if (volPlus.inside(mouseX, mouseY)) {
-          //volume=min(11,volume+1);
           if (volume<maxVolume) ++volume;
           file_button.play();
         } else if (volMinus.inside(mouseX, mouseY)) {
-          //volume=max(0,volume-1);
           if (volume>0) --volume;
           file_button.play();
         } else if (tips.inside(mouseX, mouseY)) {
@@ -410,7 +416,10 @@
         }
       }
     
+      // Response to mouse clicking in the buttons which point to another page
       public void handlePageJump() {
+
+        // Record the jump action to avoid repeated page changes during a single click event
         jumped=0;
         for (int i = 0; i < butList.size(); ++i) {
           if (currentPage == butList.get(i).getCurPag()) {
@@ -422,13 +431,19 @@
                 if (gameState == GameState.OVER&&currentPage==WhatPage.PLAYING) {
                   if (inputName!="") {
                     if (difficultyMode==0) {
+
+                      //Save the mark for EASY
                       highScore.compare(new ScoreData(inputName, totalScore));
                     } else {
+
+                      //Save the mark for Hard
                       highScore_hard.compare(new ScoreData(inputName, totalScore));
                     }
                   }
                 }
               } else if (butList.get(i).getTxt()=="Restart") {
+                
+                //Reload the map
                 Random rand = new Random();
                 int mapIndex = rand.nextInt(2) + 1;
                 String mapFile = "mapsCSV/" + (difficultyMode == 0 ? "E" + mapIndex : "H" + mapIndex) + ".csv";
@@ -440,7 +455,11 @@
                 gameScreen = new GameScreen();
                 gameScreen.setup(mapFile);
                 isMapLoaded = true;
+                
+                // Restar
                 gameState=GameState.PLAY;
+
+                //Reload the music
                 end = false;
                 if(needHelpPage==0){
                   file_background.loop();
@@ -450,6 +469,8 @@
               inputName="";
               file_button.play();
               currentPage = butList.get(i).getPagePoi();
+              
+              // Record the jump action to avoid repeated page changes during a single click event
               jumped=1;
               break;
             }

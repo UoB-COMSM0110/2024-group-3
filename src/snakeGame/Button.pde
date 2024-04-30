@@ -1,87 +1,94 @@
 class Button {
-    private int x, y, w, v;
-    private WhatPage curPag,pagePoi;
-    private String txt;
 
-    private int colr = 78, colg = 68, colb = 61;
-    private int bgColr =255, bgColg = 255, bgColb = 255;
+  // Left top coordinate (x,y) and bottom right coordinate (w,v)
+  private int x, y, w, v;
 
-    private int txtsize = 32;
-    public int hover=0;
+  // In which page the button is active and to which page the screen should jump
+  private WhatPage curPag, pagePoi;
+  private String txt;
 
-    public Button(int x, int y, int w, int v, WhatPage curPag, WhatPage pagePoi, String txt, int txtsize) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.v = v;
-        this.curPag = curPag;
-        this.pagePoi = pagePoi;
-        this.txt = txt;
-        this.txtsize=txtsize;
-    }
-    
-    public Button(int x,int y,int w,int v,String txt,int txtsize) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.v = v;
-        this.txt = txt;
-        this.txtsize=txtsize;
-    }
+  private int colr = 78, colg = 68, colb = 61;
+  private int bgColr =255, bgColg = 255, bgColb = 255;
 
-    public WhatPage getCurPag() {
-        return curPag;
-    }
+  private int txtsize = 32;
 
-    public int getX() {
-        return x;
-    }
+  // Indicates whether the mouse is hovering on the button
+  public int hover=0;
 
-    public int getY() {
-        return y;
-    }
+  public Button(int x, int y, int w, int v, WhatPage curPag, WhatPage pagePoi, String txt, int txtsize) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.v = v;
+    this.curPag = curPag;
+    this.pagePoi = pagePoi;
+    this.txt = txt;
+    this.txtsize=txtsize;
+  }
 
-    public int getW() {
-        return w;
-    }
+  // Initialize a tick box button without text or page pointer
+  public Button(int x, int y, int w, int v, String txt, int txtsize) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.v = v;
+    this.txt = txt;
+    this.txtsize=txtsize;
+  }
 
-    public int getV() {
-        return v;
-    }
+  public WhatPage getCurPag() {
+    return curPag;
+  }
 
-    public WhatPage getPagePoi() {
-        return pagePoi;
-    }
+  public int getX() {
+    return x;
+  }
 
-    public String getTxt() {
-        return txt;
-    }
+  public int getY() {
+    return y;
+  }
 
-    public int getColr() {
-        return colr;
-    }
+  public int getW() {
+    return w;
+  }
 
-    public int getColg() {
-        return colg;
-    }
+  public int getV() {
+    return v;
+  }
 
-    public int getColb() {
-        return colb;
-    }
+  public WhatPage getPagePoi() {
+    return pagePoi;
+  }
 
-    public void setBgColour(int colr,int colg,int colb) {
-        this.bgColr = colr;
-        this.bgColg = colg;
-        this.bgColb = colb;
-    }
+  public String getTxt() {
+    return txt;
+  }
 
-    public void setColour(int colr, int colg, int colb) {
-        this.colr = colr;
-        this.colg = colg;
-        this.colb = colb;
-    }
+  public int getColr() {
+    return colr;
+  }
 
-    public boolean inside(int mouseX, int mouseY) {
-        return mouseX > this.x && mouseX < this.w && mouseY > this.y && mouseY < this.v;
-    }
+  public int getColg() {
+    return colg;
+  }
+
+  public int getColb() {
+    return colb;
+  }
+
+  public void setBgColour(int colr, int colg, int colb) {
+    this.bgColr = colr;
+    this.bgColg = colg;
+    this.bgColb = colb;
+  }
+
+  public void setColour(int colr, int colg, int colb) {
+    this.colr = colr;
+    this.colg = colg;
+    this.colb = colb;
+  }
+
+  public boolean inside(int mouseX, int mouseY) {
+    return mouseX > this.x && mouseX < this.w && mouseY > this.y && mouseY < this.v;
+  }
 }
