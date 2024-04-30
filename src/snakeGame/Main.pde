@@ -30,11 +30,14 @@
     public int isShowTips=1;
     public int isShowTips2=1;
     
-    // Default
+    // Default volume
     public float volume=6; 
-    public HighScore highScore, highScore_hard;//Store separately
-    public String inputName;//player name
-    public int totalScore;//player score
+    //Store separately
+    public HighScore highScore, highScore_hard;
+    //player name
+    public String inputName;
+    //player score
+    public int totalScore;
   
     boolean isNameBoxSelected = false;//Whether to click the name box
     int cursorTimer = 0;
