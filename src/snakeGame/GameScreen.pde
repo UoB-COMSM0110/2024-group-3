@@ -288,13 +288,14 @@ import java.awt.event.KeyEvent;
             public void incrementEnemyScore(){
                enemyScore+=5; 
             }
-          
+            
+            // Only allow one directional/arrow key press per frame
             public void handleKeyPress() {
               if (!acceptDirectionInput) {
                 return;
             }
             acceptDirectionInput = false;
-          
+            
             if (keyCode == UP || key == 'w' || key == 'W') {
               
               // Move up
@@ -335,6 +336,7 @@ import java.awt.event.KeyEvent;
                }
             }
       
+        // Getter and Setter for grid metadata. Used for updating location of game entities
         public void setMapGridObjectData(int x, int y, Object obj) {
           this.mapGridObjectData[x][y] = obj;
         }
@@ -350,7 +352,8 @@ import java.awt.event.KeyEvent;
         public Object getMapGridObjectData(PVector location) {
           return this.mapGridObjectData[(int)location.x][(int)location.y];
         }
-      
+        
+        // Draw game play area 
         private void drawGameBoard() {
           background(60);
           if (isShowTips2==1) {
@@ -369,11 +372,13 @@ import java.awt.event.KeyEvent;
             line(0, y, width, y);
           }
         }
-      
+        
         public void addWall(Wall wall) {
           walls.add(wall);
         }
-      
+        
+        
+        // Reads map csv file and generates wall objects given by the specified configuration
         private void makeWalls(String mapPath) {
           try {
             mapPath = sketchPath("../" + mapPath);
@@ -532,39 +537,6 @@ import java.awt.event.KeyEvent;
           // Reset map grid data
           mapGridObjectData = new Object[Main.ROWS][Main.COLS];
         }
-      
-      
-      
-      public void printMapGrid() {
-        for (int i = 0; i < ROWS; i++) {
-          for (int j = 0; j < COLS; j++) {
-            Object obj = mapGridObjectData[j][i];
-            if (obj == null) {
-              
-              // Empty space
-              System.out.print(" "); 
-            } else if (obj instanceof Snake) {
-              
-              // Snake
-              System.out.print("s"); 
-            } else if (obj instanceof Wall) {
-              
-              // Wall
-              System.out.print("w"); 
-            } else if (obj instanceof Food) {
-              
-              // Food
-              System.out.print("f"); 
-            } else if (obj instanceof Powerup) {
-              
-              // Powerup
-              System.out.print("p"); 
-            }
-              System.out.print(" ");
-            }
-            System.out.println();
-          }
-      }
         
       public void removeEnemySnake(EnemySnake snake) {
           for (SnakeCell cell : snake.getSnakeCells()) {

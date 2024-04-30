@@ -1,9 +1,12 @@
 import java.util.Iterator;
-
+  
+    // Concrete implementation of Abstract Snake that the Player will control
     public class Snake extends AbstractSnake {
+      
       public Snake(GameScreen game, int len, int colour) {
         super(game, colour);
-    
+        
+        // Find valid starting position for snake
         PVector position = findEmptyRectangle(game, 15, 1, 5);
         for (int i = 0; i < len; i++) {
           snakeCells.add(new SnakeCell(position.copy(), colour));
@@ -20,7 +23,6 @@ import java.util.Iterator;
     
       private PVector findEmptyRectangle(GameScreen game, int rows, int cols, int len) {
         PVector middlePoint = new PVector();
-    
         rows = 2*rows + len;
         cols = 2*cols;
     
