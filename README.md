@@ -90,7 +90,15 @@ Refer to our [evaluation document](/docs/report/evaluation.md) to see our:
 Refer to our [process document](/docs/report/process.md) to see an overview of our development process:
 
 # 8. Conclusion 
-TODO:
+In reflecting upon the completion of "Survival Snake," it becomes clear that this project was not just a lesson in game development but also in collaborative problem-solving, adaptive learning, and strategic planning. The journey from concept to execution taught us invaluable lessons about the complexities of creating a game that balances traditional mechanics with innovative features.
+
+One of the primary lessons learned was the importance of modular design and object-oriented principles. By utilizing a grid-based structure and abstracting game elements into discrete, manageable classes, we were able to maintain clean, maintainable code, which facilitated easier debugging and expansion. This architectural choice proved critical when integrating new features, such as the venom mechanic and enemy snakes, which introduced complex interactions within the game environment.
+
+Collaboration was another important area of growth for our team. Utilizing tools like WhatsApp for communication and GitHub for version control enabled us to streamline our workflow and maintain a continuous exchange of ideas. The adoption of a scrum/stand-up meeting format helped keep the team aligned on goals and milestones, while face-to-face interactions, whether physical or via video calls, were great for resolving the more complex issues that arose.
+
+The introduction of first-person shooter elements into a classic snake game required careful consideration of game balance and player engagement. Ensuring that the venom ability was powerful enough to feel rewarding, yet not so dominant as to overshadow other game mechanics, required numerous iterations and playtesting sessions. The pathfinding of our enemy snakes also presented a significant challenge, necessitating a hierarchical movement system to prevent gameplay disruptions and maintain a logical flow. These obstacles not only tested our technical skills but also our ability to work as a team to find creative solutions.
+
+Looking forward, there are several avenues for further development of 'Survival Snake'. We envision incorporating multiplayer functionality, allowing players to compete or cooperate in real-time. We would also like to add different types of walls, such as exploding walls that damage the player and portal walls that transport the player across the map. The idea of a 'Survival Snake' shop where you could buy different themes for the game and skins for your snake would be really fun to implement too, and would allow us to follow through on the red-green colour blindness change that one of our participants suggested.
 
 
 ### Individual Contributions 
