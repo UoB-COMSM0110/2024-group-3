@@ -454,7 +454,7 @@
                 gameScreen.setup(mapFile);
                 isMapLoaded = true;
                 
-                //Restar
+                // Restar
                 gameState=GameState.PLAY;
 
                 //Reload the music

@@ -32,15 +32,20 @@
     
     // Default volume
     public float volume=6; 
+    
     // Store separately
     public HighScore highScore, highScore_hard;
+    
     // Player name
     public String inputName;
+    
     // Player score
     public int totalScore;
+    
     // Whether to click the name box
     boolean isNameBoxSelected = false;
     int cursorTimer = 0;
+    
     // Whether to load sounds
     boolean end = false; 
     public int needHelpPage=1;
@@ -51,7 +56,6 @@
     // Sound control
     Sound s;
   
-  
     public void settings() {
       size(width, height+100);
     }
@@ -60,11 +64,15 @@
     public void setup() {
       gameState = GameState.PLAY;
       page = new Page();
+      
+      // Load the highscore file
       highScore = new HighScore("../mapsCSV/highscore.csv");
       highScore_hard = new HighScore("../mapsCSV/highscore_hard.csv");
       currentPage = WhatPage.MAINPAGE;
       isMapLoaded = false;
       inputName="";
+      
+      // Load the music files
       file = new SoundFile(this, sketchPath("../music/sound_1.mp3"));
       file_button = new SoundFile(this, sketchPath("../music/sound_2.mp3"));
       file_click = new SoundFile(this, sketchPath("../music/sound_3.mp3"));
@@ -260,7 +268,7 @@
       rect(450, 300, 300, 50);
       textAlign(LEFT, CENTER);
       textSize(32);
-      fill(0);
+      fill(255);
       text(inputName, 460, 325);
         if (isNameBoxSelected) {
           cursorTimer++;
