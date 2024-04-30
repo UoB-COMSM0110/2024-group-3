@@ -162,7 +162,7 @@ The final version of the class diagram provides a solid foundation for understan
 
 ### Behavioural diagrams 
 
-[Add text introducing the sequence diagram]
+In contrast to the class diagram, the following sequence diagram provides a dynamic view of the looping events in the game. The Game Screen contains all the game objects, so it exists for the duration of the game, alongside the player snake. Other objects like wall cells, enemy snakes, food and powerups come and go as they are destroyed, killed or consumed. The game screen and the player snake initiate and receive the majority of the messages. This diagram demonsrates the complexity of collision detection in the game. 
 
 <div align="center">
     <img src="/images/sequence_diagram.png" alt="Sequence diagram">
