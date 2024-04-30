@@ -4,6 +4,7 @@
 
 <br>
 
+# 6. Evaluation
 As part of our game development process, we engaged in both quantitative and qualitative analysis. This was productive, allowing us to get user feedback in an actionable form so we could prioritise the development of our game. The analysis also exposed bugs for us to fix. 
 
 ---

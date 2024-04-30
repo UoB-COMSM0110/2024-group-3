@@ -4,6 +4,7 @@
 
 <br>
 
+# 3. Requirements
 In this section we will to describe the ideation process for our game. We will explain factors that we considered during our game's inception, and how these factors influenced the development process. We started with paper prototyping, and then we created user stories and use case diagrams. We also determined the basic and alternate flows that we wanted our game to have. 
 
 # Table of Contents
