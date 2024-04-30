@@ -32,16 +32,16 @@
     
     // Default volume
     public float volume=6; 
-    //Store separately
+    // Store separately
     public HighScore highScore, highScore_hard;
-    //Player name
+    // Player name
     public String inputName;
-    //Player score
+    // Player score
     public int totalScore;
-    //Whether to click the name box
+    // Whether to click the name box
     boolean isNameBoxSelected = false;
     int cursorTimer = 0;
-    //Whether to load sounds
+    // Whether to load sounds
     boolean end = false; 
     public int needHelpPage=1;
   
@@ -76,7 +76,7 @@
   
   
     public void draw() {
-      //change the volume
+      // Change the volume for all music
       s.volume(volume/12);
       background(255);
       if (!isMapLoaded) {
@@ -140,6 +140,7 @@
               inputName = inputName.substring(0, inputName.length() - 1);
             }
           } else if (Character.isLetterOrDigit(key)) {
+            //Limit the name for letter or number
             inputName += key;
             }
           }
@@ -253,7 +254,7 @@
         page.drawButton(re_but);
     }
   
-    //Box for name
+    // Box for name
     void drawNameBox() {
       fill(200);
       rect(450, 300, 300, 50);
@@ -263,9 +264,8 @@
       text(inputName, 460, 325);
         if (isNameBoxSelected) {
           cursorTimer++;
+        //Realize the cursor flashing
         if (cursorTimer % 12 < 6) { 
-          
-          //Realize the cursor flashing
           float cursorX = textWidth(inputName) + 465;
           stroke(0);
           line(cursorX, 310, cursorX, 340);
