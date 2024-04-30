@@ -2,8 +2,10 @@
 <div align="center">
     <img width="800" src="../../images/titleDes.png" alt="Screenshot 2024-04-23 at 20 28 44" style="width: 100%;">
 </div>
-<br>
 
+<br> 
+
+In this section, we will delineate the design process for our game. With comprehensive and clearly defined requirements in place, the subsequent phase involves crafting the system architecture and modeling the core objects and their relationships in preparation for the implementation stage.
 
 # Table of Contents
 - [System Architecture](#system-architecture)
