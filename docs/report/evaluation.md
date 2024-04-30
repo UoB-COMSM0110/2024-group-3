@@ -4,8 +4,7 @@
 
 <br>
 
-As part of our game development process we engaged in both quantitative and qualitative analysis. This was a really rewarding experience, allowing us to get user feedback in an actionable form that could direct the development of our game as well as identify bugs that we could iron out. 
-
+As part of our game development process, we engaged in both quantitative and qualitative analysis. This was productive, allowing us to get user feedback in an actionable form so we could prioritise the development of our game. The analysis also exposed bugs for us to fix. 
 
 ---
 
@@ -17,7 +16,7 @@ As part of our game development process we engaged in both quantitative and qual
 ---
 
 ## Qualitative Analysis
-On 11.03 we used our lab session to obtain some initial Think-Aloud feedback for our game. Florence divided this feedback into 4 categories; positive, negative, potential features and bugs. We chose the Think-Aloud method because of how quick it was to perform, and because we timed it for a lab session we had a sizable quantity of participants to perform it with. 
+On 11 March we used our lab session to obtain some initial Think-Aloud feedback for our game. Florence divided this feedback into four categories; positive, negative, potential features, and bugs. We chose the Think-Aloud method because of how quick it was to perform, and because we timed it for a lab session we had a sizable quantity of participants to perform it with. 
 
 ### Positive Feedback
 > Participant 1 - "Shooting venom is really fun."
@@ -34,7 +33,7 @@ On 11.03 we used our lab session to obtain some initial Think-Aloud feedback for
 
 > Participant 9 - "I like the feature and the bar."
 
-> Participant 7 - "Well it's addictive."
+> Participant 7 - "Well, it's addictive."
 
 ---
 
@@ -42,20 +41,20 @@ On 11.03 we used our lab session to obtain some initial Think-Aloud feedback for
 ### Negative Feedback
 > Participant 3 - "It's not obvious to me what's harder about the hard mode."
 
-No changes, as we received a lot of comments that the hard mode was too hard and decided that increasing the difficulty may be counterproductive.
+We received many comments that the hard mode was too hard and decided that increasing the difficulty may be counterproductive.
 
 > Participant 2 - "What are the pink things, are they venom?."
 
-More information on the help page and signage on the menu bar in the game.
+We added more information on the help page and signage on the menu bar in the game.
 
-A lot of users tried to click the strawberry on the menu page to toggle the differences
+Many users tried to click the strawberry on the menu page to toggle the difficulty modes.
 
 <div align="center">
     <img src="https://github.com/UoB-COMSM0110/2024-group-3/assets/157360200/042cd1eb-8023-46d2-baa3-39ccf6c82fd6" alt="Animated GIF example">
     <p><em>Difficulty Slider</em></p>
 </div>
 
-Added a button next to the difficulty slider to better indicate where the user should click.
+Added radio buttons next to the difficulty slider to better indicate where the user should click.
 
 > Participant 4 - "Easy mode could be dialled down in terms of speed."
 
@@ -65,33 +64,33 @@ Added a button next to the difficulty slider to better indicate where the user s
 
 > Participant 3 - "Easy is enough of a challenge."
 
-Reduced the framerate on easy mode.
+We reduced the framerate on easy mode.
 
 > Participant 1 - "The Snake title looks like it might be a button too."
 
-Added lines around the buttons on the main menu page to make it clear what was clickable.
+We added lines around the buttons on the main menu page to make it clear what was clickable.
 
 ---
 
 ### Potential Features
 > Participant 1 - "Could you implement a colour-blindness feature?"
 
-We strongly considered this, as having a setting that could toggle the colour of the enemy snakes and user snake would be a really satisfying way to advocate for functionality within the game. Unfortunately, we ran out of time to implement this feature. 
+We strongly considered this, because having a setting that could toggle the colour of the enemy snakes and user snake would be allow us to make the game more accessible. Unfortunately, we were concerned that changing the colours might lead to users confusing the enemy and player snakes.
 
 > Participant 3 - "Having your previous score visible on the game screen would make things more competitive"
 
-Added a high score tracking for the difficulty mode to the game screen.
+We added high score tracking for the difficulty mode to the game screen.
 
 > Participant 2 - "Mac users may prefer to use the WASD keys rather than the keyboard"
 We added this feature so that the player snake's movement responds to both the arrow keys and WASD keys.
 
 > Participant 1 - "You could load up help on game start or call it 'how to play', not help"
 
-Added a pop up tutorial page that triggers after the user presses 'play'. 
+Added a pop up tutorial page that triggers after the user presses `Play`. 
 
 > Participant 7 - "For high score does it matter if it's easy or hard - shouldn't it be separate?"
 
-Tweaked the high score tracker so that it differentiates between hard and easy mode. Separate lists for each difficulty.
+Tweaked the high score tracker so that it differentiates between hard and easy mode, with separate lists for each mode.
 
 ---
 
@@ -109,7 +108,7 @@ Fixed this bug.
 
 ## Heuristic Analysis
 
-On 12.04 we conducted a heuristic analysis, which touched upon a lot of the same issues we identified during the Think-Aloud evaluation. Chris and Florence performed this evaluation on members from 5 other groups, with 8 participants in total. Ideally we would have had 10 > participants, but time constraints prevented this. Florence subsequently analysed this data and compiled the below table. She gave each issue its own unique ID and asking our evaluators how they would rate its impact, frequency and persistence, and then added these values together to give the overall severity of the problem. 
+On 12 April we conducted a heuristic analysis, which touched on a lot of the same issues we identified during the Think-Aloud evaluation. Chris and Florence performed this evaluation on members from 5 other groups, with 8 participants in total. Ideally we would have had 10 > participants, but time constraints prevented this. Florence subsequently analysed this data and compiled the below table. She gave each issue its own unique ID and asked our evaluators how they would rate its impact, frequency and persistence, and then added these values together to give the overall severity of the problem. 
 
 | ID | Game Component | Heuristic | Description of Issue | Impact (0-3) | Frequency (0-3) | Persistence (0-3) | Overall Severity (0-9) | Recommendations |
 |----|----------------|-----------|----------------------|--------------|-----------------|--------------------|------------------------|-----------------|
@@ -127,7 +126,7 @@ On 12.04 we conducted a heuristic analysis, which touched upon a lot of the same
 ---
 
 ## Quantitative Analysis
-On the 14.04 Chris and Florence put together a meeting between our group and 5 other groups. Combined we all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing we used the NASA TLX questionnaire to make sure that our game's two difficulty modes varied substantially in ease of play :
+On the 14 April Chris and Florence put together a meeting between our group and five other groups. We all took turns playing one another's games and recording feedback for both the quantitative and qualitative testing components of our code. For the quantitative testing we used the NASA TLX questionnaire to make sure that our game's two difficulty modes varied substantially in ease of play :
 
 ### Easy Mode
 body
@@ -164,7 +163,7 @@ body
 ### Interpreting the Results
 Using these results Florence was able to calculate the perceived difference in workload. First she used the formula  _(x - 1) * 5_ [where __x__ = score)  to calculate the participant's perceived demand for each dimension. Using these scores she then calculated the total perceived workload for each participant, using the formula  _(sum of each dimension) / 6_  to calculate their overall rating, as given in the final column of both tables. 
 
-Comparing the two sets of data gave us this information :
+Comparing the two sets of data gave us this information:
 
 <div align="center">
  
@@ -183,7 +182,7 @@ Comparing the two sets of data gave us this information :
 ---------------------------------------------------------------
 </div>
 
-She then used the Wilcoxon Signed Rank Test to find the calculated W test statistic. _N_ was 10 as that was the number of participants, and she set the significance at 0.05. Since the test had 10 participants the W test statistic generated would need to be less than 8 for there to be a statistically significant difference in our game's difficulty levels. 
+Florence then used the Wilcoxon Signed Rank Test to find the calculated W test statistic. _N_ was 10 as that was the number of participants, and she set the significance at 0.05. Since the test had 10 participants the W test statistic generated would need to be less than eight for there to be a statistically significant difference in our game's difficulty levels. 
 
 <div align="center">
  
@@ -202,20 +201,18 @@ She then used the Wilcoxon Signed Rank Test to find the calculated W test statis
 -----------------------------------
 </div>
 
-Ranks 2,3 and 4,5 have the same value differences. Fortunately, because they are of the same sign, this doesn't impact the test's results. The sum of our positive ranks is 0 and the sum of our negative ranks is 55, with the W test statistic coming out as 0. Since this is well below the maximum value of 8 as specified above, we can say with confidence that there is a statistically significant difference in our easy and hard difficulty modes. 
+Ranks 2,3 and 4,5 have the same value differences. Fortunately, because they are of the same sign, this doesn't impact the test's results. The sum of our positive ranks is 0 and the sum of our negative ranks is 55, with the W test statistic coming out as 0. Since this is well below the maximum value of eight as specified above, we can say with confidence that there is a statistically significant difference in our easy and hard difficulty modes. 
 
 ## Testing
 Throughout the development process we tested our code thoroughly. The evaluative part of our process was invaluable here, and user feedback and experience was very helpful at identifying bugs and flaws with our game's design that we could refactor. We found that implementing testing scripts within our code was somewhat harder, mainly because of Processing's limitations as an IDE. After much discussion our team settled on pursuing white box testing coverage by writing assert tests for the integral parts of our code. 
 
-
-
 ### Consumable Tests
-Test to make sure that old food object is removed from the metadata : 
+Test to make sure that old food object is removed from the metadata: 
 
          //  Assert that consumable cleared from metadata
           assert getMapGridObjectData(oldColumn, oldRow) == null; 
 
-Test to make sure that new food objects were added to the metadata : 
+Test to make sure that new food objects were added to the metadata: 
 
           this.apple = new Apple(this);
           this.apple.setRandomConsumableLocation();
@@ -228,13 +225,12 @@ Test to make sure that new food objects were added to the metadata :
           this.melon.setRandomConsumableLocation();
           assert getMapGridObjectData((int) melon.gridLocation.x, (int)melon.gridLocation.y) instanceof Melon;
           
-Test to make sure that the venom bar in the game screen stays in a valid range : 
+Test to make sure that the venom bar in the game screen stays in a valid range: 
 
          //  Assert test venom bar stays in valid range 
           assert snakeVenom >= 0 && snakeVenom <= 300;
           
-          
-Test to make sure that all the consumable are removed from the metadata at the end of the game :
+Test to make sure that all the consumable are removed from the metadata at the end of the game:
 
           //  Clear consumables
           if (apple != null) {
@@ -264,7 +260,7 @@ Test to make sure that all the consumable are removed from the metadata at the e
           }
 
 ### Enemy Snake Tests
-Test to make sure that the cell the enemy snake will move to exists, is within bounds and isn't the player snake :
+Test to make sure that the cell the enemy snake will move to exists, is within bounds, and isn't the player snake:
 
           assert bestMove != null;
           assert bestMove.x >= 1 && bestMove.x <= 100;
@@ -278,7 +274,7 @@ Test to make sure that the cell the enemy snake will move to exists, is within b
           snakeCells.addFirst(new SnakeCell(newHeadPosition, this.colour));
           game.setMapGridObjectData(newHeadPosition, this);
 
-Test to make sure that the ES velocity is acceptable, and isn't trying to move diagonally :
+Test to make sure that the enemy snake velocity is acceptable, and that the snake isn't trying to move diagonally:
             
           @Override
           protected void setVelocity(float x, float y) {
@@ -295,7 +291,7 @@ Test to make sure that the ES velocity is acceptable, and isn't trying to move d
             }
           }
 
-Test to make sure that the starting positions of the enemy snakes are within bounds : 
+Test to make sure that the starting positions of the enemy snakes are within bounds: 
 
                   // Assertion testing
                   assert startX >= 1 && startX <= 100;
